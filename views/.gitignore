@@ -1,3 +1,6 @@
-!.gitignore
-!build/
-*
+/config
+/node_modules
+/public
+/scripts
+/src
+package.json
