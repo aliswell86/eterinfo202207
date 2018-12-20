@@ -28,9 +28,9 @@ const template = fs.readFileSync(path.join(__dirname, '../views/build/index.html
 module.exports = async (ctx) => {
   const location = ctx.path;
   const { html, state } = await render(location);
+  // 아직 하는이유 모르겠음. <script>window.__PRELOADED_STATE__=${serialize(state)}</script>`
 
-  const page = template.replace('<div id="root"></div>', `<div id="root">${html}</div>
-    <script>window.__PRELOADED_STATE__=${serialize(state)}</script>`);
+  const page = template.replace('<div id="root"></div>', `<div id="root">${html}</div>`);
 
   ctx.body = page; 
 }

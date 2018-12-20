@@ -72,8 +72,8 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       options: {
         importLoaders: 1,
         modules: true,
-        localIdentName: '[path][name]_ _[local]--[hash:base64:5]'
-        // localIdentName: '[local]'
+        // localIdentName: '[path][name]_ _[local]--[hash:base64:5]'
+        localIdentName: '[local]'
       },
     },
     {

@@ -1,4 +1,4 @@
-const Item = require('models/Item');
+const Item = require('../../models/Item');
 
 /* 무기 목록 조회
   GET /api/item/weapon
