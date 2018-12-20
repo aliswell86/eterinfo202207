@@ -1,12 +1,16 @@
 require('dotenv').config();
 
 const Koa = require('koa');
+const Router = require('koa-router');
+const bodyParser = require('koa-bodyparser');
 const serve = require('koa-static');
 const path = require('path');
 const mongoose = require('mongoose');
 const fs = require('fs');
+const api = require('./src/api');
 
 const app = new Koa();
+const router = new Router();
 
 const indexHtml = fs.readFileSync(path.resolve(__dirname, './views/build/index.html'), { encoding: 'utf8' });
 
@@ -17,7 +21,15 @@ mongoose.connect('mongodb://my_mean:dlskdud1@ds121321.mlab.com:21321/my_mean').t
   console.error(e);
 });
 
+// 라우터 설정
+router.use('/api', api.routes()); // api 라우트 적용
+
 app.use(serve(path.resolve(__dirname, './views/build')));
+app.use(serve(path.resolve(__dirname, './public')));
+// 라우터 적용 전에 bodyParser 적용
+app.use(bodyParser());
+// app 인스턴스에 라우터 적용
+app.use(router.routes()).use(router.allowedMethods());
 app.use(ctx => {
   ctx.body = indexHtml;
 });
