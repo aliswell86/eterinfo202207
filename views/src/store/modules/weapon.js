@@ -6,10 +6,12 @@ import * as api from 'lib/api';
 const SET_WEAPON_WHERE = 'weapon/SET_WEAPON_WHERE';
 const GET_WEAPON_LIST = 'weapon/GET_WEAPON_LIST';
 const GET_WEAPON_WHERE_LIST = 'weapon/GET_WEAPON_WHERE_LIST';
+const GET_WEAPON_VIEW = 'weapon/GET_WEAPON_VIEW';
 
 export const setWeaponWhere = createAction(SET_WEAPON_WHERE);
 export const getWeaponList = createAction(GET_WEAPON_LIST, api.getWeaponList);
 export const getWeaponWhereList = createAction(GET_WEAPON_WHERE_LIST);
+export const getWeaponView = createAction(GET_WEAPON_VIEW, api.getWeaponView);
 
 const initialState = Map({
   weaponWhere: Map({
@@ -43,7 +45,8 @@ const initialState = Map({
     loading: true
   }),
   weapons: List(),
-  weaponWheres: List()
+  weaponWheres: List(),
+  weaponView: Map()
 });
 
 export default handleActions({
@@ -52,6 +55,13 @@ export default handleActions({
     onSuccess: (state, action) => {
       const {data: items} = action.payload;
       return state.set('weapons', fromJS(items));
+    }
+  }),
+  ...pender({
+    type: GET_WEAPON_VIEW,
+    onSuccess: (state, action) => {
+      const {data: items} = action.payload;
+      return state.set('weaponView', fromJS(items));
     }
   }),
   [SET_WEAPON_WHERE]: (state, action) => {

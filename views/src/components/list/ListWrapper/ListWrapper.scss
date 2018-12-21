@@ -5,7 +5,9 @@
   // background:$oc-gray-0;
   width: 1024px;
   margin: 0 auto;
-
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+  
   padding: 1rem;
 
   @include media("<wide") {
