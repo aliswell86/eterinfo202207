@@ -8,7 +8,7 @@ const RadioGroup = Radio.Group;
 const cx = classNames.bind(styles);
 
 const WeaponWhereBox = ({handleWhereSet, loading}) => {
-
+  
   return (
     <div className={cx('weapon-where-box')}>
       <div className={cx('cl-where')}>
