@@ -7,23 +7,79 @@
     color: $oc-blue-6;
   }
 
-  .img {
-    width: 95px;
-    height: 95px;        
-    background-color: white;
-    border: 1px solid $oc-gray-3;
-    border-radius: 0.4em;
-    padding: 2px;
-    margin-right: 0.5rem;
-    margin-top: 1rem;    
-
-    @include media("<medium") {
-      margin-right: 0.2rem;
+  .item-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+        
+    .img {
+      width: 95px;
+      height: 95px;        
+      background-color: white;
+      border: 1px solid $oc-gray-3;
+      border-radius: 0.4em;
+      padding: 2px;
+      margin-right: 1rem;
+  
+      img {
+        width: 90px;
+        height: 90px;        
+      }
     }
 
-    img {
-      width: 90px;
-      height: 90px;        
+    .option {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-weight: bold;
+      height: 60px;
+      min-width: 100px;
+
+      .dmg {
+        color: $oc-red-9;
+      }
+      .cri {
+        color: $oc-yellow-5;
+      }
     }
-  }
+
+    .sub_option {
+      min-width: 300px;
+      margin-left: auto;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 0.5rem;
+
+      .tier {
+        width: 60px;
+        text-align: center;
+      }
+      .detail_dv {
+        width: 60px;
+        text-align: center;
+      }
+      .size {
+        width: 60px;
+        text-align: center;
+      }
+      .speed {
+        width: 60px;
+        text-align: center;
+      }
+
+      .accuracy_rate {
+        width: 60px;
+        text-align: center;
+      }
+
+      .point_rate {
+        width: 60px;
+        text-align: center;
+      }
+
+      div + div {
+        border-left: 1px solid $oc-gray-3;
+      }
+    }
+  }  
 }

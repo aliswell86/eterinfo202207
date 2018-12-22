@@ -46,7 +46,10 @@ const initialState = Map({
   }),
   weapons: List(),
   weaponWheres: List(),
-  weaponView: Map()
+  weaponView: Map({
+    itemInfo: Map(),
+    poweredByDmg: List()
+  })
 });
 
 export default handleActions({

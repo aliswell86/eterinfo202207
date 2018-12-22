@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './WeaponList.scss';
 import classNames from 'classnames/bind';
 import {Link} from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 
 const cx = classNames.bind(styles);
 
@@ -15,7 +16,9 @@ const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size
           </Link>
         </div>
         <div className={cx('weapon-name')}><Link to={`/item/wp/${id}`}>{item_nm}</Link></div>
-        <div className={cx('weapon-damage')}>{dmg}</div>
+        <div className={cx('weapon-damage')}>
+          <NumberFormat value={dmg} displayType={'text'} thousandSeparator={true} prefix={''} />
+        </div>
         <div className={cx('item-option')}>
           <div className={cx('tier')}>{tier}등급</div>
           <div className={cx('item-dtl-dv')}>{item_dtl_dv}</div>

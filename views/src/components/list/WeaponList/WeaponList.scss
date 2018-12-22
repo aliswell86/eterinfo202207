@@ -79,6 +79,11 @@
         border-left: 1px solid $oc-gray-3;
       }
     }
+
+    &:hover {
+      // 호버 시 배경색 변경
+      background: rgba($oc-blue-6, 0.05);
+    }
   }
 
   .weapon-object + .weapon-object { // 아이템 사이 여백
