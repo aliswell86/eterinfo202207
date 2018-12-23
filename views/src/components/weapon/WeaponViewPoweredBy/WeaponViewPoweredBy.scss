@@ -1,0 +1,53 @@
+@import 'utils';
+
+.weapon-view-powerd-by {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+
+  .powered-by-dmg-list {
+    width: 120px;
+
+    .powered-by-dmg-title {
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.2rem;
+      margin-top: 0.8rem;
+      border-bottom: 1px solid $oc-gray-4;
+      font-weight: bold;
+    }
+
+    .dmg {
+      cursor: pointer;
+      color: $oc-red-3;
+      font-size: 1rem;
+      padding: 0.2rem;
+
+      .powered-by-tit {
+        float: right;
+        display: none;
+      }
+    }
+
+    .dmg:hover {
+      color: $oc-red-9;
+      font-weight: bold;
+
+      .powered-by-tit {
+        display: inline;        
+      }
+    }
+
+    .dmg:active {
+      color: $oc-red-9;
+      font-weight: bold;
+
+      .powered-by-tit {
+        display: inline;
+      }
+    }
+  }
+}

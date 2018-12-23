@@ -1,0 +1,93 @@
+@import 'utils';
+
+.weapon-list-custom {  
+  max-height: 284px;
+  overflow: auto;
+  cursor: pointer;
+  
+  .weapon-object {
+    padding: 0.5rem;
+    transition: all .15s ease-in;
+    
+    // 내부 아이템 세로 중앙 정렬
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+
+    .weapon-img {
+      background-color: white;
+      border-radius: 0.4em;
+      @include material-shadow(1, 0.5);
+      padding: 2px;
+      margin-right: 0.5rem;
+
+      @include media("<medium") {
+        margin-right: 0.2rem;
+      }
+
+      img {
+        width: 50px;
+        height: 50px;        
+      }
+    }
+
+    .weapon-name {
+      flex: 1;
+      min-width: 200px;
+      color: $oc-blue-5;
+      font-weight: bold;
+    }
+
+    .weapon-damage {
+      width: 80px;
+      text-align: left;
+      color: $oc-red-9;
+      font-weight: bold;
+    }
+
+    .item-option {
+      width: 290px;
+      padding-left: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center;
+      margin-left: auto;
+
+      .tier {
+        width: 60px;
+        text-align: center;
+      }
+      .item-dtl-dv {
+        width: 70px;
+        text-align: center;
+      }
+      .size {
+        width: 70px;
+        text-align: center;
+      }
+      .speed {
+        width: 70px;
+        text-align: center;
+      }
+
+      div + div {
+        border-left: 1px solid $oc-gray-3;
+      }
+    }
+
+    &:hover {
+      // 호버 시 배경색 변경
+      background: rgba($oc-blue-6, 0.05);
+    }
+  }
+
+  .weapon-object + .weapon-object { // 아이템 사이 여백
+    border-top: 1px solid $oc-gray-3;
+  }
+}
+ 
