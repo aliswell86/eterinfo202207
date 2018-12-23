@@ -4,13 +4,15 @@ import ListWrapper from 'components/list/ListWrapper';
 import WeaponListContainer from 'containers/list/WeaponListContainer';
 import WeaponWhereBoxContainer from 'containers/wherebox/WeaponWhereBoxContainer';
 
-const WeaponPage = () => {
+const WeaponPage = ({history}) => {
   return (
     <PageTemplate>
       <WeaponWhereBoxContainer/>
       <ListWrapper>        
-        <WeaponListContainer/>
-      </ListWrapper>      
+        <WeaponListContainer history={history}/>
+      </ListWrapper>
+      <ListWrapper>
+      </ListWrapper>
     </PageTemplate>
   )
 }

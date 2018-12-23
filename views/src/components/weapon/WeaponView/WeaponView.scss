@@ -1,6 +1,13 @@
 @import 'utils';
 
 .weapon-view {
+  padding: 1rem;
+
+  @include media("<small") {
+    width: 100%;
+    padding: 0.4rem;
+  }
+  
   .name {
     padding-bottom: 1rem;
     border-bottom: 1px solid $oc-gray-3;
@@ -32,7 +39,7 @@
       flex-direction: column;
       justify-content: space-between;
       font-weight: bold;
-      height: 60px;
+      height: 80px;
       min-width: 100px;
 
       .dmg {
@@ -40,6 +47,27 @@
       }
       .cri {
         color: $oc-yellow-5;
+      }
+      .body_nm0 {
+        color: $oc-gray-9;
+      }
+      .body_nm1 {
+        color: $oc-green-6;
+      }
+      .body_nm2 {
+        color: goldenrod;
+      }
+      .body_nm3 {
+        color: $oc-pink-6;
+      }
+      .body_nm4 {
+        color: gold;
+      }
+      .body_nm5 {
+        color: $oc-blue-5;
+      }
+      .body_nm6 {
+        color: $oc-red-6;
       }
     }
 
@@ -73,6 +101,11 @@
       }
 
       .point_rate {
+        width: 60px;
+        text-align: center;
+      }
+
+      .illegal {
         width: 60px;
         text-align: center;
       }

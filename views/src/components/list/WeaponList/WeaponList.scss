@@ -1,6 +1,8 @@
 @import 'utils';
 
 .weapon-list {
+  cursor: pointer;
+    
   .weapon-object {
     padding: 0.5rem;
     transition: all .15s ease-in;
@@ -11,10 +13,6 @@
     align-content: center;
     justify-content: space-between;
     align-items: center;
-
-    @include media("<medium") {
-      padding: 0.2rem;
-    }
 
     .weapon-img {
       background-color: white;

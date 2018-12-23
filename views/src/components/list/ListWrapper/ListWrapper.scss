@@ -1,14 +1,12 @@
 @import 'utils';
 
 .list-wrapper {
-  @include material-shadow(2, 0.4);
-  // background:$oc-gray-0;
+  // @include material-shadow(2, 0.4);
+  border: 1px solid $oc-gray-2;
   width: 1024px;
   margin: 0 auto;
-  overflow-y: auto;
-  margin-bottom: 1.5rem;
-  
-  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background: white;
 
   @include media("<wide") {
     width: 768px;

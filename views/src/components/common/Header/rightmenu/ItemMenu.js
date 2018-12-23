@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 const menu = (
   <Menu>
     <Menu.Item><Link to="/item/wp">무기</Link></Menu.Item>
-    <Menu.Item>방어구</Menu.Item>
+    {/* <Menu.Item>방어구</Menu.Item> */}
     {/* <SubMenu title="sub menu">
       <Menu.Item>3rd menu item</Menu.Item>
       <Menu.Item>4th menu item</Menu.Item>
@@ -20,11 +20,16 @@ const menu = (
 );
 
 const ItemMenu = () => (
-  <Dropdown overlay={menu}>
-    <Link className="ant-dropdown-link" to="/">
-      아이템정보 <Icon type="down" />
+  <div>
+    <Dropdown overlay={menu}>
+      <Link className="ant-dropdown-link" to="/">
+        아이템정보 <Icon type="down" />
+      </Link>
+    </Dropdown>
+    <Link to="/custom">
+      커스터마이징
     </Link>
-  </Dropdown>
+  </div>
 );
 
 export default ItemMenu;

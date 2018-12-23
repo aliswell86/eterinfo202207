@@ -15,7 +15,8 @@ class WeaponWhereBoxContainer extends Component {
   }
 
   componentDidMount() {
-    this.getWeaponList();
+    const {weapons} = this.props;
+    if(!weapons.length > 0) this.getWeaponList();
   }
 
   handleWhereSet = (e) => {    
@@ -37,10 +38,10 @@ class WeaponWhereBoxContainer extends Component {
 
   render() {
     const {handleWhereSet} = this;
-    const {loading} = this.props;
+    const {loading, weaponWhere} = this.props;
 
     return (
-      <WeaponWhereBox handleWhereSet={handleWhereSet} loading={loading}/>
+      <WeaponWhereBox handleWhereSet={handleWhereSet} loading={loading} weaponWhere={weaponWhere}/>
     );
   }
 }

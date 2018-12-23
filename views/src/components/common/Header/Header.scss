@@ -1,12 +1,21 @@
 @import 'utils';
 
 .header {
-  // @include material-shadow(3, 0.4);
-  .header-content {
-    position: fixed;
-    z-index: 9999;
-    background-color: white;
-    height: 4rem;    
+  // 가운데 고정
+  position: fixed;
+  width: 100%;
+  left: 50%;
+  z-index: 1000;
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+  -moz-transform: translate(-50%, 0%);
+  -o-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+  background-color: white;
+  
+  @include material-shadow(1, 0.8);
+  .header-content {       
+    height: 3.4rem;    
     width: 1400px;
     margin: 0 auto; // 중앙 정렬
     padding-left: 3rem;
@@ -14,6 +23,7 @@
     // 내부 아이템 세로 중앙 정렬
     display: flex;
     align-items: center;
+    
     // 반응형 레이아웃
     @include media("<wide") {
       width: 100%;

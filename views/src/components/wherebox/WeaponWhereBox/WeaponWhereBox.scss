@@ -1,11 +1,12 @@
 @import 'utils';
 
 .weapon-where-box {
-  @include material-shadow(2, 0.4);
-  background:$oc-gray-0;
+  // @include material-shadow(2, 0.4);
+  border: 1px solid $oc-gray-2;
+  background: white;
   width: 1024px;
   margin: 0 auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 
   padding: 1rem;
 
@@ -17,6 +18,10 @@
   }
   @include media("<medium") {
     width: 100%;
+  }
+  @include media("<small") {
+    width: 100%;
+    padding: 0.4rem;
   }
 
   display: grid;

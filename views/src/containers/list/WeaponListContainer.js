@@ -9,9 +9,9 @@ import * as weaponActions from 'store/modules/weapon';
 
 class WeaponListContainer extends Component {
   render() {
-    const {weaponWheres} = this.props;
+    const {weaponWheres, history} = this.props;
     return (
-      <WeaponList weaponWheres={weaponWheres}/>
+      <WeaponList weaponWheres={weaponWheres} history={history}/>
     );
   }
 }

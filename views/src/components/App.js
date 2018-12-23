@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
-import {WeaponPage, WeaponViewPage} from 'pages';
+import {WeaponPage, WeaponViewPage, WeaponCustomPage} from 'pages';
 
 class App extends Component {
   render() {
@@ -10,6 +10,7 @@ class App extends Component {
           <Route exact path="/" component={WeaponPage} />
           <Route exact path="/item/wp" component={WeaponPage} />
           <Route exact path="/item/wp/:id" component={WeaponViewPage} />
+          <Route path="/custom" component={WeaponCustomPage} />
         </Switch>
       </div>
     );
