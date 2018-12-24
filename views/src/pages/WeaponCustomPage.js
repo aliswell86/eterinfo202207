@@ -5,6 +5,8 @@ import WeaponCustomListContainer from 'containers/list/WeaponCustomListContainer
 import WeaponWhereBoxContainer from 'containers/wherebox/WeaponWhereBoxContainer';
 import WeaponViewContainer from 'containers/weapon/WeaponViewContainer';
 import WeaponPoweredSelContanier from 'containers/weapon/WeaponPoweredSelContanier';
+import MySpecInvenContainer from 'containers/myspec/MySpecInvenContainer';
+import MyInfoViewContainer from 'containers/myinfo/MyInfoViewContainer';
 import queryString from 'query-string';
 
 const WeaponCustomPage = ({location, history}) => {
@@ -19,6 +21,12 @@ const WeaponCustomPage = ({location, history}) => {
       <ListWrapper>        
         <WeaponViewContainer id={query.id}/>
         <WeaponPoweredSelContanier/>
+      </ListWrapper>
+      <ListWrapper>
+        <MyInfoViewContainer/>
+      </ListWrapper>
+      <ListWrapper>
+        <MySpecInvenContainer/>
       </ListWrapper>      
     </PageTemplate>
   )

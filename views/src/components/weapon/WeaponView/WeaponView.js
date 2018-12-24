@@ -21,10 +21,6 @@ const WeaponView = ({itemInfo, currWeaponUpDv, loading}) => {
       <div className={cx('item-info')}>
         <div className={cx('img')}><img src={img_src} alt={item_nm}/></div>
         <div className={cx('option')}>
-          <div className={cx('dmg')}>
-            파괴력:<NumberFormat value={dmg} displayType={'text'} thousandSeparator={true} prefix={''} />
-          </div>
-          <div className={cx('cri')}>치명타:{cri}</div>
           <div className={cx(`body_nm${bodyUp}`)}>
             {
               (() => {
@@ -50,6 +46,10 @@ const WeaponView = ({itemInfo, currWeaponUpDv, loading}) => {
               })()
             }
           </div>
+          <div className={cx('dmg')}>
+            파괴력:<NumberFormat value={dmg} displayType={'text'} thousandSeparator={true} prefix={''} />
+          </div>
+          <div className={cx('cri')}>치명타:{cri}</div>          
         </div>
         <div className={cx('sub_option')}>
           <div className={cx('tier')}>{tier}등급</div>

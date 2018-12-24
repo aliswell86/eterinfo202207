@@ -23,7 +23,7 @@ const WeaponPoweredSel = ({setWeaponUpDv, loading}) => {
       </div>
       <div className={cx('dmgup-selected')}>
         <select name='dmgUp' onChange={setWeaponUpDv}>
-          <option value='0'>노업</option>
+          <option value='0'>노강</option>
           <option value='1'>+1</option>
           <option value='2'>+2</option>
           <option value='3'>+3</option>

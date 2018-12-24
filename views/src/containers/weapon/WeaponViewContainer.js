@@ -19,9 +19,6 @@ class WeaponViewContainer extends Component {
     if(id) {
       this.getWeaponView(id);
     }
-    
-    // const offset = refs쓰자
-    window.scrollTo(0,0);
   }  
 
   componentDidUpdate(prevProps, prevState) {
@@ -31,7 +28,8 @@ class WeaponViewContainer extends Component {
       this.getWeaponView(id);
     }
 
-    window.scrollTo(0,0);
+    // const weaponViewDivOffsetTop = this.weaponViewDiv.offsetTop;
+    // window.scrollTo(0, weaponViewDivOffsetTop);
   }
 
   render() {
@@ -39,7 +37,13 @@ class WeaponViewContainer extends Component {
     const {currWeaponUpDv, loading} = this.props;
     
     return (
-      <WeaponView itemInfo={itemInfo} currWeaponUpDv={currWeaponUpDv} loading={loading}/>
+      <div ref={(ref) => this.weaponViewDiv = ref}>
+        <WeaponView 
+        itemInfo={itemInfo}
+        currWeaponUpDv={currWeaponUpDv}
+        loading={loading}
+        />
+      </div>
     );
   }
 }

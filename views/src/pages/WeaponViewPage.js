@@ -11,7 +11,7 @@ const WeaponViewPage = ({match}) => {
   return (
     <PageTemplate>
       <ListWrapper>
-        <WeaponViewContainer id={id}/>        
+        <WeaponViewContainer id={id}/>
         <WeaponPoweredSelContanier/>
       </ListWrapper>
       <ListWrapper>

@@ -1,0 +1,52 @@
+@import 'utils';
+
+.myspec-inven {
+  padding: 1rem;
+
+  .myspec-title {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $oc-gray-3;
+    color: $oc-gray-8;
+  }
+
+  .spec-dv {
+    min-width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .mystat {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+  
+      input {
+        width: 80px;
+      }
+    }
+
+    .etc-spec {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .b-dv {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .doping-dv {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
