@@ -11,8 +11,6 @@ const WeaponPage = ({history}) => {
       <ListWrapper>        
         <WeaponListContainer history={history}/>
       </ListWrapper>
-      <ListWrapper>
-      </ListWrapper>
     </PageTemplate>
   )
 }

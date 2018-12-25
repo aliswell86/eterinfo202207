@@ -5,7 +5,7 @@ const Item = require('../../models/Item');
 */
 exports.weaponList = async (ctx) => {
   try {
-    const items = await Item.find({"$and":[{ctype: "1"},{"$or":[{tier: "9"},{tier: "10"}]}]}).sort({"order": 1}).exec();
+    const items = await Item.find({"$and":[{ctype: "1"},{"$or":[{tier: "7"},{tier: "10"}]}]}).sort({"order": 1}).exec();
     ctx.body = items;
   } catch(e) {
     ctx.throw(e);
@@ -19,33 +19,12 @@ exports.weaponView = async (ctx) => {
   const { id } = ctx.params;
 
   try {
-    // const itemInfo = await Item.findById(id).exec();
+    const itemInfo = await Item.findById(id).exec();
     
     // 존재하지 않음
-    // if (!itemInfo) {
-    //   ctx.status = 404;
-    //   return;
-    // }
-
-    const itemInfo = {
-      id: '5b35917aa844441bf88b2740',
-      _id: '5b35917aa844441bf88b2740',
-      item_nm: '[CL] Eagle Sniper',
-      item_dtl_dv: '저격소총',
-      tier: '10',
-      dmg: '114166',
-      cri: '20',
-      accuracy_rate: '0.45',
-      point_rate: '0.75',
-      speed: '23',
-      ctype: '1',
-      stype1: '1',
-      stype2: '1',
-      clyn: 'Y',
-      order: '108013',
-      img_src: '/resource/img/CB031.gif',
-      illegal: 'Y',
-      size: '대형'
+    if (!itemInfo) {
+      ctx.status = 404;
+      return;
     }
 
     const poweredByDmg = poweredByCalc(itemInfo.dmg);
@@ -79,13 +58,6 @@ poweredByCalc = (item_dmg) => {
     }
 
     up_list.push(up_cls_list)
-    // if(String(i)=='0') up_obj.up_cls1 = up_cls_list;
-    // else if(i==1) up_obj.up_cls2 = up_cls_list;
-    // else if(i==2) up_obj.up_cls3 = up_cls_list;
-    // else if(i==3) up_obj.up_cls4 = up_cls_list;
-    // else if(i==4) up_obj.up_cls5 = up_cls_list;
-    // else if(i==5) up_obj.up_cls6 = up_cls_list;
-    // else if(i==6) up_obj.up_cls7 = up_cls_list;
   }
 
   return up_list;

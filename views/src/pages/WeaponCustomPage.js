@@ -6,7 +6,7 @@ import WeaponWhereBoxContainer from 'containers/wherebox/WeaponWhereBoxContainer
 import WeaponViewContainer from 'containers/weapon/WeaponViewContainer';
 import WeaponPoweredSelContanier from 'containers/weapon/WeaponPoweredSelContanier';
 import MySpecInvenContainer from 'containers/myspec/MySpecInvenContainer';
-import MyInfoViewContainer from 'containers/myinfo/MyInfoViewContainer';
+import MyInfoViewContainer from 'containers/myspec/MyInfoViewContainer';
 import queryString from 'query-string';
 
 const WeaponCustomPage = ({location, history}) => {

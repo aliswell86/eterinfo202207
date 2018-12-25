@@ -73,7 +73,11 @@ export default handleActions({
     type: GET_WEAPON_VIEW,
     onSuccess: (state, action) => {
       const {data: items} = action.payload;
-      return state.set('weaponView', fromJS(items)).setIn(['currWeaponUpDv','bodyUp'], '0').setIn(['currWeaponUpDv','dmgUp'], '0');
+      const {bodyUp, dmgUp} = state.toJS().currWeaponUpDv;
+      const poweredByDmg = items.poweredByDmg[Number(bodyUp)][Number(dmgUp)];
+      items.itemInfo.dmg = poweredByDmg;
+      
+      return state.set('weaponView', fromJS(items));
     }
   }),
   [SET_WEAPON_WHERE]: (state, action) => {

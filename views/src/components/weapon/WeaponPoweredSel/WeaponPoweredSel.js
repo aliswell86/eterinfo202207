@@ -6,12 +6,12 @@ import { Button } from 'antd';
 const cx = classNames.bind(styles);
 
 const WeaponPoweredSel = ({setWeaponUpDv, loading}) => {
-  const none = loading ? 'none' : '';
-  const innerStyle = {
-    display: none
-  }
+  // const none = loading ? 'none' : '';
+  // const innerStyle = {
+  //   display: none
+  // }
   return (
-    <div className={cx('weapon-powered-sel')} style={innerStyle}>
+    <div className={cx('weapon-powered-sel')}>
       <div className={cx('bodyup-btns')}>
         <div><Button name='bodyUp' onClick={setWeaponUpDv} value='0'>기본</Button></div>
         <div><Button name='bodyUp' onClick={setWeaponUpDv} value='1'>초보</Button></div>

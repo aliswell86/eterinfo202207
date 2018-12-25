@@ -3,6 +3,13 @@
 .myspec-inven {
   padding: 1rem;
 
+  ul {
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 0;
+    list-style: none;
+  }
+
   .myspec-title {
     padding-bottom: 1rem;
     border-bottom: 1px solid $oc-gray-3;
@@ -26,22 +33,25 @@
       input {
         width: 80px;
       }
+      div {
+        margin-bottom: 0.4rem;
+      }
     }
 
-    .etc-spec {
+    .parasite-doping {
       display: flex;
-      flex-direction: column;
+      width: 180px;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
 
-      .b-dv {
+      .parasite {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
       }
-      .doping-dv {
+      .doping {
         display: flex;
         justify-content: space-between;
         align-items: center;

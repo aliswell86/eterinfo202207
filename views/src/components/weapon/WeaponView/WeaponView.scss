@@ -38,6 +38,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      align-items: flex-start;
       font-weight: bold;
       height: 80px;
       min-width: 100px;
@@ -68,7 +69,7 @@
       }
       .body_nm6 {
         // color: $oc-red-6;
-        background: black;
+        background: $oc-red-9;
         color: white;
       }
     }

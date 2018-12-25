@@ -19,17 +19,6 @@ class WeaponViewContainer extends Component {
     if(id) {
       this.getWeaponView(id);
     }
-  }  
-
-  componentDidUpdate(prevProps, prevState) {
-    const {id} = this.props;
-    
-    if(id !== prevProps.id) {
-      this.getWeaponView(id);
-    }
-
-    // const weaponViewDivOffsetTop = this.weaponViewDiv.offsetTop;
-    // window.scrollTo(0, weaponViewDivOffsetTop);
   }
 
   render() {

@@ -5,11 +5,11 @@ import NumberFormat from 'react-number-format';
 
 const cx = classNames.bind(styles);
 
-const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, history}) => {
+const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, getWeaponView}) => {
   
   return (
     
-    <div className={cx('weapon-object')} onClick={() => history.push(`/custom?id=${id}`)}>
+    <div className={cx('weapon-object')} onClick={() => getWeaponView(id)}>
       <div className={cx('weapon-img')}>
         <img src={img_src} alt={item_nm}/>
       </div>
@@ -28,7 +28,7 @@ const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size
   );
 }
 
-const WeaponListCustom = ({weaponWheres, history}) => {  
+const WeaponListCustom = ({weaponWheres, getWeaponView}) => {  
   const weaponList = weaponWheres.map((weapon) => {
     const {
       _id, item_nm, img_src, dmg,
@@ -46,7 +46,7 @@ const WeaponListCustom = ({weaponWheres, history}) => {
         size={size}
         key={_id}
         id={_id}
-        history={history}/>
+        getWeaponView={getWeaponView}/>
     )
   });
 

@@ -10,13 +10,13 @@ const WeaponView = ({itemInfo, currWeaponUpDv, loading}) => {
     item_nm, img_src, item_dtl_dv, dmg, cri, speed, tier, size, illegal
   } = itemInfo;
   const {bodyUp, dmgUp} = currWeaponUpDv;
-  const none = loading ? 'none' : '';
-  const innerStyle = {
-    display: none
-  }
+  // const none = loading ? 'none' : '';
+  // const innerStyle = {
+  //   display: none
+  // }
   
   return (
-    <div className={cx('weapon-view')} style={innerStyle}>
+    <div className={cx('weapon-view')}>
       <h2 className={cx('name')}>{item_nm}</h2>
       <div className={cx('item-info')}>
         <div className={cx('img')}><img src={img_src} alt={item_nm}/></div>
