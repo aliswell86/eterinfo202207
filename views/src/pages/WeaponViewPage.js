@@ -4,6 +4,7 @@ import ListWrapper from 'components/list/ListWrapper';
 import WeaponViewContainer from 'containers/weapon/WeaponViewContainer';
 import WeaponViewPoweredByContainer from 'containers/weapon/WeaponViewPoweredByContainer';
 import WeaponPoweredSelContanier from 'containers/weapon/WeaponPoweredSelContanier';
+import UpgradeCostContainer from 'containers/upgrade/UpgradeCostContainer';
 
 const WeaponViewPage = ({match}) => {
   const {id} = match.params;
@@ -13,6 +14,9 @@ const WeaponViewPage = ({match}) => {
       <ListWrapper>
         <WeaponViewContainer id={id}/>
         <WeaponPoweredSelContanier/>
+      </ListWrapper>
+      <ListWrapper>
+        <UpgradeCostContainer/>                
       </ListWrapper>
       <ListWrapper>
         <WeaponViewPoweredByContainer/>                

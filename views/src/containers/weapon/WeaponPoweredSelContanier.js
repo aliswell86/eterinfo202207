@@ -4,14 +4,16 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as weaponActions from 'store/modules/weapon';
 import * as myspecActions from 'store/modules/myspec';
+import isEmptyObject from 'is-empty-object';
 
 class WeaponPoweredSelContanier extends Component {
 
   handleUpdvEvent = (e) => {
     const {name, value} = e.target;
-    const {WeaponActions, currWeaponUpDv} = this.props;
+    const {WeaponActions, currWeaponUpDv, weaponView} = this.props;
+    const isWeaponView = isEmptyObject(weaponView.itemInfo);
 
-    if(currWeaponUpDv.get(name) !== value) {
+    if(!isWeaponView && (currWeaponUpDv.get(name) !== value)) {
       WeaponActions.setWeaponUpDv({name, value});
       WeaponActions.setWeaponUpDmg();    
     }    

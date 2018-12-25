@@ -15,7 +15,7 @@ const WeaponCustomPage = ({location, history}) => {
   return (
     <PageTemplate>
       <WeaponWhereBoxContainer/>
-      <ListWrapper>        
+      <ListWrapper>                
         <WeaponCustomListContainer history={history}/>
       </ListWrapper>
       <ListWrapper>        

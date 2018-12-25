@@ -1,0 +1,15 @@
+@import 'utils';
+
+.upgrade-cost {
+  padding: 1rem;
+
+  @include media("<small") {
+    width: 100%;
+    padding: 0.4rem;
+  }
+  .upgrade-cost-title {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $oc-gray-3;
+    color: $oc-gray-8;
+  }
+}

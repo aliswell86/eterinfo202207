@@ -6,7 +6,7 @@ import NumberFormat from 'react-number-format';
 
 const cx = classNames.bind(styles);
 
-const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, history}) => {
+const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, history}) => {
   return (
     
     <div className={cx('weapon-object')} onClick={() => history.push(`/item/wp/${id}`)}>      
@@ -24,6 +24,7 @@ const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size
         <div className={cx('item-dtl-dv')}>{item_dtl_dv}</div>
         <div className={cx('size')}>{size ? size : ' '}</div>
         <div className={cx('speed')}>{speed}/1분</div>
+        <div className={cx('illegal')}>{illegal === 'Y' ? '불법무기' : ''}</div>
       </div>
     </div>
 
@@ -34,7 +35,7 @@ const WeaponList = ({weaponWheres, history}) => {
   const weaponList = weaponWheres.map((weapon) => {
     const {
       _id, item_nm, img_src, dmg,
-      item_dtl_dv, speed, tier, size
+      item_dtl_dv, speed, tier, size, illegal
     } = weapon;
 
     return (
@@ -46,6 +47,7 @@ const WeaponList = ({weaponWheres, history}) => {
         tier={tier}
         speed={speed}
         size={size}
+        illegal={illegal}
         key={_id}
         id={_id}
         history={history}/>

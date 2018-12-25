@@ -5,7 +5,7 @@ import NumberFormat from 'react-number-format';
 
 const cx = classNames.bind(styles);
 
-const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, getWeaponView}) => {
+const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, getWeaponView}) => {
   
   return (
     
@@ -22,6 +22,7 @@ const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size
         <div className={cx('item-dtl-dv')}>{item_dtl_dv}</div>
         <div className={cx('size')}>{size ? size : ' '}</div>
         <div className={cx('speed')}>{speed}/1분</div>
+        <div className={cx('illegal')}>{illegal === 'Y' ? '불법무기' : ''}</div>
       </div>
     </div>
 
@@ -32,7 +33,7 @@ const WeaponListCustom = ({weaponWheres, getWeaponView}) => {
   const weaponList = weaponWheres.map((weapon) => {
     const {
       _id, item_nm, img_src, dmg,
-      item_dtl_dv, speed, tier, size
+      item_dtl_dv, speed, tier, size, illegal
     } = weapon;
 
     return (
@@ -44,6 +45,7 @@ const WeaponListCustom = ({weaponWheres, getWeaponView}) => {
         tier={tier}
         speed={speed}
         size={size}
+        illegal={illegal}
         key={_id}
         id={_id}
         getWeaponView={getWeaponView}/>
@@ -51,8 +53,11 @@ const WeaponListCustom = ({weaponWheres, getWeaponView}) => {
   });
 
   return (
-    <div className={cx('weapon-list-custom')}>
-      {weaponList}
+    <div>
+      <h2 className={cx('weapon-custom-title')}>무기를 선택하세요.</h2>
+      <div className={cx('weapon-list-custom')}>      
+        {weaponList}
+      </div>
     </div>
   )
 };

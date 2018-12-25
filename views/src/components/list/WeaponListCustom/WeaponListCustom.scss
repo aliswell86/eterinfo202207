@@ -1,9 +1,28 @@
 @import 'utils';
 
+.weapon-custom-title {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $oc-gray-3;
+  color: $oc-gray-8;
+
+  padding: 1rem;
+
+  @include media("<small") {
+    width: 100%;
+    padding: 0.4rem;
+  } 
+}
+
 .weapon-list-custom {  
   max-height: 284px;
   overflow: auto;
   cursor: pointer;
+  padding: 1rem;
+
+  @include media("<small") {
+    width: 100%;
+    padding: 0.2rem;
+  } 
   
   .weapon-object {
     padding: 0.5rem;
@@ -48,7 +67,7 @@
     }
 
     .item-option {
-      width: 290px;
+      width: 350px;
       padding-left: 10px;
       display: flex;
       flex-wrap: wrap;
@@ -71,6 +90,10 @@
         text-align: center;
       }
       .speed {
+        width: 70px;
+        text-align: center;
+      }
+      .illegal {
         width: 70px;
         text-align: center;
       }

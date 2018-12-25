@@ -21,7 +21,35 @@ const WeaponPoweredSel = ({setWeaponUpDv, loading}) => {
         <div><Button name='bodyUp' onClick={setWeaponUpDv} value='5'>명인</Button></div>
         <div><Button name='bodyUp' onClick={setWeaponUpDv} value='6'>O.T.</Button></div>
       </div>
-      <div className={cx('dmgup-selected')}>
+      <div className={cx('dmgup-btns')}>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='0'>노강</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='1'>+1</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='2'>+2</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='3'>+3</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='4'>+4</Button></div>
+      </div>
+      <div className={cx('dmgup-btns')}>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='5'>+5</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='6'>+6</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='7'>+7</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='8'>+8</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='9'>+9</Button></div>        
+      </div>
+      <div className={cx('dmgup-btns')}>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='10'>MAX</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='11'>MAX +1</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='12'>MAX +2</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='13'>MAX +3</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='14'>MAX +4</Button></div>
+      </div>
+      <div className={cx('dmgup-btns')}>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='15'>MAX +5</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='16'>MAX +6</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='17'>MAX +7</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='18'>MAX +8</Button></div>
+        <div><Button name='dmgUp' onClick={setWeaponUpDv} value='19'>MAX +9</Button></div>
+      </div>
+      {/* <div className={cx('dmgup-selected')}>
         <select name='dmgUp' onChange={setWeaponUpDv}>
           <option value='0'>노강</option>
           <option value='1'>+1</option>
@@ -44,7 +72,7 @@ const WeaponPoweredSel = ({setWeaponUpDv, loading}) => {
           <option value='18'>MAX +8</option>
           <option value='19'>MAX +9</option>
         </select>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -3,6 +3,11 @@
 .myspec-inven {
   padding: 1rem;
 
+  @include media("<small") {
+    width: 100%;
+    padding: 0.4rem;
+  }
+
   ul {
     margin: 0;
     margin-bottom: 1rem;
