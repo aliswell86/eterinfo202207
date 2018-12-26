@@ -13,11 +13,42 @@
     color: $oc-gray-8;
   }
 
-  .tax-btns {
+  .cost-head {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
-    padding-bottom: 0.4rem;
-    margin: 0.2rem;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+
+    .base-cost {
+      font-weight: bold;
+    }
+
+    .tax {
+      font-weight: bold;
+      color: $oc-red-5;
+    }
+  }
+
+  .cost-body {
+    padding: 0.4rem;
+  }
+
+  .cost-footer {
+    h3 {
+      margin-top: 0.4rem
+    }
+
+    .tax-btns {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      padding-bottom: 0.4rem;
+      
+      button {
+        margin: 0.1rem;
+      }
+    }
   }
 }

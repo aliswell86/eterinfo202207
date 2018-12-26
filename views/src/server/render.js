@@ -9,6 +9,8 @@ import configure from 'store/configure';
    데이터 로딩도 관리해줍니다. */
 import { renderToString } from 'react-router-server';
 
+import { Helmet } from 'react-helmet';
+
 const render = async (location) => {
   // 서버사이드에선, 매 요청마다 새 store 를 생성해주어야 합니다.
   const store = configure();
@@ -21,10 +23,14 @@ const render = async (location) => {
     </StaticRouter>
   );
 
+  // helmet 정보를 가져옵니다
+  const helmet = Helmet.renderStatic();
+
   // 스토어와, 렌더링된 문자열 결과물을 반환합니다
   return {
     html,
-    state: store.getState()
+    state: store.getState(),
+    helmet
   };
 };
 
