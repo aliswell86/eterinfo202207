@@ -12,4 +12,12 @@
     border-bottom: 1px solid $oc-gray-3;
     color: $oc-gray-8;
   }
+
+  .tax-btns {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 0.4rem;
+    margin: 0.2rem;
+  }
 }

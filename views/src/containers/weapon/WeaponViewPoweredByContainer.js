@@ -23,6 +23,16 @@ class WeaponViewPoweredByContainer extends Component {
     }
   }
 
+  shouldComponentUpdate(prevProps, prevState) {
+    const prevId = prevProps.weaponView.itemInfo._id;
+    const currId = this.props.weaponView.itemInfo._id;
+    return prevId !== currId;
+  }
+
+  componentDidUpdate() {
+    console.log("power_view componentDidUpdate");
+  }
+
   render() {
     const {poweredByDmg, itemInfo} = this.props.weaponView;
     
