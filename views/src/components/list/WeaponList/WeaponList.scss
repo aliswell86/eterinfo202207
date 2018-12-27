@@ -1,9 +1,8 @@
 @import 'utils';
 
 .weapon-list {
-  cursor: pointer;
-    
   .weapon-object {
+    cursor: pointer;
     padding: 0.5rem;
     transition: all .15s ease-in;
     

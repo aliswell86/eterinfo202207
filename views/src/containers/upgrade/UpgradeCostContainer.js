@@ -25,7 +25,7 @@ class UpgradeCostContainer extends Component {
   }
 
   componentDidUpdate() {
-    console.log("componentDidUpdate");
+    
   }
 
   render() {

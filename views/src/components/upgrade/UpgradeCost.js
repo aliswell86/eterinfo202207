@@ -53,16 +53,16 @@ const UpgradeCost = ({itemInfo, upgradeInfo, setUpgradeTax}) => {
         <div className={cx('cost-footer')}>
           <h3>세금선택</h3>
           <div className={cx('tax-btns')}>
-            <Button name='tax' onClick={setUpgradeTax} value='-1'>-1%</Button>
+            {/* <Button name='tax' onClick={setUpgradeTax} value='-1'>-1%</Button>
             <Button name='tax' onClick={setUpgradeTax} value='-2'>-2%</Button>
             <Button name='tax' onClick={setUpgradeTax} value='-3'>-3%</Button>
-            <Button name='tax' onClick={setUpgradeTax} value='-4'>-4%</Button>
+            <Button name='tax' onClick={setUpgradeTax} value='-4'>-4%</Button> */}
             <Button name='tax' onClick={setUpgradeTax} value='-5'>-5%</Button>
             <Button name='tax' onClick={setUpgradeTax} value='0'>0%</Button>
-            <Button name='tax' onClick={setUpgradeTax} value='1'>1%</Button>
+            {/* <Button name='tax' onClick={setUpgradeTax} value='1'>1%</Button>
             <Button name='tax' onClick={setUpgradeTax} value='2'>2%</Button>
             <Button name='tax' onClick={setUpgradeTax} value='3'>3%</Button>
-            <Button name='tax' onClick={setUpgradeTax} value='4'>4%</Button>
+            <Button name='tax' onClick={setUpgradeTax} value='4'>4%</Button> */}
             <Button name='tax' onClick={setUpgradeTax} value='5'>5%</Button>
           </div>
         </div>

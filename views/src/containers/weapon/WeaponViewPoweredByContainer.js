@@ -29,10 +29,6 @@ class WeaponViewPoweredByContainer extends Component {
     return prevId !== currId;
   }
 
-  componentDidUpdate() {
-    console.log("power_view componentDidUpdate");
-  }
-
   render() {
     const {poweredByDmg, itemInfo} = this.props.weaponView;
     

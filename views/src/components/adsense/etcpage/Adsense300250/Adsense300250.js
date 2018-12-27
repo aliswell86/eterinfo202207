@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Adsense970250.scss';
+import styles from './Adsense300250.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
@@ -8,8 +8,9 @@ const Adsense970250 = () => {
   const innserStyle = {
     display: 'block'
   }
+
   return (
-    <div className={cx('adsense-970250-main')}>
+    <div className={cx('adsense-300250')}>
       <ins className="adsbygoogle"
         style={innserStyle}
         data-ad-client="ca-pub-1407998984163880"

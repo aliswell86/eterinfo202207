@@ -53,8 +53,8 @@ const WeaponListCustom = ({weaponWheres, getWeaponView}) => {
   });
 
   return (
-    <div>
-      <h2 className={cx('weapon-custom-title')}>무기를 선택하세요.</h2>
+    <div className={cx('custom-list-wrapper')}>
+      <h2 className={cx('weapon-custom-title')}>무기선택 리스트</h2>
       <div className={cx('weapon-list-custom')}>      
         {weaponList}
       </div>

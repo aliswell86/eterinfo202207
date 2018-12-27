@@ -10,7 +10,7 @@ const Adsense970250 = () => {
   }
 
   return (
-    <div className={cx('adsense-72890')}>
+    <div className={cx('adsense-72890-main')}>
       <ins className="adsbygoogle"
         style={innserStyle}
         data-ad-client="ca-pub-1407998984163880"
