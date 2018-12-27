@@ -30,27 +30,7 @@ module.exports = async (ctx) => {
   const { html, state, helmet } = await render(location);
 
   const page = template.replace('<div id="root"></div>', `<div id="root">${html}</div><script>window.__PRELOADED_STATE__=${serialize(state)}</script>`)
-                       .replace('<meta helmet>', `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}
-                        <script async src='https://www.googletagmanager.com/gtag/js?id=UA-123320555-1'></script>
-                        <script>
-                          window.dataLayer = window.dataLayer || [];
-                          function gtag(){dataLayer.push(arguments);}
-                          gtag('js', new Date());
-
-                          gtag('config', 'UA-123320555-1');
-                        </script>
-
-                        <script async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
-                        <script>
-                          (adsbygoogle = window.adsbygoogle || []).push({
-                            google_ad_client: 'ca-pub-1407998984163880',
-                            enable_page_level_ads: true
-                          });
-                        </script>
-                        
-                        <link rel='canonical' href='http://eterinfo.kr/'>
-                        <link rel='shortcut icon' href='/resource/img/favicon.ico'>
-                       `);
+                       .replace('<meta helmet>', `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}`);
 
   ctx.body = page; 
 }

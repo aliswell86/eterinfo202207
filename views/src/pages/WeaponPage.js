@@ -9,7 +9,8 @@ const WeaponPage = ({history}) => {
   return (
     <PageTemplate>
       <Helmet>
-        <title>이터인포 - 이터널시티 무기</title>          
+        <title>이터인포 - 이터널시티 무기</title>
+        <meta name="description" content="한국형 좀비 아포칼립스 RPG! 이터널시티의 무기목록 및 강화별 공격력을 확인합니다." />
       </Helmet>
       <WeaponWhereBoxContainer/>
       <ListWrapper>        

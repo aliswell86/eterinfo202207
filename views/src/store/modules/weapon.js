@@ -8,14 +8,16 @@ const GET_WEAPON_LIST = 'weapon/GET_WEAPON_LIST';
 const GET_WEAPON_WHERE_LIST = 'weapon/GET_WEAPON_WHERE_LIST';
 const GET_WEAPON_VIEW = 'weapon/GET_WEAPON_VIEW';
 const SET_WEAPON_UP_DV = 'weapon/SET_WEAPON_UP_DV';
-const SET_WEAPONE_UP_DMG = 'weapon/SET_WEAPONE_UP_DMG';
+const SET_WEAPON_UP_DMG = 'weapon/SET_WEAPON_UP_DMG';
+const GET_WEAPON_SEARCH_LIST = 'weapon/SET_WEAPONE_UP_DMG';
 
 export const setWeaponWhere = createAction(SET_WEAPON_WHERE);
 export const getWeaponList = createAction(GET_WEAPON_LIST, api.getWeaponList);
 export const getWeaponWhereList = createAction(GET_WEAPON_WHERE_LIST);
 export const getWeaponView = createAction(GET_WEAPON_VIEW, api.getWeaponView);
 export const setWeaponUpDv = createAction(SET_WEAPON_UP_DV);
-export const setWeaponUpDmg = createAction(SET_WEAPONE_UP_DMG);
+export const setWeaponUpDmg = createAction(SET_WEAPON_UP_DMG);
+export const getWeaponSearchList = createAction(GET_WEAPON_SEARCH_LIST);
 
 const initialState = Map({
   weaponWhere: Map({ // 선택한 조회조건들
@@ -58,7 +60,8 @@ const initialState = Map({
   currWeaponUpDv: Map({ // 현재 선택된 무기view 업글상태
     bodyUp: '0', // 몸체업
     dmgUp: '0', // 강화업
-  })
+  }),
+  weaponSearchList: List(), // 조회 미리보기 리스트
 });
 
 export default handleActions({
@@ -146,9 +149,14 @@ export default handleActions({
     const {name, value} = action.payload;
     return state.setIn(['currWeaponUpDv', name], value);
   },
-  [SET_WEAPONE_UP_DMG]: (state, action) => {
+  [SET_WEAPON_UP_DMG]: (state, action) => {
     const {bodyUp, dmgUp} = state.toJS().currWeaponUpDv;
     const value = state.getIn(['weaponView','poweredByDmg']).toJS()[Number(bodyUp)][Number(dmgUp)];
     return state.setIn(['weaponView','itemInfo','dmg'], value);
+  },
+  [GET_WEAPON_SEARCH_LIST]: (state, action) => {
+    const value = action.payload;
+    const weapons = state.toJS().weapons.filter(weapon => value !== '' && weapon.item_nm.toLowerCase().indexOf(value.toLowerCase()) > -1);
+    return state.set('weaponSearchList', weapons);
   }
 }, initialState);

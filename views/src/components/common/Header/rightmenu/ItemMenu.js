@@ -1,8 +1,12 @@
 import React from 'react';
-import { Menu, Dropdown, Icon } from 'antd';
+import { Menu, Dropdown, Icon/*, Checkbox */} from 'antd';
 import {Link} from 'react-router-dom';
 
 // const SubMenu = Menu.SubMenu;
+
+const innerStyle = {
+  marginLeft: "0.4rem"
+}
 
 const menu = (
   <Menu>
@@ -21,12 +25,12 @@ const menu = (
 
 const ItemMenu = () => (
   <div>
-    <Dropdown overlay={menu}>
-      <Link className="ant-dropdown-link" to="/">
+    <Dropdown overlay={menu} style={innerStyle}>
+      <Link className="ant-dropdown-link" to="/item/wp">
         아이템정보 <Icon type="down" />
       </Link>
     </Dropdown>
-    <Link to="/custom">
+    <Link to="/custom" style={innerStyle}>
       커스터마이징
     </Link>
   </div>
