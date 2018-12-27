@@ -1,0 +1,21 @@
+@import 'utils';
+
+.footer {
+  background: $oc-gray-7;
+  height: 3rem;
+
+  // 내부 내용 중앙 정렬
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  font-weight: bold;
+  color: white;
+
+  div a {
+    color: $oc-blue-6;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
+}

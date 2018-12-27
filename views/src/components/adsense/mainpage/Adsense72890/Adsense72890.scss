@@ -1,0 +1,15 @@
+@import 'utils';
+
+.adsense-72890 {
+  margin: 0 auto;
+  max-width: 728px;
+  height: 90px;
+  margin-top: 220px;
+  display: block;
+
+  // border: solid 1px black;
+
+  @include media("<medium") {
+    display: none;
+  }
+}
