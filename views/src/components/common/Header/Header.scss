@@ -11,11 +11,12 @@
   -moz-transform: translate(-50%, 0%);
   -o-transform: translate(-50%, 0%);
   transform: translate(-50%, 0%);
-  background-color: white;
+  // background-color: white;
+  background-color: $oc-violet-9;
   
   @include material-shadow(1, 0.8);
   .header-content {       
-    height: 3.4rem;    
+    height: 4rem;    
     width: 1400px;
     margin: 0 auto; // 중앙 정렬
     padding-left: 3rem;
@@ -35,7 +36,7 @@
 
     .brand {
       // 로고
-      color: $oc-gray-7;
+      color: white;
       font-size: 1.2rem;
       font-weight: 600;
     }
@@ -43,6 +44,7 @@
     .right {
       // 우측 내용
       margin-left: auto;
+      color: white;
     }
   }
 }

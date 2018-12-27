@@ -24,8 +24,6 @@ export default handleActions({
   [SET_MYSPEC_STAT]: (state, action) => {
     const {name, value, checked} = action.payload;
 
-    
-
     if(name === 'isParasite') {
       return state.setIn(['myStat', name], checked);  
     }else{
