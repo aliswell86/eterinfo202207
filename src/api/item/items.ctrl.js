@@ -39,6 +39,10 @@ exports.weaponView = async (ctx) => {
   }
 };
 
+exports.plusUpGrid = (ctx) => {
+  ctx.body = plusUpGrid();
+};
+
 poweredByCalc = (item_dmg) => {
   var up_classes = [1, 1.1, 1.3, 1.5, 2, 3, 4];
   var up_rate = [0,1,2,3,4,5,6,7,8,9,1,1,1,3,3,3,6,6,6,10];
@@ -62,3 +66,59 @@ poweredByCalc = (item_dmg) => {
 
   return up_list;
 };
+
+plusUpGrid = () => {
+  var base_value1 = 1.111111111;
+  var base_value2 = 1.666666666;
+  var base_value3 = 2.50;
+  var value1_ary = [];
+  var value2_ary = [];
+  var value3_ary = [];
+  var result_obj = {};
+  var str_rt = 0.5;
+  for(var i=0; i<11; i++) {
+    var value = str_rt+(i*0.1);
+    value1_ary.push((base_value1 * value));
+    value2_ary.push((base_value2 * value));
+    value3_ary.push((base_value3 * value));
+  }
+  
+  result_obj.value1 = value1_ary;
+  result_obj.value2 = value2_ary;
+  result_obj.value3 = value3_ary;
+  
+  var real_result_list =[]
+  var result_list = [];
+  var list = [];
+  var list_sub = [];
+  var calc_value = 0;
+
+  for(var a=1; a<4; a++) {
+    result_list = [];
+    calc_value = 0;
+    for(var j=0; j<3; j++) {
+      list = [];
+      calc_value = 0;
+      for(var jj=2; jj<11; jj++) {
+        list_sub = [];
+        calc_value = 0;
+        for(jjj=0; jjj<15; jjj++) {
+          if(jjj>=0 && jjj<=4) {
+            calc_value = calc_value + Number(eval("value"+(j+1)+"_ary[jj]"));
+          }else if(jjj>=5 && jjj<=9) {
+            calc_value = calc_value + Number(eval("value"+(j+1)+"_ary[jj]")*2);
+          }else{
+            calc_value = calc_value + Number(eval("value"+(j+1)+"_ary[jj]")*3);
+          }
+  
+          list_sub.push((calc_value*a).toFixed(2));
+        }
+        list.push(list_sub);
+      }
+      result_list.push(list);
+    }
+    real_result_list.push(result_list);
+  }
+
+  return real_result_list;
+}

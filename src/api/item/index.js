@@ -5,5 +5,6 @@ const items = new Router();
 
 items.get('/weapon', itemCtrl.weaponList);
 items.get('/weapon/:id', itemCtrl.weaponView);
+items.get('/plusup', itemCtrl.plusUpGrid);
 
 module.exports = items;

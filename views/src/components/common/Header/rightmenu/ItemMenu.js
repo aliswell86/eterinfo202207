@@ -33,6 +33,9 @@ const ItemMenu = () => (
     <Link to="/custom" style={innerStyle}>
       커스터마이징
     </Link>
+    <Link to="/plusup" style={innerStyle}>
+      플러스업
+    </Link>
   </div>
 );
 

@@ -15,9 +15,14 @@ class WeaponViewContainer extends Component {
 
   componentDidMount() {
     const {id} = this.props;
+    const {pathname} = this.props.location;
     
     if(id) {
       this.getWeaponView(id);
+    }
+
+    if(pathname.indexOf('/item/wp') > -1) {
+      window.scrollTo(0, 0);
     }
   }
 
@@ -26,13 +31,13 @@ class WeaponViewContainer extends Component {
     const {currWeaponUpDv, loading} = this.props;
     
     return (
-      <div ref={(ref) => this.weaponViewDiv = ref}>
-        <WeaponView 
-        itemInfo={itemInfo}
-        currWeaponUpDv={currWeaponUpDv}
-        loading={loading}
-        />
-      </div>
+      // <div ref={(ref) => this.weaponViewDiv = ref}>
+      <WeaponView 
+      itemInfo={itemInfo}
+      currWeaponUpDv={currWeaponUpDv}
+      loading={loading}
+      />
+      // </div>
     );
   }
 }
