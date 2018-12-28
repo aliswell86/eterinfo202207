@@ -1,10 +1,10 @@
 # 운영은 views/build 만 반영
-# /config
-# /node_modules
-# /public
-# /scripts
-# /src
-# package.json
+/config
+/node_modules
+/public
+/scripts
+/src
+package.json
 
 #개발은 모두반영 /node_modules 빼고..
-/node_modules
+# /node_modules
