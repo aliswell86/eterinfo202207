@@ -3,7 +3,8 @@ import styles from './UpgradeCost.scss';
 import classNames from 'classnames/bind';
 import { Button } from 'antd';
 import NumberFormat from 'react-number-format';
-import ReactiveAdsense from 'components/adsense/common/ReactiveAdsense';
+import Adsense300250 from 'components/adsense/Adsense300250';
+import Adsense72890 from 'components/adsense/Adsense72890';
 
 const cx = classNames.bind(styles);
 
@@ -71,7 +72,8 @@ const UpgradeCost = ({itemInfo, upgradeInfo, setUpgradeTax}) => {
         }
       </div>
       <div className={cx('upgrade-cost-adsense')}>
-        <ReactiveAdsense/>
+        <Adsense300250/>
+        <Adsense72890/>
       </div>
     </div>
   );
