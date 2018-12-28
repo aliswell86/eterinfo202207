@@ -1,0 +1,15 @@
+@import 'utils';
+
+.adsense-wherebox {
+  margin: 0 auto;
+  margin-bottom: 0.4rem;
+  width: 300px;
+  height: 250px;
+
+  @include media("<wide") {
+    width: 728px;
+    height: 90px;
+  }
+
+  // border: solid 1px black;
+}

@@ -1,0 +1,91 @@
+@import 'utils';
+
+.plusup-grid {
+
+  .plusup-where-ad {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    .plusup-grid-head {
+      padding: 1rem;  
+
+      @include media("<small") {
+        width: 100%;
+        padding: 0.4rem;
+      }
+
+      .plusup-where {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 7rem;
+        // align-items: center;
+
+        .armmor-dv {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          grid-gap: 0.2rem;
+        }
+        .grade-dv {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          grid-gap: 0.2rem;
+        }
+        .tier-dv {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          grid-gap: 0.2rem;
+        }
+      }
+    }
+
+    .plusup-grid-adsense {
+      width: 300px;
+      height: 250px;
+      margin: 0 auto;
+      bottom: 1rem;  
+
+      @include media("<small") {
+        width: 768px;
+        height: 90px;
+        bottom: 0.4rem;
+      }
+
+      // border: solid 1px black;
+    }
+  }
+
+  .plus-up-grid-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    // grid-gap: 0.8rem;
+    padding: 1rem;  
+
+    @include media("<small") {
+      width: 100%;
+      padding: 0.4rem;
+    }
+
+    .plus-up-grid-object {
+      font-weight: bold;
+      
+      .plus-up-text {        
+        display: flex;
+        // justify-content: space-between;
+        
+        .plus-up-grade {
+          width: 36px;
+          color: $oc-gray-9;
+        }
+        .plus-up-value {
+          width: 54px;
+          color: $oc-red-9;
+        }
+      }
+    }
+  }
+  
+}
