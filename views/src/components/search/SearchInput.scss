@@ -18,8 +18,8 @@
     }
   }
 
-  .search-sub-list {    
-    z-index: 1000;    
+  .search-sub-list {
+    z-index: 10;    
     margin-top: 3.3rem;
     width: 358px;    
     @include material-shadow(1, 0.8);
@@ -28,7 +28,7 @@
     max-height: 200px;
     overflow-y: auto;
 
-    position: fixed;
+    position: absolute;
 
     .search-sub-list-object {      
       padding: 0.1rem;

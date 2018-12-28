@@ -3,12 +3,18 @@ import styles from './WeaponList.scss';
 import classNames from 'classnames/bind';
 import {Link} from 'react-router-dom';
 import NumberFormat from 'react-number-format';
+import ReactiveAdsense from 'components/adsense/common/ReactiveAdsense';
 
 const cx = classNames.bind(styles);
 
-const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, history}) => {
+const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, history, cnt, totalCnt}) => {
   return (
-    
+
+    (cnt !== 0 && cnt % 5 === 0) || cnt === (totalCnt - 1) ? 
+    <div className={cx('weapon-list-adsense')}>
+      <ReactiveAdsense/>
+    </div>
+    :
     <div className={cx('weapon-object')} onClick={() => history.push(`/item/wp/${id}`)}>      
       <div className={cx('weapon-img')}>
         <Link to={`/item/wp/${id}`}>
@@ -32,7 +38,7 @@ const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size
 }
 
 const WeaponList = ({weaponWheres, history}) => {
-  const weaponList = weaponWheres.map((weapon) => {
+  const weaponList = weaponWheres.map((weapon, cnt) => {
     const {
       _id, item_nm, img_src, dmg,
       item_dtl_dv, speed, tier, size, illegal
@@ -50,7 +56,9 @@ const WeaponList = ({weaponWheres, history}) => {
         illegal={illegal}
         key={_id}
         id={_id}
-        history={history}/>
+        history={history}
+        cnt={cnt}
+        totalCnt={weaponWheres.length}/>
     )
   });
 

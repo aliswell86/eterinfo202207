@@ -1,6 +1,13 @@
 @import 'utils';
 
 .weapon-list {
+  .weapon-list-adsense {
+    margin: 0 auto;
+    max-width: 728px;
+    height: 90px;
+    padding: 0.4rem;
+    // border: solid 1px black;
+  }
   .weapon-object {
     cursor: pointer;
     padding: 0.5rem;

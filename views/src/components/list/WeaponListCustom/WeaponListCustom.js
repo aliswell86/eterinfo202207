@@ -2,13 +2,19 @@ import React from 'react';
 import styles from './WeaponListCustom.scss';
 import classNames from 'classnames/bind';
 import NumberFormat from 'react-number-format';
+import ReactiveAdsense from 'components/adsense/common/ReactiveAdsense';
 
 const cx = classNames.bind(styles);
 
-const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, getWeaponView}) => {
+const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, getWeaponView, cnt, totalCnt}) => {
   
   return (
-    
+
+    (cnt !== 0 && cnt % 5 === 0) || cnt === (totalCnt - 1) ? 
+    <div className={cx('weapon-list-custom-adsense')}>
+      <ReactiveAdsense/>
+    </div>
+    :
     <div className={cx('weapon-object')} onClick={() => getWeaponView(id)}>
       <div className={cx('weapon-img')}>
         <img src={img_src} alt={item_nm}/>
@@ -30,7 +36,7 @@ const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size
 }
 
 const WeaponListCustom = ({weaponWheres, getWeaponView}) => {  
-  const weaponList = weaponWheres.map((weapon) => {
+  const weaponList = weaponWheres.map((weapon, cnt) => {
     const {
       _id, item_nm, img_src, dmg,
       item_dtl_dv, speed, tier, size, illegal
@@ -48,7 +54,9 @@ const WeaponListCustom = ({weaponWheres, getWeaponView}) => {
         illegal={illegal}
         key={_id}
         id={_id}
-        getWeaponView={getWeaponView}/>
+        getWeaponView={getWeaponView}
+        cnt={cnt}
+        totalCnt={weaponWheres.length}/>
     )
   });
 
