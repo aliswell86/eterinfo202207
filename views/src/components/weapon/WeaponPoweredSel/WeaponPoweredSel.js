@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './WeaponPoweredSel.scss';
 import classNames from 'classnames/bind';
 import { Button } from 'antd';
-import ReactiveAdsense from 'components/adsense/common/ReactiveAdsense';
+import Adsense300250 from 'components/adsense/Adsense300250';
+import Adsense72890 from 'components/adsense/Adsense72890';
 
 const cx = classNames.bind(styles);
 
@@ -53,7 +54,8 @@ const WeaponPoweredSel = ({setWeaponUpDv, loading}) => {
         </div>
       </div>
       <div className={cx('powered-adsense')}>
-        <ReactiveAdsense/>
+        <Adsense300250/>
+        <Adsense72890/>
       </div>
     </div>
   );

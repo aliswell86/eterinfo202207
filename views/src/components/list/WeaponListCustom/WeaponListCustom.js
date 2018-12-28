@@ -2,17 +2,17 @@ import React from 'react';
 import styles from './WeaponListCustom.scss';
 import classNames from 'classnames/bind';
 import NumberFormat from 'react-number-format';
-import ReactiveAdsense from 'components/adsense/common/ReactiveAdsense';
+import Adsense72890 from 'components/adsense/Adsense72890';
 
 const cx = classNames.bind(styles);
 
-const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, getWeaponView, cnt, totalCnt}) => {
+const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, getWeaponView, cnt/*, totalCnt*/}) => {
   
   return (
 
-    (cnt !== 0 && cnt % 5 === 0) || cnt === (totalCnt - 1) ? 
+    (cnt !== 0 && cnt % 5 === 0) ? 
     <div className={cx('weapon-list-custom-adsense')}>
-      <ReactiveAdsense/>
+      <Adsense72890/>
     </div>
     :
     <div className={cx('weapon-object')} onClick={() => getWeaponView(id)}>

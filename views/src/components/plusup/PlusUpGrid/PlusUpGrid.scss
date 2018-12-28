@@ -1,67 +1,49 @@
 @import 'utils';
 
 .plusup-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;    
 
-  .plusup-where-ad {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
+  .plusup-grid-head {
+    padding: 1rem;  
 
-    .plusup-grid-head {
-      padding: 1rem;  
-
-      @include media("<small") {
-        width: 100%;
-        padding: 0.4rem;
-      }
-
-      .plusup-where {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-        height: 7rem;
-        // align-items: center;
-
-        .armmor-dv {
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          grid-gap: 0.2rem;
-        }
-        .grade-dv {
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          grid-gap: 0.2rem;
-        }
-        .tier-dv {
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          grid-gap: 0.2rem;
-        }
-      }
+    @include media("<small") {
+      width: 100%;
+      padding: 0.4rem;
     }
 
-    .plusup-grid-adsense {
-      width: 300px;
-      height: 250px;
-      margin: 0 auto;
-      bottom: 1rem;  
+    .plusup-where {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 10rem;
+      // align-items: center;
 
-      @include media("<small") {
-        width: 768px;
-        height: 90px;
-        bottom: 0.4rem;
+      .armmor-dv {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        // grid-gap: 1.2rem;
       }
-
-      // border: solid 1px black;
+      .grade-dv {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        // grid-gap: 0.8rem;
+      }
+      .tier-dv {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        // grid-gap: 1.2rem;
+      }
     }
   }
 
   .plus-up-grid-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    // grid-gap: 0.8rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.8rem;
     padding: 1rem;  
 
     @include media("<small") {
@@ -87,5 +69,26 @@
       }
     }
   }
-  
+
+  .plusup-grid-adsense {
+    @include media("<wide") {
+      margin: auto;
+    }
+
+    .ad300250 {
+      @include media("<small") {
+        margin-right: 0.2rem;
+        display: none !important;
+      }
+    }
+
+    .ad72890 {
+      display: none !important;
+
+      @include media("<small") {
+        margin-right: 0.2rem;
+        display: inline-block !important;
+      }
+    }
+  }
 }

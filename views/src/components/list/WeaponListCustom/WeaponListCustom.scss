@@ -1,7 +1,7 @@
 @import 'utils';
 
 .custom-list-wrapper {
-  padding: 1rem;
+  padding: 0.4rem;
 
   @include media("<small") {
     padding: 0.2rem;
@@ -23,11 +23,13 @@
     overflow: auto;
 
     .weapon-list-custom-adsense {
-      margin: 0 auto;
-      max-width: 728px;
-      height: 90px;
-      padding: 0.4rem;
+      text-align: center;
       // border: solid 1px black;
+
+      .ad72890 {
+        margin: 0 auto;
+        // border: solid 1px black;
+      }
     }
     
     .weapon-object {

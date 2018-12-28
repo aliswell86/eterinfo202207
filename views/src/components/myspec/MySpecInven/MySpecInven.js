@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './MySpecInven.scss';
 import classNames from 'classnames/bind';
 import { Checkbox, Radio, Input } from 'antd';
-import ReactiveAdsense from 'components/adsense/common/ReactiveAdsense';
+import Adsense300250 from 'components/adsense/Adsense300250';
+import Adsense72890 from 'components/adsense/Adsense72890';
 
 const RadioGroup = Radio.Group;
 const cx = classNames.bind(styles);
@@ -40,7 +41,8 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick}) => {
         </div>
       </div>
       <div className={cx('myspec-adsense')}>
-        <ReactiveAdsense/>
+        <Adsense300250/>
+        <Adsense72890/>
       </div>
     </div>
   );
