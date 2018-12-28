@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import styles from './WeaponList.scss';
 import classNames from 'classnames/bind';
 import {Link} from 'react-router-dom';
@@ -11,9 +11,29 @@ const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size
   return (
 
     (cnt !== 0 && cnt % 5 === 0) ? 
-    <div className={cx('weapon-list-adsense')}>
-      <Adsense72890/>
-    </div>
+    <Fragment>
+      <div className={cx('weapon-list-adsense')}>
+        <Adsense72890/>
+      </div>
+      <div className={cx('weapon-object')} onClick={() => history.push(`/item/wp/${id}`)}>
+        <div className={cx('weapon-img')}>
+          <Link to={`/item/wp/${id}`}>
+            <img src={img_src} alt={item_nm}/>
+          </Link>
+        </div>
+        <div className={cx('weapon-name')}><Link to={`/item/wp/${id}`}>{item_nm}</Link></div>
+        <div className={cx('weapon-damage')}>
+          <NumberFormat value={dmg} displayType={'text'} thousandSeparator={true} prefix={''} />
+        </div>
+        <div className={cx('item-option')}>
+          <div className={cx('tier')}>{tier}등급</div>
+          <div className={cx('item-dtl-dv')}>{item_dtl_dv}</div>
+          <div className={cx('size')}>{size ? size : ' '}</div>
+          <div className={cx('speed')}>{speed}/1분</div>
+          <div className={cx('illegal')}>{illegal === 'Y' ? '불법무기' : ''}</div>
+        </div>
+      </div>
+    </Fragment>
     :
     <div className={cx('weapon-object')} onClick={() => history.push(`/item/wp/${id}`)}>      
       <div className={cx('weapon-img')}>
