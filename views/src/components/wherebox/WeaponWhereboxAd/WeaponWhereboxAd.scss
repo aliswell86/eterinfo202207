@@ -13,7 +13,7 @@
     width: 768px;
   }
   @include media("<large") {
-    width: 512px;
+    width: 768px;
   }
   @include media("<medium") {
     width: 100%;
@@ -21,5 +21,9 @@
   @include media("<small") {
     width: 100%;
     // padding: 0.4rem;
+  }
+
+  .ad300250 {
+    margin: 0 auto;
   }
 }

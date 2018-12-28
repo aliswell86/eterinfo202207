@@ -3,16 +3,16 @@ import styles from './WeaponList.scss';
 import classNames from 'classnames/bind';
 import {Link} from 'react-router-dom';
 import NumberFormat from 'react-number-format';
-import ReactiveAdsense from 'components/adsense/common/ReactiveAdsense';
+import Adsense72890 from 'components/adsense/Adsense72890';
 
 const cx = classNames.bind(styles);
 
-const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, history, cnt, totalCnt}) => {
+const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, history, cnt/*, totalCnt*/}) => {
   return (
 
-    (cnt !== 0 && cnt % 5 === 0) || cnt === (totalCnt - 1) ? 
+    (cnt !== 0 && cnt % 5 === 0) ? 
     <div className={cx('weapon-list-adsense')}>
-      <ReactiveAdsense/>
+      <Adsense72890/>
     </div>
     :
     <div className={cx('weapon-object')} onClick={() => history.push(`/item/wp/${id}`)}>      
