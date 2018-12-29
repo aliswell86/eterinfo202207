@@ -8,6 +8,7 @@ import * as weaponActions from 'store/modules/weapon';
 //렌더링 먼저하고 데이터조회 중이라는걸 보여주는게 나아보임.. (css적용안된채로 보이는듯)
 
 class WeaponListContainer extends Component {
+
   render() {
     const {weaponWheres, history} = this.props;
     return (
