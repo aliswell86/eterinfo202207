@@ -25,5 +25,20 @@
 
   .ad300250 {
     margin: 0 auto;
+    margin-bottom: 0.4rem;
+    
+    @include media("<small") {
+      margin-right: 0.2rem;
+      display: none !important;
+    }
+  }
+
+  .ad72890 {
+    display: none !important;
+
+    @include media("<small") {
+      margin-right: 0.2rem;
+      display: inline-block !important;
+    }
   }
 }
