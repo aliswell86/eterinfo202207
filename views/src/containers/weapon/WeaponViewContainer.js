@@ -16,21 +16,22 @@ class WeaponViewContainer extends Component {
 
   componentDidMount() {
     const {id} = this.props;
-    const {pathname} = this.props.location;
     
     if(id) {
       this.getWeaponView(id);
     }
 
-    if(pathname.indexOf('/wp') > -1) {
-      window.scrollTo(0, 0);
-    }else if(pathname.indexOf('/custom') > -1) {
-      scrollToComponent(this.weaponViewDiv, {
-        offset: -100,
-        align: 'top',
-        duration: 500
-      });
-    }
+    window.scrollTo(0, 0);
+
+    // if(pathname.indexOf('/wp') > -1) {
+    //   window.scrollTo(0, 0);
+    // }else if(pathname.indexOf('/custom') > -1) {
+    //   scrollToComponent(this.weaponViewDiv, {
+    //     offset: -100,
+    //     align: 'top',
+    //     duration: 500
+    //   });
+    // }
   }
 
   shouldComponentUpdate(nextProps, nextState) {

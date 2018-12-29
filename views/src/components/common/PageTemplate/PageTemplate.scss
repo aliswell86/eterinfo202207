@@ -6,5 +6,29 @@
     padding-bottom: 1rem;
     background: $oc-gray-0;
     min-height: calc(100vh - 3rem);
+
+    .ad300600 {
+      position: fixed;
+      top: 160px;
+      left: 0px;
+      width: calc((100vw - 1026px - 1rem) / 2) !important;
+      max-width: 300px;
+
+      @include media("<wide") {
+        display: none !important;
+      }
+    }
+
+    .ad300600-1 {
+      position: fixed;
+      top: 160px;
+      right: 0px;
+      width: calc((100vw - 1026px - 1rem) / 2) !important;
+      max-width: 300px;
+
+      @include media("<wide") {
+        display: none !important;
+      }
+    }
   }
 }

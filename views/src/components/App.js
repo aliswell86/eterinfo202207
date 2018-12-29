@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
-import {WeaponPage, WeaponViewPage, WeaponCustomPage, MainPage, PlusUpPage} from 'pages';
+import {WeaponPage, WeaponViewPage, WeaponCustomPage, MainPage, PlusUpPage, BoxSimulPage} from 'pages';
 import { Helmet } from "react-helmet";
 
 class App extends Component {
@@ -16,6 +16,7 @@ class App extends Component {
           <Route exact path="/wp/:id" component={WeaponViewPage} />
           <Route path="/custom" component={WeaponCustomPage} />
           <Route path="/plusup" component={PlusUpPage} />
+          <Route path="/boxsim" component={BoxSimulPage} />
         </Switch>
       </div>
     );
