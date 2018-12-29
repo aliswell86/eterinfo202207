@@ -10,8 +10,11 @@ import * as weaponActions from 'store/modules/weapon';
 class WeaponCustomListContainer extends Component {
 
   getWeaponView = (id) => {
-    const {WeaponActions} = this.props;
-    WeaponActions.getWeaponView(id);
+    const {WeaponActions, weaponView} = this.props;
+    
+    if(id !== weaponView.itemInfo._id) {
+      WeaponActions.getWeaponView(id);
+    }
   }
 
   render() {
@@ -26,7 +29,8 @@ class WeaponCustomListContainer extends Component {
 
 export default connect(
   (state) => ({
-    weaponWheres: state.weapon.toJS().weaponWheres
+    weaponWheres: state.weapon.toJS().weaponWheres,
+    weaponView: state.weapon.toJS().weaponView
   }),
   (dispatch) => ({
     WeaponActions: bindActionCreators(weaponActions, dispatch)

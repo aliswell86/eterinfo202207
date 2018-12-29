@@ -59,6 +59,7 @@
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-router-server": "^4.2.3",
+    "react-scroll-to-component": "^1.0.2",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
     "redux-logger": "^3.0.6",
