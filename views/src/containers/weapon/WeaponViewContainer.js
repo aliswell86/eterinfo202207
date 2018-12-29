@@ -33,21 +33,27 @@ class WeaponViewContainer extends Component {
     }
   }
 
-  componentDidUpdate() {
-    const {pathname} = this.props.location;
-
-    if(pathname.indexOf('/custom') > -1) {
-      scrollToComponent(this.weaponViewDiv, {
-        offset: -100,
-        align: 'top',
-        duration: 500
-      });
-    }
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
-    const {weaponView} = this.props;
-    return weaponView.itemInfo._id !== nextProps.weaponView.itemInfo._id;
+    const {weaponView, currWeaponUpDv} = this.props;
+    const {pathname} = this.props.location;
+    
+    if(weaponView.itemInfo._id !== nextProps.weaponView.itemInfo._id) {
+      if(pathname.indexOf('/custom') > -1) {
+        scrollToComponent(this.weaponViewDiv, {
+          offset: -100,
+          align: 'top',
+          duration: 500
+        });
+      }
+
+      return true;
+    }
+
+    if(currWeaponUpDv.bodyUp !== nextProps.currWeaponUpDv.bodyUp || currWeaponUpDv.dmgUp !== nextProps.currWeaponUpDv.dmgUp) {
+      return true;
+    }
+
+    return false;
   }
 
   render() {
