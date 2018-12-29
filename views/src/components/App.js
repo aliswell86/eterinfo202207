@@ -12,8 +12,8 @@ class App extends Component {
         </Helmet>
         <Switch>
           <Route exact path="/" component={MainPage} />
-          <Route exact path="/item/wp" component={WeaponPage} />
-          <Route exact path="/item/wp/:id" component={WeaponViewPage} />
+          <Route exact path="/wp" component={WeaponPage} />
+          <Route exact path="/wp/:id" component={WeaponViewPage} />
           <Route path="/custom" component={WeaponCustomPage} />
           <Route path="/plusup" component={PlusUpPage} />
         </Switch>

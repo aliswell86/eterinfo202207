@@ -15,13 +15,13 @@ const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size
       <div className={cx('weapon-list-adsense')}>
         <Adsense72890/>
       </div>
-      <div className={cx('weapon-object')} onClick={() => history.push(`/item/wp/${id}`)}>
+      <div className={cx('weapon-object')} onClick={() => history.push(`/wp/${id}`)}>
         <div className={cx('weapon-img')}>
-          <Link to={`/item/wp/${id}`}>
+          <Link to={`/wp/${id}`}>
             <img src={img_src} alt={item_nm}/>
           </Link>
         </div>
-        <div className={cx('weapon-name')}><Link to={`/item/wp/${id}`}>{item_nm}</Link></div>
+        <div className={cx('weapon-name')}><Link to={`/wp/${id}`}>{item_nm}</Link></div>
         <div className={cx('weapon-damage')}>
           <NumberFormat value={dmg} displayType={'text'} thousandSeparator={true} prefix={''} />
         </div>
@@ -35,13 +35,13 @@ const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size
       </div>
     </Fragment>
     :
-    <div className={cx('weapon-object')} onClick={() => history.push(`/item/wp/${id}`)}>      
+    <div className={cx('weapon-object')} onClick={() => history.push(`/wp/${id}`)}>      
       <div className={cx('weapon-img')}>
-        <Link to={`/item/wp/${id}`}>
+        <Link to={`/wp/${id}`}>
           <img src={img_src} alt={item_nm}/>
         </Link>
       </div>
-      <div className={cx('weapon-name')}><Link to={`/item/wp/${id}`}>{item_nm}</Link></div>
+      <div className={cx('weapon-name')}><Link to={`/wp/${id}`}>{item_nm}</Link></div>
       <div className={cx('weapon-damage')}>
         <NumberFormat value={dmg} displayType={'text'} thousandSeparator={true} prefix={''} />
       </div>

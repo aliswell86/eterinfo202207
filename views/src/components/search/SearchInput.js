@@ -9,7 +9,7 @@ const Search = Input.Search;
 
 const SearchObject = ({item_nm, img_src, id}) => {
   return (
-    <Link to={`item/wp/${id}`}>
+    <Link to={`wp/${id}`}>
       <div className={cx('search-sub-list-object')}>
         <div className="search-img"><img src={img_src} alt={item_nm}/></div>
         <div className="search-sub-text">{item_nm}</div>

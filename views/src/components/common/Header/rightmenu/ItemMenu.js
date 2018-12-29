@@ -10,7 +10,7 @@ const innerStyle = {
 
 const menu = (
   <Menu>
-    <Menu.Item><Link to="/item/wp">무기</Link></Menu.Item>
+    <Menu.Item><Link to="/wp">무기</Link></Menu.Item>
     {/* <Menu.Item>방어구</Menu.Item> */}
     {/* <SubMenu title="sub menu">
       <Menu.Item>3rd menu item</Menu.Item>
@@ -26,7 +26,7 @@ const menu = (
 const ItemMenu = () => (
   <div>
     <Dropdown overlay={menu} style={innerStyle}>
-      <Link className="ant-dropdown-link" to="/item/wp">
+      <Link className="ant-dropdown-link" to="/wp">
         아이템정보 <Icon type="down" />
       </Link>
     </Dropdown>
