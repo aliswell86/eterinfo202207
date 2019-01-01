@@ -26,18 +26,18 @@
 
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-gap: 1rem;
+  grid-gap: 0.4rem;
   
   .cl-where {
-    .clyn {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-gap: 0.5rem;
+    // .clyn {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0.5rem;
 
-      @include media("<medium") {
-        grid-template-columns: repeat(4, 1fr);
-      }
+    @include media("<medium") {
+      grid-template-columns: repeat(4, 1fr);
     }
+    // }
   }
 
   .weapon-illegal-where {

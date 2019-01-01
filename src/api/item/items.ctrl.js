@@ -5,7 +5,7 @@ const Item = require('../../models/Item');
 */
 exports.weaponList = async (ctx) => {
   try {
-    const items = await Item.find({"$and":[{ctype: "1"}/*,{"$or":[{tier: "7"},{tier: "10"}]}*/]}).sort({"order": 1}).exec();
+    const items = await Item.find({"$and":[{ctype: "1"},{"$or":[/*{tier: "7"},*/{tier: "10"}]}]}).sort({"order": 1}).exec();
     ctx.body = items;
   } catch(e) {
     ctx.throw(e);
@@ -92,8 +92,9 @@ plusUpGrid = () => {
   var list = [];
   var list_sub = [];
   var calc_value = 0;
+  var armorr_ary = [1, 2, 6];
 
-  for(var a=1; a<4; a++) {
+  for(var a=0; a<3; a++) {
     result_list = [];
     calc_value = 0;
     for(var j=0; j<3; j++) {
@@ -111,7 +112,7 @@ plusUpGrid = () => {
             calc_value = calc_value + Number(eval("value"+(j+1)+"_ary[jj]")*3);
           }
   
-          list_sub.push((calc_value*a).toFixed(2));
+          list_sub.push((calc_value*armorr_ary[a]).toFixed(2));
         }
         list.push(list_sub);
       }

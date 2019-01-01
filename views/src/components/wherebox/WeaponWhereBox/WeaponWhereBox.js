@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './WeaponWhereBox.scss';
 import classNames from 'classnames/bind';
-
-import { Checkbox, Radio } from 'antd';
-const RadioGroup = Radio.Group;
+import Radio from 'components/common/Radio';
+import Checkbox from 'components/common/Checkbox';
 
 const cx = classNames.bind(styles);
 
@@ -12,18 +11,16 @@ const WeaponWhereBox = ({handleWhereSet, loading, weaponWhere}) => {
   return (
     <div className={cx('weapon-where-box')}>
       <div className={cx('cl-where')}>
-        <RadioGroup className={cx('clyn')} name='clyn' onChange={handleWhereSet} value={weaponWhere.clyn}>
-          <div><Radio value='' disabled={loading}>전체 </Radio></div>
-          <div><Radio value='Y' disabled={loading}>CL</Radio></div>
-          <div><Radio value='N' disabled={loading}>NonCL</Radio></div>
-        </RadioGroup>
+        <div><Radio name='clyn' value='' onChange={handleWhereSet} disabled={loading} defaultValue={weaponWhere.clyn}>전체</Radio></div>
+        <div><Radio name='clyn' value='Y' onChange={handleWhereSet} disabled={loading} defaultValue={weaponWhere.clyn}>CL</Radio></div>
+        <div><Radio name='clyn' value='N' onChange={handleWhereSet} disabled={loading} defaultValue={weaponWhere.clyn}>NonCL</Radio></div>
       </div>
       <div className={cx('weapon-illegal-where')}>
-        <RadioGroup className={cx('illegal')} name='illegal' onChange={handleWhereSet} value={weaponWhere.illegal}>
-          <div><Radio value='' disabled={loading}>전체</Radio></div>
-          <div><Radio value='Y' disabled={loading}>불법무기</Radio></div>
-          <div><Radio value='N' disabled={loading}>합법무기</Radio></div>
-        </RadioGroup>
+        <div className={cx('illegal')} name='illegal' onChange={handleWhereSet} value={weaponWhere.illegal}>
+          <div><Radio name='illegal' value='' onChange={handleWhereSet} disabled={loading} defaultValue={weaponWhere.illegal}>전체</Radio></div>
+          <div><Radio name='illegal' value='Y' onChange={handleWhereSet} disabled={loading} defaultValue={weaponWhere.illegal}>불법무기</Radio></div>
+          <div><Radio name='illegal' value='N' onChange={handleWhereSet} disabled={loading} defaultValue={weaponWhere.illegal}>합법무기</Radio></div>
+        </div>
       </div>
       <div className={cx('weapon-type-where')}>
         <div className={cx('weapon-type1')}>

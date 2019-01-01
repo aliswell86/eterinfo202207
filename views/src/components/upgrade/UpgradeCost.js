@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './UpgradeCost.scss';
 import classNames from 'classnames/bind';
-import { Button } from 'antd';
 import NumberFormat from 'react-number-format';
 import Adsense300250 from 'components/adsense/Adsense300250';
 import Adsense72890 from 'components/adsense/Adsense72890';
@@ -56,17 +55,9 @@ const UpgradeCost = ({itemInfo, upgradeInfo, setUpgradeTax}) => {
           <div className={cx('cost-footer')}>
             <h3>세금선택</h3>
             <div className={cx('tax-btns')}>
-              {/* <Button name='tax' onClick={setUpgradeTax} value='-1'>-1%</Button>
-              <Button name='tax' onClick={setUpgradeTax} value='-2'>-2%</Button>
-              <Button name='tax' onClick={setUpgradeTax} value='-3'>-3%</Button>
-              <Button name='tax' onClick={setUpgradeTax} value='-4'>-4%</Button> */}
-              <Button name='tax' onClick={setUpgradeTax} value='-5'>-5%</Button>
-              <Button name='tax' onClick={setUpgradeTax} value='0'>0%</Button>
-              {/* <Button name='tax' onClick={setUpgradeTax} value='1'>1%</Button>
-              <Button name='tax' onClick={setUpgradeTax} value='2'>2%</Button>
-              <Button name='tax' onClick={setUpgradeTax} value='3'>3%</Button>
-              <Button name='tax' onClick={setUpgradeTax} value='4'>4%</Button> */}
-              <Button name='tax' onClick={setUpgradeTax} value='5'>5%</Button>
+              <button name='tax' onClick={setUpgradeTax} value='-5'>-5%</button>
+              <button name='tax' onClick={setUpgradeTax} value='0'>0%</button>
+              <button name='tax' onClick={setUpgradeTax} value='5'>5%</button>
             </div>
           </div>
         }

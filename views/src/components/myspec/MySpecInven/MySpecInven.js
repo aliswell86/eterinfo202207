@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './MySpecInven.scss';
 import classNames from 'classnames/bind';
-import { Checkbox, Radio, Input } from 'antd';
+import Radio from 'components/common/Radio';
+import Checkbox from 'components/common/Checkbox';
 import Adsense300250 from 'components/adsense/Adsense300250';
 import Adsense72890 from 'components/adsense/Adsense72890';
 
-const RadioGroup = Radio.Group;
 const cx = classNames.bind(styles);
 
 const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick}) => {
@@ -22,20 +22,20 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick}) => {
         </ul>
         <div className={cx('spec-dv')}>
           <div className={cx('mystat')}>
-            <div>주스탯 <Input type='number' name='mainStat' value={mainStat} onChange={myStatInsert} onClick={inputClick}/></div>
-            <div>템상공 <Input type='number' name='itemDmgUp' value={itemDmgUp} onChange={myStatInsert} onClick={inputClick}/></div>
-            <div>해방공 <Input type='number' name='limitDmg' value={limitDmg} onChange={myStatInsert} onClick={inputClick}/></div>
+            <div>주스탯 <input type='number' name='mainStat' value={mainStat} onChange={myStatInsert} onClick={inputClick}/></div>
+            <div>템상공 <input type='number' name='itemDmgUp' value={itemDmgUp} onChange={myStatInsert} onClick={inputClick}/></div>
+            <div>해방공 <input type='number' name='limitDmg' value={limitDmg} onChange={myStatInsert} onClick={inputClick}/></div>
           </div>
           <div className={cx('parasite-doping')}>
             <div className={cx('parasite')}>
               <div><Checkbox name="isParasite" onChange={setParaDoping} checked={isParasite}>변이</Checkbox></div>
             </div>
             <div className={cx('doping')}>
-              <RadioGroup className={cx('where-doping')} name='whereDoping' onChange={setParaDoping} value={whereDoping}>
-                <div><Radio value='0'>없음</Radio></div>
-                <div><Radio value='2'>일반공앰</Radio></div>
-                <div><Radio value='3'>고급공앰</Radio></div>
-              </RadioGroup>
+              <div className={cx('whereDoping')}>
+                <div><Radio name='whereDoping' value='0' onChange={setParaDoping} defaultValue={whereDoping}>없음</Radio></div>
+                <div><Radio name='whereDoping' value='2' onChange={setParaDoping} defaultValue={whereDoping}>일반공앰</Radio></div>
+                <div><Radio name='whereDoping' value='3' onChange={setParaDoping} defaultValue={whereDoping}>고급공앰</Radio></div>
+              </div>
             </div>
           </div>
         </div>

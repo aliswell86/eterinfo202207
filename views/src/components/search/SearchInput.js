@@ -1,11 +1,9 @@
 import React from 'react';
 import styles from './SearchInput.scss';
 import classNames from 'classnames/bind';
-import { Input } from 'antd';
 import {Link} from 'react-router-dom';
 
 const cx = classNames.bind(styles);
-const Search = Input.Search;
 
 const SearchObject = ({item_nm, img_src, id}) => {
   return (
@@ -32,7 +30,7 @@ const SearchInput = ({loading, searchGo, searchChange, weaponSearchList}) => {
   
   return (
     <div className={cx('search-input')}>
-      <Search        
+      <input        
         name='searchInput'
         placeholder='무기이름...'
         // onSearch={value => searchGo(value)}

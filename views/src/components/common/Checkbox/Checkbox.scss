@@ -1,0 +1,59 @@
+@import 'utils';
+
+.checkbox-wrapper{
+  .checkbox-checked {
+    .checkbox-inner {
+      border: solid 1px $oc-blue-6;
+      background: $oc-blue-6;
+    }
+    
+    .checkbox-inner::after {
+      opacity: 1;      
+    }
+  }
+
+  span + span {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+.checkbox-wrapper span {
+  cursor: pointer;
+  vertical-align: sub;
+  position: relative;
+
+  .checkbox-input {
+    cursor: pointer;
+    display: none;
+  }
+
+  .checkbox-inner {
+    display:inline-block;
+    width: 16px;
+    height: 16px;
+    border: solid 1px $oc-gray-4;
+    border-radius: 2px;
+  }
+
+  .checkbox-inner::after {
+    position: absolute;
+    display:inline-block;
+    top: 0px;
+    left: 4px;
+    width: 4.5px;
+    height: 8px;
+    transform: rotate(45deg) scale(1);
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    background: $oc-blue-6;
+    opacity: 0;
+    content: ' ';
+  }
+}
+
+.checkbox-wrapper:hover span {
+  border-color: $oc-blue-6;
+  color: $oc-gray-9;
+}

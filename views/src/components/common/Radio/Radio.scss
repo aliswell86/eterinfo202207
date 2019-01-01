@@ -1,0 +1,55 @@
+@import 'utils';
+
+.radio-wrapper{
+  .radio-checked {
+    .radio-inner {
+      border: solid 1px $oc-blue-6;
+    }
+    
+    .radio-inner::after {
+      opacity: 1;
+    }
+  }
+
+  span + span {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+.radio-wrapper span {
+  cursor: pointer;
+  vertical-align: sub;
+  position: relative;
+
+  .radio-input {
+    cursor: pointer;
+    display: none;
+  }
+
+  .radio-inner {
+    display:inline-block;
+    width: 16px;
+    height: 16px;
+    border: solid 1px $oc-gray-4;
+    border-radius: 100px;
+  }
+
+  .radio-inner::after {
+    position: absolute;
+    display:inline-block;
+    top: 3px;
+    left: 3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background: $oc-blue-6;
+    opacity: 0;
+    content: ' ';
+  }
+}
+
+.radio-wrapper:hover span {
+  border-color: $oc-blue-6;
+  color: $oc-gray-9;
+}
