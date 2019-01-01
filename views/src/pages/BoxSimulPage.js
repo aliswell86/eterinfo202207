@@ -2,7 +2,8 @@ import React from 'react';
 import PageTemplate from 'components/common/PageTemplate';
 import { Helmet } from "react-helmet";
 import ListWrapper from 'components/list/ListWrapper';
-import BoxSimulContainer from 'containers/boxsim/BoxSimulContainer';
+import BoxListContainer from 'containers/boxsim/BoxListContainer';
+import BoxItemInfoListContainer from 'containers/boxsim/BoxItemInfoListContainer';
 
 const BoxSimulPage = () => {
   return (
@@ -12,8 +13,9 @@ const BoxSimulPage = () => {
         <meta name="description" content="한국형 좀비 아포칼립스 RPG! 이터널시티 확률형 캐시아이템 관련정보를 제공합니다." />
       </Helmet>
       <ListWrapper>        
-        <BoxSimulContainer/>
+        <BoxListContainer/>
       </ListWrapper>
+      <BoxItemInfoListContainer/>
     </PageTemplate>
   );
 };

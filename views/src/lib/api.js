@@ -4,3 +4,4 @@ import axios from 'axios';
 export const getWeaponList = () => axios.get('/api/item/weapon');
 export const getWeaponView = (id) => axios.get(`/api/item/weapon/${id}`);
 export const getPlusUpGrid = () => axios.get('/api/item/plusup');
+export const getBoxList = () => axios.get('/api/box/list');

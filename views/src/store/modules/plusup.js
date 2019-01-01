@@ -3,9 +3,9 @@ import {Map, List, fromJS} from 'immutable';
 import {pender} from 'redux-pender';
 import * as api from 'lib/api';
 
-const GET_PLUSUP_GRID = 'weapon/GET_PLUSUP_GRID';
-const SET_PLUSUP_GRID_WHERE = 'weapon/SET_PLUSUP_GRID_WHERE';
-const GET_PLUSUP_GRID_WHERE = 'weapon/GET_PLUSUP_GRID_WHERE';
+const GET_PLUSUP_GRID = 'plusup/GET_PLUSUP_GRID';
+const SET_PLUSUP_GRID_WHERE = 'plusup/SET_PLUSUP_GRID_WHERE';
+const GET_PLUSUP_GRID_WHERE = 'plusup/GET_PLUSUP_GRID_WHERE';
 
 export const getPlusUpGrid = createAction(GET_PLUSUP_GRID, api.getPlusUpGrid);
 export const setPlusUpGridWhere = createAction(SET_PLUSUP_GRID_WHERE);

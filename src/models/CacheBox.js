@@ -6,7 +6,9 @@ const CacheBox = new Schema({
   packageCode: {type:String},
   packageName: {type:String},
   cost: {type:String},
+  imgSrc: {type:String},
   itemInfo: [{
+    seq: {type:String},
     imgSrc: {type:String},
     itemName: {type:String},
     itemDesc: {type:String},
@@ -15,4 +17,4 @@ const CacheBox = new Schema({
   }]
 });
 
-module.exports = mongoose.model('EterBox', CacheBox);
+module.exports = mongoose.model('CacheBox', CacheBox);

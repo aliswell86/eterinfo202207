@@ -3,7 +3,7 @@ import {Map/*, List, fromJS*/} from 'immutable';
 // import {pender} from 'redux-pender';
 // import * as api from 'lib/api';
 
-const SET_UPGRADE_TAX = 'weapon/SET_UPGRADE_TAX';
+const SET_UPGRADE_TAX = 'upgrade/SET_UPGRADE_TAX';
 
 export const setUpgradeTax = createAction(SET_UPGRADE_TAX);
 

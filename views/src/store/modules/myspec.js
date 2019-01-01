@@ -3,8 +3,8 @@ import {Map/*, List, fromJS*/} from 'immutable';
 // import {pender} from 'redux-pender';
 // import * as api from 'lib/api';
 
-const SET_MYSPEC_STAT = 'weapon/SET_MYSPEC_STAT';
-const GET_INVEN_DMAGE = 'weapon/GET_INVEN_DMAGE';
+const SET_MYSPEC_STAT = 'myspec/SET_MYSPEC_STAT';
+const GET_INVEN_DMAGE = 'myspec/GET_INVEN_DMAGE';
 
 export const setMyStat = createAction(SET_MYSPEC_STAT);
 export const getInvenDmage = createAction(GET_INVEN_DMAGE);

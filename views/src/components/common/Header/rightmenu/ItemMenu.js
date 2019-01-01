@@ -16,9 +16,9 @@ const ItemMenu = () => (
     <Link to="/plusup" style={innerStyle}>
       플러스업
     </Link>
-    {/* <Link to="/boxsim" style={innerStyle}>
+    <Link to="/boxsim" style={innerStyle}>
       상자뽑기
-    </Link> */}
+    </Link>
   </div>
 );
 
