@@ -13,7 +13,8 @@ export const getBoxOpenResult = createAction(GET_BOXOPEN_RESLT);
 
 const initialState = Map({
   boxs: List(),
-  currBox: Map()
+  currBox: Map(),
+  boxResultList: List()
 });
 
 export default handleActions({
@@ -28,41 +29,29 @@ export default handleActions({
     const {payload: packageCode} = action;
     const currBox = state.getIn(['boxs',Number(packageCode)]).toJS();
     const {itemInfo} = currBox;
-    
-    itemInfo.reduce((acc, cur, cnt, item) => {
-      acc += cur;
-      console.log(acc);
-      // return {
-      //   ...item,
-      //   luck: {
-      //     luck: luck,
-      //     min: acc
-      //   }
-      // }
+    let currLuck = 0;
+
+    const currBoxAddLuck = itemInfo.map((item) => {      
+      const {luck} = item.luck;
+      const currMin = currLuck + 1;
+      currLuck += (luck * 100);
+      const currMax = currLuck;
+      
+      return {
+        ...item,
+        luck: {
+          luck: luck,
+          min: String(currMin),
+          max: String(currMax)
+        }
+      }
     });
 
-
-    // const currBoxAddLuck = itemInfo.map((item, cnt, itemInfo) => {      
-    //   const luck = Number(item.luck);
-    //   const currMin = cnt === 0 ? 1 : Number(itemInfo[cnt - 1].luck) * 100 + 1;
-    //   const currMax = cnt === 0 ? luck * 100 : luck * 100 + (Number(itemInfo[cnt].luck) * 100);
-      
-    //   return {
-    //     ...item,
-    //     luck: {
-    //       luck: luck,
-    //       min: String(currMin),
-    //       max: String(currMax)
-    //     }
-    //   }
-    // });
-    // console.log(currBoxAddLuck);
-
-    return state.set('currBox', state.getIn(['boxs',Number(packageCode)]));
+    currBox.itemInfo = currBoxAddLuck;
+    return state.set('currBox', fromJS(currBox)).set('boxResultList', new List());
   },
   [GET_BOXOPEN_RESLT]: (state, action) => {
-    const {payload: boxCnt} = action;
-    console.log("boxCnt : " + boxCnt);
-    return state;
+    const {payload} = action;
+    return state.set('boxResultList', state.toJS().boxResultList.concat(payload));
   }
 }, initialState);

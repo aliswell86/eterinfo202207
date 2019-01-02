@@ -13,7 +13,11 @@ const CacheBox = new Schema({
     itemName: {type:String},
     itemDesc: {type:String},
     trscYn: {type:String},
-    luck: {type:String}
+    luck: {
+      luck: {type:String},
+      max: {type:String},
+      min: {type:String}
+    }
   }]
 });
 
