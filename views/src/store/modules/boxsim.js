@@ -26,6 +26,38 @@ export default handleActions({
   }),
   [SET_CURRBOX]: (state, action) => {
     const {payload: packageCode} = action;
+    const currBox = state.getIn(['boxs',Number(packageCode)]).toJS();
+    const {itemInfo} = currBox;
+    
+    itemInfo.reduce((acc, cur, cnt, item) => {
+      acc += cur;
+      console.log(acc);
+      // return {
+      //   ...item,
+      //   luck: {
+      //     luck: luck,
+      //     min: acc
+      //   }
+      // }
+    });
+
+
+    // const currBoxAddLuck = itemInfo.map((item, cnt, itemInfo) => {      
+    //   const luck = Number(item.luck);
+    //   const currMin = cnt === 0 ? 1 : Number(itemInfo[cnt - 1].luck) * 100 + 1;
+    //   const currMax = cnt === 0 ? luck * 100 : luck * 100 + (Number(itemInfo[cnt].luck) * 100);
+      
+    //   return {
+    //     ...item,
+    //     luck: {
+    //       luck: luck,
+    //       min: String(currMin),
+    //       max: String(currMax)
+    //     }
+    //   }
+    // });
+    // console.log(currBoxAddLuck);
+
     return state.set('currBox', state.getIn(['boxs',Number(packageCode)]));
   },
   [GET_BOXOPEN_RESLT]: (state, action) => {

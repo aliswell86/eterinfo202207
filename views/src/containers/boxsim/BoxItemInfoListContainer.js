@@ -9,16 +9,15 @@ class BoxItemInfoListContainer extends Component {
   boxGet = (boxCnt) => {
     const {BoxSimulActions, currBox} = this.props;
     const {itemInfo} = currBox;
+    // const random = Math.floor(Math.random() * 10000) + 1;
+    const luckValue = [];
 
-    for(let i=0; i<boxCnt; i++) {
-      const random = Math.floor(Math.random() * 10000) + 1;
-
-      for(let j=0; j<itemInfo.length; j++) {
-        // if(random >= 1 && random <= 5) {
-        // 머리좀 써야할듯..
-        // }
-      }
+    for(let i=0; i<itemInfo.length; i++) {
+      luckValue.push(itemInfo[i].luck);
+      itemInfo.luckValue = luckValue;
     }
+    console.log(luckValue);
+    console.log(itemInfo);
 
     // BoxSimulActions.getBoxOpenResult(boxCnt);
   }
