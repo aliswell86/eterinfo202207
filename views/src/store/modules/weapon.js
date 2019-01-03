@@ -159,6 +159,6 @@ export default handleActions({
   [GET_WEAPON_SEARCH_LIST]: (state, action) => {
     const value = action.payload;
     const weapons = state.toJS().weapons.filter(weapon => value !== '' && weapon.item_nm.toLowerCase().trim().indexOf(value.toLowerCase()) > -1);
-    return state.set('weaponSearchList', weapons);
+    return state.set('weaponSearchList', weapons).set('weaponWheres', weapons);
   }
 }, initialState);

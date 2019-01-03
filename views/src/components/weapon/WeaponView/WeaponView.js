@@ -15,6 +15,7 @@ const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
   const titleDefaultText = '이터널시티 무기정보';  
   let titleText = '';
   let costomLinkMsg = '';
+  let metaText = `이터널시티 무기강화. 인벤 공격력 계산. 업그레이드 비용. 예상 데미지 산출`;
   
   if(item_nm === undefined || item_nm === null || item_nm === '') {
     if(pathname.indexOf('custom') > -1) {
@@ -27,7 +28,7 @@ const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
       titleText = item_nm + ' - 공격력계산 - ' + titleDefaultText;
     }else if(pathname.indexOf('wp') > -1) {
       titleText = item_nm + ' - 강화별공격력 - ' + titleDefaultText;
-      costomLinkMsg = <Link to={`/custom/${_id}`}>[공격력계산]</Link>;
+      costomLinkMsg = <Link to={`/custom/${_id}`} className={cx('weapon-dmgsim-txt')}>공격력계산</Link>;
     }
   }
 
@@ -35,12 +36,12 @@ const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
     <div className={cx('weapon-view')}>
       <Helmet>
         <title>{titleText}</title>
-        <meta name="description" content={`이터널시티 ${item_nm} 무기강화. 공격력 계산. 업그레이드 비용. 예상 데미지 산출`} />
+        <meta name="description" content={metaText} />
       </Helmet>
       <h2 className={cx('name')}>
         {item_nm === undefined ?
-          <Link to='/wp'>공격력 계산 할 무기선택</Link> : 
-          <>{item_nm} <Link to='/wp'>[무기변경]</Link> {costomLinkMsg}</> 
+          <Link to='/wp'>무기선택</Link> : 
+          <>{item_nm} <Link to='/wp' className={cx('weapon-change-txt')}>무기변경</Link> {costomLinkMsg}</> 
         }
       </h2>
       <div className={cx('item-info')}>

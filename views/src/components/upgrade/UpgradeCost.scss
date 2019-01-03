@@ -75,7 +75,27 @@
         padding-bottom: 0.4rem;
         
         button {
-          margin: 0.1rem;
+          transition: all .15s ease-in;
+          background: white;
+          border: 1px solid $oc-gray-3;
+          width: 60px;
+          height: 30px;
+          border-radius: 0.2rem;
+          cursor: pointer;      
+        }
+        button:hover {
+          color: rgba($oc-blue-6, 0.8);
+        }
+        button:active {
+          color: rgba($oc-blue-6, 1);
+        }
+        button:focus {
+          border: 1px solid $oc-blue-6;
+          color: rgba($oc-blue-6, 1);
+        }
+
+        button + button {
+          margin-left: 0.2rem;
         }
       }
     }

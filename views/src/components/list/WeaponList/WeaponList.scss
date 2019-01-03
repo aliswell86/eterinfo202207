@@ -11,111 +11,104 @@
   }
   
   .weapon-object {
-    cursor: pointer;
+    a {
+      cursor: pointer;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+    
     padding: 0.5rem;
     transition: all .15s ease-in;
+    // 내부 아이템 세로 중앙 정렬
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
 
-    .weapon-link {
-      // 내부 아이템 세로 중앙 정렬
+    .weapon-img {
+      background-color: white;
+      border-radius: 0.4em;
+      @include material-shadow(1, 0.5);
+      padding: 2px;
+      margin-right: 0.5rem;
+
+      @include media("<medium") {
+        margin-right: 0.2rem;
+      }
+
+      img {
+        width: 50px;
+        height: 50px;        
+      }
+    }
+
+    .weapon-name {
+      flex: 1;
+      min-width: 230px;
+      color: $oc-blue-5;
+      font-weight: bold;
+    }
+
+    .weapon-damage {
+      width: 60px;
+      color: $oc-red-9;
+      font-weight: bold;
+    }
+
+    .weapon-custom-link {
+      padding: 0.2rem;
+      border: 1px solid $oc-red-6;
+      background: $oc-red-5;
+      text-align: center;
+      font-weight: bold;
+      color: white;
+      border-radius: 0.2rem;
+    }
+
+    .weapon-custom-link:hover {
+      background: $oc-red-6;
+    }
+    .weapon-custom-link:active {
+      background: $oc-red-7;
+    }
+
+    .item-option {
+      width: 350px;
+      padding-left: 10px;
       display: flex;
       flex-wrap: wrap;
       align-content: center;
       justify-content: space-between;
       align-items: center;
+      align-content: center;
+      margin-left: auto;
 
-      .weapon-img {
-        background-color: white;
-        border-radius: 0.4em;
-        @include material-shadow(1, 0.5);
-        padding: 2px;
-        margin-right: 0.5rem;
-
-        @include media("<medium") {
-          margin-right: 0.2rem;
-        }
-
-        img {
-          width: 50px;
-          height: 50px;        
-        }
+      .tier {
+        width: 60px;
+        text-align: center;
+      }
+      .item-dtl-dv {
+        width: 70px;
+        text-align: center;
+      }
+      .size {
+        width: 70px;
+        text-align: center;
+      }
+      .speed {
+        width: 70px;
+        text-align: center;
+      }
+      .illegal {
+        width: 70px;
+        text-align: center;
       }
 
-      .weapon-name {
-        flex: 1;
-        min-width: 200px;
-        color: $oc-blue-5;
-        font-weight: bold;
-      }
-
-      .weapon-damage {
-        width: 100px;
-        display: flex;
-        flex-wrap: wrap;
-        align-content: center;
-        justify-content: space-between;
-        align-items: center;
-
-        .damage {        
-          color: $oc-red-9;
-          font-weight: bold;
-        }
-
-        .weapon-custom-link {
-          padding: 0.2rem;
-          border: 1px solid $oc-red-5;
-          background: $oc-red-5;
-          text-align: center;
-          font-weight: bold;
-          color: white;
-          border-radius: 0.4rem;
-        }
-  
-        .weapon-custom-link:hover {
-          background: $oc-red-6;
-        }
-        .weapon-custom-link:active {
-          background: $oc-red-7;
-        }
-      }
-
-      .item-option {
-        width: 350px;
-        padding-left: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        align-content: center;
-        justify-content: space-between;
-        align-items: center;
-        align-content: center;
-        margin-left: auto;
-
-        .tier {
-          width: 60px;
-          text-align: center;
-        }
-        .item-dtl-dv {
-          width: 70px;
-          text-align: center;
-        }
-        .size {
-          width: 70px;
-          text-align: center;
-        }
-        .speed {
-          width: 70px;
-          text-align: center;
-        }
-        .illegal {
-          width: 70px;
-          text-align: center;
-        }
-
-        div + div {
-          border-left: 1px solid $oc-gray-3;
-        }
+      div + div {
+        border-left: 1px solid $oc-gray-3;
       }
     }
-    
 
     &:hover {
       // 호버 시 배경색 변경

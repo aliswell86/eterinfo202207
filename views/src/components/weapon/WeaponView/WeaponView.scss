@@ -13,8 +13,48 @@
     border-bottom: 1px solid $oc-gray-3;
     color: $oc-blue-6;
 
-    a {
-      color: $oc-gray-8;
+    .weapon-change-txt {
+      float: right;
+      border: 1px solid $oc-green-6;
+      padding-right: 0.4rem;
+      padding-left: 0.4rem;
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
+      font-size: 1.0rem;
+      color: white;
+      background: $oc-green-5;
+      border-radius: 0.2rem;
+    }
+
+    .weapon-change-txt:hover {
+      background: $oc-green-6;
+    }
+    .weapon-change-txt:active {
+      background: $oc-green-7;
+    }
+
+    .weapon-dmgsim-txt {
+      float: right;
+      border: 1px solid $oc-red-6;
+      padding-right: 0.4rem;
+      padding-left: 0.4rem;
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
+      font-size: 1.0rem;
+      color: white;
+      background: $oc-red-5;
+      border-radius: 0.2rem;
+    }
+
+    .weapon-dmgsim-txt:hover {
+      background: $oc-red-6;
+    }
+    .weapon-dmgsim-txt:active {
+      background: $oc-red-7;
+    }
+
+    .weapon-change-txt + .weapon-dmgsim-txt {
+      margin-right: 0.2rem;
     }
   }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchInput from 'components/search/SearchInput';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {withRouter} from 'react-router-dom';
 import * as weaponActions from 'store/modules/weapon';
 
 class SearchInputContainer extends Component {
@@ -16,8 +17,11 @@ class SearchInputContainer extends Component {
     if(!weapons.length > 0) this.getWeaponList();
   }
 
-  searchGo = (value) => {
-    
+  searchGo = (e) => {
+    const {history} = this.props;
+    if(e.key === 'Enter') {
+      history.push('/wp');
+    }
   }
 
   handleChange = (e) => {
@@ -45,4 +49,4 @@ export default connect(
   (dispatch) => ({
     WeaponActions: bindActionCreators(weaponActions, dispatch)
   })
-)(SearchInputContainer);
+)(withRouter(SearchInputContainer));

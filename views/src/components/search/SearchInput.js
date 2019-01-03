@@ -36,6 +36,7 @@ const SearchInput = ({loading, searchGo, searchChange, weaponSearchList}) => {
         // onSearch={value => searchGo(value)}
         style={{ width: 360 }}
         onChange={searchChange}
+        onKeyPress={searchGo}
         autoComplete="off"
         autoFocus
       />

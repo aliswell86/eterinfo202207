@@ -10,9 +10,9 @@ const ItemMenu = () => (
     <Link to="/wp">
       무기정보
     </Link>
-    {/* <Link to="/custom" style={innerStyle}>
+    <Link to="/custom" style={innerStyle}>
       공격력계산
-    </Link> */}
+    </Link>
     <Link to="/plusup" style={innerStyle}>
       플러스업
     </Link>
