@@ -14,9 +14,10 @@ class App extends Component {
           <Route exact path="/" component={MainPage} />
           <Route exact path="/wp" component={WeaponPage} />
           <Route exact path="/wp/:id" component={WeaponViewPage} />
-          <Route path="/custom" component={WeaponCustomPage} />
-          <Route path="/plusup" component={PlusUpPage} />
-          <Route path="/boxsim" component={BoxSimulPage} />
+          <Route exact path="/custom" component={WeaponCustomPage} />
+          <Route exact path="/custom/:id" component={WeaponCustomPage} />
+          <Route exact path="/plusup" component={PlusUpPage} />
+          <Route exact path="/boxsim" component={BoxSimulPage} />
         </Switch>
       </div>
     );

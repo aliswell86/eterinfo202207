@@ -9,20 +9,11 @@ import * as weaponActions from 'store/modules/weapon';
 
 class WeaponCustomListContainer extends Component {
 
-  getWeaponView = (id) => {
-    const {WeaponActions, weaponView} = this.props;
-    
-    if(id !== weaponView.itemInfo._id) {
-      WeaponActions.getWeaponView(id);
-    }
-  }
-
   render() {
     const {weaponWheres, history} = this.props;
-    const {getWeaponView} = this;
     
     return (
-      <WeaponListCustom weaponWheres={weaponWheres} history={history} getWeaponView={getWeaponView}/>
+      <WeaponListCustom weaponWheres={weaponWheres} history={history}/>
     );
   }
 }

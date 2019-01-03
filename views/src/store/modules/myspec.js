@@ -33,9 +33,9 @@ export default handleActions({
   [GET_INVEN_DMAGE]: (state, action) => {
     const currWeaponDmg = action.payload;
     const {mainStat, itemDmgUp, limitDmg, isParasite, whereDoping} = state.toJS().myStat;
-
+    const currWeaponDmgCalc = currWeaponDmg === undefined ? 1 : currWeaponDmg;
     const parasiteUp = isParasite ? 3 : 0;
-    const default_inven_dmg = Math.floor(Number(currWeaponDmg)+Number(currWeaponDmg)*(Number(mainStat)/100)+Number(mainStat));
+    const default_inven_dmg = Math.floor(Number(currWeaponDmgCalc)+Number(currWeaponDmgCalc)*(Number(mainStat)/100)+Number(mainStat));
     const item_inven_dmg = (default_inven_dmg/100)*Number(itemDmgUp);
     const inven_dmg = Math.floor((default_inven_dmg + item_inven_dmg)*(1+(Number(limitDmg)/100))*(1+parasiteUp/10)*(1+Number(whereDoping)/10));
 

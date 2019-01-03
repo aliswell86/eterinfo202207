@@ -2,22 +2,47 @@ import React from 'react';
 import styles from './WeaponView.scss';
 import classNames from 'classnames/bind';
 import NumberFormat from 'react-number-format';
+import { Helmet } from "react-helmet";
+import {Link} from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-const WeaponView = ({itemInfo, currWeaponUpDv, loading}) => {
+const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
   const {
-    item_nm, img_src, item_dtl_dv, dmg, cri, speed, tier, size, illegal
+    item_nm, img_src, item_dtl_dv, dmg, cri, speed, tier, size, illegal, _id
   } = itemInfo;
   const {bodyUp, dmgUp} = currWeaponUpDv;
-  // const none = loading ? 'none' : '';
-  // const innerStyle = {
-  //   display: none
-  // }
+  const titleDefaultText = '이터널시티 무기정보';  
+  let titleText = '';
+  let costomLinkMsg = '';
   
+  if(item_nm === undefined || item_nm === null || item_nm === '') {
+    if(pathname.indexOf('custom') > -1) {
+      titleText = '공격력계산 - ' + titleDefaultText;
+    }else{
+      titleText = titleDefaultText;
+    }
+  }else{
+    if(pathname.indexOf('custom') > -1) {
+      titleText = item_nm + ' - 공격력계산 - ' + titleDefaultText;
+    }else if(pathname.indexOf('wp') > -1) {
+      titleText = item_nm + ' - 강화별공격력 - ' + titleDefaultText;
+      costomLinkMsg = <Link to={`/custom/${_id}`}>[공격력계산]</Link>;
+    }
+  }
+
   return (
     <div className={cx('weapon-view')}>
-      <h2 className={cx('name')}>{item_nm}</h2>
+      <Helmet>
+        <title>{titleText}</title>
+        <meta name="description" content={`이터널시티 ${item_nm} 무기강화. 공격력 계산. 업그레이드 비용. 예상 데미지 산출`} />
+      </Helmet>
+      <h2 className={cx('name')}>
+        {item_nm === undefined ?
+          <Link to='/wp'>공격력 계산 할 무기선택</Link> : 
+          <>{item_nm} <Link to='/wp'>[무기변경]</Link> {costomLinkMsg}</> 
+        }
+      </h2>
       <div className={cx('item-info')}>
         <div className={cx('img')}><img src={img_src} alt={item_nm}/></div>
         <div className={cx('option')}>

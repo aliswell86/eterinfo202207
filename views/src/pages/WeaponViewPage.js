@@ -8,11 +8,12 @@ import UpgradeCostContainer from 'containers/upgrade/UpgradeCostContainer';
 
 const WeaponViewPage = ({match}) => {
   const {id} = match.params;
-
+  const weaponId = id === undefined ? '' : id;
+  
   return (
     <PageTemplate>
       <ListWrapper>
-        <WeaponViewContainer id={id}/>
+        <WeaponViewContainer id={weaponId}/>
         <WeaponPoweredSelContanier/>
       </ListWrapper>
       <ListWrapper>

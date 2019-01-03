@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as weaponActions from 'store/modules/weapon';
 import {withRouter} from 'react-router-dom';
 // import { withDone } from 'react-router-server';
-import scrollToComponent from 'react-scroll-to-component';
+// import scrollToComponent from 'react-scroll-to-component';
 
 class WeaponViewContainer extends Component {
 
@@ -22,53 +22,18 @@ class WeaponViewContainer extends Component {
     }
 
     window.scrollTo(0, 0);
-
-    // if(pathname.indexOf('/wp') > -1) {
-    //   window.scrollTo(0, 0);
-    // }else if(pathname.indexOf('/custom') > -1) {
-    //   scrollToComponent(this.weaponViewDiv, {
-    //     offset: -100,
-    //     align: 'top',
-    //     duration: 500
-    //   });
-    // }
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    const {weaponView, currWeaponUpDv} = this.props;
-    const {pathname} = this.props.location;
-    
-    if(weaponView.itemInfo._id !== nextProps.weaponView.itemInfo._id) {
-      if(pathname.indexOf('/custom') > -1) {
-        scrollToComponent(this.weaponViewDiv, {
-          offset: -100,
-          align: 'top',
-          duration: 500
-        });
-      }
-
-      return true;
-    }
-
-    if(currWeaponUpDv.bodyUp !== nextProps.currWeaponUpDv.bodyUp || currWeaponUpDv.dmgUp !== nextProps.currWeaponUpDv.dmgUp) {
-      return true;
-    }
-
-    return false;
   }
 
   render() {
     const {itemInfo} = this.props.weaponView;
-    const {currWeaponUpDv, loading} = this.props;
+    const {currWeaponUpDv, location} = this.props;
+    const {pathname} = location;
     
     return (
-      <div ref={(ref) => this.weaponViewDiv = ref}>
       <WeaponView 
       itemInfo={itemInfo}
       currWeaponUpDv={currWeaponUpDv}
-      loading={loading}
-      />
-      </div>
+      pathname={pathname}/>
     );
   }
 }

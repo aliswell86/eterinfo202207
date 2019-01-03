@@ -22,7 +22,7 @@ export const getWeaponSearchList = createAction(GET_WEAPON_SEARCH_LIST);
 const initialState = Map({
   weaponWhere: Map({ // 선택한 조회조건들
     clyn: 'Y',
-    illegal: '',
+    illegal: 'N',
     isType1: false,
     isType2: false,
     isType3: false,
@@ -70,7 +70,7 @@ export default handleActions({
     onSuccess: (state, action) => {
       const {data: items} = action.payload;
       return state.set('weapons', fromJS(items))
-                  .set('weaponWheres', items.filter(item => item.clyn === 'Y'))
+                  .set('weaponWheres', items.filter(item => item.clyn === 'Y' && item.illegal === 'N'))
                   .setIn(['currWeaponUpDv','bodyUp'], '0').setIn(['currWeaponUpDv','dmgUp'], '0');
     }
   }),
