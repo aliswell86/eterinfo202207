@@ -9,27 +9,31 @@ const isEmpty = (obj) => {
   return Object.keys(obj).length === 0 && JSON.stringify(obj) === JSON.stringify({});
 }
 
-const BoxItemInfoList = ({currBox, boxGet, boxResultList}) => {
+const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDisplay, initialBoxResultList, boxResultSearch}) => {
   const innerStyle = {
     display: !isEmpty(currBox) ? 'block' : 'none'
   }
-  const {packageName, itemInfo} = currBox;
+  const {packageName, itemInfo, display} = currBox;
+  const innerStyle1 = {
+    display: display
+  }
   const itemInfoList = itemInfo !== undefined ?  itemInfo.map((item) => {
-    const {seq, itemName, luck} = item;
+    const {seq, itemName, luck, _id} = item;
     
     return (
-      <div className={cx('box-iteminfo-object')} key={seq}>
+      <div className={cx('box-iteminfo-object')} key={seq} onClick={() => boxResultSearch(_id)}>
         <div className={cx('imgSrc')}><img src='/resource/img/BOX101.gif' alt={itemName}/></div>
-        <div className={cx('itemName')}>{itemName}</div>
-        <div className={cx('luck')}>{luck.luck}%</div>
+        <div className={cx('itemName')}>{itemName} ({luck.luck}%)</div>
+        <div className={cx('sum')}>0 개</div>
       </div>
     )
   }) : '';
 
-  const openList = boxResultList.length > 0 ? boxResultList.map((resultObject, cnt) => {
-    const {itemName} = resultObject;
+  const openList = boxResultListWhere.length > 0 ? boxResultListWhere.map((resultObject, cnt) => {
+    const {itemName, luck, resultSeq} = resultObject;
+    const special = Number(luck.luck) < 1 ? 'special' : '';
     return (
-      <div key={cnt}>{itemName}</div>
+      <span className={cx('result-item-object', special)} key={cnt}>no.{resultSeq} {itemName}</span>
     )
   }) : '';
   
@@ -37,8 +41,17 @@ const BoxItemInfoList = ({currBox, boxGet, boxResultList}) => {
     <div className={cx('box-simul')}>
       <ListWrapper>
         <div className={cx('box-iteminfo')}>
-          <div className={cx('box-iteminfo-title')}>{packageName} 아이템 상세목록</div>
-          <div className={cx('box-iteminfo-list')}>
+          <div className={cx('box-iteminfo-title')}>
+            <div className={cx('iteminfo-left')}>{packageName} 아이템 상세목록 (결과집계)</div>
+            <div className={cx('iteminfo-right')} style={innerStyle}>
+              <button name='boxGetInit' onClick={initialBoxResultList}>초기화</button>
+              <button name='boxGet1' onClick={() => boxGet('1')}>1개</button>
+              <button name='boxGet2' onClick={() => boxGet('10')}>10개</button>
+              <button name='boxGet3' onClick={() => boxGet('100')}>100개</button>
+              <button name='boxDisplay' onClick={boxInfoListDisplay}>{display === 'none' ? '펼치기' : '닫기'}</button>
+            </div>
+          </div>
+          <div className={cx('box-iteminfo-list')} style={innerStyle1}>
             {itemInfoList}
           </div>
         </div>
@@ -46,14 +59,12 @@ const BoxItemInfoList = ({currBox, boxGet, boxResultList}) => {
       <ListWrapper>
         <div className={cx('box-result')}>
           <div className={cx('box-result-title')}>
-            <div className={cx('title-left')}>{packageName} 뽑기</div>
+            <div className={cx('title-left')}>{packageName} 뽑기 기록</div>
             <div className={cx('title-right')} style={innerStyle}>
-              <button name='boxGet1' onClick={() => boxGet('1')}>1개</button>
-              <button name='boxGet2' onClick={() => boxGet('10')}>10개</button>
-              <button name='boxGet3' onClick={() => boxGet('100')}>100개</button>
+              
             </div>
           </div>
-          <div className={cx('box-iteminfo-list')}>
+          <div className={cx('box-result-list')}>
             {openList}
           </div>
         </div>

@@ -5,16 +5,23 @@ import * as api from 'lib/api';
 
 const GET_BOXLIST = 'boxsim/GET_BOXLIST';
 const SET_CURRBOX = 'boxsim/SET_CURRBOX';
-const GET_BOXOPEN_RESLT = 'boxsim/GET_BOXOPEN_RESLT';
+const GET_BOXOPEN_RESULT = 'boxsim/GET_BOXOPEN_RESULT';
+const SET_BOXINFOLIST_DISPLAY = 'boxsim/SET_BOXINFOLIST_DISPLAY';
+const INIT_BOXRESULTLIST = 'boxsim/INIT_BOXRESULTLIST';
+const GET_BOXRESULTLIST_WHERE = 'boxsim/GET_BOXRESULTLIST_WHERE';
 
 export const getBoxList = createAction(GET_BOXLIST, api.getBoxList);
 export const setCurrBox = createAction(SET_CURRBOX);
-export const getBoxOpenResult = createAction(GET_BOXOPEN_RESLT);
+export const getBoxOpenResult = createAction(GET_BOXOPEN_RESULT);
+export const setBoxInfoListDisplay = createAction(SET_BOXINFOLIST_DISPLAY);
+export const initialBoxResultList = createAction(INIT_BOXRESULTLIST);
+export const getBoxResultListWhere = createAction(GET_BOXRESULTLIST_WHERE);
 
 const initialState = Map({
   boxs: List(),
   currBox: Map(),
-  boxResultList: List()
+  boxResultList: List(),
+  boxResultListWhere: List()
 });
 
 export default handleActions({
@@ -48,10 +55,33 @@ export default handleActions({
     });
 
     currBox.itemInfo = currBoxAddLuck;
-    return state.set('currBox', fromJS(currBox)).set('boxResultList', new List());
+    return state.set('currBox', fromJS(currBox))
+                .setIn(['currBox', 'grid'], 'none')
+                .set('boxResultList', new List())
+                .set('boxResultListWhere', new List());
   },
-  [GET_BOXOPEN_RESLT]: (state, action) => {
+  [GET_BOXOPEN_RESULT]: (state, action) => {
     const {payload} = action;
-    return state.set('boxResultList', state.toJS().boxResultList.concat(payload));
+    const sumList = state.toJS().boxResultList.concat(payload).map((item, cnt) => {
+      return {
+        ...item,
+        resultSeq: cnt+1
+      }
+    });
+    
+    return state.set('boxResultList', sumList)
+                .set('boxResultListWhere', sumList);
+  },
+  [SET_BOXINFOLIST_DISPLAY]: (state, action) => {
+    const currDisp = state.getIn(['currBox', 'display']);
+    return state.setIn(['currBox', 'display'], currDisp === 'grid' ? 'none' : 'grid');
+  },
+  [INIT_BOXRESULTLIST]: (state, action) => {
+    return state.set('boxResultList', new List()).set('boxResultListWhere', new List());
+  },
+  [GET_BOXRESULTLIST_WHERE]: (state, action) => {
+    const {payload} = action;
+    const resultList = state.toJS().boxResultList;
+    return state.set('boxResultListWhere', resultList.filter(result => result._id === payload));
   }
 }, initialState);

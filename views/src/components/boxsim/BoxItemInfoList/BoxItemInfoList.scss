@@ -3,10 +3,35 @@
 .box-simul {
   max-width: 1024px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: flex-start;
+  // flex-wrap: wrap;
+
+  button {
+    transition: all .15s ease-in;
+    background: white;
+    border: 1px solid $oc-gray-3;
+    width: 50px;
+    height: 30px;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-size: 0.7rem;
+  }
+  button:hover {
+    color: rgba($oc-blue-6, 0.8);
+  }
+  button:active {
+    color: rgba($oc-blue-6, 1);
+  }
+  button:focus {
+    border: 1px solid $oc-blue-6;
+    color: rgba($oc-blue-6, 1);
+  }
+
+  button + button {
+    margin-left: 0.1rem;
+  }
 
   .list-wrapper + .list-wrapper {
     margin-left: 0.2rem;
@@ -16,6 +41,7 @@
     .box-result {
       flex: 1;
       padding: 1rem;
+      min-height: 400px;
 
       .box-result-title {
         padding-bottom: 0.6rem;
@@ -25,26 +51,57 @@
         justify-content: space-between;
         flex-wrap: wrap;
       }
+
+      .box-result-list {
+        display: flex;
+        flex-wrap: wrap;
+
+        .result-item-object {
+          font-size: 0.8rem;
+          padding: 0.4rem;
+          border-left: 1px solid $oc-gray-2;
+          border-bottom: 1px solid $oc-gray-2;
+
+          .special {
+            color: $oc-red-8;
+            font-weight: bold;
+          }
+        }
+      }
     }
   }
 
   .list-wrapper {
     flex: 1;
+    min-width: 400px;
 
     .box-iteminfo {
-      flex: 1;
       padding: 1rem;
     
       .box-iteminfo-title {
         padding-bottom: 0.6rem;
         border-bottom: 1px solid $oc-gray-2;
         color: $oc-gray-8;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
       }
     
       .box-iteminfo-list {
         font-size: 0.8rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        // grid-gap: 0.5rem;
+
+        @include media("<medium") {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        // @include media("<small") {
+        //   grid-template-columns: repeat(2, 1fr);
+        // }
 
         .box-iteminfo-object {
+          cursor: pointer;
           padding: 0.2rem;
           display: flex;
           justify-content: space-between;
@@ -52,12 +109,12 @@
           flex-wrap: wrap;
     
           .imgSrc {
-            width: 50px;
-            height: 38px;
+            width: 45px;
+            height: 32px;
             
             img {
-              width: 40px;
-              height: 38px;
+              width: 35px;
+              height: 32px;
             }
           }
     
@@ -65,7 +122,7 @@
             flex: 1;
           }
 
-          .luck {
+          .sum {
             padding-left: 6px;
             width: 40px;
           }
@@ -76,9 +133,9 @@
           background: rgba($oc-blue-6, 0.05);
         }
     
-        .box-iteminfo-object + .box-iteminfo-object {
-          border-top: 1px solid $oc-gray-2;
-        }
+        // .box-iteminfo-object + .box-iteminfo-object {
+        //   border-top: 1px solid $oc-gray-2;
+        // }
       }
     }
   }

@@ -25,13 +25,36 @@ class BoxItemInfoListContainer extends Component {
 
     BoxSimulActions.getBoxOpenResult(boxResultList);
   }
+  
+  boxInfoListDisplay = () => {
+    const {BoxSimulActions} = this.props;
+    BoxSimulActions.setBoxInfoListDisplay();
+  }
+
+  initialBoxResultList = () => {
+    const {BoxSimulActions} = this.props;
+    BoxSimulActions.initialBoxResultList();
+  }
+
+  boxResultSearch = (id) => {
+    const {BoxSimulActions, boxResultList} = this.props;
+    if(boxResultList.length > 0) {
+      BoxSimulActions.getBoxResultListWhere(id);
+    }
+  }
 
   render() {
-    const {currBox, boxResultList} = this.props;
-    const {boxGet} = this;
+    const {currBox, boxResultListWhere} = this.props;
+    const {boxGet, boxInfoListDisplay, initialBoxResultList, boxResultSearch} = this;
 
     return (
-      <BoxItemInfoList currBox={currBox} boxGet={boxGet} boxResultList={boxResultList}/>
+      <BoxItemInfoList
+        currBox={currBox}
+        boxGet={boxGet}
+        boxResultListWhere={boxResultListWhere}
+        boxInfoListDisplay={boxInfoListDisplay}
+        initialBoxResultList={initialBoxResultList}
+        boxResultSearch={boxResultSearch}/>
     );
   }
 }
@@ -39,7 +62,8 @@ class BoxItemInfoListContainer extends Component {
 export default connect(
   (state) => ({
     currBox: state.boxsim.toJS().currBox,
-    boxResultList: state.boxsim.toJS().boxResultList
+    boxResultList: state.boxsim.toJS().boxResultList,
+    boxResultListWhere: state.boxsim.toJS().boxResultListWhere
   }),
   (dispatch) => ({
     BoxSimulActions: bindActionCreators(boxsimulActions, dispatch)
