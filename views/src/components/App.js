@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
-import {WeaponPage, WeaponViewPage, WeaponCustomPage, MainPage, PlusUpPage, BoxSimulPage} from 'pages';
+import {NotFoundPage, WeaponPage, WeaponViewPage, WeaponCustomPage, MainPage, PlusUpPage, BoxSimulPage} from 'pages';
 import { Helmet } from "react-helmet";
 
 class App extends Component {
@@ -18,6 +18,7 @@ class App extends Component {
           <Route exact path="/custom/:id" component={WeaponCustomPage} />
           <Route exact path="/plusup" component={PlusUpPage} />
           <Route exact path="/boxsim" component={BoxSimulPage} />
+          <Route component={NotFoundPage}/>
         </Switch>
       </div>
     );

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 class Adsense72890 extends Component {
 
@@ -8,13 +8,11 @@ class Adsense72890 extends Component {
 
   render() {
     return (
-      <Fragment>
-        <ins className="adsbygoogle ad72890"
-          style={{display:'inline-block', width:'728px', height:'90px'}}
-          data-ad-client="ca-pub-1407998984163880"
-          data-ad-slot="5602074067"
-        ></ins>
-      </Fragment>
+      <ins className="adsbygoogle ad72890"
+        style={{display:'inline-block', width:'728px', height:'90px'}}
+        data-ad-client="ca-pub-1407998984163880"
+        data-ad-slot="5602074067"
+      ></ins>
     );
   }
 }

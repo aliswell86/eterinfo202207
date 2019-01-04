@@ -26,9 +26,8 @@ const template = fs.readFileSync(path.join(__dirname, '../views/build/index.html
 
 // Node 버전이 async await 를 지원하는 경우.
 module.exports = async (ctx) => {
-  const location = ctx.path;
-  const { html, state, helmet } = await render(location);
-  console.log(helmet.title.toString());
+  // const location = ctx.path;
+  const { html, state, helmet } = await render(ctx);
   const page = template.replace('<div id="root"></div>', `<div id="root">${html}</div><script>window.__PRELOADED_STATE__=${serialize(state)}</script>`)
                        .replace('<meta helmet>', `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}`);
 

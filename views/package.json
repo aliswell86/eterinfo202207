@@ -138,6 +138,7 @@
   },
   "proxy": "http://localhost:8002",
   "devDependencies": {
-    "ignore-loader": "^0.1.2"
+    "ignore-loader": "^0.1.2",
+    "webpack-bundle-analyzer": "^3.0.3"
   }
 }
