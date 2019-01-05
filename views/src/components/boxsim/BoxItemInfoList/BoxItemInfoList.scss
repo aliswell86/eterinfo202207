@@ -33,15 +33,14 @@
     margin-left: 0.1rem;
   }
 
-  .list-wrapper + .list-wrapper {
-    margin-left: 0.2rem;
-  }
-
   .list-wrapper {
     .box-result {
-      flex: 1;
       padding: 1rem;
       min-height: 400px;
+
+      @include media("<small") {
+        padding: 0.2rem;
+      }
 
       .box-result-title {
         padding-bottom: 0.6rem;
@@ -50,6 +49,11 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+
+        .title-right {
+          font-weight: bold;
+          color: $oc-red-9;
+        }
       }
 
       .box-result-list {
@@ -71,12 +75,17 @@
     }
   }
 
-  .list-wrapper {
-    flex: 1;
-    min-width: 400px;
+  .adsense {
+    text-align: center;
+  }
 
+  .list-wrapper {
     .box-iteminfo {
       padding: 1rem;
+
+      @include media("<small") {
+        padding: 0.2rem;
+      }
     
       .box-iteminfo-title {
         padding-bottom: 0.6rem;
@@ -93,6 +102,10 @@
         grid-template-columns: repeat(3, 1fr);
         // grid-gap: 0.5rem;
 
+        // @include media("<large") {
+        //   grid-template-columns: repeat(2, 1fr);
+        // }
+
         @include media("<medium") {
           grid-template-columns: repeat(2, 1fr);
         }
@@ -107,6 +120,8 @@
           justify-content: space-between;
           align-items: center;
           flex-wrap: wrap;
+          border-left: 1px solid $oc-gray-2;
+          border-bottom: 1px solid $oc-gray-2;
     
           .imgSrc {
             width: 45px;
@@ -122,14 +137,16 @@
             flex: 1;
           }
 
-          .sum {
+          .sumValue {
             padding-left: 6px;
-            width: 40px;
+            width: 44px;
+            font-weight: bold;
+
           }
         }
     
         .box-iteminfo-object:hover {
-          // cursor: pointer;
+          cursor: pointer;
           background: rgba($oc-blue-6, 0.05);
         }
     

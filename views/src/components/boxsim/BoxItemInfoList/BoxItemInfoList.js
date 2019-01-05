@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './BoxItemInfoList.scss';
 import classNames from 'classnames/bind';
 import ListWrapper from 'components/list/ListWrapper';
+import NumberFormat from 'react-number-format';
+import Adsense72890 from 'components/adsense/Adsense72890';
 
 const cx = classNames.bind(styles);
 
@@ -9,22 +11,22 @@ const isEmpty = (obj) => {
   return Object.keys(obj).length === 0 && JSON.stringify(obj) === JSON.stringify({});
 }
 
-const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDisplay, initialBoxResultList, boxResultSearch}) => {
+const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDisplay, initialBoxResultList, boxResultSearch, boxCnt}) => {
   const innerStyle = {
     display: !isEmpty(currBox) ? 'block' : 'none'
   }
-  const {packageName, itemInfo, display} = currBox;
+  const {packageName, itemInfo, display, cost} = currBox;
   const innerStyle1 = {
     display: display
   }
   const itemInfoList = itemInfo !== undefined ?  itemInfo.map((item) => {
-    const {seq, itemName, luck, _id} = item;
+    const {seq, itemName, imgSrc, luck, sumValue, _id} = item;
     
     return (
-      <div className={cx('box-iteminfo-object')} key={seq} onClick={() => boxResultSearch(_id)}>
-        <div className={cx('imgSrc')}><img src='/resource/img/BOX101.gif' alt={itemName}/></div>
+      <div className={cx('box-iteminfo-object')} key={seq} onClick={() => boxResultSearch(_id)} onMouseEnter={() => boxResultSearch(_id)} onMouseLeave={() => boxResultSearch('init')}>
+        <div className={cx('imgSrc')}><img src={imgSrc} alt={itemName}/></div>
         <div className={cx('itemName')}>{itemName} ({luck.luck}%)</div>
-        <div className={cx('sum')}>0 개</div>
+        <div className={cx('sumValue')}>{sumValue === undefined ? 0 : sumValue} 개</div>
       </div>
     )
   }) : '';
@@ -33,12 +35,15 @@ const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDispla
     const {itemName, luck, resultSeq} = resultObject;
     const special = Number(luck.luck) < 1 ? 'special' : '';
     return (
-      <span className={cx('result-item-object', special)} key={cnt}>no.{resultSeq} {itemName}</span>
+      <span className={cx(`result-item-object ${special}`)} key={cnt}>no.{resultSeq} {itemName}</span>
     )
   }) : '';
   
   return (
     <div className={cx('box-simul')}>
+      <div className={cx('adsense')}>
+        <Adsense72890/>
+      </div>
       <ListWrapper>
         <div className={cx('box-iteminfo')}>
           <div className={cx('box-iteminfo-title')}>
@@ -56,12 +61,15 @@ const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDispla
           </div>
         </div>
       </ListWrapper>
+      <div className={cx('adsense')}>
+        <Adsense72890/>
+      </div>
       <ListWrapper>
         <div className={cx('box-result')}>
           <div className={cx('box-result-title')}>
             <div className={cx('title-left')}>{packageName} 뽑기 기록</div>
             <div className={cx('title-right')} style={innerStyle}>
-              
+            <NumberFormat value={boxCnt * Number(cost)} displayType={'text'} thousandSeparator={true} prefix={''} /> Cash
             </div>
           </div>
           <div className={cx('box-result-list')}>
@@ -69,6 +77,9 @@ const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDispla
           </div>
         </div>
       </ListWrapper>
+      <div className={cx('adsense')}>
+        <Adsense72890/>
+      </div>
     </div>
   );
 };

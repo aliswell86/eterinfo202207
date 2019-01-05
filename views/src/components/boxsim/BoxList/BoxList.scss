@@ -3,10 +3,24 @@
 .box-kinds{
   padding: 1rem;
 
+  @include media("<small") {
+    margin-right: 0.2rem;
+  }
+
   .box-kinds-title {
     padding-bottom: 1rem;
     border-bottom: 1px solid $oc-gray-3;
     color: $oc-gray-8;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    .title-right {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: $oc-gray-8;
+    }
   }
 
   .boxs {

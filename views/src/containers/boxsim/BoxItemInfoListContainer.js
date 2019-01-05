@@ -44,7 +44,7 @@ class BoxItemInfoListContainer extends Component {
   }
 
   render() {
-    const {currBox, boxResultListWhere} = this.props;
+    const {currBox, boxResultListWhere, boxResultList} = this.props;
     const {boxGet, boxInfoListDisplay, initialBoxResultList, boxResultSearch} = this;
 
     return (
@@ -54,7 +54,8 @@ class BoxItemInfoListContainer extends Component {
         boxResultListWhere={boxResultListWhere}
         boxInfoListDisplay={boxInfoListDisplay}
         initialBoxResultList={initialBoxResultList}
-        boxResultSearch={boxResultSearch}/>
+        boxResultSearch={boxResultSearch}
+        boxCnt={boxResultList.length}/>
     );
   }
 }
