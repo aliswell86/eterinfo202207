@@ -12,7 +12,7 @@
     transition: all .15s ease-in;
     background: white;
     border: 1px solid $oc-gray-3;
-    width: 50px;
+    width: 54px;
     height: 30px;
     border-radius: 0.2rem;
     cursor: pointer;
@@ -94,6 +94,11 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+
+        .iteminfo-right {
+          width: 284px;
+          padding: 0.2rem;
+        }
       }
     
       .box-iteminfo-list {

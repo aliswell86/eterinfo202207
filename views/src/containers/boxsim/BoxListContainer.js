@@ -16,7 +16,6 @@ class BoxListContainer extends Component {
   }
 
   boxInfoList = (packageCode) => {
-    console.log("packageCode : " + packageCode);
     const {BoxSimulActions, currBox} = this.props;
     if(currBox.packageCode !== packageCode) BoxSimulActions.setCurrBox(packageCode);
   }
