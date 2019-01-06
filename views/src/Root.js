@@ -6,7 +6,7 @@ import configure from 'store/configure';
 
 const store = configure();
 
-const Root = () => {
+const Root = ({onUpdate}) => {
   return (
     <Provider store={store}>
       <BrowserRouter>

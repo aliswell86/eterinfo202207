@@ -21,7 +21,7 @@ class WeaponWhereBoxContainer extends Component {
   }
 
   handleWhereSet = (e) => {
-    ReactGA.ga('send', 'pageview', '/mypage');
+    ReactGA.ga('send', 'event', 'weaponlist', 'weaponwhere', 'label');
 
     const {name, value, checked} = e.target;
     const {WeaponActions, weapons} = this.props;
