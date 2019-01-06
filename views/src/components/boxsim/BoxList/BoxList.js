@@ -5,9 +5,9 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 const BoxList = ({boxs, boxInfoList, currCode}) => {  
-  const boxList = boxs.map((box, cnt) => {
+  const boxList = boxs.map((box) => {
     const {packageCode, packageName, imgSrc} = box;
-    const className = currCode !== undefined && Number(currCode) === cnt ? '-checked' : '';
+    const className = currCode !== undefined && currCode === box.packageCode ? '-checked' : '';
     
     return (
       <div className={cx(`box${className}`)} key={packageCode} onClick={() => boxInfoList(packageCode)}>

@@ -70,6 +70,7 @@ const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDispla
             <div className={cx('title-left')}>{packageName} 뽑기 기록</div>
             <div className={cx('title-right')} style={innerStyle}>
             <NumberFormat value={boxCnt * Number(cost)} displayType={'text'} thousandSeparator={true} prefix={''} /> Cash
+            (<NumberFormat value={boxCnt} displayType={'text'} thousandSeparator={true} prefix={''} /> 개)
             </div>
           </div>
           <div className={cx('box-result-list')}>
