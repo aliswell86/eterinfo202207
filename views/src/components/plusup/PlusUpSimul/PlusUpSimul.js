@@ -5,8 +5,8 @@ import NumberFormat from 'react-number-format';
 
 const cx = classNames.bind(styles);
 
-const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo}) => {
-  const {usePlusUpKit, usePlusUpKitF} = plusUpSimul;
+const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF}) => {
+  const {usePlusUpKit, usePlusUpKitF, usePlusUpKitEp, upTryCnt, currPlusUp, resultComment} = plusUpSimul;
   
   return (
     <div className={cx('plusup-simul')}>
@@ -24,19 +24,19 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo}) => {
           </div>
         </div>
         <div className={cx('plusup-notice')}>
-          100개가 필요합니다.
+          {upTryCnt}회 시도. {currPlusUp}강 {resultComment} 사용EP: {usePlusUpKitEp}
         </div>
         <div className={cx('kit-trade-body')}>
           <div className={cx('kit-use')}>
             <div className={cx('kit-use-normal')} onClick={plusUpGo}>
-              <div>플러스업(일반)</div>
+              <div>플러스업</div>
               <img src='/resource/img/plusupkit.gif' alt='일반'/>
               <div>
                 <NumberFormat value={usePlusUpKit} displayType={'text'} thousandSeparator={true} prefix={''} suffix ={'개'}/>
               </div>
             </div>
-            <div className={cx('kit-use-f')}>
-              <div>플러스업(완벽한)</div>
+            <div className={cx('kit-use-f')} onClick={plusUpGoF}>
+              <div>완벽한 플러스업</div>
               <img src='/resource/img/plusupkitf.gif' alt='완벽한'/>
               <div>
               <NumberFormat value={usePlusUpKitF} displayType={'text'} thousandSeparator={true} prefix={''} suffix ={'개'}/>

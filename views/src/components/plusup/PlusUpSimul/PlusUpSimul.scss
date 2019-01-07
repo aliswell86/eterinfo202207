@@ -1,32 +1,33 @@
 @import 'utils';
 
-button {
-  transition: all .15s ease-in;
-  background: white;
-  border: 1px solid $oc-gray-3;
-  width: 76px;
-  height: 40px;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  font-size: 0.7rem;
-}
-button:hover {
-  color: rgba($oc-blue-6, 0.8);
-}
-button:focus {
-  border: 1px solid $oc-blue-6;
-  color: rgba($oc-blue-6, 1);
-}
-button:active {
-  color: rgba($oc-blue-8, 1);
-  border: 1px solid $oc-blue-8;
-}
-
-button + button {
-  margin-left: 0.1rem;
-}
-
 .plusup-simul {
+
+  button {
+    transition: all .15s ease-in;
+    background: white;
+    border: 1px solid $oc-gray-3;
+    width: 76px;
+    height: 40px;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-size: 0.7rem;
+  }
+  button:hover {
+    color: rgba($oc-blue-6, 0.8);
+  }
+  button:focus {
+    border: 1px solid $oc-blue-6;
+    color: rgba($oc-blue-6, 1);
+  }
+  button:active {
+    color: rgba($oc-blue-8, 1);
+    border: 1px solid $oc-blue-8;
+  }
+  
+  button + button {
+    margin-left: 0.1rem;
+  }
+  
   padding: 1rem;
 
   @include media("<small") {
