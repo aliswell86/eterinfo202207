@@ -6,6 +6,10 @@ import * as boxsimulActions from 'store/modules/boxsim';
 
 class BoxListContainer extends Component {
 
+  isEmpty = (obj) => {
+    return Object.keys(obj).length === 0 && JSON.stringify(obj) === JSON.stringify({});
+  }
+
   getBoxList() {
     const {BoxSimulActions, boxs} = this.props;
     if(boxs.length === 0) BoxSimulActions.getBoxList();
@@ -29,12 +33,21 @@ class BoxListContainer extends Component {
       <BoxList boxs={boxs} boxInfoList={boxInfoList} currCode={currCode}/>
     );
   }
+
+  componentDidUpdate() {
+    const {currBox, loading} = this.props;
+
+    if(this.isEmpty(currBox) && !loading) {
+      this.boxInfoList('6'); // EP박스
+    }
+  }
 }
 
 export default connect(
   (state) => ({
     boxs: state.boxsim.toJS().boxs,
-    currBox: state.boxsim.toJS().currBox
+    currBox: state.boxsim.toJS().currBox,
+    loading: state.pender.pending['boxsim/GET_BOXLIST']
   }),
   (dispatch) => ({
     BoxSimulActions: bindActionCreators(boxsimulActions, dispatch)

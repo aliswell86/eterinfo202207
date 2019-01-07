@@ -15,18 +15,21 @@ const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDispla
   const innerStyle = {
     display: !isEmpty(currBox) ? 'block' : 'none'
   }
-  const {packageName, itemInfo, display, cost} = currBox;
+  const {packageCode, packageName, itemInfo, display, cost} = currBox;
   const innerStyle1 = {
     display: display
   }
+  let epSum = 0; // 뽑은 ep 합계.
   const itemInfoList = itemInfo !== undefined ?  itemInfo.map((item) => {
     const {seq, itemName, imgSrc, luck, sumValue, _id} = item;
+    const sumValueInit = sumValue === undefined ? 0 : sumValue;
+    epSum += Number(itemName.substr(0, itemName.indexOf('EP 카드'))) * Number(sumValueInit);
     
     return (
       <div className={cx('box-iteminfo-object')} key={seq} onClick={() => boxResultSearch(_id)} onMouseEnter={() => boxResultSearch(_id)} onMouseLeave={() => boxResultSearch('init')}>
         <div className={cx('imgSrc')}><img src={imgSrc} alt={itemName}/></div>
         <div className={cx('itemName')}>{itemName} ({luck.luck}%)</div>
-        <div className={cx('sumValue')}>{sumValue === undefined ? 0 : sumValue} 개</div>
+        <div className={cx('sumValue')}>{sumValueInit} 개</div>
       </div>
     )
   }) : '';
@@ -70,7 +73,12 @@ const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDispla
             <div className={cx('title-left')}>{packageName} 뽑기 기록</div>
             <div className={cx('title-right')} style={innerStyle}>
             <NumberFormat value={boxCnt * Number(cost)} displayType={'text'} thousandSeparator={true} prefix={''} /> Cash
-            (<NumberFormat value={boxCnt} displayType={'text'} thousandSeparator={true} prefix={''} /> 개)
+            {
+              packageCode === '6' ?
+              <NumberFormat value={epSum} displayType={'text'} thousandSeparator={true} prefix={'('} suffix ={' EP)'}/>
+              :
+              <NumberFormat value={boxCnt} displayType={'text'} thousandSeparator={true} prefix={'('} suffix ={' 개)'}/>
+            }
             </div>
           </div>
           <div className={cx('box-result-list')}>

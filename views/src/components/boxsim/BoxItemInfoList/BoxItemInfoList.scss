@@ -20,13 +20,14 @@
   }
   button:hover {
     color: rgba($oc-blue-6, 0.8);
-  }
-  button:active {
-    color: rgba($oc-blue-6, 1);
-  }
+  }  
   button:focus {
     border: 1px solid $oc-blue-6;
     color: rgba($oc-blue-6, 1);
+  }
+  button:active {
+    border: 1px solid $oc-blue-8;
+    color: rgba($oc-blue-8, 1);
   }
 
   button + button {

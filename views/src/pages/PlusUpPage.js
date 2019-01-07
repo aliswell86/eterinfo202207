@@ -3,6 +3,7 @@ import PageTemplate from 'components/common/PageTemplate';
 import { Helmet } from "react-helmet";
 import ListWrapper from 'components/list/ListWrapper';
 import PlusUpGridContainer from 'containers/plusup/PlusUpGridContainer';
+import PlusUpSimulContainer from 'containers/plusup/PlusUpSimulContainer';
 
 const PlusUpPage = () => {
   return (
@@ -13,6 +14,9 @@ const PlusUpPage = () => {
       </Helmet>
       <ListWrapper>        
         <PlusUpGridContainer/>
+      </ListWrapper>
+      <ListWrapper>        
+        <PlusUpSimulContainer/>
       </ListWrapper>
     </PageTemplate>
   );

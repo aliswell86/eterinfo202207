@@ -35,6 +35,8 @@ export default handleActions({
   [SET_CURRBOX]: (state, action) => {
     const {payload: packageCode} = action;
     const currBox = state.toJS().boxs.filter(box => box.packageCode === packageCode)[0];
+    if(currBox === null || currBox === undefined) return state;
+
     const {itemInfo} = currBox;
     let currLuck = 0;
 

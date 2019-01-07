@@ -1,0 +1,125 @@
+@import 'utils';
+
+button {
+  transition: all .15s ease-in;
+  background: white;
+  border: 1px solid $oc-gray-3;
+  width: 76px;
+  height: 40px;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+button:hover {
+  color: rgba($oc-blue-6, 0.8);
+}
+button:focus {
+  border: 1px solid $oc-blue-6;
+  color: rgba($oc-blue-6, 1);
+}
+button:active {
+  color: rgba($oc-blue-8, 1);
+  border: 1px solid $oc-blue-8;
+}
+
+button + button {
+  margin-left: 0.1rem;
+}
+
+.plusup-simul {
+  padding: 1rem;
+
+  @include media("<small") {
+    width: 100%;
+    padding: 0.4rem;
+  }
+
+  .kit-trade {
+
+    .kit-trade-title {
+      padding-bottom: 0.8em;
+      border-bottom: 1px solid $oc-gray-3;
+      color: $oc-gray-8;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .kit-trade-right {
+        width: 414px;
+        padding: 0.2rem;
+      }
+    }
+
+    .plusup-notice {
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+      color: $oc-red-8;
+      font-size: 2re;
+
+      @include media("<small") {
+        width: 100%;
+        padding-top: 0.4rem;
+      }
+    }
+
+    .kit-trade-body {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      align-items: center;
+      align-content: center;
+      padding: 1rem;
+
+      @include media("<small") {
+        width: 100%;
+        padding-top: 0.4rem;
+      }
+
+      .kit-use {        
+        width: 340px;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .kit-use-normal {
+          text-align: center;
+          padding: 1rem;
+
+          img {
+            padding: 0.6rem;
+          }
+        }
+        .kit-use-f {
+          text-align: center;
+          padding: 1rem;
+
+          img {
+            padding: 0.6rem;
+          }
+        }
+        .kit-use-normal:hover {
+          cursor: pointer;
+          @include material-shadow(1, 1);
+          background: $oc-blue-0;
+        }
+        .kit-use-f:hover {
+          cursor: pointer;
+          @include material-shadow(1, 1);
+          background: $oc-blue-0;
+        }
+        .kit-use-normal:active {
+          background: $oc-blue-1;
+        }
+        .kit-use-f:active {
+          background: $oc-blue-1;
+        }
+      }
+
+      .plusup-body {
+        
+      }
+    }
+  }
+}
