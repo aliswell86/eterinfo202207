@@ -59,9 +59,11 @@ class PlusUpSimulContainer extends Component {
   }
 
   plusUpGoF = () => {
-    const {PlusupActions} = this.props;
+    const {PlusupActions, currPlusUp} = this.props;
+    const {armmorDv} = currPlusUp;
     const {simulCurrPlusUp, upTryCnt, usePlusUpKit, usePlusUpKitF, bestPlusUp, resultComment} = this.props.plusUpSimul;
-    const plusUpKitFNeed = Math.pow(2,Number(simulCurrPlusUp));
+    const needCnt = armmorDv === '0' ? 1 : (armmorDv === '1' ? 2 : 6);
+    const plusUpKitFNeed = Math.pow(2,Number(simulCurrPlusUp)) * needCnt;
     let upTryCntBefore = upTryCnt;
     let currPlusUpBefore = Number(simulCurrPlusUp);
     let resultCommentBefore = resultComment;
@@ -93,9 +95,11 @@ class PlusUpSimulContainer extends Component {
   render() {
     const {setPlusUpKit, plusUpGo, plusUpGoF, plusUpGoKey, plusUpGoKeyF} = this;
     const {plusUpSimul, plusUpGrid, currPlusUp, loading} = this.props;
-    const {gradeDv, tierDv} = currPlusUp;
+    const {armmorDv, gradeDv, tierDv} = currPlusUp;
     const {simulCurrPlusUp} = plusUpSimul;
     let currPlusDmg = '0';
+    const needCnt = armmorDv === '0' ? 1 : (armmorDv === '1' ? 2 : 6);
+    const plusUpKitFNeed = Math.pow(2,Number(simulCurrPlusUp)) * needCnt;
     
     if(simulCurrPlusUp !== '0' && loading !== undefined && !loading) {
       currPlusDmg = plusUpGrid[2][Number(gradeDv)][Number(tierDv)][Number(simulCurrPlusUp) - 1];
@@ -110,6 +114,7 @@ class PlusUpSimulContainer extends Component {
         plusUpGoKey={plusUpGoKey}
         plusUpGoKeyF={plusUpGoKeyF}
         currPlusDmg={currPlusDmg}
+        plusUpKitFNeed={plusUpKitFNeed}
       />
     );
   }

@@ -50,7 +50,18 @@ export default handleActions({
   }),
   [SET_PLUSUP_GRID_WHERE]: (state, action) => {
     const {name, value} = action.payload;
-    return state.setIn(['currPlusUp', name], value);
+    if(name === 'armmorDv') { // 플업시뮬초기화
+      return state.setIn(['plusUpSimul', 'usePlusUpKit'], '0')
+                  .setIn(['plusUpSimul', 'usePlusUpKitF'], '0')
+                  .setIn(['plusUpSimul', 'usePlusUpKitEp'], '0')
+                  .setIn(['plusUpSimul', 'upTryCnt'], '0')
+                  .setIn(['plusUpSimul', 'simulCurrPlusUp'], '0')
+                  .setIn(['plusUpSimul', 'bestPlusUp'], '0')
+                  .setIn(['plusUpSimul', 'resultComment'], '')
+                  .setIn(['currPlusUp', name], value);
+    }else{
+      return state.setIn(['currPlusUp', name], value);
+    }
   },
   [GET_PLUSUP_GRID_WHERE]: (state, action) => {
     const {armmorDv, gradeDv, tierDv} = state.toJS().currPlusUp;

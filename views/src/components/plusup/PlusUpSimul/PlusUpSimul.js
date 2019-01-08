@@ -6,7 +6,7 @@ import Adsense72890 from 'components/adsense/Adsense72890';
 
 const cx = classNames.bind(styles);
 
-const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKey, plusUpGoKeyF, currPlusDmg}) => {
+const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKey, plusUpGoKeyF, currPlusDmg, plusUpKitFNeed}) => {
   const {
     usePlusUpKit, usePlusUpKitF, usePlusUpKitEp, upTryCnt, simulCurrPlusUp, bestPlusUp, resultComment, plusUpLuck
   } = plusUpSimul;
@@ -64,9 +64,8 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
             <div className={cx('kit-use-f')} onClick={plusUpGoF} tabIndex='2' onKeyPress={plusUpGoKeyF}>
               <div>완벽한 플러스업</div>
               <img src='/resource/img/plusupkitf.gif' alt='완벽한'/>
-              <div>
-              <NumberFormat value={usePlusUpKitF} displayType={'text'} thousandSeparator={true} prefix={''} suffix ={'개'}/>
-              </div>
+              <div><NumberFormat value={usePlusUpKitF} displayType={'text'} thousandSeparator={true} prefix={''} suffix ={'개'}/></div>
+              <div><NumberFormat value={plusUpKitFNeed} displayType={'text'} thousandSeparator={true} prefix={'(필요개수: '} suffix ={'개)'}/></div>
             </div>
           </div>
           <div className={cx('plusup-body')}>
