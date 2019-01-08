@@ -3,6 +3,7 @@ import styles from './PlusUpSimul.scss';
 import classNames from 'classnames/bind';
 import NumberFormat from 'react-number-format';
 import Adsense72890 from 'components/adsense/Adsense72890';
+import Adsense32050 from 'components/adsense/Adsense32050';
 
 const cx = classNames.bind(styles);
 
@@ -51,6 +52,9 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
           <div className={cx('notice-right')}>
             <NumberFormat value={usePlusUpKitEp} displayType={'text'} thousandSeparator={true} prefix={'사용EP: '} suffix ={'EP'}/>
           </div>
+        </div>
+        <div className={cx('adsense')} style={{paddingTop: '0.4rem', display: 'none'}}>
+          <Adsense32050/>
         </div>
         <div className={cx('kit-trade-body')}>
           <div className={cx('kit-use')}>

@@ -152,7 +152,6 @@
           top: 138px;
           left: 26px;
           color: $oc-yellow-2;
-          
         }
 
         .plusup-dmg {
@@ -209,5 +208,9 @@
 
   .adsense {
     text-align: center;
+
+    @include media("<small") {
+      display: block !important;
+    }   
   }
 }
