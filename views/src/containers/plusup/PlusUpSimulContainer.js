@@ -19,7 +19,8 @@ class PlusUpSimulContainer extends Component {
   }
 
   plusUpGo = () => {
-    const {PlusupActions} = this.props;
+    const {PlusupActions, currPlusUp} = this.props;
+    const {armmorDv} = currPlusUp;
     const {plusUpLuck, simulCurrPlusUp, upTryCnt, usePlusUpKit, usePlusUpKitF, bestPlusUp, resultComment} = this.props.plusUpSimul;
     const {luck} = plusUpLuck[Number(simulCurrPlusUp)];
     const random = Math.floor(Math.random() * 1000) + 1;
@@ -30,11 +31,13 @@ class PlusUpSimulContainer extends Component {
     let usePlusUpKitBefore = usePlusUpKit;
     let usePlusUpKitFBefore = usePlusUpKitF;
     let bestPlusUpBefore = bestPlusUp;
+    const needCnt = armmorDv === '0' ? 1 : (armmorDv === '1' ? 2 : 6);
+    const plusUpKitNeed = needCnt;
 
-    if(Number(usePlusUpKit) <= 0) {
-      resultCommentBefore = '남아있는 플러스업 아이템이 없습니다.';
+    if(plusUpKitNeed > Number(usePlusUpKit)) {
+      resultCommentBefore = '플러스업 ' + String(plusUpKitNeed) + '개가 필요합니다.';
     }else{
-      usePlusUpKitBefore = Number(usePlusUpKit) - 1; // 플업 1개소모
+      usePlusUpKitBefore = Number(usePlusUpKit) - plusUpKitNeed; // 플업 소모
       upTryCntBefore = String(Number(upTryCnt) + 1); // 시도 횟수증가
 
       if(random <= Number(success)) {
@@ -100,6 +103,7 @@ class PlusUpSimulContainer extends Component {
     let currPlusDmg = '0';
     const needCnt = armmorDv === '0' ? 1 : (armmorDv === '1' ? 2 : 6);
     const plusUpKitFNeed = Math.pow(2,Number(simulCurrPlusUp)) * needCnt;
+    const plusUpKitNeed = needCnt;
     
     if(simulCurrPlusUp !== '0' && loading !== undefined && !loading) {
       currPlusDmg = plusUpGrid[2][Number(gradeDv)][Number(tierDv)][Number(simulCurrPlusUp) - 1];
@@ -115,6 +119,7 @@ class PlusUpSimulContainer extends Component {
         plusUpGoKeyF={plusUpGoKeyF}
         currPlusDmg={currPlusDmg}
         plusUpKitFNeed={plusUpKitFNeed}
+        plusUpKitNeed={plusUpKitNeed}
       />
     );
   }

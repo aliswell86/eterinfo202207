@@ -6,7 +6,7 @@ import Adsense72890 from 'components/adsense/Adsense72890';
 
 const cx = classNames.bind(styles);
 
-const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKey, plusUpGoKeyF, currPlusDmg, plusUpKitFNeed}) => {
+const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKey, plusUpGoKeyF, currPlusDmg, plusUpKitFNeed, plusUpKitNeed}) => {
   const {
     usePlusUpKit, usePlusUpKitF, usePlusUpKitEp, upTryCnt, simulCurrPlusUp, bestPlusUp, resultComment, plusUpLuck
   } = plusUpSimul;
@@ -31,7 +31,7 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
       </div>
       <div className={cx('kit-trade')}>
         <div className={cx('kit-trade-title')}>
-          <div className={cx('kit-trade-left')}>플러스업 강화 시뮬레이션</div>
+          <div className={cx('kit-trade-left')}>플러스업 강화 시뮬레이션<span> (부위를 변경하면 처음부터 강화입니다.)</span></div>
           <div className={cx('kit-trade-center')}>
           </div>
           <div className={cx('kit-trade-right')}>
@@ -57,14 +57,13 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
             <div className={cx('kit-use-normal')} onClick={plusUpGo} tabIndex='1' onKeyPress={plusUpGoKey}>
               <div>플러스업</div>
               <img src='/resource/img/plusupkit.gif' alt='일반'/>
-              <div>
-                <NumberFormat value={usePlusUpKit} displayType={'text'} thousandSeparator={true} prefix={''} suffix ={'개'}/>
-              </div>
+              <div><b><NumberFormat value={usePlusUpKit} displayType={'text'} thousandSeparator={true} prefix={''} suffix ={'개'}/></b></div>
+              <div><NumberFormat value={plusUpKitNeed} displayType={'text'} thousandSeparator={true} prefix={'(필요개수: '} suffix ={'개)'}/></div>
             </div>
             <div className={cx('kit-use-f')} onClick={plusUpGoF} tabIndex='2' onKeyPress={plusUpGoKeyF}>
               <div>완벽한 플러스업</div>
               <img src='/resource/img/plusupkitf.gif' alt='완벽한'/>
-              <div><NumberFormat value={usePlusUpKitF} displayType={'text'} thousandSeparator={true} prefix={''} suffix ={'개'}/></div>
+              <div><b><NumberFormat value={usePlusUpKitF} displayType={'text'} thousandSeparator={true} prefix={''} suffix ={'개'}/></b></div>
               <div><NumberFormat value={plusUpKitFNeed} displayType={'text'} thousandSeparator={true} prefix={'(필요개수: '} suffix ={'개)'}/></div>
             </div>
           </div>
