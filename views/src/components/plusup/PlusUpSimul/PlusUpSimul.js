@@ -53,9 +53,6 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
             <NumberFormat value={usePlusUpKitEp} displayType={'text'} thousandSeparator={true} prefix={'사용EP: '} suffix ={'EP'}/>
           </div>
         </div>
-        <div className={cx('adsense')} style={{paddingTop: '0.4rem', display: 'none'}}>
-          <Adsense32050/>
-        </div>
         <div className={cx('kit-trade-body')}>
           <div className={cx('kit-use')}>
             <div className={cx('kit-use-normal')} onClick={plusUpGo} tabIndex='1' onKeyPress={plusUpGoKey}>
