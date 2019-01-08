@@ -45,7 +45,7 @@ class PlusUpGridContainer extends Component {
 export default connect(
   (state) => ({
     plusUpGrid: state.plusup.toJS().plusUpGrid,
-    loading: state.pender.pending['weapon/GET_PLUSUP_GRID'],
+    loading: state.pender.pending['plusup/GET_PLUSUP_GRID'],
     currPlusUp: state.plusup.toJS().currPlusUp
   }),
   (dispatch) => ({

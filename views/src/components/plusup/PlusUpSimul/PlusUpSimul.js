@@ -2,14 +2,33 @@ import React from 'react';
 import styles from './PlusUpSimul.scss';
 import classNames from 'classnames/bind';
 import NumberFormat from 'react-number-format';
+import Adsense72890 from 'components/adsense/Adsense72890';
 
 const cx = classNames.bind(styles);
 
-const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF}) => {
-  const {usePlusUpKit, usePlusUpKitF, usePlusUpKitEp, upTryCnt, currPlusUp, resultComment} = plusUpSimul;
+const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKey, plusUpGoKeyF, currPlusDmg}) => {
+  const {
+    usePlusUpKit, usePlusUpKitF, usePlusUpKitEp, upTryCnt, simulCurrPlusUp, bestPlusUp, resultComment, plusUpLuck
+  } = plusUpSimul;
+
+  const plusUpLuckList = plusUpLuck.map(luck => {
+    const {up, success, fail, failZero} = luck;
+
+    return (
+      <div className={cx('luck-object')} key={up}>
+        <div className={cx('luck-object-up')}>+{up}</div>
+        <div className={cx('luck-object-suc')}>성공:{success}%</div>
+        <div className={cx('luck-object-fail')}>실패:{fail}%</div>
+        <div className={cx('luck-object-failzero')}>초기화:{failZero}%</div>
+      </div>
+    )
+  });
   
   return (
     <div className={cx('plusup-simul')}>
+      <div className={cx('adsense')}>
+        <Adsense72890/>
+      </div>
       <div className={cx('kit-trade')}>
         <div className={cx('kit-trade-title')}>
           <div className={cx('kit-trade-left')}>플러스업 강화 시뮬레이션</div>
@@ -24,18 +43,25 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF}) => {
           </div>
         </div>
         <div className={cx('plusup-notice')}>
-          {upTryCnt}회 시도. {currPlusUp}강 {resultComment} 사용EP: {usePlusUpKitEp}
+          <div className={cx('notice-left')}>{upTryCnt}회 시도</div>
+          <div className={cx('notice-center')}>
+            <div className={cx('notice-center-top')}>{resultComment}</div>
+            <div className={cx('notice-center-bottom')}>최고강화(일반): +{bestPlusUp}</div>
+          </div>
+          <div className={cx('notice-right')}>
+            <NumberFormat value={usePlusUpKitEp} displayType={'text'} thousandSeparator={true} prefix={'사용EP: '} suffix ={'EP'}/>
+          </div>
         </div>
         <div className={cx('kit-trade-body')}>
           <div className={cx('kit-use')}>
-            <div className={cx('kit-use-normal')} onClick={plusUpGo}>
+            <div className={cx('kit-use-normal')} onClick={plusUpGo} tabIndex='1' onKeyPress={plusUpGoKey}>
               <div>플러스업</div>
               <img src='/resource/img/plusupkit.gif' alt='일반'/>
               <div>
                 <NumberFormat value={usePlusUpKit} displayType={'text'} thousandSeparator={true} prefix={''} suffix ={'개'}/>
               </div>
             </div>
-            <div className={cx('kit-use-f')} onClick={plusUpGoF}>
+            <div className={cx('kit-use-f')} onClick={plusUpGoF} tabIndex='2' onKeyPress={plusUpGoKeyF}>
               <div>완벽한 플러스업</div>
               <img src='/resource/img/plusupkitf.gif' alt='완벽한'/>
               <div>
@@ -44,9 +70,22 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF}) => {
             </div>
           </div>
           <div className={cx('plusup-body')}>
-            <img src='/resource/img/plusupbody.gif' alt='몸체'/>
+            <div className={cx('plusup-grade')}>플러스:{simulCurrPlusUp}</div>
+            <div className={cx('plusup-dmg')}>공격력:{currPlusDmg}%</div>
           </div>
         </div>
+      </div>
+      <div className={cx('adsense')}>
+        <Adsense72890/>
+      </div>
+      <div className={cx('plus-luck-notice')}>
+        <div className={cx('luck-title')}>플러스업 확률안내</div>
+        <div className={cx('luck-list')}>
+          {plusUpLuckList}
+        </div>
+      </div>
+      <div className={cx('adsense')}>
+        <Adsense72890/>
       </div>
     </div>
   );

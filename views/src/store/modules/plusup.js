@@ -9,6 +9,7 @@ const GET_PLUSUP_GRID_WHERE = 'plusup/GET_PLUSUP_GRID_WHERE';
 const SET_PLUSUP_KIT = 'plusup/SET_PLUSUP_KIT';
 const INITIAL_PLUSUP_SIMUL = 'plusup/INITIAL_PLUSUP_SIMUL';
 const SET_PLUSUP_RESULT = 'plusup/SET_PLUSUP_RESULT';
+const SET_PLUSUP_COMMENT = 'plusup/SET_PLUSUP_COMMENT';
 
 export const getPlusUpGrid = createAction(GET_PLUSUP_GRID, api.getPlusUpGrid);
 export const setPlusUpGridWhere = createAction(SET_PLUSUP_GRID_WHERE);
@@ -16,6 +17,7 @@ export const getPlusUpGridWhere = createAction(GET_PLUSUP_GRID_WHERE);
 export const initialSimul = createAction(INITIAL_PLUSUP_SIMUL);
 export const setPlusUpKit = createAction(SET_PLUSUP_KIT);
 export const setPlusUpResult = createAction(SET_PLUSUP_RESULT);
+export const setPlusUpComment = createAction(SET_PLUSUP_COMMENT); //미사용
 
 const initialState = Map({
   plusUpGrid: List(),
@@ -29,8 +31,9 @@ const initialState = Map({
     usePlusUpKit: '0',
     usePlusUpKitF: '0',
     usePlusUpKitEp: '0',
-    currPlusUp: '0',
+    simulCurrPlusUp: '0',
     upTryCnt: '0',
+    bestPlusUp: '0',
     plusUpLuck: List(),
     resultComment: ''
   })
@@ -96,7 +99,8 @@ export default handleActions({
                   .setIn(['plusUpSimul', 'usePlusUpKitF'], '0')
                   .setIn(['plusUpSimul', 'usePlusUpKitEp'], '0')
                   .setIn(['plusUpSimul', 'upTryCnt'], '0')
-                  .setIn(['plusUpSimul', 'currPlusUp'], '0')
+                  .setIn(['plusUpSimul', 'simulCurrPlusUp'], '0')
+                  .setIn(['plusUpSimul', 'bestPlusUp'], '0')
                   .setIn(['plusUpSimul', 'resultComment'], '');
     }
 
@@ -109,13 +113,17 @@ export default handleActions({
   },
   [SET_PLUSUP_RESULT]: (state, action) => {
     const {
-      upTryCntBefore, currPlusUpBefore, resultComment, usePlusUpKitBefore, usePlusUpKitFBefore
+      upTryCntBefore, currPlusUpBefore, resultCommentBefore, usePlusUpKitBefore, usePlusUpKitFBefore, bestPlusUpBefore
     } = action.payload;
-    console.log("usePlusUpKitFBefore : " + usePlusUpKitFBefore);
+    
     return state.setIn(['plusUpSimul', 'upTryCnt'], String(upTryCntBefore))
-                .setIn(['plusUpSimul', 'currPlusUp'], String(currPlusUpBefore))
-                .setIn(['plusUpSimul', 'resultComment'], resultComment)
+                .setIn(['plusUpSimul', 'simulCurrPlusUp'], String(currPlusUpBefore))
+                .setIn(['plusUpSimul', 'resultComment'], resultCommentBefore)
                 .setIn(['plusUpSimul', 'usePlusUpKit'], String(usePlusUpKitBefore))
-                .setIn(['plusUpSimul', 'usePlusUpKitF'], String(usePlusUpKitFBefore));
+                .setIn(['plusUpSimul', 'usePlusUpKitF'], String(usePlusUpKitFBefore))
+                .setIn(['plusUpSimul', 'bestPlusUp'], String(bestPlusUpBefore));
+  },
+  [SET_PLUSUP_COMMENT]: (state, action) => {
+    return state.setIn(['plusUpSimul', 'resultComment'], '');
   }
 }, initialState); 

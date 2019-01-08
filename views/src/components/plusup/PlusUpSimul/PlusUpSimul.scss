@@ -53,14 +53,34 @@
 
     .plusup-notice {
       padding: 1rem;
-      text-align: center;
-      font-weight: bold;
-      color: $oc-red-8;
-      font-size: 2re;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      align-items: center;
+      align-content: center;
+      padding: 1rem;
+      @include material-shadow(1, 1);
 
       @include media("<small") {
         width: 100%;
         padding-top: 0.4rem;
+      }
+
+      .notice-left {
+        font-weight: bold;
+      }
+
+      .notice-center {
+        text-align: center;
+        width: 320px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        .notice-center-top {
+          height: 22px;
+          font-weight: bold;
+          color: $oc-blue-6;
+        }
       }
     }
 
@@ -119,8 +139,74 @@
       }
 
       .plusup-body {
+        width: 257px;
+        height: 314px;
+        background: url('/resource/img/plusupbody.gif');
+        font-weight: 410;
+        font-size: 0.8rem;
         
+        .plusup-grade {
+          position: relative;
+          display: inline-block;
+          top: 138px;
+          left: 26px;
+          color: $oc-yellow-2;
+          
+        }
+
+        .plusup-dmg {
+          position: relative;
+          display: inline-block;
+          top: 169px;
+          left: -21px;
+          color: $oc-red-7;
+        }
       }
     }
+  }
+
+  .plus-luck-notice {
+    .luck-title {
+      padding-bottom: 0.8em;
+      border-bottom: 1px solid $oc-gray-3;
+      color: $oc-gray-8;     
+    }
+
+    .luck-list {
+      padding: 1rem;
+
+      @include media("<small") {
+        width: 100%;
+        padding-top: 0.4rem;
+      }
+
+      display: grid;
+      grid-gap: 0.4rem;
+      grid-template-columns: repeat(6, 1fr);
+
+      @include media("<medium") {
+        grid-gap: 0.2rem;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .luck-object {
+        padding: 0.4rem;
+      }
+
+      .luck-object:hover {
+        cursor: pointer;
+        @include material-shadow(1, 1);
+        background: $oc-blue-0;       
+      }
+      .luck-object:active {
+        cursor: pointer;
+        @include material-shadow(1, 1);
+        background: $oc-blue-0;       
+      }
+    }
+  }
+
+  .adsense {
+    text-align: center;
   }
 }
