@@ -14,7 +14,7 @@ class Adsense970250 extends Component {
     return (
       <div className={cx('adsense-970250')}>
         <ins className="adsbygoogle ad970250"
-          style={{display:'inline-block', width:'970px', maxHeight:'250px'}}
+          style={{display:'inline-block', width:'970px', height:'250px'}}
           data-ad-client="ca-pub-1407998984163880"
           data-ad-slot="6481725676"
         ></ins>
