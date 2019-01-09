@@ -50,10 +50,6 @@ const PlusUpGrid = ({loading, wherePlusUpGrid, currPlusUp}) => {
       <div className={cx('plus-up-grid-list')}>
         {plusUpList}
       </div>
-      <div className={cx('plusup-grid-adsense')}>
-        <Adsense300250/>
-        <Adsense72890/>
-      </div>
     </div>
   );
 };

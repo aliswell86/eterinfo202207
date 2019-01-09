@@ -6,28 +6,6 @@
   align-items: flex-start;
   flex-wrap: wrap;
 
-  .upgrade-cost-adsense {
-    @include media("<medium") {
-      margin: auto;
-    }
-
-    .ad300250 {
-      @include media("<small") {
-        margin-right: 0.2rem;
-        display: none !important;
-      }
-    }
-
-    .ad72890 {
-      display: none !important;
-
-      @include media("<small") {
-        margin-right: 0.2rem;
-        display: inline-block !important;
-      }
-    }
-  }
-
   .upgrade-cost-title {
     padding-bottom: 0.6rem;
     border-bottom: 1px solid $oc-gray-3;

@@ -69,26 +69,4 @@
       }
     }
   }
-
-  .plusup-grid-adsense {
-    @include media("<wide") {
-      margin: auto;
-    }
-
-    .ad300250 {
-      @include media("<small") {
-        margin-right: 0.2rem;
-        display: none !important;
-      }
-    }
-
-    .ad72890 {
-      display: none !important;
-
-      @include media("<small") {
-        margin-right: 0.2rem;
-        display: inline-block !important;
-      }
-    }
-  }
 }

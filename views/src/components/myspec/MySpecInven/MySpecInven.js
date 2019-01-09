@@ -40,10 +40,6 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick}) => {
           </div>
         </div>
       </div>
-      <div className={cx('myspec-adsense')}>
-        <Adsense300250/>
-        <Adsense72890/>
-      </div>
     </div>
   );
 };

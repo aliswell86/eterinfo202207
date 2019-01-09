@@ -6,29 +6,6 @@
   align-items: center;
   flex-wrap: wrap;
 
-  .myspec-adsense {
-    @include media("<medium") {
-      margin: auto;
-    }
-
-    .ad300250 {
-
-      @include media("<small") {
-        margin-right: 0.2rem;
-        display: none !important;
-      }
-    }
-
-    .ad72890 {
-      display: none !important;
-
-      @include media("<small") {
-        margin-right: 0.2rem;
-        display: inline-block !important;
-      }
-    }
-  }
-
   .myspec-body {
     padding: 1rem;
 
