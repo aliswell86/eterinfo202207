@@ -1,24 +1,23 @@
 @import 'utils';
 
 .weapon-where-box {
-  // @include material-shadow(2, 0.4);
   border: 1px solid $oc-gray-2;
-  background: white;
-  width: 714px;
+  max-width: 1024px;
   margin: 0 auto;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.2rem;
+  background: white;
 
   padding: 1rem;
 
-  @include media("<wide") {
-    width: 768px;
-  }
-  @include media("<large") {
-    width: 768px;
-  }
-  @include media("<medium") {
-    width: 100%;
-  }
+  // @include media("<wide") {
+  //   width: 768px;
+  // }
+  // @include media("<large") {
+  //   width: 768px;
+  // }
+  // @include media("<medium") {
+  //   width: 100%;
+  // }
   @include media("<small") {
     width: 100%;
     padding: 0.4rem;

@@ -1,17 +1,18 @@
 @import 'utils';
 
 .footer {
-  background: $oc-gray-7;
+  background: $oc-gray-0;
   height: 3rem;
 
   // 내부 내용 중앙 정렬
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   flex-wrap: wrap;
+  padding-bottom: 0.2rem;
 
   font-weight: bold;
-  color: white;
+  color: $oc-gray-9;
 
   div a {
     color: $oc-blue-6;
