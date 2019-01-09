@@ -26,10 +26,7 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
   });
   
   return (
-    <div className={cx('plusup-simul')}>
-      <div className={cx('adsense')}>
-        <Adsense72890/>
-      </div>
+    <div className={cx('plusup-simul')}>      
       <div className={cx('kit-trade')}>
         <div className={cx('kit-trade-title')}>
           <div className={cx('kit-trade-left')}>플러스업 강화 시뮬레이션<span> (부위를 변경하면 처음부터 강화입니다.)</span></div>
@@ -52,6 +49,9 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
           <div className={cx('notice-right')}>
             <NumberFormat value={usePlusUpKitEp} displayType={'text'} thousandSeparator={true} prefix={'사용EP: '} suffix ={'EP'}/>
           </div>
+        </div>
+        <div className={cx('adsense')}>
+          <Adsense72890/>
         </div>
         <div className={cx('kit-trade-body')}>
           <div className={cx('kit-use')}>
