@@ -1,12 +1,6 @@
 @import 'utils';
 
 .weapon-powered-sel {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  
-
   .powered-body{
     button {
       transition: all .15s ease-in;

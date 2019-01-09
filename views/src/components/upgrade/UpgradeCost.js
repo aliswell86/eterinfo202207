@@ -2,8 +2,6 @@ import React from 'react';
 import styles from './UpgradeCost.scss';
 import classNames from 'classnames/bind';
 import NumberFormat from 'react-number-format';
-import Adsense300250 from 'components/adsense/Adsense300250';
-import Adsense72890 from 'components/adsense/Adsense72890';
 
 const cx = classNames.bind(styles);
 
@@ -14,7 +12,7 @@ const UpgradeCost = ({itemInfo, upgradeInfo, setUpgradeTax}) => {
   return (
     <div className={cx('upgrade-cost')}>
       <div className={cx('upgrade-cost-body')}>
-        <h2 className={(cx('upgrade-cost-title'))}>강화별 업그레이드 비용</h2>
+        <div className={(cx('upgrade-cost-title'))}>강화별 업그레이드 비용</div>
         {
           cost === '0' || cost === '' || cost === undefined  || cost === null ? <div>기준이 되는 가격정보가 없습니다. 준비중 입니다.</div> :
           <div className={cx('cost-head')}>
@@ -61,10 +59,6 @@ const UpgradeCost = ({itemInfo, upgradeInfo, setUpgradeTax}) => {
             </div>
           </div>
         }
-      </div>
-      <div className={cx('upgrade-cost-adsense')}>
-        <Adsense300250/>
-        <Adsense72890/>
       </div>
     </div>
   );

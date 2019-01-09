@@ -3,7 +3,7 @@
 .upgrade-cost {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
 
   .upgrade-cost-adsense {
@@ -28,17 +28,19 @@
     }
   }
 
+  .upgrade-cost-title {
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid $oc-gray-3;
+    color: $oc-gray-8;
+    font-weight: bold;
+  }
+
   .upgrade-cost-body {
     padding: 1rem;
 
     @include media("<small") {
       width: 100%;
       padding: 0.4rem;
-    }
-    .upgrade-cost-title {
-      padding-bottom: 1rem;
-      border-bottom: 1px solid $oc-gray-3;
-      color: $oc-gray-8;
     }
 
     .cost-head {

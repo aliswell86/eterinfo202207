@@ -3,7 +3,6 @@ import PageTemplate from 'components/common/PageTemplate';
 import ListWrapper from 'components/list/ListWrapper';
 import WeaponListContainer from 'containers/list/WeaponListContainer';
 import WeaponWhereBoxContainer from 'containers/wherebox/WeaponWhereBoxContainer';
-// import WeaponWhereboxAd from 'components/wherebox/WeaponWhereboxAd';
 import { Helmet } from "react-helmet";
 import Adsense970250 from 'components/adsense/Adsense970250';
 import Adsense300250 from 'components/adsense/Adsense300250';
@@ -17,14 +16,10 @@ const WeaponPage = ({history}) => {
       </Helmet>
       <Adsense970250/>
       <WeaponWhereBoxContainer/>
-      {/* <WeaponWhereboxAd/> */}
       <ListWrapper>        
         <WeaponListContainer history={history}/>
       </ListWrapper>
-      <div style={{paddingTop: '1rem', textAlign: 'center'}}>
-        <Adsense300250/>
-      </div>
-      
+      <Adsense300250/>
     </PageTemplate>
   )
 }

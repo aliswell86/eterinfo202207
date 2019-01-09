@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import styles from './Adsense72890.scss';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 class Adsense72890 extends Component {
 
@@ -8,11 +12,13 @@ class Adsense72890 extends Component {
 
   render() {
     return (
-      <ins className="adsbygoogle ad72890"
-        style={{display:'inline-block', width:'728px', height:'90px'}}
-        data-ad-client="ca-pub-1407998984163880"
-        data-ad-slot="5602074067"
-      ></ins>
+      <div className={cx('adsense-72890')}>
+        <ins className="adsbygoogle ad72890"
+          style={{display:'inline-block', width:'728px', maxHeight:'90px'}}
+          data-ad-client="ca-pub-1407998984163880"
+          data-ad-slot="5602074067"
+        ></ins>
+      </div>
     );
   }
 }

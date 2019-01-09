@@ -9,9 +9,7 @@ const cx = classNames.bind(styles);
 
 const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, history, cnt/*, totalCnt*/}) => {
   const adsenseTag = (cnt !== 0 && cnt % 5 === 0) ? 
-    <div className={cx('weapon-list-adsense')}>
-      <Adsense72890/>
-    </div> : '';
+  <Adsense72890/> : '';
     
   return (
     <>
