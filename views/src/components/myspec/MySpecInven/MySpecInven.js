@@ -3,8 +3,6 @@ import styles from './MySpecInven.scss';
 import classNames from 'classnames/bind';
 import Radio from 'components/common/Radio';
 import Checkbox from 'components/common/Checkbox';
-import Adsense300250 from 'components/adsense/Adsense300250';
-import Adsense72890 from 'components/adsense/Adsense72890';
 
 const cx = classNames.bind(styles);
 

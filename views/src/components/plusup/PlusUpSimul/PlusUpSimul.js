@@ -3,7 +3,6 @@ import styles from './PlusUpSimul.scss';
 import classNames from 'classnames/bind';
 import NumberFormat from 'react-number-format';
 import Adsense72890 from 'components/adsense/Adsense72890';
-import Adsense32050 from 'components/adsense/Adsense32050';
 
 const cx = classNames.bind(styles);
 

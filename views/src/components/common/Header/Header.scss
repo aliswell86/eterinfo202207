@@ -24,6 +24,7 @@
     // 내부 아이템 세로 중앙 정렬
     display: flex;
     align-items: center;
+    justify-content: space-between;
     
     // 반응형 레이아웃
     @include media("<wide") {
@@ -39,12 +40,40 @@
       color: white;
       font-size: 1.2rem;
       font-weight: 600;
+      width: 100px;
     }
 
     .right {
       // 우측 내용
-      margin-left: auto;
+      // margin-left: auto;
       color: white;
+      display: flex;
+      align-items: center;
+      align-content: flex-end;
+      text-align: right;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 246px;
+
+      .total-search {
+        margin-left: auto;
+        padding-right: 0.4rem;
+        vertical-align: middle;
+
+        .total-search-input {
+          border-radius: 0.2rem;
+          border: 1px solid $oc-gray-4;
+          margin-top: 0.2rem;
+          padding: 0.3rem;
+          font-size: 0.7rem;
+        }
+      }
+
+      .search-img {
+        position: relative;
+        top: 10px;
+        left: 10px;
+      }
     }
   }
 }
