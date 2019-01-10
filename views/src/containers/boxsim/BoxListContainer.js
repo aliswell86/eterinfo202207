@@ -17,6 +17,8 @@ class BoxListContainer extends Component {
 
   componentDidMount() {
     this.getBoxList();
+
+    window.scrollTo(0, 0);
   }
 
   boxInfoList = (packageCode) => {

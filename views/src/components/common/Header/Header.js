@@ -15,7 +15,7 @@ const Header = ({history}) => {
         </div>
         <div className={cx('right')}>
           <ItemMenu/>
-          <div className={cx('total-search')}>
+          {/* <div className={cx('total-search')}>
             <input className={cx('total-search-input')}
             type='text'
             name='totalSearch'
@@ -25,8 +25,7 @@ const Header = ({history}) => {
                 window.open(`https://www.google.com/search?q=site%3Aeterinfo.kr+${e.target.value}`);
               }
             }}/>
-            {/* <img className={cx('search-img')} src='/favicon.ico' alt="돋보기" width='24' height='24'/> */}
-          </div>
+          </div> */}
         </div>
       </div>
     </header>

@@ -16,6 +16,8 @@ class PlusUpGridContainer extends Component {
 
   componentDidMount() {
     this.getPlusUpGrid();
+
+    window.scrollTo(0, 0);
   }
 
   handleChange = (e) => {
