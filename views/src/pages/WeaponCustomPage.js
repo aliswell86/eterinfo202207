@@ -6,7 +6,6 @@ import WeaponPoweredSelContanier from 'containers/weapon/WeaponPoweredSelContani
 import MySpecInvenContainer from 'containers/myspec/MySpecInvenContainer';
 import MyInfoViewContainer from 'containers/myspec/MyInfoViewContainer';
 import Adsense970250 from 'components/adsense/Adsense970250';
-import Adsense72890 from 'components/adsense/Adsense72890';
 import Adsense300250 from 'components/adsense/Adsense300250';
 
 const WeaponCustomPage = ({match}) => {
@@ -20,7 +19,7 @@ const WeaponCustomPage = ({match}) => {
         <WeaponViewContainer id={weaponId}/>
         <WeaponPoweredSelContanier/>
       </ListWrapper>
-      <Adsense72890/>
+      <Adsense300250/>
       <ListWrapper>
         <MyInfoViewContainer/>
       </ListWrapper>

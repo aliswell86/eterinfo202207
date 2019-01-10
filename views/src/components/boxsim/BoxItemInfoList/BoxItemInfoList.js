@@ -3,7 +3,7 @@ import styles from './BoxItemInfoList.scss';
 import classNames from 'classnames/bind';
 import ListWrapper from 'components/list/ListWrapper';
 import NumberFormat from 'react-number-format';
-import Adsense72890 from 'components/adsense/Adsense72890';
+import Adsense300250 from 'components/adsense/Adsense300250';
 
 const cx = classNames.bind(styles);
 
@@ -44,9 +44,6 @@ const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDispla
   
   return (
     <div className={cx('box-simul')}>
-      <div className={cx('adsense')}>
-        <Adsense72890/>
-      </div>
       <ListWrapper>
         <div className={cx('box-iteminfo')}>
           <div className={cx('box-iteminfo-title')}>
@@ -64,9 +61,7 @@ const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDispla
           </div>
         </div>
       </ListWrapper>
-      <div className={cx('adsense')}>
-        <Adsense72890/>
-      </div>
+      <Adsense300250/>
       <ListWrapper>
         <div className={cx('box-result')}>
           <div className={cx('box-result-title')}>
@@ -86,9 +81,6 @@ const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDispla
           </div>
         </div>
       </ListWrapper>
-      <div className={cx('adsense')}>
-        <Adsense72890/>
-      </div>
     </div>
   );
 };

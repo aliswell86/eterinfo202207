@@ -6,7 +6,7 @@ const innerStyle = {
 }
 
 const ItemMenu = () => (
-  <div>
+  <div style={{padding: '0.2rem'}}>
     <Link to="/wp">
       무기정보
     </Link>
