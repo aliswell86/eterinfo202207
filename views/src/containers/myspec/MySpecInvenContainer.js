@@ -8,26 +8,29 @@ import * as weaponActions from 'store/modules/weapon';
 class MySpecInvenContainer extends Component {
 
   handleChangeNum = (e) => {
-    const {MySpecActions, currWeaponDmg, currWeaponCri, currWeaponStype1} = this.props;
+    const {MySpecActions, itemInfo} = this.props;
+    const {dmg, cri, stype1} = itemInfo;
     const {name, value} = e.target;
     
-    if(Number(value) > -1 && Number(value) < 1000) {
+    if(Number(value) > -1 && Number(value) < 501) {
       MySpecActions.setMyStat({name, value});
     }
     
-    MySpecActions.getInvenDmage({currWeaponDmg, currWeaponCri, currWeaponStype1});
+    MySpecActions.getInvenDmage({dmg, cri, stype1});
   }
 
   handleChangeCheck = (e) => {
-    const {MySpecActions, currWeaponDmg, currWeaponCri, currWeaponStype1} = this.props;
+    const {MySpecActions, itemInfo} = this.props;
+    const {dmg, cri, stype1} = itemInfo;
     const {name, value, checked} = e.target;
+
     if(name === 'isParasite') {
       MySpecActions.setMyStat({name, checked});
     }else{
       MySpecActions.setMyStat({name, value});
     }
 
-    MySpecActions.getInvenDmage({currWeaponDmg, currWeaponCri, currWeaponStype1});
+    MySpecActions.getInvenDmage({dmg, cri, stype1});
   }
 
   handleClick = (e) => {
@@ -50,9 +53,7 @@ class MySpecInvenContainer extends Component {
 export default connect(
   (state) => ({
     myStat: state.myspec.toJS().myStat,
-    currWeaponDmg: state.weapon.toJS().weaponView.itemInfo.dmg,
-    currWeaponCri: state.weapon.toJS().weaponView.itemInfo.cri,
-    currWeaponStype1: state.weapon.toJS().weaponView.itemInfo.stype1,
+    itemInfo: state.weapon.toJS().weaponView.itemInfo
   }),
   (dispatch) => ({
     MySpecActions: bindActionCreators(myspecActions, dispatch),

@@ -36,17 +36,17 @@ export default handleActions({
     }
   },
   [GET_INVEN_DMAGE]: (state, action) => {
-    const {currWeaponDmg, currWeaponCri, currWeaponStype1} = action.payload;
+    const {dmg, cri, stype1} = action.payload;
     const {conStat, skillStat, itemDmgUp, itemCriUp, limitDmg, isParasite, whereDoping} = state.toJS().myStat;
 
-    const mainStat = currWeaponStype1 === '1' ? skillStat : conStat;
-    const currWeaponDmgCalc = currWeaponDmg === undefined ? 1 : currWeaponDmg;
+    const mainStat = stype1 === '1' ? skillStat : conStat;
+    const currWeaponDmgCalc = dmg === undefined ? 1 : dmg;
     const parasiteUp = isParasite ? 3 : 0;
     const default_inven_dmg = Math.floor(Number(currWeaponDmgCalc)+Number(currWeaponDmgCalc)*(Number(mainStat)/100)+Number(mainStat));
     const item_inven_dmg = (default_inven_dmg/100)*Number(itemDmgUp);
     const inven_dmg = Math.floor((default_inven_dmg + item_inven_dmg)*(1+(Number(limitDmg)/100))*(1+parasiteUp/10)*(1+Number(whereDoping)/10));
-    console.log("currWeaponCri : " + currWeaponCri);
-    let inven_cri = Math.floor(((currWeaponCri/5) * ((skillStat/100)+1)) + itemCriUp + 1);
+
+    let inven_cri = Math.floor(((Number(cri)/5) * ((Number(skillStat)/100)+1)) + Number(itemCriUp) + 1);
     if(inven_cri > 50) inven_cri = 50;
     const head_atk_rt = (3+(skillStat/50)).toFixed(2);
 

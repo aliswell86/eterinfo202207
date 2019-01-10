@@ -28,9 +28,11 @@ exports.weaponView = async (ctx) => {
     }
 
     const poweredByDmg = poweredByCalc(itemInfo.dmg);
+    const poweredByCri = criByCalc(itemInfo.cri);
     const item = {
       itemInfo: itemInfo,
-      poweredByDmg: poweredByDmg
+      poweredByDmg: poweredByDmg,
+      poweredByCri: poweredByCri
     }
     
     ctx.body = item;
@@ -62,6 +64,17 @@ poweredByCalc = (item_dmg) => {
     }
 
     up_list.push(up_cls_list)
+  }
+
+  return up_list;
+};
+
+criByCalc = (item_cri) => {
+  var up_classes = [1, 1.1, 1.3, 1.5, 2, 3, 4];
+  var up_list = [];
+
+  for(var i in up_classes) {
+    up_list.push(Math.floor(Number(item_cri)*up_classes[i]));
   }
 
   return up_list;

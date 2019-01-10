@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as weaponActions from 'store/modules/weapon';
 import * as myspecActions from 'store/modules/myspec';
+import {fromJS} from 'immutable';
 import isEmptyObject from 'is-empty-object';
 
 class WeaponPoweredSelContanier extends Component {
@@ -13,9 +14,10 @@ class WeaponPoweredSelContanier extends Component {
     const {WeaponActions, currWeaponUpDv, weaponView} = this.props;
     const isWeaponView = isEmptyObject(weaponView.itemInfo);
 
-    if(!isWeaponView && (currWeaponUpDv.get(name) !== value)) {
+    if(!isWeaponView && (fromJS(currWeaponUpDv).get(name) !== value)) {
       if(name === 'isCriUp') {
         WeaponActions.setWeaponUpDv({name, checked});
+        WeaponActions.setWeaponUpCri();
       }else{
         WeaponActions.setWeaponUpDv({name, value});
         WeaponActions.setWeaponUpDmg();
@@ -30,19 +32,16 @@ class WeaponPoweredSelContanier extends Component {
     const {loading, currWeaponUpDv} = this.props;
 
     return (
-      <WeaponPoweredSel setWeaponUpDv={handleUpdvEvent} loading={loading} currWeaponUpDv={currWeaponUpDv.toJS()}/>
+      <WeaponPoweredSel setWeaponUpDv={handleUpdvEvent} loading={loading} currWeaponUpDv={currWeaponUpDv}/>
     );
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const currWeaponDmg = this.props.weaponView.itemInfo.dmg;
-    const currWeaponCri = this.props.weaponView.itemInfo.cri;
-    const currWeaponStype1 = this.props.weaponView.itemInfo.stype1;
-    const {MySpecActions} = this.props;
-    console.log(currWeaponCri, currWeaponDmg);
-    if(prevProps.weaponView.itemInfo.dmg !== currWeaponDmg ||
-        prevProps.weaponView.itemInfo.cri !== currWeaponCri) {
-      MySpecActions.getInvenDmage({currWeaponDmg, currWeaponCri, currWeaponStype1});
+    const {MySpecActions, weaponView} = this.props;
+    const {dmg, cri, stype1} = weaponView.itemInfo;
+
+    if(prevProps.weaponView.itemInfo.dmg !== dmg || prevProps.weaponView.itemInfo.cri !== cri) {
+      MySpecActions.getInvenDmage({dmg, cri, stype1});
     }
   }
 }
@@ -50,7 +49,7 @@ class WeaponPoweredSelContanier extends Component {
 export default connect(
   (state) => ({
     weaponView: state.weapon.toJS().weaponView,
-    currWeaponUpDv: state.weapon.get('currWeaponUpDv'),
+    currWeaponUpDv: state.weapon.toJS().currWeaponUpDv,
     loading: state.pender.pending['weapon/GET_WEAPON_VIEW']
   }),
   (dispatch) => ({

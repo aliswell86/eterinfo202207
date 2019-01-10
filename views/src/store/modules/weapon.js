@@ -9,6 +9,7 @@ const GET_WEAPON_WHERE_LIST = 'weapon/GET_WEAPON_WHERE_LIST';
 const GET_WEAPON_VIEW = 'weapon/GET_WEAPON_VIEW';
 const SET_WEAPON_UP_DV = 'weapon/SET_WEAPON_UP_DV';
 const SET_WEAPON_UP_DMG = 'weapon/SET_WEAPON_UP_DMG';
+const SET_WEAPON_UP_CRI = 'weapon/SET_WEAPON_UP_CRI';
 const GET_WEAPON_SEARCH_LIST = 'weapon/SET_WEAPONE_UP_DMG';
 
 export const setWeaponWhere = createAction(SET_WEAPON_WHERE);
@@ -17,6 +18,7 @@ export const getWeaponWhereList = createAction(GET_WEAPON_WHERE_LIST);
 export const getWeaponView = createAction(GET_WEAPON_VIEW, api.getWeaponView);
 export const setWeaponUpDv = createAction(SET_WEAPON_UP_DV);
 export const setWeaponUpDmg = createAction(SET_WEAPON_UP_DMG);
+export const setWeaponUpCri = createAction(SET_WEAPON_UP_CRI);
 export const getWeaponSearchList = createAction(GET_WEAPON_SEARCH_LIST);
 
 const initialState = Map({
@@ -79,12 +81,13 @@ export default handleActions({
     type: GET_WEAPON_VIEW,
     onSuccess: (state, action) => {
       const {data: items} = action.payload;
-      const {bodyUp, dmgUp} = state.toJS().currWeaponUpDv;
+      const {bodyUp, dmgUp, isCriUp} = state.toJS().currWeaponUpDv;
       const poweredByDmg = items.poweredByDmg[Number(bodyUp)][Number(dmgUp)];
+      const poweredByCri = !isCriUp ? items.poweredByCri[0] : items.poweredByCri[3]; // 전문
       items.itemInfo.dmg = poweredByDmg;
+      items.itemInfo.cri = poweredByCri;
       
-      return state.set('weaponView', fromJS(items))
-                  .setIn(['weaponView','itemInfo','calcCri'], Math.floor(Number(items.itemInfo.cri) * 1.5));
+      return state.set('weaponView', fromJS(items));
     }
   }),
   [SET_WEAPON_WHERE]: (state, action) => {
@@ -161,6 +164,12 @@ export default handleActions({
     const {bodyUp, dmgUp} = state.toJS().currWeaponUpDv;
     const value = state.getIn(['weaponView','poweredByDmg']).toJS()[Number(bodyUp)][Number(dmgUp)];
     return state.setIn(['weaponView','itemInfo','dmg'], value);
+  },
+  [SET_WEAPON_UP_CRI]: (state, action) => {
+    const {isCriUp} = state.toJS().currWeaponUpDv;
+    const poweredByCri = state.getIn(['weaponView','poweredByCri']);
+    const value = !isCriUp ? poweredByCri.get(0) : poweredByCri.get(3);
+    return state.setIn(['weaponView','itemInfo','cri'], value);
   },
   [GET_WEAPON_SEARCH_LIST]: (state, action) => {
     const value = action.payload;

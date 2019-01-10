@@ -6,7 +6,7 @@ import NumberFormat from 'react-number-format';
 const cx = classNames.bind(styles);
 
 const MyInfoView = ({myStat}) => {
-  const {invenDmg, invenCri} = myStat;
+  const {invenDmg, invenCri, headShotRt} = myStat;
 
   return (
     <div className={cx('myinfo-view')}>
@@ -16,7 +16,8 @@ const MyInfoView = ({myStat}) => {
           <NumberFormat value={invenDmg} displayType={'text'} thousandSeparator={true} prefix={'공격력: '} />
         </div>
         <div className={cx('inven-cri')}>
-          <NumberFormat value={invenCri} displayType={'text'} thousandSeparator={true} prefix={'치명: '} />
+          <NumberFormat value={invenCri} displayType={'text'} thousandSeparator={true} prefix={'치명: '} suffix={'%'} />
+          <NumberFormat value={headShotRt} displayType={'text'} thousandSeparator={true} prefix={'/헤드샷: '} suffix={'배'} />
         </div>
       </div>
     </div>
