@@ -26,14 +26,15 @@ class WeaponViewContainer extends Component {
 
   render() {
     const {itemInfo} = this.props.weaponView;
-    const {currWeaponUpDv, location} = this.props;
+    const {currWeaponUpDv, location, loading} = this.props;
     const {pathname} = location;
     
     return (
       <WeaponView 
       itemInfo={itemInfo}
       currWeaponUpDv={currWeaponUpDv}
-      pathname={pathname}/>
+      pathname={pathname}
+      loading={loading}/>
     );
   }
 }

@@ -60,6 +60,7 @@ const initialState = Map({
   currWeaponUpDv: Map({ // 현재 선택된 무기view 업글상태
     bodyUp: '0', // 몸체업
     dmgUp: '0', // 강화업
+    isCriUp: false
   }),
   weaponSearchList: List(), // 조회 미리보기 리스트
 });
@@ -82,7 +83,8 @@ export default handleActions({
       const poweredByDmg = items.poweredByDmg[Number(bodyUp)][Number(dmgUp)];
       items.itemInfo.dmg = poweredByDmg;
       
-      return state.set('weaponView', fromJS(items));
+      return state.set('weaponView', fromJS(items))
+                  .setIn(['weaponView','itemInfo','calcCri'], Math.floor(Number(items.itemInfo.cri) * 1.5));
     }
   }),
   [SET_WEAPON_WHERE]: (state, action) => {
@@ -148,8 +150,12 @@ export default handleActions({
     // return state.set('weaponWheres', Object.values(weapons.reduce((acc,cur)=>Object.assign(acc,{[cur._id]:cur}),{})));
   },
   [SET_WEAPON_UP_DV]: (state, action) => {
-    const {name, value} = action.payload;
-    return state.setIn(['currWeaponUpDv', name], value);
+    const {name, value, checked} = action.payload;
+    if(name === 'isCriUp') {
+      return state.setIn(['currWeaponUpDv', name], checked);
+    }else{
+      return state.setIn(['currWeaponUpDv', name], value);
+    }
   },
   [SET_WEAPON_UP_DMG]: (state, action) => {
     const {bodyUp, dmgUp} = state.toJS().currWeaponUpDv;

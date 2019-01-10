@@ -10,7 +10,9 @@ class MyInfoViewContainer extends Component {
     const {myStat, itemInfo} = this.props;
 
     return (
-      <MyInfoView myStat={myStat} itemInfo={itemInfo}/>
+      <MyInfoView
+        myStat={myStat}
+        itemInfo={itemInfo}/>
     );
   }
 }

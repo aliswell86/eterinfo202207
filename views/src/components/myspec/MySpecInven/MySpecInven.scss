@@ -25,6 +25,13 @@
       padding-bottom: 1rem;
       border-bottom: 1px solid $oc-gray-3;
       color: $oc-gray-8;
+
+      @include media("<small") {
+        padding-bottom: 0.4rem;
+        margin-top: 0.2rem;
+        margin-bottom: 0.4rem;
+        font-size: 1rem;
+      }
     }
 
     .spec-dv {
@@ -35,21 +42,29 @@
       flex-wrap: wrap;
 
       .mystat {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 0.4rem;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: space-between;
+        // align-items: center;
+        // flex-wrap: wrap;
     
-        input {
-          width: 80px;
-        }
         div {
-          margin-bottom: 0.4rem;
-
+          div {
+            font-weight: bold;
+          }
+          .mystat-con {
+            color: $oc-red-9;
+          }
+          .mystat-skill {
+            color: $oc-yellow-5;
+          }
           input {
-            padding: 0.4rem;
+            padding: 0.2rem;
             height: 30px;
+            width: 70px;
           }
         }
       }

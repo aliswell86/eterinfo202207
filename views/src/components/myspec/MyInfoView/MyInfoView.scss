@@ -3,15 +3,41 @@
 .myinfo-view {
   padding: 1rem;
 
+  @include media("<small") {
+    width: 100%;
+    padding: 0.4rem;
+  }
+
   .view-title {
     padding-bottom: 1rem;
     border-bottom: 1px solid $oc-gray-3;
     color: $oc-gray-8;
+
+    @include media("<small") {
+      padding-bottom: 0.4rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.4rem;
+      font-size: 1rem;
+    }
   }
 
-  .inven-dmg {
-    color: $oc-red-9;
+  .inven-body {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
     font-weight: bold;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
+
+    .inven-dmg {
+      color: $oc-red-9;
+    }
+
+    .inven-cri {
+      color: $oc-yellow-5;
+    }
   }
+
+  
 }

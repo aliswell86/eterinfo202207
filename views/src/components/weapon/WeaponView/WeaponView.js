@@ -7,11 +7,11 @@ import {Link} from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
+const WeaponView = ({itemInfo, currWeaponUpDv, pathname, loading}) => {
   const {
-    item_nm, img_src, item_dtl_dv, dmg, cri, speed, tier, size, illegal, _id
+    item_nm, img_src, item_dtl_dv, dmg, cri, calcCri, speed, tier, size, illegal, _id
   } = itemInfo;
-  const {bodyUp, dmgUp} = currWeaponUpDv;
+  const {bodyUp, dmgUp, isCriUp} = currWeaponUpDv;
   const titleDefaultText = '이터널시티 무기정보';  
   let titleText = '';
   let costomLinkMsg = '';
@@ -75,7 +75,9 @@ const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
           <div className={cx('dmg')}>
             파괴력:<NumberFormat value={dmg} displayType={'text'} thousandSeparator={true} prefix={''} />
           </div>
-          <div className={cx('cri')}>치명타:{cri}</div>          
+          <div className={cx('cri')}>치명타:
+            {!isCriUp ? calcCri : cri}
+          </div>          
         </div>
         <div className={cx('sub_option')}>
           <div className={cx('tier')}>{tier}등급</div>

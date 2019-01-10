@@ -4,16 +4,13 @@ import classNames from 'classnames/bind';
 import ListWrapper from 'components/list/ListWrapper';
 import NumberFormat from 'react-number-format';
 import Adsense300250 from 'components/adsense/Adsense300250';
+import isEmptyObject from 'is-empty-object';
 
 const cx = classNames.bind(styles);
 
-const isEmpty = (obj) => {
-  return Object.keys(obj).length === 0 && JSON.stringify(obj) === JSON.stringify({});
-}
-
 const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDisplay, initialBoxResultList, boxResultSearch, boxCnt}) => {
   const innerStyle = {
-    display: !isEmpty(currBox) ? 'block' : 'none'
+    display: !isEmptyObject(currBox) ? 'block' : 'none'
   }
   const {packageCode, packageName, itemInfo, display, cost} = currBox;
   const innerStyle1 = {

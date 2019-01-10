@@ -1,13 +1,16 @@
 import React from 'react';
 import styles from './WeaponPoweredSel.scss';
 import classNames from 'classnames/bind';
+import Checkbox from 'components/common/Checkbox';
 
 const cx = classNames.bind(styles);
 
-const WeaponPoweredSel = ({setWeaponUpDv, loading}) => {
+const WeaponPoweredSel = ({setWeaponUpDv, currWeaponUpDv}) => {
+  
   return (
     <div className={cx('weapon-powered-sel')}>
       <div className={cx('powered-body')}>
+        <div style={{padding: '0.4rem'}}><Checkbox name="isCriUp" onChange={setWeaponUpDv} checked={currWeaponUpDv.isCriUp}>치명전문</Checkbox></div>
         <div className={cx('bodyup-btns')}>
           <div><button name='bodyUp' onClick={setWeaponUpDv} value='0'>기본</button></div>
           <div><button name='bodyUp' onClick={setWeaponUpDv} value='1'>초보</button></div>
@@ -15,7 +18,9 @@ const WeaponPoweredSel = ({setWeaponUpDv, loading}) => {
           <div><button name='bodyUp' onClick={setWeaponUpDv} value='3'>전문</button></div>
           <div><button name='bodyUp' onClick={setWeaponUpDv} value='4'>장인</button></div>
           <div><button name='bodyUp' onClick={setWeaponUpDv} value='5'>명인</button></div>
-          <div><button name='bodyUp' onClick={setWeaponUpDv} value='6'>O.T.</button></div>
+          <div style={{marginRight: '0.1rem'}}>
+            <button name='bodyUp' onClick={setWeaponUpDv} value='6'>O.T.</button>
+          </div>
         </div>
         <div className={cx('dmgup-btns')}>
           <div><button name='dmgUp' onClick={setWeaponUpDv} value='0'>노강</button></div>

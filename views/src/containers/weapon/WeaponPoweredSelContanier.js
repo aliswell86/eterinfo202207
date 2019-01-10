@@ -9,31 +9,40 @@ import isEmptyObject from 'is-empty-object';
 class WeaponPoweredSelContanier extends Component {
 
   handleUpdvEvent = (e) => {
-    const {name, value} = e.target;
+    const {name, value, checked} = e.target;
     const {WeaponActions, currWeaponUpDv, weaponView} = this.props;
     const isWeaponView = isEmptyObject(weaponView.itemInfo);
 
     if(!isWeaponView && (currWeaponUpDv.get(name) !== value)) {
-      WeaponActions.setWeaponUpDv({name, value});
-      WeaponActions.setWeaponUpDmg();    
+      if(name === 'isCriUp') {
+        WeaponActions.setWeaponUpDv({name, checked});
+      }else{
+        WeaponActions.setWeaponUpDv({name, value});
+        WeaponActions.setWeaponUpDmg();
+      }  
+
+      
     }    
   }
 
   render() {
     const {handleUpdvEvent} = this;
-    const {loading} = this.props;
+    const {loading, currWeaponUpDv} = this.props;
 
     return (
-      <WeaponPoweredSel setWeaponUpDv={handleUpdvEvent} loading={loading}/>
+      <WeaponPoweredSel setWeaponUpDv={handleUpdvEvent} loading={loading} currWeaponUpDv={currWeaponUpDv.toJS()}/>
     );
   }
 
   componentDidUpdate(prevProps, prevState) {
     const currWeaponDmg = this.props.weaponView.itemInfo.dmg;
+    const currWeaponCri = this.props.weaponView.itemInfo.cri;
+    const currWeaponStype1 = this.props.weaponView.itemInfo.stype1;
     const {MySpecActions} = this.props;
-
-    if(prevProps.weaponView.itemInfo.dmg !== currWeaponDmg) {
-      MySpecActions.getInvenDmage(currWeaponDmg);
+    console.log(currWeaponCri, currWeaponDmg);
+    if(prevProps.weaponView.itemInfo.dmg !== currWeaponDmg ||
+        prevProps.weaponView.itemInfo.cri !== currWeaponCri) {
+      MySpecActions.getInvenDmage({currWeaponDmg, currWeaponCri, currWeaponStype1});
     }
   }
 }

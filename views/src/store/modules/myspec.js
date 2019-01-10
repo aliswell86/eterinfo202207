@@ -12,11 +12,16 @@ export const getInvenDmage = createAction(GET_INVEN_DMAGE);
 const initialState = Map({
   myStat: Map({
     mainStat: '5',
+    conStat: '5',
+    skillStat: '5',
     itemDmgUp: '0',
+    itemCriUp: '0',
     limitDmg: '0',
     isParasite: false,
     whereDoping: '0',
-    invenDmg: 5
+    invenDmg: 5,
+    invenCri: 1,
+    headShotRt: 3
   })
 });
 
@@ -31,15 +36,22 @@ export default handleActions({
     }
   },
   [GET_INVEN_DMAGE]: (state, action) => {
-    const currWeaponDmg = action.payload;
-    const {mainStat, itemDmgUp, limitDmg, isParasite, whereDoping} = state.toJS().myStat;
+    const {currWeaponDmg, currWeaponCri, currWeaponStype1} = action.payload;
+    const {conStat, skillStat, itemDmgUp, itemCriUp, limitDmg, isParasite, whereDoping} = state.toJS().myStat;
+
+    const mainStat = currWeaponStype1 === '1' ? skillStat : conStat;
     const currWeaponDmgCalc = currWeaponDmg === undefined ? 1 : currWeaponDmg;
     const parasiteUp = isParasite ? 3 : 0;
     const default_inven_dmg = Math.floor(Number(currWeaponDmgCalc)+Number(currWeaponDmgCalc)*(Number(mainStat)/100)+Number(mainStat));
     const item_inven_dmg = (default_inven_dmg/100)*Number(itemDmgUp);
     const inven_dmg = Math.floor((default_inven_dmg + item_inven_dmg)*(1+(Number(limitDmg)/100))*(1+parasiteUp/10)*(1+Number(whereDoping)/10));
+    console.log("currWeaponCri : " + currWeaponCri);
+    let inven_cri = Math.floor(((currWeaponCri/5) * ((skillStat/100)+1)) + itemCriUp + 1);
+    if(inven_cri > 50) inven_cri = 50;
+    const head_atk_rt = (3+(skillStat/50)).toFixed(2);
 
-    return state.setIn(['myStat', 'invenDmg'], inven_dmg);
-
+    return state.setIn(['myStat', 'invenDmg'], inven_dmg)
+                .setIn(['myStat', 'invenCri'], inven_cri)
+                .setIn(['myStat', 'headShotRt'], head_atk_rt);
   }
 }, initialState);

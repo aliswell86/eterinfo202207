@@ -8,18 +8,18 @@ import * as weaponActions from 'store/modules/weapon';
 class MySpecInvenContainer extends Component {
 
   handleChangeNum = (e) => {
-    const {MySpecActions, currWeaponDmg} = this.props;
+    const {MySpecActions, currWeaponDmg, currWeaponCri, currWeaponStype1} = this.props;
     const {name, value} = e.target;
     
     if(Number(value) > -1 && Number(value) < 1000) {
-      MySpecActions.setMyStat({name, value, currWeaponDmg});
+      MySpecActions.setMyStat({name, value});
     }
     
-    MySpecActions.getInvenDmage(currWeaponDmg);
+    MySpecActions.getInvenDmage({currWeaponDmg, currWeaponCri, currWeaponStype1});
   }
 
   handleChangeCheck = (e) => {
-    const {MySpecActions, currWeaponDmg} = this.props;
+    const {MySpecActions, currWeaponDmg, currWeaponCri, currWeaponStype1} = this.props;
     const {name, value, checked} = e.target;
     if(name === 'isParasite') {
       MySpecActions.setMyStat({name, checked});
@@ -27,7 +27,7 @@ class MySpecInvenContainer extends Component {
       MySpecActions.setMyStat({name, value});
     }
 
-    MySpecActions.getInvenDmage(currWeaponDmg);
+    MySpecActions.getInvenDmage({currWeaponDmg, currWeaponCri, currWeaponStype1});
   }
 
   handleClick = (e) => {
@@ -38,7 +38,11 @@ class MySpecInvenContainer extends Component {
     const {handleChangeNum, handleChangeCheck, handleClick} = this;
     const {myStat} = this.props;
     return (
-      <MySpecInven myStatInsert={handleChangeNum} myStat={myStat} setParaDoping={handleChangeCheck} inputClick={handleClick}/>
+      <MySpecInven
+        myStatInsert={handleChangeNum}
+        myStat={myStat}
+        setParaDoping={handleChangeCheck}
+        inputClick={handleClick}/>
     );
   }
 }
@@ -46,7 +50,9 @@ class MySpecInvenContainer extends Component {
 export default connect(
   (state) => ({
     myStat: state.myspec.toJS().myStat,
-    currWeaponDmg: state.weapon.toJS().weaponView.itemInfo.dmg
+    currWeaponDmg: state.weapon.toJS().weaponView.itemInfo.dmg,
+    currWeaponCri: state.weapon.toJS().weaponView.itemInfo.cri,
+    currWeaponStype1: state.weapon.toJS().weaponView.itemInfo.stype1,
   }),
   (dispatch) => ({
     MySpecActions: bindActionCreators(myspecActions, dispatch),
