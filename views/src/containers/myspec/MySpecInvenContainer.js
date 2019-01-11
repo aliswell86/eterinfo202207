@@ -39,7 +39,11 @@ class MySpecInvenContainer extends Component {
 
   render() {
     const {handleChangeNum, handleChangeCheck, handleClick} = this;
-    const {myStat} = this.props;
+    const {myStat, weaponMapping, itemInfo} = this.props;
+    const {item_dtl_dv} = itemInfo;
+    const filterList = weaponMapping.filter(name => name.apiName === item_dtl_dv);
+    // const appName = filterList[0].appName;
+    console.log(filterList[0].appName);
     return (
       <MySpecInven
         myStatInsert={handleChangeNum}
@@ -53,7 +57,8 @@ class MySpecInvenContainer extends Component {
 export default connect(
   (state) => ({
     myStat: state.myspec.toJS().myStat,
-    itemInfo: state.weapon.toJS().weaponView.itemInfo
+    itemInfo: state.weapon.toJS().weaponView.itemInfo,
+    weaponMapping: state.common.toJS().weaponMapping
   }),
   (dispatch) => ({
     MySpecActions: bindActionCreators(myspecActions, dispatch),

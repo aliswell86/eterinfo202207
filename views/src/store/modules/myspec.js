@@ -1,5 +1,6 @@
 import {createAction, handleActions} from 'redux-actions';
-import {Map/*, List, fromJS*/} from 'immutable';
+import {Map,/*, List, fromJS*/
+fromJS} from 'immutable';
 // import {pender} from 'redux-pender';
 // import * as api from 'lib/api';
 
@@ -22,6 +23,66 @@ const initialState = Map({
     invenDmg: 5,
     invenCri: 1,
     headShotRt: 3
+  }),
+  mySkill: fromJS({
+    sword: [
+      {
+        name: '치명타격',
+        img: '/resource/img/eternal_logo1.gif',
+        increaseTarget: 'cri',
+        increaseRt: 2
+      },
+      {
+        name: '전력타격',
+        img: '/resource/img/eternal_logo1.gif',
+        increaseTarget: 'all',
+        increaseRt: 1.5
+      }
+    ],
+    hammer: [
+      {
+        name: '전력타격',
+        img: '/resource/img/eternal_logo1.gif',
+        increaseTarget: 'all',
+        increaseRt: 4
+      }
+    ],
+    axe: [
+      {
+        name: '전력타격',
+        img: '/resource/img/eternal_logo1.gif',
+        increaseTarget: 'all',
+        increaseRt: 2
+      }
+    ],
+    assaultRifle: [
+      {
+        name: '치명연사',
+        img: '/resource/img/eternal_logo1.gif',
+        increaseTarget: 'cri',
+        increaseRt: 2
+      },
+      {
+        name: '급소연사',
+        img: '/resource/img/eternal_logo1.gif',
+        increaseTarget: 'all',
+        increaseRt: 1.5
+      }
+    ],
+    machineGun: [
+      {
+        name: '치명연사',
+        img: '/resource/img/eternal_logo1.gif',
+        increaseTarget: 'cri',
+        increaseRt: 2
+      },
+      {
+        name: '급소연사',
+        img: '/resource/img/eternal_logo1.gif',
+        increaseTarget: 'all',
+        increaseRt: 1.5
+      }
+    ]
   })
 });
 

@@ -4,3 +4,4 @@ export {default as myspec} from './myspec';
 export {default as upgrade} from './upgrade';
 export {default as plusup} from './plusup';
 export {default as boxsim} from './boxsim';
+export {default as common} from './common';
