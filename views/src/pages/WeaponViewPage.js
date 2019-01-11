@@ -24,7 +24,7 @@ const WeaponViewPage = ({match}) => {
       <ListWrapper>
         <UpgradeCostContainer/>                
       </ListWrapper>
-      <Adsense300250/>
+      <Adsense72890/>
       <ListWrapper>
         <WeaponViewPoweredByContainer/>                
       </ListWrapper>

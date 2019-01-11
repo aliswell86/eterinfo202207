@@ -1,89 +1,102 @@
 @import 'utils';
 
-.weapon-where-box {
-  border: 1px solid $oc-gray-2;
+.wherebox-adsense {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap-reverse;
   max-width: 1024px;
   margin: 0 auto;
   margin-bottom: 0.2rem;
-  background: white;
 
-  padding: 1rem;
-
-  // @include media("<wide") {
-  //   width: 768px;
-  // }
-  // @include media("<large") {
-  //   width: 768px;
-  // }
-  // @include media("<medium") {
-  //   width: 100%;
-  // }
-  @include media("<small") {
-    width: 100%;
-    padding: 0.4rem;
+  .adsense-300250 {
+    // border: 1px solid $oc-gray-2;    
+    // background: white;
   }
 
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 0.4rem;
+  .weapon-where-box {
+    border: 1px solid $oc-gray-2;    
+    background: white;
+    flex: 1;
+    min-width: 412px;
   
-  .cl-where {
-    // .clyn {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 0.5rem;
-
-    @include media("<medium") {
-      grid-template-columns: repeat(4, 1fr);
-    }
+    padding: 1rem;
+  
+    // @include media("<wide") {
+    //   width: 768px;
     // }
-  }
-
-  .weapon-illegal-where {
-    .illegal{
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-gap: 0.5rem;
-
-      @include media("<medium") {
-        grid-template-columns: repeat(4, 1fr);
-      }
+    // @include media("<large") {
+    //   width: 768px;
+    // }
+    // @include media("<medium") {
+    //   width: 100%;
+    // }
+    @include media("<small") {
+      width: 100%;
+      padding: 0.4rem;
     }
-  }
-
-  .weapon-type-where {
+  
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-gap: 0.5rem;
-
-    .weapon-type1 {
+    grid-gap: 0.4rem;
+    
+    .cl-where {
+      // .clyn {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       grid-gap: 0.5rem;
-
-      @include media("<medium") {
+  
+      @include media("<large") {
         grid-template-columns: repeat(4, 1fr);
       }
+      // }
     }
-
-    .weapon-type2 {
+  
+    .weapon-illegal-where {
+      .illegal{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 0.5rem;
+  
+        @include media("<large") {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+    }
+  
+    .weapon-type-where {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 0.5rem;
+  
+      .weapon-type1 {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 0.5rem;
+  
+        @include media("<large") {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+  
+      .weapon-type2 {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 0.5rem;
+  
+        @include media("<large") {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+    }
+  
+    .grade-where {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       grid-gap: 0.5rem;
-
-      @include media("<medium") {
+  
+      @include media("<large") {
         grid-template-columns: repeat(4, 1fr);
       }
-    }
-  }
-
-  .grade-where {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 0.5rem;
-
-    @include media("<medium") {
-      grid-template-columns: repeat(4, 1fr);
     }
   }
 }
