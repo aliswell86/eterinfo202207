@@ -6,8 +6,20 @@ import Checkbox from 'components/common/Checkbox';
 
 const cx = classNames.bind(styles);
 
-const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick}) => {
-  const {conStat, skillStat, itemDmgUp, limitDmg, itemCriUp, isParasite, whereDoping} = myStat;
+const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick, skillList, stype1}) => {
+  const {conStat, skillStat, itemDmgUp, limitDmg, itemCriUp, isParasite, whereDoping, monsterSize, monsterType, myDmgType, currSkillSeq} = myStat;
+  const stypeDisabled = stype1 === '2' ? true : false;
+  const mySkillList = skillList.map((skill) => {
+    const {seq, name, increaseTarget, increaseRt} = skill;
+
+    return (
+      <div key={seq}>
+        <Radio name='currSkillSeq' value={seq} onChange={setParaDoping} defaultValue={currSkillSeq}>
+          {name}({increaseTarget === 'all' ? '모든데미지' : '치명데미지' } {increaseRt}배)
+        </Radio>
+      </div>
+    );
+  });
   
   return (
     <div className={cx('myspec-inven')}>
@@ -53,6 +65,40 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick}) => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className={cx('skill-monster')}>
+        <h2 className={cx('monster-size-title')}>몬스터크기와 속성</h2>
+        <div className={cx('monster-size')}>
+        <div><Radio name='monsterSize' value='소형' onChange={setParaDoping} defaultValue={monsterSize}>소형</Radio></div>
+          <div><Radio name='monsterSize' value='중형' onChange={setParaDoping} defaultValue={monsterSize}>중형</Radio></div>
+          <div><Radio name='monsterSize' value='대형' onChange={setParaDoping} defaultValue={monsterSize}>대형</Radio></div>
+        </div>
+        <div className={cx('monster-type')}>
+          <div><Radio name='monsterType' value='일반' onChange={setParaDoping} defaultValue={monsterType}>일반</Radio></div>
+          <div><Radio name='monsterType' value='연성' onChange={setParaDoping} defaultValue={monsterType} disabled={stypeDisabled}>연성</Radio></div>
+          <div><Radio name='monsterType' value='강성' onChange={setParaDoping} defaultValue={monsterType} disabled={stypeDisabled}>강성</Radio></div>
+          <div><Radio name='monsterType' value='변이' onChange={setParaDoping} defaultValue={monsterType} disabled={stypeDisabled}>변이</Radio></div>
+          <div><Radio name='monsterType' value='장갑' onChange={setParaDoping} defaultValue={monsterType} disabled={stypeDisabled}>장갑</Radio></div>
+          <div><Radio name='monsterType' value='중장갑' onChange={setParaDoping} defaultValue={monsterType} disabled={stypeDisabled}>중장갑</Radio></div>
+        </div>
+        <h2 className={cx('monster-size-title')}>탄창(근케는 일반)과 스킬</h2>
+        <div className={cx('mydmg-type')}>
+          <div><Radio name='myDmgType' value='일반' onChange={setParaDoping} defaultValue={myDmgType}>일반</Radio></div>
+          <div><Radio name='myDmgType' value='소이' onChange={setParaDoping} defaultValue={myDmgType} disabled={stypeDisabled}>소이</Radio></div>
+          <div><Radio name='myDmgType' value='Slug' onChange={setParaDoping} defaultValue={myDmgType} disabled={stypeDisabled}>Slug</Radio></div>
+          <div><Radio name='myDmgType' value='철갑' onChange={setParaDoping} defaultValue={myDmgType} disabled={stypeDisabled}>철갑</Radio></div>
+          <div><Radio name='myDmgType' value='열화우라늄' onChange={setParaDoping} defaultValue={myDmgType} disabled={stypeDisabled}>열화우라늄</Radio></div>
+          <div><Radio name='myDmgType' value='유탄' onChange={setParaDoping} defaultValue={myDmgType} disabled={stypeDisabled}>유탄</Radio></div>
+          <div><Radio name='myDmgType' value='대인로켓' onChange={setParaDoping} defaultValue={myDmgType} disabled={stypeDisabled}>대인로켓</Radio></div>
+          <div><Radio name='myDmgType' value='대전차탄' onChange={setParaDoping} defaultValue={myDmgType} disabled={stypeDisabled}>대전차탄</Radio></div>
+          <div><Radio name='myDmgType' value='대전차로켓' onChange={setParaDoping} defaultValue={myDmgType} disabled={stypeDisabled}>대전차로켓</Radio></div>
+          <div><Radio name='myDmgType' value='중금속탄' onChange={setParaDoping} defaultValue={myDmgType} disabled={stypeDisabled}>중금속탄</Radio></div>
+          <div><Radio name='myDmgType' value='전속성탄' onChange={setParaDoping} defaultValue={myDmgType} disabled={stypeDisabled}>전속성탄</Radio></div>
+        </div>
+        <div className={cx('my-skill-list')}>
+          <div><Radio name='currSkillSeq' value='0' onChange={setParaDoping} defaultValue={currSkillSeq}>없음</Radio></div>
+          {mySkillList}
         </div>
       </div>
     </div>

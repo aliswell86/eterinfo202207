@@ -3,8 +3,72 @@
 .myspec-inven {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
+
+  .skill-monster {
+    padding: 1rem;
+    width: 480px;
+
+    @include media("<small") {
+      width: 100%;
+      padding: 0.4rem;
+    }
+
+    
+
+    .monster-size-title {
+      padding-bottom: 1rem;
+      border-bottom: 1px solid $oc-gray-3;
+      color: $oc-gray-8;
+
+      @include media("<small") {
+        padding-bottom: 0.4rem;
+        margin-top: 0.2rem;
+        margin-bottom: 0.4rem;
+        font-size: 1rem;
+      }
+    }
+
+    .monster-size {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding-bottom: 0.8rem;
+    }
+
+    .monster-type {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding-bottom: 0.8rem;
+    }
+
+    .mydmg-type {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      height: 100px;
+      padding-bottom: 0.8rem;
+    }
+
+    .my-skill-list {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding-top: 0.4rem;
+      padding-bottom: 0.8rem;
+      border-top: 1px solid $oc-gray-4;
+    }
+
+    .monster-size + .monster-type {
+      padding-top: 0.2rem;
+    }
+  }
 
   .myspec-body {
     padding: 1rem;

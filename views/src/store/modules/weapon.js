@@ -62,7 +62,7 @@ const initialState = Map({
   currWeaponUpDv: Map({ // 현재 선택된 무기view 업글상태
     bodyUp: '0', // 몸체업
     dmgUp: '0', // 강화업
-    isCriUp: false
+    isCriUp: true
   }),
   weaponSearchList: List(), // 조회 미리보기 리스트
 });

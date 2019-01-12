@@ -24,6 +24,7 @@ const WeaponCustomPage = ({match}) => {
       <ListWrapper>
         <MyInfoViewContainer/>
       </ListWrapper>
+      <Adsense72890/>
       <ListWrapper>
         <MySpecInvenContainer/>
       </ListWrapper>
