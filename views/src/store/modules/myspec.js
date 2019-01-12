@@ -154,7 +154,7 @@ const VERY_GOOD = {text: '매우좋음(+50%)', value: '0.5'};
 const GOOD = {text: '좋음(+25%)', value: '0.25'};
 const SOSO = {text: '보통', value: '0'};
 const BAD = {text: '나쁨(-25%)', value: '-0.25'};
-const VERY_BAD = {text: '매우나쁨(-50%)', value: '-0.25'};
+const VERY_BAD = {text: '매우나쁨(-50%)', value: '-0.5'};
 
 const sizeByDmg = (weaponSize, monsterSize) => {
   let result = {text: '오류', value: '0'};
