@@ -12,6 +12,7 @@
     border-bottom: 1px solid $oc-gray-3;
     color: $oc-gray-8;
     display: flex;
+    display: -ms-flexbox;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -25,6 +26,7 @@
 
   .boxs {
     display: flex;
+    display: -ms-flexbox;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;

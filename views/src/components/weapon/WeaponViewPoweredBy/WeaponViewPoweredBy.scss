@@ -2,6 +2,7 @@
 
 .weapon-view-powerd-by {
   display: flex;
+  display: -ms-flexbox;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;

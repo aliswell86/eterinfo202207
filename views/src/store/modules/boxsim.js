@@ -28,7 +28,7 @@ export default handleActions({
   ...pender({
     type: GET_BOXLIST,
     onSuccess: (state, action) => {
-      const {data: boxs} = action.payload;
+      const boxs = action.payload.data;
       return state.set('boxs', fromJS(boxs));
     }
   }),

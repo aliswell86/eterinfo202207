@@ -3,6 +3,7 @@
   height: 100vh;
   background: $oc-violet-9;
   display: flex;
+  display: -ms-flexbox;
   align-items: center;
   justify-content: center;
   flex-direction: column;

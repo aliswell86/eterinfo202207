@@ -23,6 +23,7 @@
     padding-right: 3rem;
     // 내부 아이템 세로 중앙 정렬
     display: flex;
+    display: -ms-flexbox;
     align-items: center;
     justify-content: space-between;
     
@@ -40,7 +41,7 @@
       color: white;
       font-size: 1.2rem;
       font-weight: 600;
-      width: 100px;
+      width: 110px;
     }
 
     .right {
@@ -48,12 +49,13 @@
       // margin-left: auto;
       color: white;
       display: flex;
+      display: -ms-flexbox;
       align-items: center;
       align-content: flex-end;
       text-align: right;
       flex-wrap: wrap;
       justify-content: space-between;
-      width: 246px;
+      width: 264px;
 
       .total-search {
         margin-left: auto;

@@ -2,6 +2,7 @@
 
 .upgrade-cost {
   display: flex;
+  display: -ms-flexbox;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -23,6 +24,7 @@
 
     .cost-head {
       display: flex;
+      display: -ms-flexbox;
       flex-wrap: wrap;
       align-content: center;
       justify-content: space-between;
@@ -50,6 +52,7 @@
 
       .tax-btns {
         display: flex;
+        display: -ms-flexbox;
         align-items: center;
         flex-wrap: wrap;
         padding-bottom: 0.4rem;

@@ -6,6 +6,7 @@
 
   // 내부 내용 중앙 정렬
   display: flex;
+  display: -ms-flexbox;
   align-items: flex-end;
   justify-content: center;
   flex-wrap: wrap;

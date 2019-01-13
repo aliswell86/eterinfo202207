@@ -4,6 +4,7 @@
   width: 1024px;
   margin: 0 auto;
   display: flex;
+  display: -ms-flexbox;
   flex-wrap: wrap;
   align-content: center;
   justify-content: space-between;

@@ -2,6 +2,7 @@
 
 .wherebox-adsense {
   display: flex;
+  display: -ms-flexbox;
   justify-content: space-around;
   flex-wrap: wrap-reverse;
   max-width: 1024px;
@@ -31,13 +32,19 @@
     }
   
     display: grid;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 0.4rem;
     
     .cl-where {
       // .clyn {
       display: grid;
+      display: -ms-flexbox;
+      flex-wrap: wrap;
       grid-template-columns: repeat(6, 1fr);
+      -ms-grid-columns: 50px 10px 50px 10px 50px;
+      -ms-grid-rows: 100px;
       grid-gap: 0.5rem;
   
       @include media("<large") {
@@ -49,6 +56,8 @@
     .weapon-illegal-where {
       .illegal{
         display: grid;
+        display: -ms-flexbox;
+        flex-wrap: wrap;
         grid-template-columns: repeat(6, 1fr);
         grid-gap: 0.5rem;
   
@@ -60,11 +69,15 @@
   
     .weapon-type-where {
       display: grid;
+      display: -ms-flexbox;
+      flex-wrap: wrap;
       grid-template-columns: repeat(1, 1fr);
       grid-gap: 0.5rem;
   
       .weapon-type1 {
         display: grid;
+        display: -ms-flexbox;
+        flex-wrap: wrap;
         grid-template-columns: repeat(6, 1fr);
         grid-gap: 0.5rem;
   
@@ -75,6 +88,8 @@
   
       .weapon-type2 {
         display: grid;
+        display: -ms-flexbox;
+        flex-wrap: wrap;
         grid-template-columns: repeat(6, 1fr);
         grid-gap: 0.5rem;
   
@@ -86,6 +101,8 @@
   
     .grade-where {
       display: grid;
+      display: -ms-flexbox;
+      flex-wrap: wrap;
       grid-template-columns: repeat(6, 1fr);
       grid-gap: 0.5rem;
   

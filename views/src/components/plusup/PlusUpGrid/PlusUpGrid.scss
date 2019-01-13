@@ -2,6 +2,7 @@
 
 .plusup-grid {
   display: flex;
+  display: -ms-flexbox;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;    
@@ -16,6 +17,7 @@
 
     .plusup-where {
       display: flex;
+      display: -ms-flexbox;
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-start;
@@ -24,16 +26,22 @@
 
       .armmor-dv {
         display: grid;
+        display: -ms-flexbox;
+        flex-wrap: wrap;
         grid-template-columns: repeat(3, 1fr);
         // grid-gap: 1.2rem;
       }
       .grade-dv {
         display: grid;
+        display: -ms-flexbox;
+        flex-wrap: wrap;
         grid-template-columns: repeat(3, 1fr);
         // grid-gap: 0.8rem;
       }
       .tier-dv {
         display: grid;
+        display: -ms-flexbox;
+        flex-wrap: wrap;
         grid-template-columns: repeat(3, 1fr);
         // grid-gap: 1.2rem;
       }
@@ -42,6 +50,8 @@
 
   .plus-up-grid-list {
     display: grid;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.8rem;
     padding: 1rem;  
@@ -56,6 +66,7 @@
       
       .plus-up-text {        
         display: flex;
+        display: -ms-flexbox;
         // justify-content: space-between;
         
         .plus-up-grade {

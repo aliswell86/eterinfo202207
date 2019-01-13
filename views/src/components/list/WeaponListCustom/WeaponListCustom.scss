@@ -39,6 +39,7 @@
       
       // 내부 아이템 세로 중앙 정렬
       display: flex;
+      display: -ms-flexbox;
       flex-wrap: wrap;
       align-content: center;
       justify-content: space-between;
@@ -79,6 +80,7 @@
         width: 350px;
         padding-left: 10px;
         display: flex;
+        display: -ms-flexbox;
         flex-wrap: wrap;
         align-content: center;
         justify-content: space-between;
