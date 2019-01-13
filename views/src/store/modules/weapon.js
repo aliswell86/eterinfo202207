@@ -72,7 +72,6 @@ export default handleActions({
     type: GET_WEAPON_LIST,
     onSuccess: (state, action) => {
       const {data: items} = action.payload;
-      console.log(items);
       return state.set('weapons', fromJS(items))
                   .set('weaponWheres', items.filter(item => item.clyn === 'Y' && item.illegal === 'N'))
                   .setIn(['currWeaponUpDv','bodyUp'], '0').setIn(['currWeaponUpDv','dmgUp'], '0');
