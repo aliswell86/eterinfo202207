@@ -5,7 +5,7 @@ const Item = require('../../models/Item');
 */
 exports.weaponList = async (ctx) => {
   try {
-    const items = await Item.find({"$and":[{ctype: "1"}/*,{"$or":[{tier: "7"},{tier: "10"}]}*/]}).sort({"order": 1}).limit(9).exec();
+    const items = await Item.find({"$and":[{ctype: "1"}/*,{"$or":[{tier: "7"},{tier: "10"}]}*/]}).sort({"order": 1}).exec();
     ctx.body = items;
   } catch(e) {
     ctx.throw(e);
