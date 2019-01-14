@@ -20,7 +20,7 @@ const initialState = Map({
     itemDmgUp: '0',
     itemCriUp: '0',
     limitDmg: '0',
-    isParasite: false,
+    isParasite: '0',
     whereDoping: '0',
     invenDmg: 5,
     invenCri: 1,
@@ -29,6 +29,7 @@ const initialState = Map({
     monsterType: '일반',
     myDmgType: '일반',
     currSkillSeq: '0',
+    dmgEvent: '0',
     totalDmg: {
       normalDmg: {
         min: '0',
@@ -146,6 +147,42 @@ const initialState = Map({
       increaseTarget: 'all',
       increaseRt: '1.5',
       costVigor: '50'
+    },
+    {
+      seq: '10',
+      weaponType: '저격소총',
+      name: '원거리추가',
+      img: '/resource/img/skill_ico009.gif',
+      increaseTarget: 'all',
+      increaseRt: '1.25',
+      costVigor: '0'
+    },
+    {
+      seq: '11',
+      weaponType: '샷건',
+      name: '벽부딪힘',
+      img: '/resource/img/skill_ico009.gif',
+      increaseTarget: 'all',
+      increaseRt: '4',
+      costVigor: '0'
+    },
+    {
+      seq: '12',
+      weaponType: '샷건',
+      name: '근접사격',
+      img: '/resource/img/skill_ico009.gif',
+      increaseTarget: 'all',
+      increaseRt: '1.5',
+      costVigor: '0'
+    },
+    {
+      seq: '13',
+      weaponType: '샷건',
+      name: '벽부딪힘+근접사격',
+      img: '/resource/img/skill_ico009.gif',
+      increaseTarget: 'all',
+      increaseRt: '6',
+      costVigor: '0'
     }
   ])
 });
@@ -283,22 +320,23 @@ const typeByDmg = (myType, monsterType) => {
 
 export default handleActions({
   [SET_MYSPEC_STAT]: (state, action) => {
-    const {name, value, checked} = action.payload;
+    const {name, value} = action.payload;
+    return state.setIn(['myStat', name], value);  
 
-    if(name === 'isParasite') {
-      return state.setIn(['myStat', name], checked);  
-    }else{
-      return state.setIn(['myStat', name], value);
-    }
+    // if(name === 'isParasite') {
+    //   return state.setIn(['myStat', name], value);  
+    // }else{
+    //   return state.setIn(['myStat', name], value);
+    // }
   },
   [GET_INVEN_DMAGE]: (state, action) => {
     const {dmg, cri, stype1, size} = action.payload;
-    const {conStat, skillStat, itemDmgUp, itemCriUp, limitDmg, isParasite, whereDoping, monsterSize, monsterType, myDmgType, currSkillSeq} = state.toJS().myStat;
+    const {conStat, skillStat, itemDmgUp, itemCriUp, limitDmg, isParasite, whereDoping, monsterSize, monsterType, myDmgType, currSkillSeq, dmgEvent} = state.toJS().myStat;
     const {mySkill} = state.toJS();
 
     const mainStat = stype1 === '1' ? skillStat : conStat;
     const currWeaponDmgCalc = dmg === undefined ? 1 : dmg;
-    const parasiteUp = isParasite ? 3 : 0;
+    const parasiteUp = isParasite === '3' ? 3 : 0;
     const default_inven_dmg = Math.floor(Number(currWeaponDmgCalc)+Number(currWeaponDmgCalc)*(Number(mainStat)/100)+Number(mainStat));
     const item_inven_dmg = (default_inven_dmg/100)*Number(itemDmgUp);
     const inven_dmg = Math.floor((default_inven_dmg + item_inven_dmg)*(1+(Number(limitDmg)/100))*(1+parasiteUp/10)*(1+Number(whereDoping)/10));
@@ -311,9 +349,8 @@ export default handleActions({
     const {increaseTarget, increaseRt} = currSkill;
     const sizeDmg = sizeByDmg(size, monsterSize);
     const typeDmg = typeByDmg(myDmgType, monsterType);
-    let defaultDmg = (typeDmg.text === '오류' || sizeDmg.text === '오류') ? '0' :
-      inven_dmg + (inven_dmg * Number(sizeDmg.value)) + (inven_dmg * Number(typeDmg.value));
-    defaultDmg = defaultDmg * 1.1 * 1.2; //사공+(보정)
+    let defaultDmg = (typeDmg.text === '오류' || sizeDmg.text === '오류') ? '0' : inven_dmg + (inven_dmg * Number(sizeDmg.value)) + (inven_dmg * Number(typeDmg.value));
+    defaultDmg = defaultDmg * 1.1 * (Number(dmgEvent)/100 + 1) * ( isParasite === '2.5' ? Number(isParasite)/10 + 1 : 1); //사공+이벤공증+정규
     defaultDmg = defaultDmg * (increaseTarget === 'all' ? Number(increaseRt) : 1);
 
     const totalDmg = {

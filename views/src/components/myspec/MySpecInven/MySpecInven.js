@@ -2,12 +2,12 @@ import React from 'react';
 import styles from './MySpecInven.scss';
 import classNames from 'classnames/bind';
 import Radio from 'components/common/Radio';
-import Checkbox from 'components/common/Checkbox';
+import Adsense320100 from 'components/adsense/Adsense320100';
 
 const cx = classNames.bind(styles);
 
 const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick, skillList, stype1}) => {
-  const {conStat, skillStat, itemDmgUp, limitDmg, itemCriUp, isParasite, whereDoping, monsterSize, monsterType, myDmgType, currSkillSeq} = myStat;
+  const {conStat, skillStat, itemDmgUp, limitDmg, itemCriUp, isParasite, whereDoping, monsterSize, monsterType, myDmgType, currSkillSeq, dmgEvent} = myStat;
   const stypeDisabled = stype1 === '2' ? true : false;
   const mySkillList = skillList.map((skill) => {
     const {seq, name, increaseTarget, increaseRt} = skill;
@@ -55,7 +55,9 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick, skillList
           </div>
           <div className={cx('parasite-doping')}>
             <div className={cx('parasite')}>
-              <div><Checkbox name="isParasite" onChange={setParaDoping} checked={isParasite}>변이</Checkbox></div>
+              <div><Radio name='isParasite' value='0' onChange={setParaDoping} defaultValue={isParasite}>없음</Radio></div>
+              <div><Radio name='isParasite' value='2.5' onChange={setParaDoping} defaultValue={isParasite}>정규1급</Radio></div>
+              <div><Radio name='isParasite' value='3' onChange={setParaDoping} defaultValue={isParasite}>변이</Radio></div>
             </div>
             <div className={cx('doping')}>
               <div className={cx('whereDoping')}>
@@ -66,6 +68,7 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick, skillList
             </div>
           </div>
         </div>
+        <Adsense320100/>
       </div>
       <div className={cx('skill-monster')}>
         <h2 className={cx('monster-size-title')}>몬스터크기와 속성</h2>
@@ -99,6 +102,13 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick, skillList
         <div className={cx('my-skill-list')}>
           <div><Radio name='currSkillSeq' value='0' onChange={setParaDoping} defaultValue={currSkillSeq}>없음</Radio></div>
           {mySkillList}
+        </div>
+        <h2 className={cx('dmg-event-title')}>공격력 증가이벤트</h2>
+        <div className={cx('dmg-event')}>
+          <div><Radio name='dmgEvent' value='0' onChange={setParaDoping} defaultValue={dmgEvent}>없음</Radio></div>
+          <div><Radio name='dmgEvent' value='5' onChange={setParaDoping} defaultValue={dmgEvent}>5%증가</Radio></div>
+          <div><Radio name='dmgEvent' value='10' onChange={setParaDoping} defaultValue={dmgEvent}>10%증가</Radio></div>
+          <div><Radio name='dmgEvent' value='20' onChange={setParaDoping} defaultValue={dmgEvent}>20%증가</Radio></div>
         </div>
       </div>
     </div>

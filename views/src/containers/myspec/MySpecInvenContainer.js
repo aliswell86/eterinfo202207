@@ -22,13 +22,15 @@ class MySpecInvenContainer extends Component {
   handleChangeCheck = (e) => {
     const {MySpecActions, itemInfo} = this.props;
     const {dmg, cri, stype1, size} = itemInfo;
-    const {name, value, checked} = e.target;
+    const {name, value} = e.target;
 
-    if(name === 'isParasite') {
-      MySpecActions.setMyStat({name, checked});
-    }else{
-      MySpecActions.setMyStat({name, value});
-    }
+    MySpecActions.setMyStat({name, value});
+
+    // if(name === 'isParasite') {
+    //   MySpecActions.setMyStat({name, checked});
+    // }else{
+    //   MySpecActions.setMyStat({name, value});
+    // }
 
     MySpecActions.getInvenDmage({dmg, cri, stype1, size});
   }
