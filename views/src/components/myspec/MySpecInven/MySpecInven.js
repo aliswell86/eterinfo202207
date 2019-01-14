@@ -15,7 +15,7 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick, skillList
     return (
       <div key={seq}>
         <Radio name='currSkillSeq' value={seq} onChange={setParaDoping} defaultValue={currSkillSeq}>
-          {name}({increaseTarget === 'all' ? '모든데미지' : '치명데미지' } {increaseRt}배)
+          {name}({increaseTarget === 'all' ? '모든데미지' : seq === '14' ? '모든데미지' : '치명데미지' } {seq === '14' ? '1.5' : increaseRt}배{seq === '14' ? '(치명3배)' : ''})
         </Radio>
       </div>
     );

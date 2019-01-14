@@ -183,6 +183,24 @@ const initialState = Map({
       increaseTarget: 'all',
       increaseRt: '6',
       costVigor: '0'
+    },
+    {
+      seq: '14',
+      weaponType: '기관총',
+      name: '치명연사+벽부딪힘',
+      img: '/resource/img/skill_ico009.gif',
+      increaseTarget: 'cri',
+      increaseRt: '2',
+      costVigor: '50'
+    },
+    {
+      seq: '15',
+      weaponType: '기관총',
+      name: '급소연사+벽부딪힘',
+      img: '/resource/img/skill_ico009.gif',
+      increaseTarget: 'all',
+      increaseRt: '2.25',
+      costVigor: '50'
     }
   ])
 });
@@ -346,12 +364,13 @@ export default handleActions({
     const head_atk_rt = (3+(skillStat/50)).toFixed(2);
 
     const currSkill = mySkill.filter(skill => skill.seq === currSkillSeq)[0];
-    const {increaseTarget, increaseRt} = currSkill;
+    const {increaseTarget, increaseRt, seq} = currSkill;
     const sizeDmg = sizeByDmg(size, monsterSize);
     const typeDmg = typeByDmg(myDmgType, monsterType);
     let defaultDmg = (typeDmg.text === '오류' || sizeDmg.text === '오류') ? '0' : inven_dmg + (inven_dmg * Number(sizeDmg.value)) + (inven_dmg * Number(typeDmg.value));
     defaultDmg = defaultDmg * 1.1 * (Number(dmgEvent)/100 + 1) * ( isParasite === '2.5' ? Number(isParasite)/10 + 1 : 1); //사공+이벤공증+정규
     defaultDmg = defaultDmg * (increaseTarget === 'all' ? Number(increaseRt) : 1);
+    defaultDmg = defaultDmg * (seq === '14' ? 1.5 : 1); // 기관총 치명연사+벽부딪힘
 
     const totalDmg = {
       normalDmg: {
