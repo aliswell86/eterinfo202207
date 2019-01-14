@@ -163,7 +163,7 @@ const initialState = Map({
       name: '벽부딪힘',
       img: '/resource/img/skill_ico009.gif',
       increaseTarget: 'all',
-      increaseRt: '4',
+      increaseRt: '1.5',
       costVigor: '0'
     },
     {
@@ -172,7 +172,7 @@ const initialState = Map({
       name: '근접사격',
       img: '/resource/img/skill_ico009.gif',
       increaseTarget: 'all',
-      increaseRt: '1.5',
+      increaseRt: '4',
       costVigor: '0'
     },
     {
