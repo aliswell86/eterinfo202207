@@ -154,7 +154,7 @@ const initialState = Map({
       name: '원거리추가',
       img: '/resource/img/skill_ico009.gif',
       increaseTarget: 'all',
-      increaseRt: '1.25',
+      increaseRt: '1.5',
       costVigor: '0'
     },
     {
