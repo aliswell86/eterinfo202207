@@ -1,0 +1,12 @@
+@import 'utils';
+
+.notice-body {
+  cursor: pointer;
+  padding: 0.4rem;
+
+  @include media("<small") {
+    display: none;
+  }
+
+  text-align: center;
+}

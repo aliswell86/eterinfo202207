@@ -31,6 +31,10 @@
     font-weight: bold;
     font-size: 1.2rem;
 
+    @include media("<small") {
+      font-size: 1rem;
+    }
+
     .inven-dmg {
       color: $oc-red-9;
     }
@@ -72,38 +76,32 @@
 
       .normar-dmg {
         width: 360px;
-        height: 70px;
-        padding: 0.6rem;
+        padding: 0.2rem;
         color: $oc-gray-6;
       }
       .normar-dmg-fire {
         width: 360px;
-        height: 70px;
-        padding: 0.6rem;
+        padding: 0.2rem;
         color: $oc-gray-8;
       }
       .cri-dmg {
         width: 360px;
-        height: 70px;
-        padding: 0.6rem;
+        padding: 0.2rem;
         color: $oc-yellow-6;
       }
       .cri-dmg-fire {
         width: 360px;
-        height: 70px;
-        padding: 0.6rem;
+        padding: 0.2rem;
         color: $oc-yellow-8;
       }
       .head-dmg {
         width: 360px;
-        height: 70px;
-        padding: 0.6rem;
+        padding: 0.2rem;
         color: $oc-red-6;
       }
       .head-dmg-fire {
         width: 360px;
-        height: 70px;
-        padding: 0.6rem;
+        padding: 0.2rem;
         color: $oc-red-8;
       }
     }

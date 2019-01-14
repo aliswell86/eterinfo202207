@@ -18,7 +18,7 @@ const MyInfoView = ({myStat}) => {
         </div>
         <div className={cx('inven-cri')}>
           <NumberFormat value={invenCri} displayType={'text'} thousandSeparator={true} prefix={'치명: '} suffix={'%'} />
-          <NumberFormat value={headShotRt} displayType={'text'} thousandSeparator={true} prefix={'/헤드샷: '} suffix={'배'} />
+          <NumberFormat value={headShotRt} displayType={'text'} thousandSeparator={true} prefix={', 헤드샷: '} suffix={'배'} />
         </div>        
       </div>
       <div className={cx('real-dmg')}>
