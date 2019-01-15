@@ -5,6 +5,7 @@ import WeaponViewContainer from 'containers/weapon/WeaponViewContainer';
 import WeaponPoweredSelContanier from 'containers/weapon/WeaponPoweredSelContanier';
 import MySpecInvenContainer from 'containers/myspec/MySpecInvenContainer';
 import MyInfoViewContainer from 'containers/myspec/MyInfoViewContainer';
+import DPSSimulContainer from 'containers/myspec/DPSSimulContainer';
 import Adsense970250 from 'components/adsense/Adsense970250';
 import Adsense300250 from 'components/adsense/Adsense300250';
 import Adsense72890 from 'components/adsense/Adsense72890';
@@ -23,6 +24,10 @@ const WeaponCustomPage = ({match}) => {
       <Adsense72890/>
       <ListWrapper>
         <MyInfoViewContainer/>
+      </ListWrapper>
+      <Adsense72890/>
+      <ListWrapper>
+        <DPSSimulContainer/>
       </ListWrapper>
       <Adsense72890/>
       <ListWrapper>

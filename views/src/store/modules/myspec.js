@@ -7,10 +7,12 @@ fromJS} from 'immutable';
 const SET_MYSPEC_STAT = 'myspec/SET_MYSPEC_STAT';
 const GET_INVEN_DMAGE = 'myspec/GET_INVEN_DMAGE';
 const TYPE_INITIAL = 'myspec/TYPE_INITIAL';
+const SET_DPSOPTIONS = 'myspec/SET_DPSOPTIONS';
 
 export const setMyStat = createAction(SET_MYSPEC_STAT);
 export const getInvenDmage = createAction(GET_INVEN_DMAGE);
 export const typeInitial = createAction(TYPE_INITIAL);
+export const setDpsOption = createAction(SET_DPSOPTIONS);
 
 const initialState = Map({
   myStat: Map({
@@ -202,7 +204,19 @@ const initialState = Map({
       increaseRt: '2.25',
       costVigor: '50'
     }
-  ])
+  ]),
+  dpsSim: Map({
+    currHeadCounterOption: '0',
+    headCounterOption: fromJS([
+      {seq: '0', stype1: '0', weaponType: '', description: '없음' },
+      {seq: '1', stype1: '2', weaponType: '', description: '치명타격치명확률의 1/10로 카운터발생'},
+      {seq: '2', stype1: '2', weaponType: '장창', description: '헤드샷(50%)'},
+      {seq: '3', stype1: '1', weaponType: '', description: '신컨(헤드샷100%)'},
+      {seq: '4', stype1: '1', weaponType: '', description: '중컨(헤드샷90%)'},
+      {seq: '5', stype1: '1', weaponType: '', description: 'X컨(헤드샷60%)'},
+      {seq: '6', stype1: '1', weaponType: '중화기', description: '헤드샷(50%)'},
+    ])
+  })
 });
 
 const VERY_GOOD = {text: '매우좋음(+50%)', value: '0.5'};
@@ -408,5 +422,9 @@ export default handleActions({
     return state.setIn(['myStat', 'currSkillSeq'], '0')
                 .setIn(['myStat', 'monsterType'], '일반')
                 .setIn(['myStat', 'myDmgType'], '일반');  
+  },
+  [SET_DPSOPTIONS]: (state, action) => {
+    const {name, value} = action.payload;
+    return state.setIn(['dpsSim', name], value);
   }
 }, initialState);
