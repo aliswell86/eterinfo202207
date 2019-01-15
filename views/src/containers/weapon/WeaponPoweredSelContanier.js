@@ -39,7 +39,7 @@ class WeaponPoweredSelContanier extends Component {
   componentDidUpdate(prevProps, prevState) {
     const {MySpecActions, weaponView} = this.props;
     const {dmg, cri, stype1, size} = weaponView.itemInfo;
-
+    
     if(prevProps.weaponView.itemInfo.dmg !== dmg || prevProps.weaponView.itemInfo.cri !== cri) {
       MySpecActions.getInvenDmage({dmg, cri, stype1, size});
     }

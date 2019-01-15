@@ -20,4 +20,55 @@
       font-size: 1rem;
     }
   }
+
+  .dps-simul-body {
+    display: flex;
+    display: -ms-flexbox;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    .option-select {
+      .headshot-option {
+
+        .headshot-option-title {
+          font-weight: bold;
+        }
+      }
+      .fire-option {
+        margin-top: 0.8rem;
+
+        .fire-option-title {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .monster-view-info {
+      width: 360px;
+      text-align: center;
+
+      .monster-con {
+        height: 30px;
+        background: $oc-gray-1;
+      }
+      .monster-con-cover {
+        top: -30px;
+        position: relative;
+        height: 30px;
+        background: $oc-red-9;
+        opacity: 0.4;
+      }
+
+      .monster-view {
+        width: 150px;
+      }
+
+      .monster-view:hover {
+        cursor: pointer;
+        @include material-shadow(1, 1);
+        background: $oc-blue-0;
+      }
+    }
+  }
 }

@@ -24,10 +24,6 @@ class UpgradeCostContainer extends Component {
     return prevId !== currId || prevTax !== currTax;
   }
 
-  componentDidUpdate() {
-    
-  }
-
   render() {
     const {setUpgradeTax} = this;
     const {upgradeInfo} = this.props;

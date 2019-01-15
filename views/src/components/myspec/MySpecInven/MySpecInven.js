@@ -71,7 +71,7 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick, skillList
         <Adsense320100/>
       </div>
       <div className={cx('skill-monster')}>
-        <h2 className={cx('monster-size-title')}>몬스터크기와 속성</h2>
+        <h2 className={cx('monster-size-title')}>몬스터정보(크기, 피부속성, 체력, 포상)</h2>
         <div className={cx('monster-size')}>
         <div><Radio name='monsterSize' value='소형' onChange={setParaDoping} defaultValue={monsterSize}>소형</Radio></div>
           <div><Radio name='monsterSize' value='중형' onChange={setParaDoping} defaultValue={monsterSize}>중형</Radio></div>
@@ -85,7 +85,7 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick, skillList
           <div><Radio name='monsterType' value='장갑' onChange={setParaDoping} defaultValue={monsterType} disabled={stypeDisabled}>장갑</Radio></div>
           <div><Radio name='monsterType' value='중장갑' onChange={setParaDoping} defaultValue={monsterType} disabled={stypeDisabled}>중장갑</Radio></div>
         </div>
-        <h2 className={cx('monster-size-title')}>탄창(근케는 일반)과 스킬</h2>
+        <h2 className={cx('monster-size-title')}>스킬, 탄창(근케는 일반)</h2>
         <div className={cx('mydmg-type')}>
           <div><Radio name='myDmgType' value='일반' onChange={setParaDoping} defaultValue={myDmgType}>일반</Radio></div>
           <div><Radio name='myDmgType' value='소이' onChange={setParaDoping} defaultValue={myDmgType} disabled={stypeDisabled}>소이</Radio></div>
