@@ -12,6 +12,15 @@ class DPSSimulContainer extends Component {
     MySpecActions.setDpsOption({name, value});
   }
 
+  huntSecond = () => {
+    let i = 0;
+    setInterval(() => {
+      i += 1;
+    }, 1000);
+
+    return i;
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const {MySpecActions} = this.props;
     const {_id, item_dtl_dv, stype1} = this.props.weaponView.itemInfo;
@@ -23,7 +32,7 @@ class DPSSimulContainer extends Component {
   }
 
   render() {
-    const {setDPSOption} = this;
+    const {setDPSOption, huntStart, huntSecond} = this;
     const {currHeadCounterValue, currHeadCounterList, currFireValue, currFireList} = this.props.dpsSim;
     
     return (
@@ -32,7 +41,9 @@ class DPSSimulContainer extends Component {
       currHeadCounterValue={currHeadCounterValue}
       currHeadCounterList={currHeadCounterList}
       currFireValue={currFireValue}
-      currFireList={currFireList}/>
+      currFireList={currFireList}
+      huntStart={huntStart}
+      huntSecond={huntSecond}/>
     );
   }
 }

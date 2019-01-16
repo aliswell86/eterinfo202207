@@ -7,13 +7,15 @@ const SET_MYSPEC_STAT = 'myspec/SET_MYSPEC_STAT';
 const GET_INVEN_DMAGE = 'myspec/GET_INVEN_DMAGE';
 const TYPE_INITIAL = 'myspec/TYPE_INITIAL';
 const SET_DPSOPTIONS = 'myspec/SET_DPSOPTIONS';
-const SET_DPSOPTIONS_INITIAL= 'myspec/SET_DPSOPTIONS_INITIAL';
+const SET_DPSOPTIONS_INITIAL = 'myspec/SET_DPSOPTIONS_INITIAL';
+const SET_HUNTSECOND = 'myspec/SET_HUNTSECOND';
 
 export const setMyStat = createAction(SET_MYSPEC_STAT);
 export const getInvenDmage = createAction(GET_INVEN_DMAGE);
 export const typeInitial = createAction(TYPE_INITIAL);
 export const setDpsOption = createAction(SET_DPSOPTIONS);
 export const setDPSOPtionInitial = createAction(SET_DPSOPTIONS_INITIAL);
+export const setHuntSecond = createAction(SET_HUNTSECOND);
 
 const initialState = Map({
   myStat: Map({
@@ -207,6 +209,7 @@ const initialState = Map({
     }
   ]),
   dpsSim: Map({
+    huntSecond: '0',
     currHeadCounterValue: '0',
     currHeadCounterList: List(),
     headCounterOption: fromJS([
@@ -459,5 +462,10 @@ export default handleActions({
                 .setIn(['dpsSim', 'currHeadCounterValue'], currHcList[0].seq)
                 .setIn(['dpsSim', 'currFireList'], fromJS(currFrList))
                 .setIn(['dpsSim', 'currFireValue'], currFrList[0].seq);
+  },
+  [SET_HUNTSECOND]: (state, action) => {
+    let value = action.payload;
+    console.log("value : " + value);
+    return state.setIn(['dpsSim', 'huntSecond'], value++);
   }
 }, initialState);

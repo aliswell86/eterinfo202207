@@ -5,7 +5,7 @@ import Radio from 'components/common/Radio';
 
 const cx = classNames.bind(styles);
 
-const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, currFireValue, currFireList}) => {
+const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, currFireValue, currFireList, huntSecond, huntStart}) => {
   const hcOptionList = currHeadCounterList.map(option => {
     const {seq, description} = option;
     
@@ -47,10 +47,22 @@ const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, curr
               {frOptionList}
             </div>
           </div>
+          <div className={cx('shot-btns')}>
+            <button onClick={huntStart}>사냥<br/>시작</button>
+            <button>사냥<br/>중단</button>
+          </div>
         </div>
+
+        <div className={cx('dps-info')}>
+          <div className={cx('hunt-second')}>{huntSecond}</div>
+          <div className={cx('dps')}>???</div>
+        </div>
+
         <div className={cx('monster-view-info')}>
           <div className={cx('monster-con')}> </div>
-          <div className={cx('monster-con-cover')}>100,000,000</div>
+          <div className={cx('monster-con-cover')}>
+            <span className={cx('monster-connum')}>100,000,000</span>
+          </div>
           <div className={cx('monster-view')}>
             <img src='/resource/img/monster1.gif' alt='두꺼비'/>
           </div>

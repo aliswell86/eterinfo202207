@@ -29,6 +29,9 @@
     align-items: flex-start;
 
     .option-select {
+      padding-right: 1rem;
+      padding-bottom: 1rem;
+
       .headshot-option {
 
         .headshot-option-title {
@@ -42,32 +45,74 @@
           font-weight: bold;
         }
       }
+
+      .shot-btns {
+        text-align: center;
+        padding: 1rem;
+
+        button {
+          width: 56px;
+          height: 50px;
+          transition: all .15s ease-in;
+          background: white;
+          border: 1px solid $oc-gray-3;
+          border-radius: 0.2rem;
+          cursor: pointer;      
+        }
+        button:hover {
+          color: rgba($oc-blue-6, 0.8);
+        }
+        button:active {
+          color: rgba($oc-blue-6, 1);
+        }
+        button:focus {
+          border: 1px solid $oc-blue-6;
+          color: rgba($oc-blue-6, 1);
+        }
+        button + button {
+          margin-left: 0.2rem;
+        }
+      }
     }
 
     .monster-view-info {
-      width: 360px;
-      text-align: center;
+      width: 400px;
+      align-content: center;
 
       .monster-con {
         height: 30px;
-        background: $oc-gray-1;
+        background: $oc-gray-2;
+        width: 100%;
       }
       .monster-con-cover {
         top: -30px;
         position: relative;
         height: 30px;
         background: $oc-red-9;
-        opacity: 0.4;
+        opacity: 0.8;
+        width: 90%;
+        text-align: center;        
+
+        .monster-connum {
+          font-weight: bold;
+          height: 100%;
+          vertical-align: middle;
+        }
       }
 
       .monster-view {
+        cursor: pointer;
         width: 150px;
+        margin: auto;
       }
 
-      .monster-view:hover {
-        cursor: pointer;
+      .monster-view:hover {        
         @include material-shadow(1, 1);
         background: $oc-blue-0;
+      }
+      .monster-view:active {
+        @include material-shadow(1, 1);
+        background: $oc-blue-1;
       }
     }
   }
