@@ -26,7 +26,7 @@
     display: -ms-flexbox;
     justify-content: space-between;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
 
     .option-select {
       padding-right: 1rem;
@@ -72,6 +72,20 @@
         button + button {
           margin-left: 0.2rem;
         }
+      }
+    }
+
+    .dps-info {
+      padding: 0.6rem;
+      width: 100px;
+      border: 1px solid $oc-gray-4;
+      text-align: center;
+      background: $oc-gray-8;
+
+      .hunt-second {
+        font-weight: bold;        
+        color:white;
+        font-size: 1.2rem;
       }
     }
 

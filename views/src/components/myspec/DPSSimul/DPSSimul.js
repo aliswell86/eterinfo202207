@@ -5,7 +5,7 @@ import Radio from 'components/common/Radio';
 
 const cx = classNames.bind(styles);
 
-const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, currFireValue, currFireList, huntSecond, huntStart}) => {
+const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, currFireValue, currFireList, huntStart, huntSecond, huntStop}) => {
   const hcOptionList = currHeadCounterList.map(option => {
     const {seq, description} = option;
     
@@ -49,13 +49,13 @@ const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, curr
           </div>
           <div className={cx('shot-btns')}>
             <button onClick={huntStart}>사냥<br/>시작</button>
-            <button>사냥<br/>중단</button>
+            <button onClick={huntStop}>사냥<br/>중단</button>
           </div>
         </div>
 
         <div className={cx('dps-info')}>
-          <div className={cx('hunt-second')}>{huntSecond}</div>
-          <div className={cx('dps')}>???</div>
+          <div className={cx('hunt-second')}>{huntSecond} sec</div>
+          {/* <div className={cx('dps')}>???</div> */}
         </div>
 
         <div className={cx('monster-view-info')}>

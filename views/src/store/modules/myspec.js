@@ -210,6 +210,7 @@ const initialState = Map({
   ]),
   dpsSim: Map({
     huntSecond: '0',
+    currInterval: null,
     currHeadCounterValue: '0',
     currHeadCounterList: List(),
     headCounterOption: fromJS([
@@ -219,7 +220,7 @@ const initialState = Map({
       {seq: '3', stype1: '1', weaponType: '', description: '신컨(헤드샷100%)'},
       {seq: '4', stype1: '1', weaponType: '', description: '중컨(헤드샷90%)'},
       {seq: '5', stype1: '1', weaponType: '', description: 'X컨(헤드샷60%)'},
-      {seq: '6', stype1: '1', weaponType: '중화기', description: '헤드샷(50%)'},
+      {seq: '6', stype1: '1', weaponType: '중화기', description: '헤드샷(50%)'}
     ]),
     currFireValue: '0',
     currFireList: List(),
@@ -464,8 +465,9 @@ export default handleActions({
                 .setIn(['dpsSim', 'currFireValue'], currFrList[0].seq);
   },
   [SET_HUNTSECOND]: (state, action) => {
-    let value = action.payload;
-    console.log("value : " + value);
-    return state.setIn(['dpsSim', 'huntSecond'], value++);
+    const {currHuntSecond, interval} = action.payload;
+    
+    return state.setIn(['dpsSim', 'huntSecond'], currHuntSecond)
+                .setIn(['dpsSim', 'currInterval'], interval);
   }
 }, initialState);
