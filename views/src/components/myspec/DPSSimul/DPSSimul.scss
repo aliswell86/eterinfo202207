@@ -26,7 +26,7 @@
     display: -ms-flexbox;
     justify-content: space-between;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
 
     .option-select {
       padding-right: 1rem;
@@ -76,16 +76,44 @@
     }
 
     .dps-info {
-      padding: 0.6rem;
-      width: 100px;
-      border: 1px solid $oc-gray-4;
+      width: 120px;
       text-align: center;
-      background: $oc-gray-8;
+
+      .hunt-title {
+        border-top: 1px solid $oc-gray-4;
+        border-left: 1px solid $oc-gray-4;
+        border-right: 1px solid $oc-gray-4;
+      }
 
       .hunt-second {
+        padding: 0.4rem;
+        border: 1px solid $oc-gray-4;
+        background: $oc-gray-8;
         font-weight: bold;        
         color:white;
         font-size: 1.2rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .firecool-title {
+        border-top: 1px solid $oc-red-4;
+        border-left: 1px solid $oc-red-4;
+        border-right: 1px solid $oc-red-4;
+      }
+
+      .firecool-second {
+        padding: 0.4rem;
+        border: 1px solid $oc-red-4;
+        background: $oc-red-8;
+        font-weight: bold;        
+        color:white;
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .dmg-list {
+        height: 100px;
+        border: 1px solid $oc-gray-4;
       }
     }
 

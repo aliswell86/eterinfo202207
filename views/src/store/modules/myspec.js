@@ -9,6 +9,9 @@ const TYPE_INITIAL = 'myspec/TYPE_INITIAL';
 const SET_DPSOPTIONS = 'myspec/SET_DPSOPTIONS';
 const SET_DPSOPTIONS_INITIAL = 'myspec/SET_DPSOPTIONS_INITIAL';
 const SET_HUNTSECOND = 'myspec/SET_HUNTSECOND';
+const SET_DMG_RANDOM = 'myspec/SET_DMG_RANDOM';
+const SECOND_INITIAL = 'myspec/SECOND_INITIAL';
+const SET_FIRE_COOLTIME = 'myspec/SET_FIRE_COOLTIME';
 
 export const setMyStat = createAction(SET_MYSPEC_STAT);
 export const getInvenDmage = createAction(GET_INVEN_DMAGE);
@@ -16,6 +19,9 @@ export const typeInitial = createAction(TYPE_INITIAL);
 export const setDpsOption = createAction(SET_DPSOPTIONS);
 export const setDPSOPtionInitial = createAction(SET_DPSOPTIONS_INITIAL);
 export const setHuntSecond = createAction(SET_HUNTSECOND);
+export const setDmgRandom = createAction(SET_DMG_RANDOM);
+export const secondInitial = createAction(SECOND_INITIAL);
+export const setFireCoolTime = createAction(SET_FIRE_COOLTIME);
 
 const initialState = Map({
   myStat: Map({
@@ -36,181 +42,42 @@ const initialState = Map({
     currSkillSeq: '0',
     dmgEvent: '0',
     totalDmg: {
-      normalDmg: {
-        min: '0',
-        max: '0'
-      },
-      normalDmgFire: {
-        min: '0',
-        max: '0'
-      },
-      criDmg: {
-        min: '0',
-        max: '0'
-      },
-      criDmgFire: {
-        min: '0',
-        max: '0'
-      },
-      headDmg: {
-        min: '0',
-        max: '0'
-      },
-      headDmgFire: {
-        min: '0',
-        max: '0'
-      }
+      normalDmg: {name: 'normalDmg', min: '0', max: '0'},
+      normalDmgFire: {name: 'normalDmgFire', min: '0', max: '0'},
+      criDmg: {name: 'criDmg', min: '0', max: '0'},
+      criDmgFire: {name: 'criDmgFire', min: '0', max: '0'},
+      headDmg: {name: 'headDmg', min: '0', max: '0'},
+      headDmgFire: {name: 'headDmgFire', min: '0', max: '0'}
     }
   }),
   mySkill: fromJS([
-    {
-      seq: '0',
-      weaponType: '',
-      name: '',
-      img: '',
-      increaseTarget: '',
-      increaseRt: '0',
-      costVigor: '0'
-    },
-    {
-      seq: '1',
-      weaponType: '도검',
-      name: '치명타격',
-      img: '/resource/img/skill_ico001.gif',
-      increaseTarget: 'cri',
-      increaseRt: '2',
-      costVigor: '25'
-    },
-    {
-      seq: '2',
-      weaponType: '도검',
-      name: '전력타격',
-      img: '/resource/img/skill_ico002.gif',
-      increaseTarget: 'all',
-      increaseRt: '1.5',
-      costVigor: '35'
-    },
-    {
-      seq: '3',
-      weaponType: '둔기',
-      name: '전력타격',
-      img: '/resource/img/skill_ico003.gif',
-      increaseTarget: 'all',
-      increaseRt: '4',
-      costVigor: '250'
-    },
-    {
-      seq: '4',
-      weaponType: '도끼',
-      name: '전력타격',
-      img: '/resource/img/skill_ico004.gif',
-      increaseTarget: 'all',
-      increaseRt: '2',
-      costVigor: '75'
-    },
-    {
-      seq: '5',
-      weaponType: '장창',
-      name: '전력투척',
-      img: '/resource/img/skill_ico005.gif',
-      increaseTarget: 'all',
-      increaseRt: '2',
-      costVigor: '60'
-    },
-    {
-      seq: '6',
-      weaponType: '돌격소총',
-      name: '치명연사',
-      img: '/resource/img/skill_ico006.gif',
-      increaseTarget: 'cri',
-      increaseRt: '2',
-      costVigor: '25'
-    },
-    {
-      seq: '7',
-      weaponType: '돌격소총',
-      name: '급소연사',
-      img: '/resource/img/skill_ico007.gif',
-      increaseTarget: 'all',
-      increaseRt: '1.5',
-      costVigor: '40'
-    },
-    {
-      seq: '8',
-      weaponType: '기관총',
-      name: '치명연사',
-      img: '/resource/img/skill_ico008.gif',
-      increaseTarget: 'cri',
-      increaseRt: '2',
-      costVigor: '30'
-    },
-    {
-      seq: '9',
-      weaponType: '기관총',
-      name: '급소연사',
-      img: '/resource/img/skill_ico009.gif',
-      increaseTarget: 'all',
-      increaseRt: '1.5',
-      costVigor: '50'
-    },
-    {
-      seq: '10',
-      weaponType: '저격소총',
-      name: '원거리추가',
-      img: '/resource/img/skill_ico009.gif',
-      increaseTarget: 'all',
-      increaseRt: '1.5',
-      costVigor: '0'
-    },
-    {
-      seq: '11',
-      weaponType: '샷건',
-      name: '벽부딪힘',
-      img: '/resource/img/skill_ico009.gif',
-      increaseTarget: 'all',
-      increaseRt: '1.5',
-      costVigor: '0'
-    },
-    {
-      seq: '12',
-      weaponType: '샷건',
-      name: '근접사격',
-      img: '/resource/img/skill_ico009.gif',
-      increaseTarget: 'all',
-      increaseRt: '4',
-      costVigor: '0'
-    },
-    {
-      seq: '13',
-      weaponType: '샷건',
-      name: '벽부딪힘+근접사격',
-      img: '/resource/img/skill_ico009.gif',
-      increaseTarget: 'all',
-      increaseRt: '6',
-      costVigor: '0'
-    },
-    {
-      seq: '14',
-      weaponType: '기관총',
-      name: '치명연사+벽부딪힘',
-      img: '/resource/img/skill_ico009.gif',
-      increaseTarget: 'cri',
-      increaseRt: '2',
-      costVigor: '50'
-    },
-    {
-      seq: '15',
-      weaponType: '기관총',
-      name: '급소연사+벽부딪힘',
-      img: '/resource/img/skill_ico009.gif',
-      increaseTarget: 'all',
-      increaseRt: '2.25',
-      costVigor: '50'
-    }
+    {seq:'0', weaponType:'', name:'', img:'', increaseTarget:'', increaseRt:'0', costVigor:'0', },
+    {seq:'1', weaponType:'도검', name:'치명타격', img:'/resource/img/skill_ico001.gif', increaseTarget:'cri', increaseRt:'2', costVigor:'25', },
+    {seq:'2', weaponType:'도검', name:'전력타격', img:'/resource/img/skill_ico002.gif', increaseTarget:'all', increaseRt:'1.5', costVigor:'35', },
+    {seq:'3', weaponType:'둔기', name:'전력타격', img:'/resource/img/skill_ico003.gif', increaseTarget:'all', increaseRt:'4', costVigor:'250', },
+    {seq:'4', weaponType:'도끼', name:'전력타격', img:'/resource/img/skill_ico004.gif', increaseTarget:'all', increaseRt:'2', costVigor:'75', },
+    {seq:'5', weaponType:'장창', name:'전력투척', img:'/resource/img/skill_ico005.gif', increaseTarget:'all', increaseRt:'2', costVigor:'60', },
+    {seq:'6', weaponType:'돌격소총', name:'치명연사', img:'/resource/img/skill_ico006.gif', increaseTarget:'cri', increaseRt:'2', costVigor:'25', },
+    {seq:'7', weaponType:'돌격소총', name:'급소연사', img:'/resource/img/skill_ico007.gif', increaseTarget:'all', increaseRt:'1.5', costVigor:'40', },
+    {seq:'8', weaponType:'기관총', name:'치명연사', img:'/resource/img/skill_ico008.gif', increaseTarget:'cri', increaseRt:'2', costVigor:'30', },
+    {seq:'9', weaponType:'기관총', name:'급소연사', img:'/resource/img/skill_ico009.gif', increaseTarget:'all', increaseRt:'1.5', costVigor:'50', },
+    {seq:'10', weaponType:'저격소총', name:'원거리추가', img:'/resource/img/skill_ico009.gif', increaseTarget:'all', increaseRt:'1.5', costVigor:'0', },
+    {seq:'11', weaponType:'샷건', name:'벽부딪힘', img:'/resource/img/skill_ico009.gif', increaseTarget:'all', increaseRt:'1.5', costVigor:'0', },
+    {seq:'12', weaponType:'샷건', name:'근접사격', img:'/resource/img/skill_ico009.gif', increaseTarget:'all', increaseRt:'4', costVigor:'0', },
+    {seq:'13', weaponType:'샷건', name:'벽부딪힘+근접사격', img:'/resource/img/skill_ico009.gif', increaseTarget:'all', increaseRt:'6', costVigor:'0', },
+    {seq:'14', weaponType:'기관총', name:'치명연사+벽부딪힘', img:'/resource/img/skill_ico009.gif', increaseTarget:'cri', increaseRt:'2', costVigor:'50', },
+    {seq:'15', weaponType:'기관총', name:'급소연사+벽부딪힘', img:'/resource/img/skill_ico009.gif', increaseTarget:'all', increaseRt:'2.25', costVigor:'50'}
   ]),
   dpsSim: Map({
     huntSecond: '0',
     currInterval: null,
+    dmgRandom: {dmg: '0', name: 'normal'},
+    dmgRandomSum: '0',
+    currDmgInterval: null,
+    fireCoolTime: '40',
+    currFireInterval: null,
+    fireUse: false,
+    fireUseTime: '13',
     currHeadCounterValue: '0',
     currHeadCounterList: List(),
     headCounterOption: fromJS([
@@ -403,26 +270,32 @@ export default handleActions({
 
     const totalDmg = {
       normalDmg: {
+        name: 'normalDmg',
         min: Math.ceil(defaultDmg * 0.8),
         max: Math.ceil(defaultDmg * 1.2)
       },
       normalDmgFire: {
+        name: 'normalDmgFire',
         min: Math.ceil(defaultDmg * 1.5 * 0.8),
         max: Math.ceil(defaultDmg * 1.5 * 1.2)
       },
       criDmg: {
+        name: 'criDmg',
         min: Math.ceil(defaultDmg * (head_atk_rt/2 * (increaseTarget === 'cri' ? Number(increaseRt) : 1)) * 0.8),
         max: Math.ceil(defaultDmg * (head_atk_rt/2 * (increaseTarget === 'cri' ? Number(increaseRt) : 1)) * 1.2)
       },
       criDmgFire: {
+        name: 'criDmgFire',
         min: Math.ceil(defaultDmg * (head_atk_rt/2 * (increaseTarget === 'cri' ? Number(increaseRt) : 1)) * 1.5 * 0.8),
         max: Math.ceil(defaultDmg * (head_atk_rt/2 * (increaseTarget === 'cri' ? Number(increaseRt) : 1)) * 1.5 * 1.2)
       },
       headDmg: {
+        name: 'headDmg',
         min: Math.ceil(defaultDmg * (head_atk_rt * (increaseTarget === 'cri' ? Number(increaseRt) : 1)) * 0.8),
         max: Math.ceil(defaultDmg * (head_atk_rt * (increaseTarget === 'cri' ? Number(increaseRt) : 1)) * 1.2)
       },
       headDmgFire: {
+        name: 'headDmgFire',
         min: Math.ceil(defaultDmg * (head_atk_rt * (increaseTarget === 'cri' ? Number(increaseRt) : 1)) * 1.5 * 0.8),
         max: Math.ceil(defaultDmg * (head_atk_rt * (increaseTarget === 'cri' ? Number(increaseRt) : 1)) * 1.5 * 1.2)
       }
@@ -464,10 +337,38 @@ export default handleActions({
                 .setIn(['dpsSim', 'currFireList'], fromJS(currFrList))
                 .setIn(['dpsSim', 'currFireValue'], currFrList[0].seq);
   },
+  [SECOND_INITIAL]: (state, action) => {
+    return state.setIn(['dpsSim', 'huntSecond'], '0')
+                .setIn(['dpsSim', 'currInterval'], null)
+                .setIn(['dpsSim', 'dmgRandom'], {dmg: '0', name: 'normal'})
+                .setIn(['dpsSim', 'currDmgInterval'], null)
+                .setIn(['dpsSim', 'dmgRandomSum'], '0')
+                .setIn(['dpsSim', 'fireCoolTime'], '40')
+                .setIn(['dpsSim', 'currFireInterval'], null)
+                .setIn(['dpsSim', 'fireUseTime'], '13')
+                .setIn(['dpsSim', 'currFireUseInterval'], null)
+                .setIn(['dpsSim', 'fireUse'], false);
+  },
   [SET_HUNTSECOND]: (state, action) => {
     const {currHuntSecond, interval} = action.payload;
     
     return state.setIn(['dpsSim', 'huntSecond'], currHuntSecond)
                 .setIn(['dpsSim', 'currInterval'], interval);
+  },
+  [SET_DMG_RANDOM]: (state, action) => {
+    const {dmgRandom, dmgInterval, dmgRandomSum} = action.payload;
+    const dmgRandomSumResult = Number(dmgRandomSum) + Number(dmgRandom.dmg);
+  
+    return state.setIn(['dpsSim', 'dmgRandom'], dmgRandom)
+                .setIn(['dpsSim', 'currDmgInterval'], dmgInterval)
+                .setIn(['dpsSim', 'dmgRandomSum'], String(dmgRandomSumResult));
+  },
+  [SET_FIRE_COOLTIME]: (state, action) => {
+    const {currFireCoolTime, currFireUseTime, fireInterval, currFireUse} = action.payload;
+    
+    return state.setIn(['dpsSim', 'fireCoolTime'], currFireCoolTime)
+                .setIn(['dpsSim', 'fireUseTime'], currFireUseTime)
+                .setIn(['dpsSim', 'fireUse'], currFireUse)
+                .setIn(['dpsSim', 'currFireInterval'], fireInterval);
   }
 }, initialState);

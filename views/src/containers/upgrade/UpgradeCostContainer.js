@@ -16,10 +16,10 @@ class UpgradeCostContainer extends Component {
     }
   }
 
-  shouldComponentUpdate(prevProps, prevState) {
-    const prevId = prevProps.weaponView.itemInfo._id;
+  shouldComponentUpdate(nextProps, nextState) {
+    const prevId = nextProps.weaponView.itemInfo._id;
     const currId = this.props.weaponView.itemInfo._id;
-    const prevTax = prevProps.upgradeInfo.tax;
+    const prevTax = nextProps.upgradeInfo.tax;
     const currTax = this.props.upgradeInfo.tax;
     return prevId !== currId || prevTax !== currTax;
   }

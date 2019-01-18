@@ -24,6 +24,17 @@ class WeaponViewContainer extends Component {
     window.scrollTo(0, 0);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    const prevId = nextProps.weaponView.itemInfo._id;
+    const prevDmg = nextProps.weaponView.itemInfo.dmg;
+    const prevCri = nextProps.weaponView.itemInfo.cri;
+    const currId = this.props.weaponView.itemInfo._id;
+    const currDmg = this.props.weaponView.itemInfo.dmg;
+    const currCri = this.props.weaponView.itemInfo.cri;
+
+    return prevId !== currId || prevDmg !== currDmg || prevCri !== currCri;
+  }
+
   render() {
     const {itemInfo} = this.props.weaponView;
     const {currWeaponUpDv, location, loading} = this.props;
