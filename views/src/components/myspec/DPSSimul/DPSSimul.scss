@@ -114,6 +114,11 @@
       .dmg-list {
         height: 100px;
         border: 1px solid $oc-gray-4;
+
+        .dmg-list-object-head {
+          color: $oc-red-9;
+          font-weight: bold;
+        }
       }
     }
 

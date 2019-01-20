@@ -33,7 +33,7 @@ class DPSSimulContainer extends Component {
     }
   }
 
-  getRandomDmg = (totalDmg, invenCri, currHeadCounterValue) => {
+  getRandomDmg = (totalDmg, invenCri, currHeadCounterValue, fireUse) => {
     let baseTotalDmg = {
       dmg: totalDmg.normalDmg,
       name: 'normal'
@@ -43,33 +43,33 @@ class DPSSimulContainer extends Component {
     if(criRandom <= invenCri) { //크리or치명
       if(currHeadCounterValue === '1') { //크리/10확률로 헤드샷(카운터)
         baseTotalDmg = {
-          dmg: headRandom <= Number(invenCri) ? totalDmg.headDmg : totalDmg.criDmg,
+          dmg: headRandom <= Number(invenCri) ? (fireUse ? totalDmg.headDmgFire : totalDmg.headDmg) : (fireUse ? totalDmg.criDmgFire : totalDmg.criDmg),
           name: headRandom <= Number(invenCri) ? 'counter' : 'cri'
         }
       }else if(currHeadCounterValue === '2' || currHeadCounterValue === '6') { //헤드샷50%
         baseTotalDmg = {
-          dmg: headRandom <= 500 ? totalDmg.headDmg : totalDmg.criDmg,
+          dmg: headRandom <= 500 ? (fireUse ? totalDmg.headDmgFire : totalDmg.headDmg) : (fireUse ? totalDmg.criDmgFire : totalDmg.criDmg),
           name: headRandom <= 500 ? 'head' : 'cri'
         }
       }else if(currHeadCounterValue === '3') { //헤드샷100%
         baseTotalDmg = {
-          dmg: totalDmg.headDmg,
+          dmg: (fireUse ? totalDmg.headDmgFire : totalDmg.headDmg),
           name: 'head'
         }
       }else if(currHeadCounterValue === '4') { //헤드샷90%
         baseTotalDmg = {
-          dmg: headRandom <= 900 ? totalDmg.headDmg : totalDmg.criDmg,
+          dmg: headRandom <= 900 ? (fireUse ? totalDmg.headDmgFire : totalDmg.headDmg) : (fireUse ? totalDmg.criDmgFire : totalDmg.criDmg),
           name: headRandom <= 900 ? 'head' : 'cri'
         }
       }else if(currHeadCounterValue === '5') { //헤드샷60%
         baseTotalDmg = {
-          dmg: headRandom <= 600 ? totalDmg.headDmg : totalDmg.criDmg,
+          dmg: headRandom <= 600 ? (fireUse ? totalDmg.headDmgFire : totalDmg.headDmg) : (fireUse ? totalDmg.criDmgFire : totalDmg.criDmg),
           name: headRandom <= 600 ? 'head' : 'cri'
         }
       }
     }else{
       baseTotalDmg = {
-        dmg: totalDmg.normalDmg,
+        dmg: (fireUse ? totalDmg.normalDmgFire : totalDmg.normalDmg),
         name: 'normal'
       }
     }
@@ -83,7 +83,7 @@ class DPSSimulContainer extends Component {
     const timeSpeed = 1; //배속
     const second = 1000 / timeSpeed;
     const {MySpecActions, myStat, weaponView, dpsSim} =  this.props;
-    const {speed} = weaponView.itemInfo;
+    const {speed, stype1} = weaponView.itemInfo;
     const {totalDmg, invenCri} = myStat;
     const {currInterval, currDmgInterval, currHeadCounterValue, currFireValue, huntStartBool} = dpsSim;
 
@@ -106,7 +106,7 @@ class DPSSimulContainer extends Component {
       let currFireUseTime = Number(fireUseTime);
       let currFireUse = fireUse;
 
-      if(currFireValue === '3') {
+      if(currFireValue === '1' || currFireValue === '3') {
         if(currFireCoolTime > 0) {
           currFireCoolTime = currFireCoolTime - 1;
           currFireUse = false;
@@ -129,11 +129,11 @@ class DPSSimulContainer extends Component {
     
     const dmgInterval = setInterval(() => {
       const {MySpecActions, dpsSim} = this.props;
-      const {dmgRandomSum} = dpsSim;
-      const dmgRandom = this.getRandomDmg(totalDmg, invenCri, currHeadCounterValue);
+      const {dmgRandomSum, fireUse, dmgRandomList} = dpsSim;
+      const dmgRandom = this.getRandomDmg(totalDmg, invenCri, currHeadCounterValue, fireUse);
       
-      MySpecActions.setDmgRandom({dmgRandom, dmgInterval, dmgRandomSum});
-    }, second * (60 / Number(speed)));
+      MySpecActions.setDmgRandom({dmgRandom, dmgInterval, dmgRandomSum, dmgRandomList});
+    }, second * (60 / Number(stype1 === '1' ? speed : '180')));
   }
 
   huntStop = () => {
@@ -161,7 +161,7 @@ class DPSSimulContainer extends Component {
       currHeadCounterValue, currHeadCounterList, currFireValue, 
       currFireList, huntSecond, dmgRandom, dmgRandomSum, 
       fireUse, fireCoolTime, fireUseTime, monsterCon, monsterExp,
-      huntStartBool
+      huntStartBool, dmgRandomList
     } = this.props.dpsSim;
     
     return (
@@ -183,6 +183,7 @@ class DPSSimulContainer extends Component {
       monsterCon={monsterCon}
       monsterExp={monsterExp}
       huntStartBool={huntStartBool}
+      dmgRandomList={dmgRandomList}
       />
     );
   }

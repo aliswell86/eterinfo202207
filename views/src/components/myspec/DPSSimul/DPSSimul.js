@@ -6,7 +6,7 @@ import NumberFormat from 'react-number-format';
 
 const cx = classNames.bind(styles);
 
-const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, currFireValue, currFireList, huntStart, huntSecond, huntStop, dmgRandom, dmgRandomSum, fireUse, fireCoolTime, fireUseTime, inputClick, monsterCon, monsterExp, huntStartBool}) => {
+const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, currFireValue, currFireList, huntStart, huntSecond, huntStop, dmgRandom, dmgRandomSum, fireUse, fireCoolTime, fireUseTime, inputClick, monsterCon, monsterExp, huntStartBool, dmgRandomList}) => {
   const hcOptionList = currHeadCounterList.map(option => {
     const {seq, description} = option;
     
@@ -35,6 +35,16 @@ const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, curr
   const conCoverStyle = {
     width: `${conCoverWidth}%`
   }
+
+  const dmgList = dmgRandomList.map((obj, cnt) => {
+    const {dmg, name} = obj;
+
+    return (
+      <div className={cx(`dmg-list-object-${name}`)} key={cnt}>
+        <NumberFormat value={dmg} displayType={'text'} thousandSeparator={true} suffix={' '+name}/>
+      </div>
+    )
+  });
 
   return (
     <div className={cx('dps-simul')}>
@@ -66,7 +76,9 @@ const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, curr
           <div className={cx('firecool-second')}>
             {currFireValue === '2' || currFireValue === '4' ? '-' : `${fireCoolTime}/${fireUseTime}/${fireUse ? 'ON' : 'OFF'}`}
           </div>
-          <div className={cx('dmg-list')}>{dmgRandom.dmg}</div>
+          <div className={cx('dmg-list')}>
+            {dmgList}
+          </div>
         </div>
 
         <div className={cx('monster-view-info')}>

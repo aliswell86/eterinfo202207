@@ -74,6 +74,7 @@ const initialState = Map({
     currInterval: null,
     dmgRandom: {dmg: '0', name: 'normal'},
     dmgRandomSum: '0',
+    dmgRandomList: List(),
     currDmgInterval: null,
     fireCoolTime: '40',
     fireUse: false,
@@ -350,7 +351,8 @@ export default handleActions({
                 .setIn(['dpsSim', 'fireUseTime'], '13')
                 .setIn(['dpsSim', 'currFireUseInterval'], null)
                 .setIn(['dpsSim', 'fireUse'], false)
-                .setIn(['dpsSim', 'huntStartBool'], false);
+                .setIn(['dpsSim', 'huntStartBool'], false)
+                .setIn(['dpsSim', 'setRandomDmgList'], List());
   },
   [SET_HUNTSECOND]: (state, action) => {
     const {currHuntSecond, currFireCoolTime, currFireUseTime, currFireUse, interval} = action.payload;
@@ -362,12 +364,22 @@ export default handleActions({
                 .setIn(['dpsSim', 'fireUse'], currFireUse);
   },
   [SET_DMG_RANDOM]: (state, action) => {
-    const {dmgRandom, dmgInterval, dmgRandomSum} = action.payload;
+    const {dmgRandom, dmgInterval, dmgRandomSum, dmgRandomList} = action.payload;
     const dmgRandomSumResult = Number(dmgRandomSum) + Number(dmgRandom.dmg);
-  
+    
+    let setRandomDmgList = dmgRandomList;
+    const setRandomDmgListCnt = dmgRandomList.length;
+
+    setRandomDmgList.push(dmgRandom);
+    
+    if(setRandomDmgListCnt > 4) {
+      setRandomDmgList = setRandomDmgList.slice(1, 6);
+    }
+    
     return state.setIn(['dpsSim', 'dmgRandom'], dmgRandom)
                 .setIn(['dpsSim', 'currDmgInterval'], dmgInterval)
-                .setIn(['dpsSim', 'dmgRandomSum'], String(dmgRandomSumResult));
+                .setIn(['dpsSim', 'dmgRandomSum'], String(dmgRandomSumResult))
+                .setIn(['dpsSim', 'dmgRandomList'], setRandomDmgList);
   },
   [START_HUNT]: (state, action) => {
     return state.setIn(['dpsSim', 'huntStartBool'], true);
