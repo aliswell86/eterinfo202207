@@ -7,8 +7,14 @@ import * as myspecActions from 'store/modules/myspec';
 class DPSSimulContainer extends Component {
 
   setDPSOption = (e) => {
-    const {MySpecActions} = this.props;
+    const {MySpecActions, dpsSim} = this.props;
     const {name, value} = e.target;
+
+    if(dpsSim.huntStartBool) {
+      alert("사냥중입니다.. 사냥중단후 옵션을 수정해야 합니다.");
+      return false;
+    }
+
     MySpecActions.setDpsOption({name, value});
   }
 
@@ -16,9 +22,14 @@ class DPSSimulContainer extends Component {
     const {MySpecActions} = this.props;
     const {_id, item_dtl_dv, stype1} = this.props.weaponView.itemInfo;
     const prevId = prevProps.weaponView.itemInfo._id;
-    
+
     if(_id !== prevId) {
+      const {currInterval, currDmgInterval} = this.props.dpsSim;
+      clearInterval(currInterval);
+      clearInterval(currDmgInterval);
+
       MySpecActions.setDPSOPtionInitial({item_dtl_dv, stype1});
+      MySpecActions.secondInitial();
     }
   }
 
@@ -69,25 +80,51 @@ class DPSSimulContainer extends Component {
   }
 
   huntStart = () => {
-    const timeSpeed = 10; //배속
+    const timeSpeed = 1; //배속
     const second = 1000 / timeSpeed;
-    const {speed} = this.props.weaponView.itemInfo;
-    const {totalDmg, invenCri} = this.props.myStat
-    const {currInterval, currDmgInterval, currHeadCounterValue, currFireInterval, currFireUseInterval} = this.props.dpsSim;
-    if(currInterval !== null || currDmgInterval !== null) {
+    const {MySpecActions, myStat, weaponView, dpsSim} =  this.props;
+    const {speed} = weaponView.itemInfo;
+    const {totalDmg, invenCri} = myStat;
+    const {currInterval, currDmgInterval, currHeadCounterValue, currFireValue, huntStartBool} = dpsSim;
+
+    if(huntStartBool) {
       alert('사냥중 입니다. 사냥중단 후 다시 해보세요');
       return false;
     }
 
+    MySpecActions.startHunt(); //사냥시작여부 True
+
     clearInterval(currInterval);
     clearInterval(currDmgInterval);
-    clearInterval(currFireInterval);
-    clearInterval(currFireUseInterval);
     
     const interval = setInterval(() => {
       const {MySpecActions, dpsSim} = this.props;
+      const {fireCoolTime, fireUseTime, fireUse} = dpsSim;      
       const currHuntSecond = Number(dpsSim.huntSecond) + 1;
-      MySpecActions.setHuntSecond({currHuntSecond, interval});
+
+      let currFireCoolTime = Number(fireCoolTime);
+      let currFireUseTime = Number(fireUseTime);
+      let currFireUse = fireUse;
+
+      if(currFireValue === '3') {
+        if(currFireCoolTime > 0) {
+          currFireCoolTime = currFireCoolTime - 1;
+          currFireUse = false;
+        }
+        
+        if(currFireCoolTime === 0) {
+          currFireUseTime = currFireUseTime - 1;
+          currFireUse = true;
+        }
+
+        if(currFireUseTime === 0) {
+          currFireCoolTime = '40';
+          currFireUseTime = '13';
+          currFireUse = false;
+        }
+      }
+
+      MySpecActions.setHuntSecond({currHuntSecond, currFireCoolTime, currFireUseTime, currFireUse, interval});
     }, second);
     
     const dmgInterval = setInterval(() => {
@@ -97,50 +134,34 @@ class DPSSimulContainer extends Component {
       
       MySpecActions.setDmgRandom({dmgRandom, dmgInterval, dmgRandomSum});
     }, second * (60 / Number(speed)));
-
-    const fireInterval = setInterval(() => {
-      const {MySpecActions, dpsSim} = this.props;
-      const {fireCoolTime, fireUseTime, fireUse} = dpsSim;
-      let currFireCoolTime = Number(fireCoolTime);
-      let currFireUseTime = Number(fireUseTime);
-      let currFireUse = fireUse;
-
-      if(currFireCoolTime > 0) {
-        currFireCoolTime = currFireCoolTime - 1;
-        currFireUse = false;
-      }
-      
-      if(currFireCoolTime === 0) {
-        currFireUseTime = currFireUseTime - 1;
-        currFireUse = true;
-      }
-
-      if(currFireUseTime === 0) {
-        currFireCoolTime = '40';
-        currFireUseTime = '13';
-        currFireUse = false;
-      }
-
-      MySpecActions.setFireCoolTime({currFireCoolTime, currFireUseTime, currFireUse, fireInterval});
-    }, second);
   }
 
   huntStop = () => {
-    const {currInterval, currDmgInterval, currFireInterval} = this.props.dpsSim;
+    const {MySpecActions, dpsSim} = this.props;
+    const {currInterval, currDmgInterval} = dpsSim;
+
     clearInterval(currInterval);
     clearInterval(currDmgInterval);
-    clearInterval(currFireInterval);
-
-    const {MySpecActions} = this.props;
     MySpecActions.secondInitial();
+  }
+
+  inputClick = (e) => {
+    e.target.select();
+  }
+
+  componentWillUnmount() {
+    const {currInterval, currDmgInterval} = this.props.dpsSim;
+    clearInterval(currInterval);
+    clearInterval(currDmgInterval);
   }
   
   render() {
-    const {setDPSOption, huntStart, huntStop} = this;
+    const {setDPSOption, huntStart, huntStop, inputClick} = this;
     const {
       currHeadCounterValue, currHeadCounterList, currFireValue, 
       currFireList, huntSecond, dmgRandom, dmgRandomSum, 
-      fireUse, fireCoolTime, fireUseTime
+      fireUse, fireCoolTime, fireUseTime, monsterCon, monsterExp,
+      huntStartBool
     } = this.props.dpsSim;
     
     return (
@@ -158,6 +179,10 @@ class DPSSimulContainer extends Component {
       fireUse={fireUse}
       fireCoolTime={fireCoolTime}
       fireUseTime={fireUseTime}
+      inputClick={inputClick}
+      monsterCon={monsterCon}
+      monsterExp={monsterExp}
+      huntStartBool={huntStartBool}
       />
     );
   }

@@ -11,7 +11,7 @@ const SET_DPSOPTIONS_INITIAL = 'myspec/SET_DPSOPTIONS_INITIAL';
 const SET_HUNTSECOND = 'myspec/SET_HUNTSECOND';
 const SET_DMG_RANDOM = 'myspec/SET_DMG_RANDOM';
 const SECOND_INITIAL = 'myspec/SECOND_INITIAL';
-const SET_FIRE_COOLTIME = 'myspec/SET_FIRE_COOLTIME';
+const START_HUNT = 'myspec/START_HUNT';
 
 export const setMyStat = createAction(SET_MYSPEC_STAT);
 export const getInvenDmage = createAction(GET_INVEN_DMAGE);
@@ -21,7 +21,7 @@ export const setDPSOPtionInitial = createAction(SET_DPSOPTIONS_INITIAL);
 export const setHuntSecond = createAction(SET_HUNTSECOND);
 export const setDmgRandom = createAction(SET_DMG_RANDOM);
 export const secondInitial = createAction(SECOND_INITIAL);
-export const setFireCoolTime = createAction(SET_FIRE_COOLTIME);
+export const startHunt = createAction(START_HUNT);
 
 const initialState = Map({
   myStat: Map({
@@ -69,13 +69,13 @@ const initialState = Map({
     {seq:'15', weaponType:'기관총', name:'급소연사+벽부딪힘', img:'/resource/img/skill_ico009.gif', increaseTarget:'all', increaseRt:'2.25', costVigor:'50'}
   ]),
   dpsSim: Map({
+    huntStartBool: false,
     huntSecond: '0',
     currInterval: null,
     dmgRandom: {dmg: '0', name: 'normal'},
     dmgRandomSum: '0',
     currDmgInterval: null,
     fireCoolTime: '40',
-    currFireInterval: null,
     fireUse: false,
     fireUseTime: '13',
     currHeadCounterValue: '0',
@@ -97,7 +97,9 @@ const initialState = Map({
       {seq: '2', stype1: '1', weaponType: '', description: '소이탄(체력10% 깍았을때 발화)'},
       {seq: '3', stype1: '2', weaponType: '', description: '발화토이(쿨40초)'},
       {seq: '4', stype1: '2', weaponType: '', description: '발화무기(체력10% 깍았을때 발화)'}
-    ])
+    ]),
+    monsterCon: '100000000',
+    monsterExp: '60000000'
   })
 });
 
@@ -347,13 +349,17 @@ export default handleActions({
                 .setIn(['dpsSim', 'currFireInterval'], null)
                 .setIn(['dpsSim', 'fireUseTime'], '13')
                 .setIn(['dpsSim', 'currFireUseInterval'], null)
-                .setIn(['dpsSim', 'fireUse'], false);
+                .setIn(['dpsSim', 'fireUse'], false)
+                .setIn(['dpsSim', 'huntStartBool'], false);
   },
   [SET_HUNTSECOND]: (state, action) => {
-    const {currHuntSecond, interval} = action.payload;
+    const {currHuntSecond, currFireCoolTime, currFireUseTime, currFireUse, interval} = action.payload;
     
     return state.setIn(['dpsSim', 'huntSecond'], currHuntSecond)
-                .setIn(['dpsSim', 'currInterval'], interval);
+                .setIn(['dpsSim', 'currInterval'], interval)
+                .setIn(['dpsSim', 'fireCoolTime'], currFireCoolTime)
+                .setIn(['dpsSim', 'fireUseTime'], currFireUseTime)
+                .setIn(['dpsSim', 'fireUse'], currFireUse);
   },
   [SET_DMG_RANDOM]: (state, action) => {
     const {dmgRandom, dmgInterval, dmgRandomSum} = action.payload;
@@ -363,12 +369,7 @@ export default handleActions({
                 .setIn(['dpsSim', 'currDmgInterval'], dmgInterval)
                 .setIn(['dpsSim', 'dmgRandomSum'], String(dmgRandomSumResult));
   },
-  [SET_FIRE_COOLTIME]: (state, action) => {
-    const {currFireCoolTime, currFireUseTime, fireInterval, currFireUse} = action.payload;
-    
-    return state.setIn(['dpsSim', 'fireCoolTime'], currFireCoolTime)
-                .setIn(['dpsSim', 'fireUseTime'], currFireUseTime)
-                .setIn(['dpsSim', 'fireUse'], currFireUse)
-                .setIn(['dpsSim', 'currFireInterval'], fireInterval);
+  [START_HUNT]: (state, action) => {
+    return state.setIn(['dpsSim', 'huntStartBool'], true);
   }
 }, initialState);

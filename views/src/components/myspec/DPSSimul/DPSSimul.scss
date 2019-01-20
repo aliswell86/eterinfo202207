@@ -125,15 +125,7 @@
         height: 30px;
         background: $oc-gray-2;
         width: 100%;
-      }
-      .monster-con-cover {
-        top: -30px;
-        position: relative;
-        height: 30px;
-        background: $oc-red-9;
-        opacity: 0.8;
-        width: 90%;
-        text-align: center;        
+        text-align: center;
 
         .monster-connum {
           font-weight: bold;
@@ -141,11 +133,20 @@
           vertical-align: middle;
         }
       }
+      .monster-con-cover {
+        top: -30px;
+        position: relative;
+        height: 30px;
+        background: $oc-red-9;
+        opacity: 0.8;
+      }
 
       .monster-view {
         cursor: pointer;
         width: 150px;
         margin: auto;
+        top: -30px;
+        position: relative;
       }
 
       .monster-view:hover {        
@@ -155,6 +156,31 @@
       .monster-view:active {
         @include material-shadow(1, 1);
         background: $oc-blue-1;
+      }
+
+      .monster-con-exp {
+        display: flex;
+        display: -ms-flexbox;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;       
+
+        div {
+          div {
+            font-weight: bold;
+          }
+          .monster-con-in {
+            color: $oc-red-9;
+          }
+          .monster-exp-in {
+            color: $oc-green-5;
+          }
+          input {
+            padding: 0.2rem;
+            height: 30px;
+            width: 160px;
+          }
+        }
       }
     }
   }
