@@ -80,12 +80,11 @@ class DPSSimulContainer extends Component {
   }
 
   huntStart = () => {
-    const timeSpeed = 1; //배속
-    const second = 1000 / timeSpeed;
     const {MySpecActions, myStat, weaponView, dpsSim} =  this.props;
     const {speed, stype1, item_dtl_dv} = weaponView.itemInfo;
     const {totalDmg, invenCri} = myStat;
-    const {currInterval, currDmgInterval, currHeadCounterValue, currFireValue, huntStartBool} = dpsSim;
+    const {currInterval, currDmgInterval, currHeadCounterValue, currFireValue, huntStartBool, timeSpeed} = dpsSim;
+    const second = 1000 / timeSpeed;
 
     if(huntStartBool) {
       alert('사냥중 입니다. 사냥중단 후 다시 해보세요');
@@ -165,6 +164,16 @@ class DPSSimulContainer extends Component {
     MySpecActions.secondInitial();
   }
 
+  huntRest = () => {
+    const {MySpecActions, dpsSim} = this.props;
+    const {currInterval, currDmgInterval} = dpsSim;
+
+    clearInterval(currInterval);
+    clearInterval(currDmgInterval);
+
+    MySpecActions.secondRest();
+  }
+
   // inputClick = (e) => {
   //   e.target.select();
   // }
@@ -176,12 +185,12 @@ class DPSSimulContainer extends Component {
   }
   
   render() {
-    const {setDPSOption, huntStart, huntStop} = this;
+    const {setDPSOption, huntStart, huntStop, huntRest} = this;
     const {
       currHeadCounterValue, currHeadCounterList, currFireValue, 
       currFireList, huntSecond, fireUse, fireCoolTime, fireUseTime, 
       monsterCon, monsterExp, huntStartBool, dmgRandomList, monsterConRe, myExp,
-      totalDmgSum, totalMonsterKill
+      totalDmgSum, totalMonsterKill, timeSpeed
     } = this.props.dpsSim;
     
     return (
@@ -205,6 +214,8 @@ class DPSSimulContainer extends Component {
       myExp={myExp}
       totalDmgSum={totalDmgSum}
       totalMonsterKill={totalMonsterKill}
+      timeSpeed={timeSpeed}
+      huntRest={huntRest}
       />
     );
   }

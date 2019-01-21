@@ -12,6 +12,7 @@ const SET_HUNTSECOND = 'myspec/SET_HUNTSECOND';
 const SET_DMG_RANDOM = 'myspec/SET_DMG_RANDOM';
 const SECOND_INITIAL = 'myspec/SECOND_INITIAL';
 const START_HUNT = 'myspec/START_HUNT';
+const SECOND_REST = 'myspec/SECOND_REST';
 
 export const setMyStat = createAction(SET_MYSPEC_STAT);
 export const getInvenDmage = createAction(GET_INVEN_DMAGE);
@@ -22,6 +23,7 @@ export const setHuntSecond = createAction(SET_HUNTSECOND);
 export const setDmgRandom = createAction(SET_DMG_RANDOM);
 export const secondInitial = createAction(SECOND_INITIAL);
 export const startHunt = createAction(START_HUNT);
+export const secondRest = createAction(SECOND_REST);
 
 const initialState = Map({
   myStat: Map({
@@ -105,7 +107,8 @@ const initialState = Map({
     monsterCon: '1050000000',
     monsterConRe: '1050000000',
     monsterExp: '450000000',
-    myExp: '0'
+    myExp: '0',
+    timeSpeed: '1'
   })
 });
 
@@ -435,5 +438,8 @@ export default handleActions({
   },
   [START_HUNT]: (state, action) => {
     return state.setIn(['dpsSim', 'huntStartBool'], true);
+  },
+  [SECOND_REST]: (state, action) => {
+    return state.setIn(['dpsSim', 'huntStartBool'], false);
   }
 }, initialState);

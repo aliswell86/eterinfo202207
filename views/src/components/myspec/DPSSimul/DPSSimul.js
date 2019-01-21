@@ -6,7 +6,7 @@ import NumberFormat from 'react-number-format';
 
 const cx = classNames.bind(styles);
 
-const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, currFireValue, currFireList, huntStart, huntSecond, huntStop, fireUse, fireCoolTime, fireUseTime, monsterCon, monsterExp, huntStartBool, dmgRandomList, monsterConRe, myExp, totalDmgSum, totalMonsterKill}) => {
+const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, currFireValue, currFireList, huntStart, huntSecond, huntStop, fireUse, fireCoolTime, fireUseTime, monsterCon, monsterExp, huntStartBool, dmgRandomList, monsterConRe, myExp, totalDmgSum, totalMonsterKill, timeSpeed, huntRest}) => {
   const hcOptionList = currHeadCounterList.map(option => {
     const {seq, description} = option;
     
@@ -65,9 +65,18 @@ const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, curr
               {frOptionList}
             </div>
           </div>
+          <div className={cx('speed-option')}>
+            <div className={cx('speed-option-title')}>배속 설정</div>
+            <div className={cx('speed-option-body')}>
+              <Radio name='timeSpeed' value='1' onChange={setDPSOption} defaultValue={timeSpeed}>기본속도</Radio>
+              <Radio name='timeSpeed' value='2' onChange={setDPSOption} defaultValue={timeSpeed}>2배속</Radio>
+              <Radio name='timeSpeed' value='3' onChange={setDPSOption} defaultValue={timeSpeed}>3배속</Radio>
+            </div>
+          </div>
           <div className={cx('shot-btns')}>
             <button onClick={huntStart}>사냥<br/>시작</button>
-            <button onClick={huntStop}>사냥<br/>중단</button>
+            <button onClick={huntRest}>사냥<br/>휴식</button>
+            <button onClick={huntStop}>사냥<br/>리셋</button>
           </div>
         </div>
 
