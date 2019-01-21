@@ -111,14 +111,51 @@
         margin-bottom: 0.4rem;
       }
 
-      .dmg-list {
-        height: 100px;
-        border: 1px solid $oc-gray-4;
+      .monsterkill-title {
+        border-top: 1px solid $oc-blue-4;
+        border-left: 1px solid $oc-blue-4;
+        border-right: 1px solid $oc-blue-4;
+      }
+      .monsterkill-value {
+        padding: 0.4rem;
+        border: 1px solid $oc-blue-4;
+        background: $oc-blue-8;
+        font-weight: bold;        
+        color:white;
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+      }
 
-        .dmg-list-object-head {
-          color: $oc-red-9;
-          font-weight: bold;
-        }
+      .exp-title {
+        border-top: 1px solid $oc-green-4;
+        border-left: 1px solid $oc-green-4;
+        border-right: 1px solid $oc-green-4;
+      }
+
+      .exp-value {
+        padding: 0.2rem;
+        border: 1px solid $oc-green-4;
+        background: $oc-green-8;
+        font-weight: bold;        
+        color:white;
+        font-size: 1.0rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .dps-title {
+        border-top: 1px solid $oc-violet-4;
+        border-left: 1px solid $oc-violet-4;
+        border-right: 1px solid $oc-violet-4;
+      }
+
+      .dps-value {
+        padding: 0.2rem;
+        border: 1px solid $oc-violet-4;
+        background: $oc-violet-8;
+        font-weight: bold;        
+        color:white;
+        font-size: 1.0rem;
+        margin-bottom: 0.4rem;
       }
     }
 
@@ -148,10 +185,35 @@
 
       .monster-view {
         cursor: pointer;
-        width: 150px;
+        // width: 150px;
         margin: auto;
         top: -30px;
         position: relative;
+
+        display: flex;
+        display: -ms-flexbox;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        align-items: center;
+
+        .dmg-list {
+          width: 200px;
+          height: 110px;
+          // border: 1px solid $oc-gray-4;
+          
+          .dmg-list-object-Critical {
+            color: $oc-yellow-7;
+            font-weight: bold;
+          }
+          .dmg-list-object-HeadShot {
+            color: $oc-red-7;
+            font-weight: bold;
+          }
+          .dmg-list-object-Counter {
+            color: $oc-red-9;
+            font-weight: bold;
+          }
+        }
       }
 
       .monster-view:hover {        
@@ -188,5 +250,9 @@
         }
       }
     }
+  }
+
+  .dpssim-notice {
+    margin-top: 2rem;
   }
 }

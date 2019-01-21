@@ -44,27 +44,27 @@ class DPSSimulContainer extends Component {
       if(currHeadCounterValue === '1') { //크리/10확률로 헤드샷(카운터)
         baseTotalDmg = {
           dmg: headRandom <= Number(invenCri) ? (fireUse ? totalDmg.headDmgFire : totalDmg.headDmg) : (fireUse ? totalDmg.criDmgFire : totalDmg.criDmg),
-          name: headRandom <= Number(invenCri) ? 'counter' : 'cri'
+          name: headRandom <= Number(invenCri) ? 'Counter' : 'Critical'
         }
       }else if(currHeadCounterValue === '2' || currHeadCounterValue === '6') { //헤드샷50%
         baseTotalDmg = {
           dmg: headRandom <= 500 ? (fireUse ? totalDmg.headDmgFire : totalDmg.headDmg) : (fireUse ? totalDmg.criDmgFire : totalDmg.criDmg),
-          name: headRandom <= 500 ? 'head' : 'cri'
+          name: headRandom <= 500 ? 'HeadShot' : 'Critical'
         }
       }else if(currHeadCounterValue === '3') { //헤드샷100%
         baseTotalDmg = {
           dmg: (fireUse ? totalDmg.headDmgFire : totalDmg.headDmg),
-          name: 'head'
+          name: 'HeadShot'
         }
       }else if(currHeadCounterValue === '4') { //헤드샷90%
         baseTotalDmg = {
           dmg: headRandom <= 900 ? (fireUse ? totalDmg.headDmgFire : totalDmg.headDmg) : (fireUse ? totalDmg.criDmgFire : totalDmg.criDmg),
-          name: headRandom <= 900 ? 'head' : 'cri'
+          name: headRandom <= 900 ? 'HeadShot' : 'Critical'
         }
       }else if(currHeadCounterValue === '5') { //헤드샷60%
         baseTotalDmg = {
           dmg: headRandom <= 600 ? (fireUse ? totalDmg.headDmgFire : totalDmg.headDmg) : (fireUse ? totalDmg.criDmgFire : totalDmg.criDmg),
-          name: headRandom <= 600 ? 'head' : 'cri'
+          name: headRandom <= 600 ? 'HeadShot' : 'Critical'
         }
       }
     }else{
@@ -83,7 +83,7 @@ class DPSSimulContainer extends Component {
     const timeSpeed = 1; //배속
     const second = 1000 / timeSpeed;
     const {MySpecActions, myStat, weaponView, dpsSim} =  this.props;
-    const {speed, stype1} = weaponView.itemInfo;
+    const {speed, stype1, item_dtl_dv} = weaponView.itemInfo;
     const {totalDmg, invenCri} = myStat;
     const {currInterval, currDmgInterval, currHeadCounterValue, currFireValue, huntStartBool} = dpsSim;
 
@@ -99,11 +99,12 @@ class DPSSimulContainer extends Component {
     
     const interval = setInterval(() => {
       const {MySpecActions, dpsSim} = this.props;
-      const {fireCoolTime, fireUseTime, fireUse} = dpsSim;      
+      const {fireCoolTime, fireUseTime, fireUse, dmgRandomFireSum, monsterCon} = dpsSim;      
       const currHuntSecond = Number(dpsSim.huntSecond) + 1;
 
       let currFireCoolTime = Number(fireCoolTime);
       let currFireUseTime = Number(fireUseTime);
+      let currDmgRandomFireSum = Number(dmgRandomFireSum);
       let currFireUse = fireUse;
 
       if(currFireValue === '1' || currFireValue === '3') {
@@ -122,18 +123,37 @@ class DPSSimulContainer extends Component {
           currFireUseTime = '13';
           currFireUse = false;
         }
-      }
+      }else if(currFireValue === '2' || currFireValue === '4') {
+        if(Number(currDmgRandomFireSum) < Math.floor(monsterCon / 10)) {
+          currFireUseTime = '13';
+          currFireUse = false;
+        }
 
-      MySpecActions.setHuntSecond({currHuntSecond, currFireCoolTime, currFireUseTime, currFireUse, interval});
+        if(Number(currDmgRandomFireSum) >= Math.floor(monsterCon / 10)) {
+          currFireUseTime = currFireUseTime - 1;
+          currFireUse = true;
+        }
+
+        if(currFireUseTime === 0) {
+          currDmgRandomFireSum = 0;
+          currFireUseTime = '13';
+          currFireUse = false;
+        }
+      }
+      
+      MySpecActions.setHuntSecond({currHuntSecond, currFireCoolTime, currFireUseTime, currFireUse, interval, currDmgRandomFireSum});
     }, second);
-    
+
+    let atkSpeed = second * (60 / (stype1 === '1' ? Number(speed) : 180));
+    atkSpeed = (item_dtl_dv === '저격소총' || item_dtl_dv === '샷건') ? atkSpeed / 3 : atkSpeed;
+
     const dmgInterval = setInterval(() => {
       const {MySpecActions, dpsSim} = this.props;
-      const {dmgRandomSum, fireUse, dmgRandomList} = dpsSim;
+      const {dmgRandomSum, fireUse, dmgRandomList, dmgRandomFireSum, currFireValue, myExp, totalDmgSum, totalMonsterKill} = dpsSim;
       const dmgRandom = this.getRandomDmg(totalDmg, invenCri, currHeadCounterValue, fireUse);
-      
-      MySpecActions.setDmgRandom({dmgRandom, dmgInterval, dmgRandomSum, dmgRandomList});
-    }, second * (60 / Number(stype1 === '1' ? speed : '180')));
+
+      MySpecActions.setDmgRandom({dmgRandom, dmgInterval, dmgRandomSum, dmgRandomList, dmgRandomFireSum, currFireValue, fireUse, myExp, totalDmgSum, totalMonsterKill});
+    }, atkSpeed/* < 200 ? 200 : atkSpeed*/); //공속제한 푸는이유 - 제한이상의 공속은 2마리 이상의 몹을 치는걸로 본다.
   }
 
   huntStop = () => {
@@ -145,9 +165,9 @@ class DPSSimulContainer extends Component {
     MySpecActions.secondInitial();
   }
 
-  inputClick = (e) => {
-    e.target.select();
-  }
+  // inputClick = (e) => {
+  //   e.target.select();
+  // }
 
   componentWillUnmount() {
     const {currInterval, currDmgInterval} = this.props.dpsSim;
@@ -156,12 +176,12 @@ class DPSSimulContainer extends Component {
   }
   
   render() {
-    const {setDPSOption, huntStart, huntStop, inputClick} = this;
+    const {setDPSOption, huntStart, huntStop} = this;
     const {
       currHeadCounterValue, currHeadCounterList, currFireValue, 
-      currFireList, huntSecond, dmgRandom, dmgRandomSum, 
-      fireUse, fireCoolTime, fireUseTime, monsterCon, monsterExp,
-      huntStartBool, dmgRandomList
+      currFireList, huntSecond, fireUse, fireCoolTime, fireUseTime, 
+      monsterCon, monsterExp, huntStartBool, dmgRandomList, monsterConRe, myExp,
+      totalDmgSum, totalMonsterKill
     } = this.props.dpsSim;
     
     return (
@@ -174,16 +194,17 @@ class DPSSimulContainer extends Component {
       huntStart={huntStart}
       huntSecond={huntSecond}
       huntStop={huntStop}
-      dmgRandom={dmgRandom}
-      dmgRandomSum={dmgRandomSum}
       fireUse={fireUse}
       fireCoolTime={fireCoolTime}
       fireUseTime={fireUseTime}
-      inputClick={inputClick}
       monsterCon={monsterCon}
       monsterExp={monsterExp}
       huntStartBool={huntStartBool}
       dmgRandomList={dmgRandomList}
+      monsterConRe={monsterConRe}
+      myExp={myExp}
+      totalDmgSum={totalDmgSum}
+      totalMonsterKill={totalMonsterKill}
       />
     );
   }

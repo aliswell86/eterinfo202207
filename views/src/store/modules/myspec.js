@@ -75,6 +75,9 @@ const initialState = Map({
     dmgRandom: {dmg: '0', name: 'normal'},
     dmgRandomSum: '0',
     dmgRandomList: List(),
+    dmgRandomFireSum: '0',
+    totalDmgSum: '0',
+    totalMonsterKill: '0',
     currDmgInterval: null,
     fireCoolTime: '40',
     fireUse: false,
@@ -83,24 +86,26 @@ const initialState = Map({
     currHeadCounterList: List(),
     headCounterOption: fromJS([
       {seq: '0', stype1: '0', weaponType: '', description: '없음' },
-      {seq: '1', stype1: '2', weaponType: '', description: '크리확률의 1/10로 카운터발생'},
-      {seq: '2', stype1: '2', weaponType: '장창', description: '헤드샷(50%)'},
-      {seq: '3', stype1: '1', weaponType: '', description: '신컨(헤드샷100%)'},
-      {seq: '4', stype1: '1', weaponType: '', description: '중컨(헤드샷90%)'},
-      {seq: '5', stype1: '1', weaponType: '', description: 'X컨(헤드샷60%)'},
-      {seq: '6', stype1: '1', weaponType: '중화기', description: '헤드샷(50%)'}
+      {seq: '1', stype1: '2', weaponType: '', description: '크리티컬이 떴을때 10%확률로 카운터'},
+      {seq: '2', stype1: '2', weaponType: '장창', description: '헤드샷 확률 50%'},
+      {seq: '3', stype1: '1', weaponType: '', description: '신컨 (헤드샷 확률 100%)'},
+      {seq: '4', stype1: '1', weaponType: '', description: '중컨 (헤드샷 확률 90%)'},
+      {seq: '5', stype1: '1', weaponType: '', description: 'X컨 (헤드샷 확률 60%)'},
+      {seq: '6', stype1: '1', weaponType: '중화기', description: '헤드샷 확률 50%'}
     ]),
     currFireValue: '0',
     currFireList: List(),
     fireOption: fromJS([
       {seq: '0', stype1: '1', weaponType: '저격소총', description: '없음' },
-      {seq: '1', stype1: '1', weaponType: '', description: '발화토이(쿨40초)'},
-      {seq: '2', stype1: '1', weaponType: '', description: '소이탄(체력10% 깍았을때 발화)'},
-      {seq: '3', stype1: '2', weaponType: '', description: '발화토이(쿨40초)'},
-      {seq: '4', stype1: '2', weaponType: '', description: '발화무기(체력10% 깍았을때 발화)'}
+      {seq: '1', stype1: '1', weaponType: '', description: '발화토이 (쿨40초/지속13초)'},
+      {seq: '2', stype1: '1', weaponType: '', description: '소이탄 (체력10% 깍았을때 발화)'},
+      {seq: '3', stype1: '2', weaponType: '', description: '발화토이 (쿨40초/지속13초)'},
+      {seq: '4', stype1: '2', weaponType: '', description: '자체발화 (체력10% 깍았을때 발화)'}
     ]),
-    monsterCon: '100000000',
-    monsterExp: '60000000'
+    monsterCon: '1050000000',
+    monsterConRe: '1050000000',
+    monsterExp: '450000000',
+    myExp: '0'
   })
 });
 
@@ -316,6 +321,10 @@ export default handleActions({
   },
   [SET_DPSOPTIONS]: (state, action) => {
     const {name, value} = action.payload;
+    if(name === 'monsterCon') {
+      return state.setIn(['dpsSim', name], value)
+                  .setIn(['dpsSim', 'monsterConRe'], value);
+    }
     return state.setIn(['dpsSim', name], value);
   },
   [SET_DPSOPTIONS_INITIAL]: (state, action) => {
@@ -346,26 +355,48 @@ export default handleActions({
                 .setIn(['dpsSim', 'dmgRandom'], {dmg: '0', name: 'normal'})
                 .setIn(['dpsSim', 'currDmgInterval'], null)
                 .setIn(['dpsSim', 'dmgRandomSum'], '0')
+                .setIn(['dpsSim', 'dmgRandomFireSum'], '0')
                 .setIn(['dpsSim', 'fireCoolTime'], '40')
                 .setIn(['dpsSim', 'currFireInterval'], null)
                 .setIn(['dpsSim', 'fireUseTime'], '13')
                 .setIn(['dpsSim', 'currFireUseInterval'], null)
                 .setIn(['dpsSim', 'fireUse'], false)
                 .setIn(['dpsSim', 'huntStartBool'], false)
-                .setIn(['dpsSim', 'setRandomDmgList'], List());
+                .setIn(['dpsSim', 'myExp'], '0')
+                .setIn(['dpsSim', 'monsterConRe'], state.getIn(['dpsSim', 'monsterCon']))
+                .setIn(['dpsSim', 'totalDmgSum'], '0')
+                .setIn(['dpsSim', 'totalMonsterKill'], '0')
+                // .setIn(['dpsSim', 'dmgRandomList'], List())
+                ;
   },
   [SET_HUNTSECOND]: (state, action) => {
-    const {currHuntSecond, currFireCoolTime, currFireUseTime, currFireUse, interval} = action.payload;
+    const {currHuntSecond, currFireCoolTime, currFireUseTime, currFireUse, interval, currDmgRandomFireSum} = action.payload;
     
     return state.setIn(['dpsSim', 'huntSecond'], currHuntSecond)
                 .setIn(['dpsSim', 'currInterval'], interval)
                 .setIn(['dpsSim', 'fireCoolTime'], currFireCoolTime)
                 .setIn(['dpsSim', 'fireUseTime'], currFireUseTime)
-                .setIn(['dpsSim', 'fireUse'], currFireUse);
+                .setIn(['dpsSim', 'fireUse'], currFireUse)
+                .setIn(['dpsSim', 'dmgRandomFireSum'], currDmgRandomFireSum);
   },
   [SET_DMG_RANDOM]: (state, action) => {
-    const {dmgRandom, dmgInterval, dmgRandomSum, dmgRandomList} = action.payload;
-    const dmgRandomSumResult = Number(dmgRandomSum) + Number(dmgRandom.dmg);
+    const {dmgRandom, dmgInterval, dmgRandomSum, dmgRandomList, dmgRandomFireSum, currFireValue, fireUse, myExp, totalDmgSum, totalMonsterKill} = action.payload;
+    const {monsterType} = state.toJS().myStat;
+    const {monsterCon, monsterExp} = state.toJS().dpsSim;
+    const dmgFire = currFireValue === '2' ? 
+      Number(dmgRandom.dmg) + (Number(dmgRandom.dmg) * typeByDmg('소이', monsterType).value) : 
+      Number(dmgRandom.dmg)
+    ;
+    let dmgRandomFireSumResult = (currFireValue === '2' || currFireValue === '4') ?
+      Number(dmgRandomFireSum) + dmgFire : 0
+    ;
+    
+    if(currFireValue === '2' || currFireValue === '4') {
+      dmgRandom.dmg = fireUse ? dmgRandom.dmg : Math.floor(dmgFire);
+    }
+    
+    let dmgRandomSumResult = Number(dmgRandomSum) + Number(dmgRandom.dmg);
+    const totalDmgSumResult = Number(totalDmgSum) + Number(dmgRandom.dmg);
     
     let setRandomDmgList = dmgRandomList;
     const setRandomDmgListCnt = dmgRandomList.length;
@@ -375,11 +406,32 @@ export default handleActions({
     if(setRandomDmgListCnt > 4) {
       setRandomDmgList = setRandomDmgList.slice(1, 6);
     }
+
+    const currMyExp = Math.floor(Number(myExp) + (monsterExp * ((Number(dmgRandom.dmg)/monsterCon*100).toFixed(2)/100)));
+    let currMonsterConRe = monsterCon - dmgRandomSumResult;
+    let currFireUse = fireUse;
+    let currTotalMonsterKill = totalMonsterKill;
+
+    if(currMonsterConRe <= 0) {
+      currMonsterConRe = monsterCon;
+      dmgRandomSumResult = 0;
+      currTotalMonsterKill = Number(totalMonsterKill) + 1;
+      if((currFireValue === '2' || currFireValue === '4')) {
+        dmgRandomFireSumResult = 0;
+        currFireUse = false;
+      }
+    }
     
     return state.setIn(['dpsSim', 'dmgRandom'], dmgRandom)
                 .setIn(['dpsSim', 'currDmgInterval'], dmgInterval)
                 .setIn(['dpsSim', 'dmgRandomSum'], String(dmgRandomSumResult))
-                .setIn(['dpsSim', 'dmgRandomList'], setRandomDmgList);
+                .setIn(['dpsSim', 'dmgRandomList'], setRandomDmgList)
+                .setIn(['dpsSim', 'dmgRandomFireSum'], String(dmgRandomFireSumResult))
+                .setIn(['dpsSim', 'monsterConRe'], String(currMonsterConRe))
+                .setIn(['dpsSim', 'myExp'], String(currMyExp))
+                .setIn(['dpsSim', 'fireUse'], currFireUse)
+                .setIn(['dpsSim', 'totalDmgSum'], totalDmgSumResult)
+                .setIn(['dpsSim', 'totalMonsterKill'], currTotalMonsterKill);
   },
   [START_HUNT]: (state, action) => {
     return state.setIn(['dpsSim', 'huntStartBool'], true);

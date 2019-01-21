@@ -8,9 +8,14 @@ import * as weaponActions from 'store/modules/weapon';
 class MySpecInvenContainer extends Component {
 
   handleChangeNum = (e) => {
-    const {MySpecActions, itemInfo} = this.props;
+    const {MySpecActions, itemInfo, dpsSim} = this.props;
     const {dmg, cri, stype1, size} = itemInfo;
     const {name, value} = e.target;
+
+    if(dpsSim.huntStartBool) {
+      alert("사냥중입니다.. 사냥중단후 옵션을 수정해야 합니다.");
+      return false;
+    }
     
     if(Number(value) > -1 && Number(value) < 501) {
       MySpecActions.setMyStat({name, value});
@@ -20,9 +25,14 @@ class MySpecInvenContainer extends Component {
   }
 
   handleChangeCheck = (e) => {
-    const {MySpecActions, itemInfo} = this.props;
+    const {MySpecActions, itemInfo, dpsSim} = this.props;
     const {dmg, cri, stype1, size} = itemInfo;
     const {name, value} = e.target;
+
+    if(dpsSim.huntStartBool) {
+      alert("사냥중입니다.. 사냥중단후 옵션을 수정해야 합니다.");
+      return false;
+    }
 
     MySpecActions.setMyStat({name, value});
 
@@ -68,7 +78,8 @@ export default connect(
     myStat: state.myspec.toJS().myStat,
     mySkill: state.myspec.toJS().mySkill,
     itemInfo: state.weapon.toJS().weaponView.itemInfo,
-    weaponMapping: state.common.toJS().weaponMapping
+    weaponMapping: state.common.toJS().weaponMapping,
+    dpsSim: state.myspec.toJS().dpsSim
   }),
   (dispatch) => ({
     MySpecActions: bindActionCreators(myspecActions, dispatch),
