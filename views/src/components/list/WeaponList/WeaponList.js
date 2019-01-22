@@ -3,13 +3,13 @@ import styles from './WeaponList.scss';
 import classNames from 'classnames/bind';
 import {Link} from 'react-router-dom';
 import NumberFormat from 'react-number-format';
-import AdsenseInteract from 'components/adsense/AdsenseInteract';
+import Adsense72890 from 'components/adsense/Adsense72890';
 
 const cx = classNames.bind(styles);
 
 const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, history, cnt/*, totalCnt*/}) => {
   const adsenseTag = (cnt !== 0 && cnt % 5 === 0) ? 
-  <AdsenseInteract/> : '';
+  <Adsense72890/> : '';
     
   return (
     <>
