@@ -153,7 +153,7 @@ class DPSSimulContainer extends Component {
 
     let atkSpeed = second * (60 / (stype1 === '1' ? Number(speed) : 180));
     atkSpeed = (item_dtl_dv === '저격소총' || item_dtl_dv === '샷건') ? atkSpeed / 3 : atkSpeed;
-
+    
     const dmgInterval = setInterval(() => {
       const {MySpecActions, dpsSim} = this.props;
       const {dmgRandomSum, fireUse, dmgRandomList, dmgRandomFireSum, currFireValue, myExp, totalDmgSum, totalMonsterKill} = dpsSim;

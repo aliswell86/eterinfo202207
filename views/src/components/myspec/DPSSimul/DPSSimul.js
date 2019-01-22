@@ -68,9 +68,15 @@ const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, curr
           <div className={cx('speed-option')}>
             <div className={cx('speed-option-title')}>배속 설정</div>
             <div className={cx('speed-option-body')}>
-              <Radio name='timeSpeed' value='1' onChange={setDPSOption} defaultValue={timeSpeed}>기본속도</Radio>
-              <Radio name='timeSpeed' value='2' onChange={setDPSOption} defaultValue={timeSpeed}>2배속</Radio>
-              <Radio name='timeSpeed' value='3' onChange={setDPSOption} defaultValue={timeSpeed}>3배속</Radio>
+              <div>
+                <Radio name='timeSpeed' value='1' onChange={setDPSOption} defaultValue={timeSpeed}>기본속도</Radio>
+                <Radio name='timeSpeed' value='2' onChange={setDPSOption} defaultValue={timeSpeed}>2배속</Radio>
+                <Radio name='timeSpeed' value='3' onChange={setDPSOption} defaultValue={timeSpeed}>3배속</Radio>
+              </div>
+              <div>
+                <Radio name='timeSpeed' value='5' onChange={setDPSOption} defaultValue={timeSpeed}>5배속</Radio>
+                <Radio name='timeSpeed' value='10' onChange={setDPSOption} defaultValue={timeSpeed}>10배속</Radio>
+              </div>
             </div>
           </div>
           <div className={cx('shot-btns')}>

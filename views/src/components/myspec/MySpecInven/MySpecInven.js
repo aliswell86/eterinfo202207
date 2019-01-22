@@ -49,7 +49,7 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick, skillList
               <div><input type='number' name='itemCriUp' value={itemCriUp} onChange={myStatInsert} onClick={inputClick}/></div>
             </div>
             <div>
-              <div>해방공</div>
+              <div>해방공+업적공</div>
               <div><input type='number' name='limitDmg' value={limitDmg} onChange={myStatInsert} onClick={inputClick}/></div>
             </div>
           </div>
