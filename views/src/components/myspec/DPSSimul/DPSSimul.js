@@ -75,7 +75,6 @@ const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, curr
               </div>
               <div>
                 <Radio name='timeSpeed' value='5' onChange={setDPSOption} defaultValue={timeSpeed}>5배속</Radio>
-                <Radio name='timeSpeed' value='10' onChange={setDPSOption} defaultValue={timeSpeed}>10배속</Radio>
               </div>
             </div>
           </div>
