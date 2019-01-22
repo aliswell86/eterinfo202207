@@ -21,8 +21,9 @@ class DPSSimulContainer extends Component {
   componentDidMount() {
     const {MySpecActions} = this.props;
     const {item_dtl_dv, stype1} = this.props.weaponView.itemInfo;
-
-    MySpecActions.setDPSOPtionInitial({item_dtl_dv, stype1});
+    if(item_dtl_dv !== undefined && stype1 !== undefined) {
+      MySpecActions.setDPSOPtionInitial({item_dtl_dv, stype1});
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
