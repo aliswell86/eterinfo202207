@@ -7,8 +7,8 @@ import ReactGA from 'react-ga';
 ReactGA.initialize('UA-123320555-1');
 
 const logPageView = () => {
-  ReactGA.set({ page: window.location.pathname });
-  ReactGA.pageview(window.location.pathname);
+  // ReactGA.set({ page: window.location.pathname });
+  // ReactGA.pageview(window.location.pathname);
   return null;  
 }
 

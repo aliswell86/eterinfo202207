@@ -26,10 +26,10 @@ const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
   }else{
     if(pathname.indexOf('custom') > -1) {
       titleText = item_nm + ' - 공격력계산 - ' + titleDefaultText;
-      costomLinkMsg = <Link to={`/wp/${_id}`} className={cx('weapon-dmgsim-txt')}>상세정보</Link>;
+      costomLinkMsg = <a href={`/wp/${_id}`} className={cx('weapon-dmgsim-txt')}>상세정보</a>;
     }else if(pathname.indexOf('wp') > -1) {
       titleText = item_nm + ' - 강화별공격력 - ' + titleDefaultText;
-      costomLinkMsg = <Link to={`/custom/${_id}`} className={cx('weapon-dmgsim-txt')}>공격력계산</Link>;
+      costomLinkMsg = <a href={`/custom/${_id}`} className={cx('weapon-dmgsim-txt')}>공격력계산</a>;
     }
   }
 
@@ -41,8 +41,8 @@ const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
       </Helmet>
       <h2 className={cx('name')}>
         {item_nm === undefined ?
-          <Link to='/wp'>무기선택</Link> : 
-          <>{item_nm} <Link to='/wp' className={cx('weapon-change-txt')}>무기변경</Link> {costomLinkMsg}</> 
+          <a href='/wp'>무기선택</a> : 
+          <>{item_nm} <a href='/wp' className={cx('weapon-change-txt')}>무기변경</a> {costomLinkMsg}</> 
         }
       </h2>
       <div className={cx('item-info')}>

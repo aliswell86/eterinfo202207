@@ -15,19 +15,19 @@ const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size
     <>
       {adsenseTag}
       <div className={cx('weapon-object')}>
-        <Link to={`/wp/${id}`} className={cx('weapon-img')}><img src={img_src} alt={item_nm}/></Link>
-        <Link to={`/wp/${id}`} className={cx('weapon-name')}>{item_nm}</Link>
-        <Link to={`/wp/${id}`} className={cx('weapon-damage')}>
+        <a href={`/wp/${id}`} className={cx('weapon-img')}><img src={img_src} alt={item_nm}/></a>
+        <a href={`/wp/${id}`} className={cx('weapon-name')}>{item_nm}</a>
+        <a href={`/wp/${id}`} className={cx('weapon-damage')}>
           <NumberFormat value={dmg} displayType={'text'} thousandSeparator={true} prefix={''}/>
-        </Link>
-        <Link to={`/custom/${id}`} className={cx('weapon-custom-link')}>공격력<br/>계산</Link>
-        <Link to={`/wp/${id}`} className={cx('item-option')}>
+        </a>
+        <a href={`/custom/${id}`} className={cx('weapon-custom-link')}>공격력<br/>계산</a>
+        <a href={`/wp/${id}`} className={cx('item-option')}>
           <div className={cx('tier')}>{tier}등급</div>
           <div className={cx('item-dtl-dv')}>{item_dtl_dv}</div>
           <div className={cx('size')}>{size ? size : ' '}</div>
           <div className={cx('speed')}>{speed}/1분</div>
           <div className={cx('illegal')}>{illegal === 'Y' ? '불법무기' : ''}</div>
-        </Link>
+        </a>
       </div>
     </>
   );
