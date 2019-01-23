@@ -6,6 +6,7 @@ import PlusUpGridContainer from 'containers/plusup/PlusUpGridContainer';
 import PlusUpSimulContainer from 'containers/plusup/PlusUpSimulContainer';
 import Adsense970250 from 'components/adsense/Adsense970250';
 import Adsense300250 from 'components/adsense/Adsense300250';
+import Adsense72890 from 'components/adsense/Adsense72890';
 
 const PlusUpPage = () => {
   return (
@@ -18,6 +19,7 @@ const PlusUpPage = () => {
       <ListWrapper>        
         <PlusUpGridContainer/>
       </ListWrapper>
+      <Adsense72890/>
       <ListWrapper>        
         <PlusUpSimulContainer/>
       </ListWrapper>
