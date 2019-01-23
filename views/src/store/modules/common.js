@@ -30,7 +30,8 @@ const initialState = Map({
       apiName: '기관총',
       appName: 'machineGun'
     }
-  ])
+  ]),
+  refScrollDiv: Map()
 });
 
 export default handleActions({

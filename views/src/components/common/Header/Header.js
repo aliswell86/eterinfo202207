@@ -7,7 +7,7 @@ import {ItemMenu} from './rightmenu';
 const cx = classNames.bind(styles);
 
 const Header = () => {
-  const {pathname} = window.location;
+  // const {pathname} = window.location;
 
   return (
     <header className={cx('header')}>
@@ -32,7 +32,7 @@ const Header = () => {
           </div>
         </div>        
       </div>
-      <div className={cx('header-content-sub')}>
+      {/* <div className={cx('header-content-sub')}>
         <div className={cx('header-content-sub-body')}>
           <div> </div>
           <div className={cx('submenu-title')}>
@@ -48,7 +48,7 @@ const Header = () => {
             }
           </div>
         </div> 
-      </div> 
+      </div>  */}
     </header>
   );
 };
