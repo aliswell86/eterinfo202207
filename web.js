@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const Koa = require('koa');
+const gzip = require('koa-gzip');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 const serve = require('koa-static');
@@ -26,6 +27,7 @@ mongoose.connect('mongodb://my_mean:dlskdud1@ds121321.mlab.com:21321/my_mean').t
 // 라우터 설정
 router.use('/api', api.routes()); // api 라우트 적용
 
+app.use(gzip());
 app.use((ctx, next) => {
   if(ctx.path === '/') return ssr(ctx);
   return next();
