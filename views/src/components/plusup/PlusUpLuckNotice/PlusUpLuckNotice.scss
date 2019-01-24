@@ -1,0 +1,51 @@
+@import 'utils';
+
+.plus-luck-notice {
+  padding: 1rem;
+
+  @include media("<small") {
+    width: 100%;
+    padding: 0.4rem;
+  }
+  
+  .luck-title {
+    padding-bottom: 0.8em;
+    border-bottom: 1px solid $oc-gray-3;
+    color: $oc-gray-8;     
+  }
+
+  .luck-list {
+    padding: 1rem;
+
+    @include media("<small") {
+      width: 100%;
+      padding-top: 0.4rem;
+    }
+
+    display: grid;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    grid-gap: 0.4rem;
+    grid-template-columns: repeat(6, 1fr);
+
+    @include media("<medium") {
+      grid-gap: 0.2rem;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .luck-object {
+      padding: 0.4rem;
+    }
+
+    .luck-object:hover {
+      cursor: pointer;
+      @include material-shadow(1, 1);
+      background: $oc-blue-0;       
+    }
+    .luck-object:active {
+      cursor: pointer;
+      @include material-shadow(1, 1);
+      background: $oc-blue-0;       
+    }
+  }
+}

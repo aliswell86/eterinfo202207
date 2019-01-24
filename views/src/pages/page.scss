@@ -1,0 +1,49 @@
+@import 'utils';
+
+.sub-header {
+  position: fixed;
+  top: 4rem;
+  width: 100%;
+  left: 50%;
+  z-index: 1000;
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+  -moz-transform: translate(-50%, 0%);
+  -o-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+  // background-color: white;
+  
+  
+  @include material-shadow(1, 0.8);
+  background-color: $oc-violet-6;
+  
+  .header-content-sub {  
+    height: 2rem;    
+    width: 1400px;
+    margin: 0 auto; // 중앙 정렬
+    padding-left: 3rem;
+    padding-right: 3rem;
+    // 내부 아이템 세로 중앙 정렬
+    display: flex;
+    display: -ms-flexbox;
+    align-items: center;
+    justify-content: space-between;
+    
+    // 반응형 레이아웃
+    @include media("<wide") {
+      width: 100%;
+    }
+    @include media("<medium") {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .submenu-title {
+      width: 280px;
+      padding: 0.2rem;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+    }
+  }
+}
