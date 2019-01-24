@@ -8,22 +8,9 @@ const cx = classNames.bind(styles);
 
 const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKey, plusUpGoKeyF, currPlusDmg, plusUpKitFNeed, plusUpKitNeed}) => {
   const {
-    usePlusUpKit, usePlusUpKitF, usePlusUpKitEp, upTryCnt, simulCurrPlusUp, bestPlusUp, resultComment, plusUpLuck
+    usePlusUpKit, usePlusUpKitF, usePlusUpKitEp, upTryCnt, simulCurrPlusUp, bestPlusUp, resultComment
   } = plusUpSimul;
 
-  const plusUpLuckList = plusUpLuck.map(luck => {
-    const {up, success, fail, failZero} = luck;
-
-    return (
-      <div className={cx('luck-object')} key={up}>
-        <div className={cx('luck-object-up')}>+{up}</div>
-        <div className={cx('luck-object-suc')}>성공:{success}%</div>
-        <div className={cx('luck-object-fail')}>실패:{fail}%</div>
-        <div className={cx('luck-object-failzero')}>초기화:{failZero}%</div>
-      </div>
-    )
-  });
-  
   return (
     <div className={cx('plusup-simul')}>      
       <div className={cx('kit-trade')}>
@@ -72,18 +59,6 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
             <div className={cx('plusup-dmg')}>공격력:{currPlusDmg}%</div>
           </div>
         </div>
-      </div>
-      <div className={cx('adsense')}>
-        <Adsense72890/>
-      </div>
-      <div className={cx('plus-luck-notice')}>
-        <div className={cx('luck-title')}>플러스업 확률안내</div>
-        <div className={cx('luck-list')}>
-          {plusUpLuckList}
-        </div>
-      </div>
-      <div className={cx('adsense')}>
-        <Adsense72890/>
       </div>
     </div>
   );
