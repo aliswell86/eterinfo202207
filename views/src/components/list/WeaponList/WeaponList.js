@@ -3,7 +3,7 @@ import styles from './WeaponList.scss';
 import classNames from 'classnames/bind';
 import {Link} from 'react-router-dom';
 import NumberFormat from 'react-number-format';
-import Adsense72890 from 'components/adsense/Adsense72890';
+import Adsense72890 from 'components/adsense/adsense72890';
 
 const cx = classNames.bind(styles);
 
@@ -15,19 +15,19 @@ const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size
     <>
       {adsenseTag}
       <div className={cx('weapon-object')}>
-        <a href={`/wp/${id}`} className={cx('weapon-img')}><img src={img_src} alt={item_nm}/></a>
-        <a href={`/wp/${id}`} className={cx('weapon-name')}>{item_nm}</a>
-        <a href={`/wp/${id}`} className={cx('weapon-damage')}>
+        <Link to={`/wp/${id}`} className={cx('weapon-img')}><img src={img_src} alt={item_nm}/></Link>
+        <Link to={`/wp/${id}`} className={cx('weapon-name')}>{item_nm}</Link>
+        <Link to={`/wp/${id}`} className={cx('weapon-damage')}>
           <NumberFormat value={dmg} displayType={'text'} thousandSeparator={true} prefix={''}/>
-        </a>
-        <a href={`/custom/${id}`} className={cx('weapon-custom-link')}>공격력<br/>계산</a>
-        <a href={`/wp/${id}`} className={cx('item-option')}>
+        </Link>
+        <Link to={`/custom/${id}`} className={cx('weapon-custom-link')}>공격력<br/>계산</Link>
+        <Link to={`/wp/${id}`} className={cx('item-option')}>
           <div className={cx('tier')}>{tier}등급</div>
           <div className={cx('item-dtl-dv')}>{item_dtl_dv}</div>
           <div className={cx('size')}>{size ? size : ' '}</div>
           <div className={cx('speed')}>{speed}/1분</div>
           <div className={cx('illegal')}>{illegal === 'Y' ? '불법무기' : ''}</div>
-        </a>
+        </Link>
       </div>
     </>
   );
