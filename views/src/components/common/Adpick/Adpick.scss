@@ -1,0 +1,33 @@
+@import 'utils';
+
+.adpick-list {
+  display: flex;
+  display: -ms-flexbox;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .adpick {
+    padding-right: 0.2rem;
+    padding-left: 0.2rem;
+
+    .adpick-link {
+      text-align: center;
+      margin-top: 1rem;
+    
+      .adpick-img {
+        @include material-shadow(2, 4);
+        width: 100px;
+        height: 100px;
+        border-radius: 1rem;
+        cursor: pointer;
+      }
+    }
+  
+    .adpick-title {
+      text-align: center;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+}
