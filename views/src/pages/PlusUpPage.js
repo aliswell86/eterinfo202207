@@ -9,13 +9,14 @@ import Adsense970250 from 'components/adsense/Adsense970250';
 import Adsense300250 from 'components/adsense/Adsense300250';
 import Adsense72890 from 'components/adsense/Adsense72890';
 import scrollToComponent from 'react-scroll-to-component';
+import AdpickContainer from 'containers/adpick/AdpickContainer';
 import styles from './page.scss';
 import classNames from 'classnames/bind';
 
 class PlusUpPage extends Component {
   render() {
     const cx = classNames.bind(styles);
-
+    
     return (
       <PageTemplate>
         <Helmet>
@@ -44,7 +45,8 @@ class PlusUpPage extends Component {
         <ListWrapper>        
           <PlusUpLuckNoticeContainer ref={(ref) => this.PlusUpLuckNoticeContainer = ref}/>
         </ListWrapper>
-        <Adsense300250/>
+        {/* <Adsense300250/> */}
+        <AdpickContainer/>
       </PageTemplate>
     );
   }

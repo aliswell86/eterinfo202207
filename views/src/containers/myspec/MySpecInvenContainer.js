@@ -78,7 +78,6 @@ export default connect(
     myStat: state.myspec.toJS().myStat,
     mySkill: state.myspec.toJS().mySkill,
     itemInfo: state.weapon.toJS().weaponView.itemInfo,
-    weaponMapping: state.common.toJS().weaponMapping,
     dpsSim: state.myspec.toJS().dpsSim
   }),
   (dispatch) => ({

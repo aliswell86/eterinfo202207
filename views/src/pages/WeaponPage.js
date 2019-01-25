@@ -9,6 +9,7 @@ import Adsense300250 from 'components/adsense/Adsense300250';
 import scrollToComponent from 'react-scroll-to-component';
 import styles from './page.scss';
 import classNames from 'classnames/bind';
+import AdpickContainer from 'containers/adpick/AdpickContainer';
 
 class WeaponPage extends Component {
   render() {
@@ -34,7 +35,8 @@ class WeaponPage extends Component {
         <ListWrapper>        
           <WeaponListContainer history={history}/>
         </ListWrapper>
-        <Adsense300250/>
+        {/* <Adsense300250/> */}
+        <AdpickContainer/>
       </PageTemplate>
     )
   }

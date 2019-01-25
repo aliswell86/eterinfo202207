@@ -9,6 +9,7 @@ import Adsense300250 from 'components/adsense/Adsense300250';
 import scrollToComponent from 'react-scroll-to-component';
 import styles from './page.scss';
 import classNames from 'classnames/bind';
+import AdpickContainer from 'containers/adpick/AdpickContainer';
 
 class BoxSimulPage extends Component {
   render() {
@@ -33,7 +34,8 @@ class BoxSimulPage extends Component {
           <BoxListContainer/>
         </ListWrapper>
         <BoxItemInfoListContainer/>
-        <Adsense300250/>
+        {/* <Adsense300250/> */}
+        <AdpickContainer/>
       </PageTemplate>
     );
   }

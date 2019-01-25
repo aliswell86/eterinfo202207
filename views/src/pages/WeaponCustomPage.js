@@ -12,6 +12,7 @@ import Adsense72890 from 'components/adsense/Adsense72890';
 import scrollToComponent from 'react-scroll-to-component';
 import styles from './page.scss';
 import classNames from 'classnames/bind';
+import AdpickContainer from 'containers/adpick/AdpickContainer';
 
 class WeaponCustomPage extends Component {
   render() {
@@ -49,7 +50,8 @@ class WeaponCustomPage extends Component {
         <ListWrapper>
           <DPSSimulContainer ref={(ref) => this.DPSSimulContainer = ref}/>
         </ListWrapper>
-        <Adsense300250/>
+        {/* <Adsense300250/> */}
+        <AdpickContainer/>
       </PageTemplate>
     );
   }
