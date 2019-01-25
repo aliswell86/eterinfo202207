@@ -1,6 +1,10 @@
 @import 'utils';
 
 .adpick-list {
+  max-width: 1024px;
+  margin: 0 auto;
+  margin-bottom: 0.2rem;
+  
   display: flex;
   display: -ms-flexbox;
   justify-content: space-around;
