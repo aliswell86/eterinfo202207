@@ -5,7 +5,8 @@ const Box = require('../../models/CacheBox');
 */
 exports.boxList = async (ctx) => {
   try {
-    const boxs = await Box.find().exec();
+    const boxs = await Box.find().sort({"packageCode": 1}).exec();
+    console.log(boxs);
     ctx.body = boxs;
   } catch(e) {
     ctx.throw(e);
