@@ -7,9 +7,13 @@ import * as weaponActions from 'store/modules/weapon';
 
 class SearchInputContainer extends Component {
 
-  getWeaponList = () => {
+  getWeaponList = async() => {
     const {WeaponActions, weaponWhere} = this.props;
-    WeaponActions.getWeaponList(weaponWhere);
+    try {
+      await WeaponActions.getWeaponList(weaponWhere);
+    } catch(e) {
+      console.log(e);
+    }
   }
 
   componentDidMount() {

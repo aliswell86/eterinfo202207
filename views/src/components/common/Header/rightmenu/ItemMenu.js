@@ -19,6 +19,9 @@ const ItemMenu = () => (
     <Link to="/boxsim" style={innerStyle}>
       상자뽑기
     </Link>
+    {/* <Link to="/login" style={innerStyle}>
+      로그인
+    </Link> */}
   </div>
 );
 
