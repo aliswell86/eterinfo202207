@@ -7,18 +7,18 @@ const innerStyle = {
 
 const ItemMenu = () => (
   <div style={{padding: '0.2rem'}}>
-    <a href="/wp">
+    <Link to="/wp">
       무기정보
-    </a>
-    <a href="/custom" style={innerStyle}>
+    </Link>
+    <Link to="/custom" style={innerStyle}>
       공격력계산
-    </a>
-    <a href="/plusup" style={innerStyle}>
+    </Link>
+    <Link to="/plusup" style={innerStyle}>
       플러스업
-    </a>
-    <a href="/boxsim" style={innerStyle}>
+    </Link>
+    <Link to="/boxsim" style={innerStyle}>
       상자뽑기
-    </a>
+    </Link>
   </div>
 );
 

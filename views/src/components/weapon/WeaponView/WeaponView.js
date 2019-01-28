@@ -29,7 +29,7 @@ const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
       costomLinkMsg = <Link to={`/wp/${_id}`} className={cx('weapon-dmgsim-txt')}>상세정보</Link>;
     }else if(pathname.indexOf('wp') > -1) {
       titleText = item_nm + ' - 강화별공격력 - ' + titleDefaultText;
-      costomLinkMsg = <a href={`/custom/${_id}`} className={cx('weapon-dmgsim-txt')}>공격력계산</a>;
+      costomLinkMsg = <Link to={`/custom/${_id}`} className={cx('weapon-dmgsim-txt')}>공격력계산</Link>;
     }
   }
 
