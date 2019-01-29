@@ -11,7 +11,6 @@ import Adsense300250 from 'components/adsense/Adsense300250';
 import scrollToComponent from 'react-scroll-to-component';
 import styles from './page.scss';
 import classNames from 'classnames/bind';
-import AdpickContainer from 'containers/adpick/AdpickContainer';
 
 class WeaponViewPage extends Component {
   
@@ -45,8 +44,7 @@ class WeaponViewPage extends Component {
         <ListWrapper>
           <WeaponViewPoweredByContainer ref={(ref) => this.WeaponViewPoweredByContainer = ref}/>
         </ListWrapper>
-        {/* <Adsense300250/> */}
-        <AdpickContainer/>
+        <Adsense300250/>
       </PageTemplate>
     );
   }
