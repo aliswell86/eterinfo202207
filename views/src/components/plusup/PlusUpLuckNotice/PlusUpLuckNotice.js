@@ -20,7 +20,7 @@ const PlusUpLuckNotice = ({plusUpLuck}) => {
 
   return (
     <div className={cx('plus-luck-notice')}>
-      <div className={cx('luck-title')}>플러스업 확률안내</div>
+      <h2 className={cx('luck-title')}>플러스업 확률안내</h2>
       <div className={cx('luck-list')}>
         {plusUpLuckList}
       </div>

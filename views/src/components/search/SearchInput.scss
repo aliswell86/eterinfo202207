@@ -2,7 +2,10 @@
 
 .search-input {
   // transition: all .15s ease-in;
-  padding: 1rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   display: flex;
   display: -ms-flexbox;
   flex-direction: column;

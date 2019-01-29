@@ -15,7 +15,10 @@
     flex: 1;
     min-width: 412px;
   
-    padding: 1rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   
     // @include media("<wide") {
     //   width: 768px;

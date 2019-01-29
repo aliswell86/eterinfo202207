@@ -10,7 +10,7 @@ const WeaponPoweredSel = ({setWeaponUpDv, currWeaponUpDv}) => {
   return (
     <div className={cx('weapon-powered-sel')}>
       <div className={cx('powered-body')}>
-        <div style={{padding: '0.4rem'}}><Checkbox name="isCriUp" onChange={setWeaponUpDv} checked={currWeaponUpDv.isCriUp}>치명전문</Checkbox></div>
+        <div style={{padding: '0.2rem'}}><Checkbox name="isCriUp" onChange={setWeaponUpDv} checked={currWeaponUpDv.isCriUp}>치명전문</Checkbox></div>
         <div className={cx('bodyup-btns')}>
           <div><button name='bodyUp' onClick={setWeaponUpDv} value='0'>기본</button></div>
           <div><button name='bodyUp' onClick={setWeaponUpDv} value='1'>초보</button></div>

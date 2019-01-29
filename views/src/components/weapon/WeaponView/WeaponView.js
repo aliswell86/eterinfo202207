@@ -80,10 +80,14 @@ const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
         </div>
         <div className={cx('sub_option')}>
           <div className={cx('tier')}>{tier}등급</div>
-          <div className={cx('detail_dv')}>{item_dtl_dv}</div>
-          <div className={cx('size')}>{size}</div>
-          <div className={cx('speed')}>{speed}/1분</div>
-          <div className={cx('illegal')}>{illegal === 'Y' ? '불법무기' : ''}</div>
+          <div>
+            <span className={cx('size')}>{size}</span>
+            <span className={cx('detail_dv')}>{item_dtl_dv}</span>
+          </div>
+          <div>
+            <span className={cx('speed')}>{speed}/1분</span>
+            <span className={cx('illegal')}>{illegal === 'Y' ? '불법무기' : ''}</span>
+          </div>
         </div>
       </div>
     </div>

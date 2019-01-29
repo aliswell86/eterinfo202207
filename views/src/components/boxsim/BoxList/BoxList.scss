@@ -1,27 +1,22 @@
 @import 'utils';
 
 .box-kinds{
-  padding: 1rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   @include media("<small") {
     margin-right: 0.2rem;
   }
 
   .box-kinds-title {
-    padding-bottom: 1rem;
     border-bottom: 1px solid $oc-gray-3;
     color: $oc-gray-8;
-    display: flex;
-    display: -ms-flexbox;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: flex-end;
-
-    .title-right {
-      font-size: 0.8rem;
-      font-weight: 400;
-      color: $oc-gray-8;
-    }
+    font-size: 1rem;
+    padding-bottom: 0.2rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.4rem;
   }
 
   .boxs {

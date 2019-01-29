@@ -1,7 +1,10 @@
 @import 'utils';
 
 .myinfo-view {
-  padding: 1rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   @include media("<small") {
     width: 100%;
@@ -9,16 +12,12 @@
   }
 
   .view-title {
-    padding-bottom: 1rem;
     border-bottom: 1px solid $oc-gray-3;
     color: $oc-gray-8;
-
-    @include media("<small") {
-      padding-bottom: 0.4rem;
-      margin-top: 0.2rem;
-      margin-bottom: 0.4rem;
-      font-size: 1rem;
-    }
+    font-size: 1rem;
+    padding-bottom: 0.2rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.4rem;
   }
 
   .inven-body {
@@ -45,19 +44,15 @@
   }
 
   .real-dmg {
-    padding-top: 1rem;
+    padding-top: 0.2rem;
 
     .real-dmg-title {
-      padding-bottom: 1rem;
       border-bottom: 1px solid $oc-gray-3;
       color: $oc-gray-8;
-
-      @include media("<small") {
-        padding-bottom: 0.4rem;
-        margin-top: 0.2rem;
-        margin-bottom: 0.4rem;
-        font-size: 1rem;
-      }
+      font-size: 1rem;
+      padding-bottom: 0.2rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.4rem;
     }
 
     .real-dmg-body {
