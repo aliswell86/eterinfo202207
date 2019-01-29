@@ -1,7 +1,10 @@
 @import 'utils';
 
 .plus-luck-notice {
-  padding: 1rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   @include media("<small") {
     width: 100%;
@@ -9,13 +12,19 @@
   }
   
   .luck-title {
-    padding-bottom: 0.8em;
     border-bottom: 1px solid $oc-gray-3;
-    color: $oc-gray-8;     
+    color: $oc-gray-8;
+    font-size: 1rem;
+    padding-bottom: 0.2rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.4rem;
   }
 
   .luck-list {
-    padding: 1rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
     @include media("<small") {
       width: 100%;

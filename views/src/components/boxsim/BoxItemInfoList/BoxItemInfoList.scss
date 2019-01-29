@@ -36,7 +36,10 @@
 
   .list-wrapper {
     .box-result {
-      padding: 1rem;
+      padding-top: 0.4rem;
+      padding-bottom: 0.4rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
       min-height: 400px;
 
       @include media("<small") {
@@ -51,6 +54,15 @@
         display: -ms-flexbox;
         justify-content: space-between;
         flex-wrap: wrap;
+
+        .title-left {
+          color: $oc-gray-8;
+          font-size: 1rem;
+          padding-bottom: 0.2rem;
+          margin-top: 0.2rem;
+          margin-bottom: 0.4rem;
+          font-weight: bold;
+        }
 
         .title-right {
           font-weight: bold;
@@ -84,7 +96,10 @@
 
   .list-wrapper {
     .box-iteminfo {
-      padding: 1rem;
+      padding-top: 0.4rem;
+      padding-bottom: 0.4rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
 
       @include media("<small") {
         padding: 0.2rem;
@@ -98,6 +113,16 @@
         display: -ms-flexbox;
         justify-content: space-between;
         flex-wrap: wrap;
+        align-items: flex-start;
+
+        .iteminfo-left {
+          color: $oc-gray-8;
+          font-size: 1rem;
+          padding-bottom: 0.2rem;
+          margin-top: 0.2rem;
+          margin-bottom: 0.4rem;
+          font-weight: bold;
+        }
 
         .iteminfo-right {
           width: 284px;

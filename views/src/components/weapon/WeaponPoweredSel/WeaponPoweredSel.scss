@@ -21,8 +21,10 @@
       color: rgba($oc-blue-6, 1);
     }
 
-    padding: 1rem;
-    padding-top: 0.2rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
     display: flex;
     display: -ms-flexbox;
@@ -40,8 +42,7 @@
       display: -ms-flexbox;
       align-items: center;
       flex-wrap: wrap;
-      padding-bottom: 0.4rem;
-      margin-top: 0.2rem;
+      padding-bottom: 0.2rem;
       margin-bottom: 0.2rem;
       border-bottom: 1px solid $oc-gray-4;
   
@@ -57,7 +58,6 @@
       display: -ms-flexbox;
       align-items: center;
       flex-wrap: wrap;
-      margin-top: 0.2rem;
 
       button {
         padding-right: 0.7rem;

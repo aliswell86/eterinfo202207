@@ -8,7 +8,10 @@
   flex-wrap: wrap;
 
   .skill-monster {
-    padding: 1rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     width: 480px;
 
     @include media("<small") {
@@ -17,16 +20,12 @@
     }
 
     .dmg-event-title {
-      padding-bottom: 1rem;
       border-bottom: 1px solid $oc-gray-3;
       color: $oc-gray-8;
-
-      @include media("<small") {
-        padding-bottom: 0.4rem;
-        margin-top: 0.2rem;
-        margin-bottom: 0.4rem;
-        font-size: 1rem;
-      }
+      font-size: 1rem;
+      padding-bottom: 0.2rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.4rem;
     }
 
     .dmg-event {
@@ -35,20 +34,16 @@
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap;
-      padding-bottom: 0.8rem;
+      padding-bottom: 0.2rem;
     }
 
     .monster-size-title {
-      padding-bottom: 1rem;
       border-bottom: 1px solid $oc-gray-3;
       color: $oc-gray-8;
-
-      @include media("<small") {
-        padding-bottom: 0.4rem;
-        margin-top: 0.2rem;
-        margin-bottom: 0.4rem;
-        font-size: 1rem;
-      }
+      font-size: 1rem;
+      padding-bottom: 0.2rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.4rem;
     }
 
     .monster-size {
@@ -57,7 +52,7 @@
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap;
-      padding-bottom: 0.8rem;
+      padding-bottom: 0.2rem;
     }
 
     .monster-type {
@@ -66,7 +61,7 @@
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap;
-      padding-bottom: 0.8rem;
+      padding-bottom: 0.2rem;
     }
 
     .mydmg-type {
@@ -75,8 +70,7 @@
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap;
-      height: 100px;
-      padding-bottom: 0.8rem;
+      padding-bottom: 0.4rem;
     }
 
     .my-skill-list {
@@ -86,9 +80,8 @@
       align-items: flex-start;
       flex-wrap: wrap;
       padding-top: 0.4rem;
-      padding-bottom: 0.8rem;
+      padding-bottom: 0.2rem;
       border-top: 1px solid $oc-gray-4;
-      height: 100px;
     }
 
     .monster-size + .monster-type {
@@ -97,7 +90,10 @@
   }
 
   .myspec-body {
-    padding: 1rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
     @include media("<small") {
       width: 100%;
@@ -112,16 +108,12 @@
     }
 
     .myspec-title {
-      padding-bottom: 1rem;
       border-bottom: 1px solid $oc-gray-3;
       color: $oc-gray-8;
-
-      @include media("<small") {
-        padding-bottom: 0.4rem;
-        margin-top: 0.2rem;
-        margin-bottom: 0.4rem;
-        font-size: 1rem;
-      }
+      font-size: 1rem;
+      padding-bottom: 0.2rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.4rem;
     }
 
     .spec-dv {

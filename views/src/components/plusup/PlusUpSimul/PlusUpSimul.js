@@ -15,7 +15,7 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
     <div className={cx('plusup-simul')}>      
       <div className={cx('kit-trade')}>
         <div className={cx('kit-trade-title')}>
-          <div className={cx('kit-trade-left')}>플러스업 강화 시뮬레이션<span> (부위를 변경하면 처음부터 강화입니다.)</span></div>
+          <div className={cx('kit-trade-left')}>플러스업 강화 시뮬레이션</div>
           <div className={cx('kit-trade-center')}>
           </div>
           <div className={cx('kit-trade-right')}>

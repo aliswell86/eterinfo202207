@@ -3,15 +3,18 @@ import PageTemplate from 'components/common/PageTemplate';
 import { Helmet } from "react-helmet";
 import ListWrapper from 'components/list/ListWrapper';
 import BoxListContainer from 'containers/boxsim/BoxListContainer';
-import BoxItemInfoListContainer from 'containers/boxsim/BoxItemInfoListContainer';
+import BoxResultContainer from 'containers/boxsim/BoxResultContainer';
+import BoxLogContainer from 'containers/boxsim/BoxLogContainer';
 import Adsense970250 from 'components/adsense/Adsense970250';
 import Adsense300250 from 'components/adsense/Adsense300250';
+import Adsense72890 from 'components/adsense/Adsense72890';
+import scrollToComponent from 'react-scroll-to-component';
 import styles from './page.scss';
 import classNames from 'classnames/bind';
 
 class BoxSimulPage extends Component {
   render() {
-  const cx = classNames.bind(styles);
+    const cx = classNames.bind(styles);
 
     return (
       <PageTemplate>
@@ -23,15 +26,24 @@ class BoxSimulPage extends Component {
           <div className={cx('header-content-sub')}>
             <div> </div>
             <div className={cx('submenu-title')}>
-              
+              <span onClick={() => scrollToComponent(this.BoxListContainer, { offset: -100, align: 'top', duration: 100})} style={{marginRight: '0.4rem'}}>상자선택</span>
+              <span onClick={() => scrollToComponent(this.BoxResultContainer, { offset: -100, align: 'top', duration: 100})} style={{marginRight: '0.4rem'}}>뽑기결과</span>
+              <span onClick={() => scrollToComponent(this.BoxLogContainer, { offset: -100, align: 'top', duration: 100})} style={{marginRight: '0.4rem'}}>뽑기기록</span>
             </div>
           </div>
         </div>
         <Adsense970250/>
         <ListWrapper>        
-          <BoxListContainer/>
+          <BoxListContainer ref={(ref) => this.BoxListContainer = ref}/>
         </ListWrapper>
-        <BoxItemInfoListContainer/>
+        <Adsense72890/>
+        <ListWrapper>        
+          <BoxResultContainer ref={(ref) => this.BoxResultContainer = ref}/>
+        </ListWrapper>
+        <Adsense72890/>
+        <ListWrapper>        
+          <BoxLogContainer ref={(ref) => this.BoxLogContainer = ref}/>
+        </ListWrapper>
         <Adsense300250/>
       </PageTemplate>
     );
