@@ -1,0 +1,107 @@
+@import 'utils';
+
+.box-iteminfo {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @include media("<small") {
+    padding: 0.2rem;
+  }
+
+  .box-iteminfo-title {
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid $oc-gray-2;
+    color: $oc-gray-8;
+    display: flex;
+    display: -ms-flexbox;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    .iteminfo-left {
+      color: $oc-gray-8;
+      font-size: 1rem;
+      padding-bottom: 0.2rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.4rem;
+      font-weight: bold;
+    }
+
+    .iteminfo-right {
+      width: 284px;
+      padding: 0.2rem;
+
+      button {
+        width: 54px;
+      }
+    }
+  }
+
+  .title-right {
+    font-weight: bold;
+    color: $oc-red-9;
+    text-align: right;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .box-iteminfo-list {
+    font-size: 0.8rem;
+    display: grid;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(3, 1fr);
+    // grid-gap: 0.5rem;
+
+    // @include media("<large") {
+    //   grid-template-columns: repeat(2, 1fr);
+    // }
+
+    @include media("<medium") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    // @include media("<small") {
+    //   grid-template-columns: repeat(2, 1fr);
+    // }
+
+    .box-iteminfo-object {
+      cursor: pointer;
+      padding: 0.2rem;
+      display: flex;
+      display: -ms-flexbox;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-left: 1px solid $oc-gray-2;
+      border-bottom: 1px solid $oc-gray-2;
+
+      .imgSrc {
+        width: 45px;
+        height: 32px;
+        
+        img {
+          width: 35px;
+          height: 32px;
+        }
+      }
+
+      .itemName{
+        flex: 1;
+      }
+
+      .sumValue {
+        padding-left: 6px;
+        width: 44px;
+        font-weight: bold;
+
+      }
+    }
+
+    .box-iteminfo-object:hover {
+      cursor: pointer;
+      background: rgba($oc-blue-6, 0.05);
+    }
+  }
+}
