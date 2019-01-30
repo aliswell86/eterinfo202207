@@ -1,1 +1,59 @@
 @import 'utils';
+
+.form {
+  background: white;
+  padding: 1.5rem;
+  position: relative;
+  padding-top: 2rem;
+  width: 24rem;
+  background-color: $oc-violet-6;
+
+  .close {
+    line-height: 2rem;
+    font-size: 2rem;
+    position: absolute;
+    right: 0.4rem;
+    top: 0rem;
+    cursor: pointer;
+    &:hover {
+      color: $oc-gray-6;
+    }
+  }
+  .login-head {
+    display: flex;
+    display: -ms-flexbox;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .login-img {
+      width: 94px;
+      height: 94px;
+  
+      img {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        @include material-shadow(2, 2);
+      }
+    }
+    .title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: white;
+    }
+  }
+  .login-body {
+    margin-top: 2rem;
+
+    img {
+      cursor: pointer;
+      width: 334px;
+      height: 72px;
+    }
+  }
+  
+  .description {
+    margin-top: 0.25rem;
+  }
+}

@@ -6,3 +6,4 @@ export const getWeaponView = (id) => axios.get(`/api/item/weapon/${id}`);
 export const getPlusUpGrid = () => axios.get('/api/item/plusup');
 export const getBoxList = () => axios.get('/api/box/list');
 export const getAdPickList = () => axios.get('/api/common/adpick');
+export const naverLogin = () => axios.post('/api/auth/naverlogin');

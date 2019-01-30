@@ -47,11 +47,12 @@
     @include material-shadow(3, 0.5);
     background: white;
     &.enter {
-      animation: slideUp 0.25s ease-in both;
+      // animation: slideUp 0.25s ease-in both;
+      display: block;
     }
     &.leave {
-      animation: slideDown 0.25s ease-in both;
+      // animation: slideDown 0.25s ease-in both;
+      display: none;
     }
-
   }
 }
