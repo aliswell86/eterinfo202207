@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
+import LoginModal from 'components/modal/LoginModal';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as baseActions from 'store/modules/base';
-import LoginModalContainer from 'containers/modal/LoginModalContainer';
 
-class BaseContainer extends Component {
+class LoginModalContainer extends Component {
   render() {
+    const {visible} = this.props;
+    
     return (
-      <LoginModalContainer/>
+      <LoginModal
+      visible={visible}/>
     );
   }
 }
 
 export default connect(
-  null,
+  (state) => ({
+    visible: state.base.getIn(['modal', 'login'])
+  }),
   (dispatch) => ({
     BaseActions: bindActionCreators(baseActions, dispatch)
   })
-)(BaseContainer);
+)(LoginModalContainer);
