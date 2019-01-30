@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
 import {NotFoundPage, WeaponPage, WeaponViewPage, WeaponCustomPage, MainPage, PlusUpPage, BoxSimulPage} from 'pages';
 import { Helmet } from "react-helmet";
-// import BaseContainer from 'containers/common/BaseContainer';
+import BaseContainer from 'containers/common/BaseContainer';
 
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-123320555-1');
@@ -31,7 +31,7 @@ class App extends Component {
           <Route exact path="/boxsim" component={BoxSimulPage} />
           <Route component={NotFoundPage}/>
         </Switch>
-        {/* <BaseContainer/> */}
+        <BaseContainer/>
       </div>
     );
   }
