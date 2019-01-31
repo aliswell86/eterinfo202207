@@ -9,6 +9,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const fs = require('fs');
 const api = require('./src/api');
+const session = require('koa-session');
 
 const app = new Koa();
 const router = new Router();
@@ -26,6 +27,9 @@ mongoose.connect('mongodb://my_mean:dlskdud1@ds121321.mlab.com:21321/my_mean').t
 
 // 라우터 설정
 router.use('/api', api.routes()); // api 라우트 적용
+
+const sessionConfig = {maxAge: 86400000};
+app.use(session(sessionConfig, app));
 
 app.use(gzip());
 app.use((ctx, next) => {

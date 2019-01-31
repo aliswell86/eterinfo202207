@@ -4,9 +4,6 @@ const {Schema} = mongoose;
 
 const LoginLnk = new Schema({
   key: {type:String},
-  email: {type:String},
-  name: {type:String},
-  pic: {type:String},
   social: {type:String},
   verify: {type:Boolean},
   regdate: {
