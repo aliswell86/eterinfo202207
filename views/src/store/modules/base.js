@@ -5,36 +5,50 @@ import * as api from 'lib/api';
 
 const SHOW_MODAL = 'base/SHOW_MODAL';
 const HIDE_MODAL = 'base/HIDE_MODAL';
-const NAVER_LOGIN = 'base/NAVER_LOGIN';
+const SHOW_NAVER_LOGIN = 'base/SHOW_NAVER_LOGIN';
+const NAVER_LOGIN_CALLBACK = 'base/NAVER_LOGIN_CALLBACK';
 
 export const showModal = createAction(SHOW_MODAL);
 export const hideModal = createAction(HIDE_MODAL);
-export const naverLogin = createAction(NAVER_LOGIN, api.naverLogin);
+export const showNaverLogin = createAction(SHOW_NAVER_LOGIN, api.naverLogin);
+export const naverlogincallback = createAction(NAVER_LOGIN_CALLBACK, api.naverlogincallback);
 
 const initialState = Map({
   modal: Map({
     remove: false,
-    login: false
+    login: Map({
+      visible: false,
+      href: ''
+    })
   })
 });
 
 export default handleActions({
-  [SHOW_MODAL]: (state, action) => {
-    const {payload: modalName} = action;
-    return state.setIn(['modal', modalName], true);
-  },
-  [HIDE_MODAL]: (state, action) => {
-    const {payload: modalName} = action;
-    return state.setIn(['modal', modalName], false);
-  },
   ...pender({
-    type: NAVER_LOGIN,
+    type: SHOW_NAVER_LOGIN,
     onSuccess: (state, action) => {  // 로그인 성공 시
-      return state.set('logged', true);
+      const {data} = action.payload;
+      return state.setIn(['modal', 'login', 'visible'], true)
+                  .setIn(['modal', 'login', 'href'], data);
     },
     onError: (state, action) => {  // 에러 발생 시
-      return state.setIn(['loginModal', 'error'], true)
-                  .setIn(['loginModal', 'password'], '');
+      const {payload: modalName} = action;
+      return state.setIn(['modal', modalName], false);
     }
-  })
+  }),
+  ...pender({
+    type: NAVER_LOGIN_CALLBACK,
+    onSuccess: (state, action) => {  // 로그인 성공 시
+      console.log(action);
+      return state;
+    },
+    onError: (state, action) => {  // 에러 발생 시
+      console.log(action);
+      return state;
+    }
+  }),
+  [HIDE_MODAL]: (state, action) => {
+    const {payload: modalName} = action;
+    return state.setIn(['modal', modalName, 'visible'], false);
+  }
 }, initialState);

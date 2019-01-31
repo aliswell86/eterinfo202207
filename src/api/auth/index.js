@@ -3,7 +3,7 @@ const authCtrl = require('./auth.ctrl');
 
 const auth = new Router();
 
-auth.post('/naverLogin', authCtrl.naverLogin);
-auth.post('/naverlogincallback', authCtrl.naverlogincallback);
+auth.get('/naverLogin', authCtrl.naverLogin);
+auth.get('/naverlogincallback', authCtrl.naverlogincallback);
 
 module.exports = auth;

@@ -9,7 +9,7 @@ class HeaderContainer extends Component {
   loginModalOpen = () => {
     const {BaseActions} = this.props;
 
-    BaseActions.showModal('login');
+    BaseActions.showNaverLogin();
   }
 
   render() {

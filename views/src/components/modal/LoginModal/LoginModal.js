@@ -2,10 +2,11 @@ import React from 'react';
 import ModalWrapper from 'components/modal/ModalWrapper';
 import styles from './LoginModal.scss';
 import classNames from 'classnames/bind';
+// import {Link, Route} from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-const LoginModal = ({visible, onCancel, naverLogin}) => {
+const LoginModal = ({visible, href, onCancel}) => {
   return (
     <ModalWrapper visible={visible}>
       <div className={cx('form')}>
@@ -15,9 +16,9 @@ const LoginModal = ({visible, onCancel, naverLogin}) => {
           <div className={cx('title')}>이터인포 로그인</div>
         </div>
         <div className={cx('login-body')}>
-          <img src='/resource/img/naver_id_login.png' alt='네이버 로그인' onClick={naverLogin}/>
+          <a href={href}><img src='http://static.nid.naver.com/oauth/small_g_in.PNG' alt='네이버 로그인'/></a>
         </div>
-        <a href='https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=TzAMy0C4TJMXLng6Knct&redirect_uri=/api/auth/naverlogincallback&state=RAMDOM_STATE'><img height='50' src='http://static.nid.naver.com/oauth/small_g_in.PNG'/></a>
+        {/* <Route path="/naverlogincallback" component={NaverLoginCallBack} /> */}
       </div>
     </ModalWrapper>
   );

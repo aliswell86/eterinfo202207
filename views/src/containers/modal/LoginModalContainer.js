@@ -22,6 +22,13 @@ class LoginModalContainer extends Component {
     BaseActions.naverLogin();
   }
 
+  naverlogincallback = () => {
+    console.log('naverlogincallback');
+    const {BaseActions} = this.props;
+    BaseActions.naverlogincallback();
+    return null;
+  }
+
   componentDidMount() {
       window.addEventListener('keyup', this.onKeyUp);
   }
@@ -31,21 +38,24 @@ class LoginModalContainer extends Component {
   }
 
   render() {
-    const {onCancel, naverLogin} = this;
-    const {visible} = this.props;
+    const {onCancel, naverLogin, naverlogincallback} = this;
+    const {visible, href} = this.props;
     
     return (
       <LoginModal
       visible={visible}
+      href={href}
       onCancel={onCancel}
-      naverLogin={naverLogin}/>
+      naverLogin={naverLogin}
+      naverlogincallback={naverlogincallback}/>
     );
   }
 }
 
 export default connect(
   (state) => ({
-    visible: state.base.getIn(['modal', 'login'])
+    visible: state.base.getIn(['modal', 'login', 'visible']),
+    href: state.base.getIn(['modal', 'login', 'href'])
   }),
   (dispatch) => ({
     BaseActions: bindActionCreators(baseActions, dispatch)
