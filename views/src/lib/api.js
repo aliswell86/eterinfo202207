@@ -8,3 +8,5 @@ export const getBoxList = () => axios.get('/api/box/list');
 export const getAdPickList = () => axios.get('/api/common/adpick');
 export const naverLogin = () => axios.get('/api/auth/naverlogin');
 export const naverlogincallback = () => axios.get('/api/auth/naverlogincallback');
+export const checkLogin = () => axios.get('/api/auth/check');
+export const logout = () => axios.get('/api/auth/logout');

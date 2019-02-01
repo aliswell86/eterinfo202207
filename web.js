@@ -25,12 +25,6 @@ mongoose.connect('mongodb://my_mean:dlskdud1@ds121321.mlab.com:21321/my_mean').t
   console.error(e);
 });
 
-// 라우터 설정
-router.use('/api', api.routes()); // api 라우트 적용
-
-const sessionConfig = {maxAge: 86400000};
-app.use(session(sessionConfig, app));
-
 app.use(gzip());
 app.use((ctx, next) => {
   if(ctx.path === '/') return ssr(ctx);
@@ -41,9 +35,17 @@ app.use(serve(path.resolve(__dirname, './views/build')));
 app.use(serve(path.resolve(__dirname, './public')));
 // 라우터 적용 전에 bodyParser 적용
 app.use(bodyParser());
+
+const sessionConfig = {maxAge: 86400000};
+app.use(session(sessionConfig, app));
+app.keys = ['ETERINFO'];
+
 // app 인스턴스에 라우터 적용
 app.use(router.routes()).use(router.allowedMethods());
 app.use(ssr);
+
+// 라우터 설정
+router.use('/api', api.routes()); // api 라우트 적용
 
 app.listen(8002, () => {
   console.log('listening to port 8002');

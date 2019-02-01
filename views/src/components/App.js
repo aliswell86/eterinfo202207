@@ -29,6 +29,7 @@ class App extends Component {
           <Route exact path="/custom/:id" component={WeaponCustomPage} />
           <Route exact path="/plusup" component={PlusUpPage} />
           <Route exact path="/boxsim" component={BoxSimulPage} />
+          <Route path="/naverlogincallback" component={MainPage} />
           <Route component={NotFoundPage}/>
         </Switch>
         <BaseContainer/>

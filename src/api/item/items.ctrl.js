@@ -17,7 +17,7 @@ exports.weaponList = async (ctx) => {
 */
 exports.weaponView = async (ctx) => {
   const { id } = ctx.params;
-
+  
   try {
     const itemInfo = await Item.findById(id).exec();
     

@@ -36,7 +36,9 @@ class SearchInputContainer extends Component {
 
   render() {
     const {searchGo, handleChange} = this;
-    const {loading, weaponSearchList} = this.props;
+    const {loading, weaponSearchList, logged} = this.props;
+
+    console.log("logged : " + logged);
 
     return (
       <SearchInput loading={loading} searchGo={searchGo} searchChange={handleChange} weaponSearchList={weaponSearchList}/>
@@ -48,7 +50,8 @@ export default connect(
   (state) => ({
     weapons: state.weapon.toJS().weapons,
     weaponSearchList: state.weapon.toJS().weaponSearchList,
-    loading: state.pender.pending['weapon/GET_WEAPON_LIST']
+    loading: state.pender.pending['weapon/GET_WEAPON_LIST'],
+    logged: state.base.get('logged')
   }),
   (dispatch) => ({
     WeaponActions: bindActionCreators(weaponActions, dispatch)

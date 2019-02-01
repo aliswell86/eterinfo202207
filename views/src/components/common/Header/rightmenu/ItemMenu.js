@@ -5,7 +5,7 @@ const innerStyle = {
   marginLeft: "0.4rem"
 }
 
-const ItemMenu = ({loginModalOpen}) => (
+const ItemMenu = ({loginEvent}) => (
   <div style={{padding: '0.2rem', cursor: 'pointer'}}>
     <Link to="/wp">
       무기정보
@@ -19,8 +19,11 @@ const ItemMenu = ({loginModalOpen}) => (
     <Link to="/boxsim" style={innerStyle}>
       상자뽑기
     </Link>
-    <span onClick={loginModalOpen} style={innerStyle}>
+    <span onClick={loginEvent} style={innerStyle}>
       로그인
+    </span>
+    <span onClick={loginEvent} style={innerStyle}>
+      로그아웃
     </span>
   </div>
 );

@@ -5,5 +5,7 @@ const auth = new Router();
 
 auth.get('/naverLogin', authCtrl.naverLogin);
 auth.get('/naverlogincallback', authCtrl.naverlogincallback);
+auth.get('/check', authCtrl.check);
+auth.get('/logout', authCtrl.logout);
 
 module.exports = auth;

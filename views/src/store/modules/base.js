@@ -6,12 +6,18 @@ import * as api from 'lib/api';
 const SHOW_MODAL = 'base/SHOW_MODAL';
 const HIDE_MODAL = 'base/HIDE_MODAL';
 const SHOW_NAVER_LOGIN = 'base/SHOW_NAVER_LOGIN';
+const CHECK_LOGIN ='base/CHECK_LOGIN';
 const NAVER_LOGIN_CALLBACK = 'base/NAVER_LOGIN_CALLBACK';
+const TEMP_LOGIN = 'base/TEMP_LOGIN';
+const LOGOUT = 'base/LOGOUT';
 
 export const showModal = createAction(SHOW_MODAL);
 export const hideModal = createAction(HIDE_MODAL);
 export const showNaverLogin = createAction(SHOW_NAVER_LOGIN, api.naverLogin);
 export const naverlogincallback = createAction(NAVER_LOGIN_CALLBACK, api.naverlogincallback);
+export const checkLogin = createAction(CHECK_LOGIN, api.checkLogin);
+export const tempLogin = createAction(TEMP_LOGIN);
+export const logout = createAction(LOGOUT, api.logout);
 
 const initialState = Map({
   modal: Map({
@@ -20,7 +26,8 @@ const initialState = Map({
       visible: false,
       href: ''
     })
-  })
+  }),
+  logged: false
 });
 
 export default handleActions({
@@ -47,8 +54,17 @@ export default handleActions({
       return state;
     }
   }),
+  ...pender({
+    type: CHECK_LOGIN,
+    onSuccess: (state, action) => {
+      const { logged } = action.payload.data;
+      return state.set('logged', logged);
+    }
+  }),
   [HIDE_MODAL]: (state, action) => {
     const {payload: modalName} = action;
     return state.setIn(['modal', modalName, 'visible'], false);
-  }
+  },[TEMP_LOGIN]: (state, action) => {
+    return state.set('logged', true);
+  },
 }, initialState);

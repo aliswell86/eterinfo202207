@@ -3,6 +3,7 @@ import LoginModal from 'components/modal/LoginModal';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as baseActions from 'store/modules/base';
+import {withRouter} from 'react-router-dom';
 
 class LoginModalContainer extends Component {
 
@@ -22,11 +23,10 @@ class LoginModalContainer extends Component {
     BaseActions.naverLogin();
   }
 
-  naverlogincallback = () => {
-    console.log('naverlogincallback');
-    const {BaseActions} = this.props;
-    BaseActions.naverlogincallback();
-    return null;
+  callback = () => {
+    const {BaseActions, history} = this.props;
+    history.go(-1);
+    return '';
   }
 
   componentDidMount() {
@@ -38,7 +38,7 @@ class LoginModalContainer extends Component {
   }
 
   render() {
-    const {onCancel, naverLogin, naverlogincallback} = this;
+    const {onCancel, naverLogin, callback} = this;
     const {visible, href} = this.props;
     
     return (
@@ -47,7 +47,7 @@ class LoginModalContainer extends Component {
       href={href}
       onCancel={onCancel}
       naverLogin={naverLogin}
-      naverlogincallback={naverlogincallback}/>
+      callback={callback}/>
     );
   }
 }
@@ -60,4 +60,4 @@ export default connect(
   (dispatch) => ({
     BaseActions: bindActionCreators(baseActions, dispatch)
   })
-)(LoginModalContainer);
+)(withRouter(LoginModalContainer));

@@ -6,24 +6,35 @@ import * as baseActions from 'store/modules/base';
 
 class HeaderContainer extends Component {
 
-  loginModalOpen = () => {
-    const {BaseActions} = this.props;
+  loginEvent = async () => {
+    const {BaseActions, logged} = this.props;
+
+    if(logged) {
+      try {
+        await BaseActions.logout();
+        window.location.reload();
+      } catch(e) {
+        console.log(e);
+      }
+
+      return;
+    }
 
     BaseActions.showNaverLogin();
   }
 
   render() {
-    const {loginModalOpen} = this;
+    const {loginEvent} = this;
 
     return (
-      <Header loginModalOpen={loginModalOpen}/>
+      <Header loginEvent={loginEvent}/>
     );
   }
 }
 
 export default connect(
   (state) => ({
-    // logged: state.base.get('logged')
+    logged: state.base.get('logged')
   }),
   (dispatch) => ({
     BaseActions: bindActionCreators(baseActions, dispatch)
