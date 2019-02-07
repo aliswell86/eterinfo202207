@@ -9,18 +9,18 @@ class HeaderContainer extends Component {
   loginEvent = async () => {
     const {BaseActions, logged} = this.props;
     console.log(logged);
-    // if(logged) {
-    //   try {
-    //     await BaseActions.logout();
-    //     window.location.reload();
-    //   } catch(e) {
-    //     console.log(e);
-    //   }
+    if(logged) {
+      try {
+        await BaseActions.logout();
+        window.location.reload();
+      } catch(e) {
+        console.log(e);
+      }
 
-    //   return;
-    // }
+      return;
+    }
 
-    // BaseActions.showNaverLogin();
+    BaseActions.showNaverLogin();
   }
 
   render() {

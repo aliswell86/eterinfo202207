@@ -7,14 +7,12 @@ const SHOW_MODAL = 'base/SHOW_MODAL';
 const HIDE_MODAL = 'base/HIDE_MODAL';
 const SHOW_NAVER_LOGIN = 'base/SHOW_NAVER_LOGIN';
 const CHECK_LOGIN ='base/CHECK_LOGIN';
-const NAVER_LOGIN_CALLBACK = 'base/NAVER_LOGIN_CALLBACK';
 const TEMP_LOGIN = 'base/TEMP_LOGIN';
 const LOGOUT = 'base/LOGOUT';
 
 export const showModal = createAction(SHOW_MODAL);
 export const hideModal = createAction(HIDE_MODAL);
 export const showNaverLogin = createAction(SHOW_NAVER_LOGIN, api.naverLogin);
-export const naverlogincallback = createAction(NAVER_LOGIN_CALLBACK, api.naverlogincallback);
 export const checkLogin = createAction(CHECK_LOGIN, api.checkLogin);
 export const tempLogin = createAction(TEMP_LOGIN);
 export const logout = createAction(LOGOUT, api.logout);
@@ -47,23 +45,12 @@ export default handleActions({
     }
   }),
   ...pender({
-    type: NAVER_LOGIN_CALLBACK,
-    onSuccess: (state, action) => {  // 로그인 성공 시
-      console.log(action);
-      return state;
-    },
-    onError: (state, action) => {  // 에러 발생 시
-      console.log(action);
-      return state;
-    }
-  }),
-  ...pender({
     type: CHECK_LOGIN,
     onSuccess: (state, action) => {
       const { logged, token, stateKey, profileId } = action.payload.data;
-      const checkToken = !logged ? token : '';
-      const checkState = !logged ? stateKey : '';
-      const checkProfileId = !logged ? profileId : '';
+      const checkToken = logged ? token : '';
+      const checkState = logged ? stateKey : '';
+      const checkProfileId = logged ? profileId : '';
       console.log(action.payload.data);
       return state.set('logged', logged)
                   .set('token', checkToken)

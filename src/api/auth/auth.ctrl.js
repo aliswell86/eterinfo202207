@@ -115,29 +115,36 @@ exports.check = async (ctx) => {
       {state_key: state}
     ]
   };
-  
+  console.log(logged +"&&"+ profileId);
   try {
-    if(logged && profileId === undefined) { //로그인상태 and 프로필아이디 세션에 없을때
-      const loginLnk = await LoginLnk.find(findObj).exec();
+    if(logged) {
+      const bodyLogged = !!logged;
+      const bodyState = bodyLogged ? state : '';
+      let bodyToken = '';
+      let bodyProfileID = '';
 
-      if(loginLnk.length === 1) {
-        const {token} = loginLnk[0];
-        const {id} = loginLnk[0].profile_info;
+      if(profileId === undefined) {
+        const loginLnk = await LoginLnk.findOne(findObj).exec();
+        
+        if(!!loginLnk) {
+          const {token} = loginLnk;
+          const {id} = loginLnk.profile_info;
 
-        ctx.session.profileId = id;
-        ctx.body = {
-          logged: !!logged,
-          token: token,
-          stateKey: state,
-          profileId: id
-        };
-      }else{
-        console.log("로그인정보 없음 !");
-        ctx.session = null;
-        ctx.body = {
-          logged: !!logged
+          ctx.session.profileId = id;
+          bodyProfileID = id;
+          bodyToken = token;
         }
+
+        ctx.body = {
+          logged: bodyLogged,
+          token: bodyToken,
+          stateKey: bodyState,
+          profileId: bodyProfileID
+        };
       }
+      console.log(ctx.body);
+    }else{
+      ctx.statue = 202;
     }
   } catch(e) {
     ctx.throw(e, 500);
