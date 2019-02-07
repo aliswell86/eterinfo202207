@@ -6,7 +6,7 @@ import {ItemMenu} from './rightmenu';
 
 const cx = classNames.bind(styles);
 
-const Header = ({loginEvent}) => {
+const Header = ({loginEvent, logged, profileId}) => {
   // const {pathname} = window.location;
 
   return (
@@ -17,7 +17,7 @@ const Header = ({loginEvent}) => {
             <Link to="/">이터인포.kr</Link>
           </div>
           <div className={cx('right')}>
-            <ItemMenu loginEvent={loginEvent}/>
+            <ItemMenu loginEvent={loginEvent} logged={logged} profileId={profileId}/>
             {/* <div className={cx('total-search')}>
               <input className={cx('total-search-input')}
               type='text'

@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const LoginLnk = new Schema({
-  key: {type:String},
+  state_key: {type:String},
+  token: {type:String},
+  profile_info: {type:Object},
   social: {type:String},
   verify: {type:Boolean},
   callbackURL: {type:String},

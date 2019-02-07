@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const LoginModal = ({visible, href, onCancel, callback}) => {
+const LoginModal = ({visible, href, onCancel}) => {
   return (
     <ModalWrapper visible={visible}>
       <div className={cx('form')}>

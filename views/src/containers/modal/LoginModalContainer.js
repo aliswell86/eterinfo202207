@@ -23,22 +23,17 @@ class LoginModalContainer extends Component {
     BaseActions.naverLogin();
   }
 
-  callback = () => {
-    const {BaseActions, history} = this.props;
-    history.go(-1);
-    return '';
-  }
-
   componentDidMount() {
-      window.addEventListener('keyup', this.onKeyUp);
+    console.log('componentDidMount');
+    window.addEventListener('keyup', this.onKeyUp);
   }
  
   componentWillUnmount() {
-      window.removeEventListener('keyup', this.onKeyUp);
+    window.removeEventListener('keyup', this.onKeyUp);
   }
 
   render() {
-    const {onCancel, naverLogin, callback} = this;
+    const {onCancel, naverLogin} = this;
     const {visible, href} = this.props;
     
     return (
@@ -46,8 +41,7 @@ class LoginModalContainer extends Component {
       visible={visible}
       href={href}
       onCancel={onCancel}
-      naverLogin={naverLogin}
-      callback={callback}/>
+      naverLogin={naverLogin}/>
     );
   }
 }

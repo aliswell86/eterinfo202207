@@ -5,7 +5,7 @@ const innerStyle = {
   marginLeft: "0.4rem"
 }
 
-const ItemMenu = ({loginEvent}) => (
+const ItemMenu = ({loginEvent, logged, profileId}) => (
   <div style={{padding: '0.2rem', cursor: 'pointer'}}>
     <Link to="/wp">
       무기정보
@@ -19,10 +19,10 @@ const ItemMenu = ({loginEvent}) => (
     <Link to="/boxsim" style={innerStyle}>
       상자뽑기
     </Link>
-    {/* <span onClick={loginEvent} style={innerStyle}>
-      로그인
-    </span>
     <span onClick={loginEvent} style={innerStyle}>
+      로그인 {logged ? profileId : '(X)'}
+    </span>
+    {/* <span onClick={loginEvent} style={innerStyle}>
       로그아웃
     </span> */}
   </div>

@@ -27,7 +27,10 @@ const initialState = Map({
       href: ''
     })
   }),
-  logged: false
+  logged: false,
+  token: '',
+  stateKey: '',
+  profileId : ''
 });
 
 export default handleActions({
@@ -57,14 +60,22 @@ export default handleActions({
   ...pender({
     type: CHECK_LOGIN,
     onSuccess: (state, action) => {
-      const { logged } = action.payload.data;
-      return state.set('logged', logged);
+      const { logged, token, stateKey, profileId } = action.payload.data;
+      const checkToken = !logged ? token : '';
+      const checkState = !logged ? stateKey : '';
+      const checkProfileId = !logged ? profileId : '';
+      console.log(action.payload.data);
+      return state.set('logged', logged)
+                  .set('token', checkToken)
+                  .set('stateKey', checkState)
+                  .set('profileId', checkProfileId);
     }
   }),
   [HIDE_MODAL]: (state, action) => {
     const {payload: modalName} = action;
     return state.setIn(['modal', modalName, 'visible'], false);
-  },[TEMP_LOGIN]: (state, action) => {
+  },
+  [TEMP_LOGIN]: (state, action) => {
     return state.set('logged', true);
   },
 }, initialState);
