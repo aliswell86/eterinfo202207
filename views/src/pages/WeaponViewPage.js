@@ -31,7 +31,10 @@ class WeaponViewPage extends Component {
             </div>
           </div>
         </div>
-        <Adsense970250/>
+        <div className={cx('page-top-adsense')}>
+          <Adsense970250/>
+          <Adsense300250/>
+        </div>
         <ListWrapper>
           <WeaponViewContainer id={weaponId} ref={(ref) => this.WeaponViewContainer = ref}/>
           <WeaponPoweredSelContanier/>

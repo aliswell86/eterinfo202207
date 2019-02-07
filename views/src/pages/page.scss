@@ -47,3 +47,21 @@
     }
   }
 }
+
+.page-top-adsense {
+  .adsense-970250 {
+    display: block;
+
+    @include media("<small") {
+      display: none;
+    }
+  }
+
+  .adsense-300250 {
+    display: none;
+
+    @include media("<small") {
+      display: block;
+    }
+  }
+}

@@ -10,6 +10,8 @@ class ModalWrapper extends Component {
     const {children, visible} = this.props;
     const animation = visible ? 'enter' : 'leave';
 
+    if(!visible) return null;
+
     return (
       <div>
         <div className={cx('gray-background', animation)}/>
