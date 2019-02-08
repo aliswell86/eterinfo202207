@@ -19,12 +19,9 @@ const ItemMenu = ({loginEvent, logged, profileId}) => (
     <Link to="/boxsim" style={innerStyle}>
       상자뽑기
     </Link>
-    {/* <span onClick={loginEvent} style={innerStyle}>
-      로그인 {logged ? profileId : '(X)'}
-    </span> */}
-    {/* <span onClick={loginEvent} style={innerStyle}>
-      로그아웃
-    </span> */}
+    <span onClick={loginEvent} style={innerStyle}>
+      {logged ? profileId : '로그인'}
+    </span>
   </div>
 );
 

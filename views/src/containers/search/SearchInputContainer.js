@@ -36,9 +36,7 @@ class SearchInputContainer extends Component {
 
   render() {
     const {searchGo, handleChange} = this;
-    const {loading, weaponSearchList, logged} = this.props;
-
-    // console.log("logged : " + logged);
+    const {loading, weaponSearchList} = this.props;
 
     return (
       <SearchInput loading={loading} searchGo={searchGo} searchChange={handleChange} weaponSearchList={weaponSearchList}/>

@@ -4,6 +4,7 @@ const client_secret = 'k_njwReb2_';
 const redirectURI = encodeURI("http://localhost:8002/api/auth/naverlogincallback");
 // const redirectURI = encodeURI("http://localhost:8002/callback");
 const LoginLnk = require('../../models/LoginLnk');
+const EterinfoMmbr = require('../../models/EterinfoMmbr');
 
 /* 네이버아이디로 로그인
   GET /api/auth/naverlogin
@@ -66,26 +67,36 @@ exports.naverlogincallback = async (ctx) => {
         console.log('error2 = ' + response.statusCode, error);
       }
     }).on('complete', async () => {
+      require("date-utils");
+      const date = new Date();
+      const currDate = date.toFormat("YYYYMMDDHH24MISS");
       const {response} = result_profile;
-      const seq_obj = {"state_key": state};
-      const update_obj = {
+      const seqObj = {state_key: state};
+      const udtObj = {
         token: access_token,
         refresh_token: refresh_token,
         expires_in: expires_in,
         profile_info: response,
-        verify: true
+        verify: true,
+        curr_date: currDate
       };
-      console.log('==== seq_obj =====');
-      console.log(seq_obj);
-      console.log('==== update_obj =====');
-      console.log(update_obj);
+      const {nickname, profile_img, id} = response;
+      const mmbrSeqObj = {naverid: id};
+      const mmbrUdtObj = {
+        nickname: nickname === undefined ? '' : nickname,
+        profile_img: profile_img === undefined ? '' : profile_img,
+        curr_date: currDate
+      }
+
       try {
-        const loginLnk = await LoginLnk.findOneAndUpdate(seq_obj, update_obj, {
+        const eterinfoMmbr = await EterinfoMmbr.findOneAndUpdate(mmbrSeqObj, mmbrUdtObj, {
+          new: true, upsert: true
+        }).exec();
+        console.log(eterinfoMmbr);
+
+        const loginLnk = await LoginLnk.findOneAndUpdate(seqObj, udtObj, {
           new: true
         }).exec();
-
-        console.log('==== update_after =====');
-        console.log(loginLnk);
 
         if(!loginLnk) {
           ctx.status = 404;
