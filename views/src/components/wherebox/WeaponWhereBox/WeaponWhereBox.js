@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import Radio from 'components/common/Radio';
 import Checkbox from 'components/common/Checkbox';
 import Adsense300250 from 'components/adsense/Adsense300250';
+import Adsense320100 from 'components/adsense/Adsense320100';
 
 const cx = classNames.bind(styles);
 
@@ -12,6 +13,7 @@ const WeaponWhereBox = ({handleWhereSet, loading, weaponWhere}) => {
   return (
     <div className={cx('wherebox-adsense')}>
       <Adsense300250/>
+      <Adsense320100/>
       <div className={cx('weapon-where-box')}>
         <div className={cx('cl-where')}>
           <div><Radio name='clyn' value='' onChange={handleWhereSet} disabled={loading} defaultValue={weaponWhere.clyn}>전체</Radio></div>

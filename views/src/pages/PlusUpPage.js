@@ -7,6 +7,7 @@ import PlusUpSimulContainer from 'containers/plusup/PlusUpSimulContainer';
 import PlusUpLuckNoticeContainer from 'containers/plusup/PlusUpLuckNoticeContainer';
 import Adsense970250 from 'components/adsense/Adsense970250';
 import Adsense300250 from 'components/adsense/Adsense300250';
+import Adsense320100 from 'components/adsense/Adsense320100';
 import Adsense72890 from 'components/adsense/Adsense72890';
 import scrollToComponent from 'react-scroll-to-component';
 import styles from './page.scss';
@@ -39,11 +40,17 @@ class PlusUpPage extends Component {
         <ListWrapper>        
           <PlusUpGridContainer ref={(ref) => this.PlusUpGridContainer = ref}/>
         </ListWrapper>
-        <Adsense72890/>
+        <div className={cx('page-middle-adsense')}>
+          <Adsense72890/>
+          <Adsense320100/>
+        </div>
         <ListWrapper>        
           <PlusUpSimulContainer ref={(ref) => this.PlusUpSimulContainer = ref}/>
         </ListWrapper>
-        <Adsense72890/>
+        <div className={cx('page-middle-adsense')}>
+          <Adsense72890/>
+          <Adsense320100/>
+        </div>
         <ListWrapper>        
           <PlusUpLuckNoticeContainer ref={(ref) => this.PlusUpLuckNoticeContainer = ref}/>
         </ListWrapper>

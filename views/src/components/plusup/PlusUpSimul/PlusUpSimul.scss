@@ -197,5 +197,23 @@
         }
       }
     }
+
+    .adsense {
+      .adsense-72890 {
+        display: block;
+    
+        @include media("<small") {
+          display: none;
+        }
+      }
+    
+      .adsense-320100 {
+        display: none;
+    
+        @include media("<small") {
+          display: block;
+        }
+      }
+    }
   }
 }

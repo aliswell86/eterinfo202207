@@ -7,6 +7,7 @@ import BoxResultContainer from 'containers/boxsim/BoxResultContainer';
 import BoxLogContainer from 'containers/boxsim/BoxLogContainer';
 import Adsense970250 from 'components/adsense/Adsense970250';
 import Adsense300250 from 'components/adsense/Adsense300250';
+import Adsense320100 from 'components/adsense/Adsense320100';
 import Adsense72890 from 'components/adsense/Adsense72890';
 import scrollToComponent from 'react-scroll-to-component';
 import styles from './page.scss';
@@ -39,11 +40,17 @@ class BoxSimulPage extends Component {
         <ListWrapper>        
           <BoxListContainer ref={(ref) => this.BoxListContainer = ref}/>
         </ListWrapper>
-        <Adsense72890/>
+        <div className={cx('page-middle-adsense')}>
+          <Adsense72890/>
+          <Adsense320100/>
+        </div>
         <ListWrapper>        
           <BoxResultContainer ref={(ref) => this.BoxResultContainer = ref}/>
         </ListWrapper>
-        <Adsense72890/>
+        <div className={cx('page-middle-adsense')}>
+          <Adsense72890/>
+          <Adsense320100/>
+        </div>
         <ListWrapper>        
           <BoxLogContainer ref={(ref) => this.BoxLogContainer = ref}/>
         </ListWrapper>

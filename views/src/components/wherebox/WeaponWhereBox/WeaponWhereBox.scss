@@ -7,7 +7,22 @@
   flex-wrap: wrap-reverse;
   max-width: 1024px;
   margin: 0 auto;
-  margin-bottom: 0.2rem;
+
+  .adsense-300250 {
+    display: block;
+
+    @include media("<small") {
+      display: none;
+    }
+  }
+
+  .adsense-320100 {
+    display: none;
+
+    @include media("<small") {
+      display: block;
+    }
+  }
 
   .weapon-where-box {
     border: 1px solid $oc-gray-2;    

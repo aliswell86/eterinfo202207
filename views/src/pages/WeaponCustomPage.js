@@ -8,6 +8,7 @@ import MyInfoViewContainer from 'containers/myspec/MyInfoViewContainer';
 import DPSSimulContainer from 'containers/myspec/DPSSimulContainer';
 import Adsense970250 from 'components/adsense/Adsense970250';
 import Adsense300250 from 'components/adsense/Adsense300250';
+import Adsense320100 from 'components/adsense/Adsense320100';
 import Adsense72890 from 'components/adsense/Adsense72890';
 import scrollToComponent from 'react-scroll-to-component';
 import styles from './page.scss';
@@ -40,15 +41,24 @@ class WeaponCustomPage extends Component {
           <WeaponViewContainer id={weaponId} ref={(ref) => this.WeaponViewContainer = ref}/>
           <WeaponPoweredSelContanier/>
         </ListWrapper>
-        <Adsense72890/>
+        <div className={cx('page-middle-adsense')}>
+          <Adsense72890/>
+          <Adsense320100/>
+        </div>
         <ListWrapper>
           <MyInfoViewContainer ref={(ref) => this.MyInfoViewContainer = ref}/>
         </ListWrapper>      
-        <Adsense72890/>
+        <div className={cx('page-middle-adsense')}>
+          <Adsense72890/>
+          <Adsense320100/>
+        </div>
         <ListWrapper>
           <MySpecInvenContainer ref={(ref) => this.MySpecInvenContainer = ref}/>
         </ListWrapper>
-        <Adsense72890/>
+        <div className={cx('page-middle-adsense')}>
+          <Adsense72890/>
+          <Adsense320100/>
+        </div>
         <ListWrapper>
           <DPSSimulContainer ref={(ref) => this.DPSSimulContainer = ref}/>
         </ListWrapper>

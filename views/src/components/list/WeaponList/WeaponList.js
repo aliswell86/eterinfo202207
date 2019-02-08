@@ -4,12 +4,16 @@ import classNames from 'classnames/bind';
 import {Link} from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import Adsense72890 from 'components/adsense/Adsense72890';
+import Adsense320100 from 'components/adsense/Adsense320100';
 
 const cx = classNames.bind(styles);
 
 const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, history, cnt/*, totalCnt*/}) => {
   const adsenseTag = (cnt !== 0 && cnt % 5 === 0) ? 
-  <Adsense72890/> : '';
+  <div className={cx('weaponlist-adsense')}>
+    <Adsense72890/>
+    <Adsense320100/>
+  </div> : '';
     
   return (
     <>

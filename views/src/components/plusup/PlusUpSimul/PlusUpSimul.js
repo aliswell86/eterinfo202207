@@ -3,6 +3,7 @@ import styles from './PlusUpSimul.scss';
 import classNames from 'classnames/bind';
 import NumberFormat from 'react-number-format';
 import Adsense72890 from 'components/adsense/Adsense72890';
+import Adsense320100 from 'components/adsense/Adsense320100';
 
 const cx = classNames.bind(styles);
 
@@ -38,6 +39,7 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
         </div>
         <div className={cx('adsense')} style={{paddingTop: '0.4rem'}}>
           <Adsense72890/>
+          <Adsense320100/>
         </div>
         <div className={cx('kit-trade-body')}>
           <div className={cx('kit-use')}>

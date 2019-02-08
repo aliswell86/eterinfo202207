@@ -26,7 +26,6 @@ const initialState = Map({
     })
   }),
   logged: false,
-  token: '',
   stateKey: '',
   profileId : ''
 });
@@ -47,15 +46,11 @@ export default handleActions({
   ...pender({
     type: CHECK_LOGIN,
     onSuccess: (state, action) => {
-      const { logged, token, stateKey, profileId } = action.payload.data;
-      const checkToken = logged ? token : '';
-      const checkState = logged ? stateKey : '';
-      const checkProfileId = logged ? profileId : '';
-      console.log(action.payload.data);
+      const { logged, stateKey, profileId } = action.payload.data;
+      
       return state.set('logged', logged)
-                  .set('token', checkToken)
-                  .set('stateKey', checkState)
-                  .set('profileId', checkProfileId);
+                  .set('stateKey', stateKey)
+                  .set('profileId', profileId);
     }
   }),
   [HIDE_MODAL]: (state, action) => {

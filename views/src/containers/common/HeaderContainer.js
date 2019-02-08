@@ -8,7 +8,7 @@ class HeaderContainer extends Component {
 
   loginEvent = async () => {
     const {BaseActions, logged} = this.props;
-    console.log(logged);
+    
     if(logged) {
       try {
         await BaseActions.logout();
@@ -26,7 +26,7 @@ class HeaderContainer extends Component {
   render() {
     const {loginEvent} = this;
     const {logged, profileId} = this.props;
-    console.log(logged, profileId);
+    
     return (
       <Header
       loginEvent={loginEvent}

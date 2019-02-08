@@ -43,12 +43,13 @@ exports.naverlogincallback = async (ctx) => {
   let result_token = '';
   request(options, (error, response, body) => {
     if (!error && response.statusCode == 200) {
+      console.log("토큰조회 : " + body);
       result_token = JSON.parse(body);
     }else{
       console.log('error1 = ' + response.statusCode, error);
     }
   }).on('complete', () => {
-    const {access_token} = result_token;
+    const {access_token, refresh_token, expires_in} = result_token;
     const header = 'Bearer ' + access_token;
     const api_url = 'https://openapi.naver.com/v1/nid/me';
     const options = {
@@ -59,6 +60,7 @@ exports.naverlogincallback = async (ctx) => {
     let result_profile = '';
     request(options, (error, response, body) => {
       if (!error && response.statusCode == 200) {
+        console.log("프로필조회 : " + body);
         result_profile = JSON.parse(body);
       } else {
         console.log('error2 = ' + response.statusCode, error);
@@ -68,6 +70,8 @@ exports.naverlogincallback = async (ctx) => {
       const seq_obj = {"state_key": state};
       const update_obj = {
         token: access_token,
+        refresh_token: refresh_token,
+        expires_in: expires_in,
         profile_info: response,
         verify: true
       };
@@ -107,53 +111,71 @@ exports.naverlogincallback = async (ctx) => {
   }
 };
 
+/* 로그인체크
+  GET /api/auth/check
+*/
 exports.check = async (ctx) => {
-  console.log(ctx.session);
   const {logged, state, profileId} = ctx.session;
   const findObj = {'$and': [
       {verify: true}, 
       {state_key: state}
     ]
   };
-  console.log(logged +"&&"+ profileId);
-  try {
-    if(logged) {
-      const bodyLogged = !!logged;
-      const bodyState = bodyLogged ? state : '';
-      let bodyToken = '';
-      let bodyProfileID = '';
 
-      if(profileId === undefined) {
-        const loginLnk = await LoginLnk.findOne(findObj).exec();
-        
-        if(!!loginLnk) {
-          const {token} = loginLnk;
-          const {id} = loginLnk.profile_info;
+  const bodyLogged = !!logged;
+  const bodyState = bodyLogged ? state : '';
+  let bodyProfileID = (bodyLogged && profileId !== undefined) ? profileId : '';
+  
+  if(bodyLogged && profileId === undefined) {
+    try {
+      const loginLnk = await LoginLnk.findOne(findObj).exec();
+      
+      if(!!loginLnk) {
+        const {id} = loginLnk.profile_info;
 
-          ctx.session.profileId = id;
-          bodyProfileID = id;
-          bodyToken = token;
-        }
-
-        ctx.body = {
-          logged: bodyLogged,
-          token: bodyToken,
-          stateKey: bodyState,
-          profileId: bodyProfileID
-        };
+        ctx.session.profileId = id;
+        bodyProfileID = id;
       }
-      console.log(ctx.body);
-    }else{
-      ctx.statue = 202;
+      
+      ctx.body = {
+        logged: bodyLogged,
+        stateKey: bodyState,
+        profileId: bodyProfileID
+      }
+    } catch(e) {
+      ctx.throw(e, 500);
     }
-  } catch(e) {
-    ctx.throw(e, 500);
+  }else{
+    ctx.body = {
+      logged: bodyLogged,
+      stateKey: bodyState,
+      profileId: bodyProfileID
+    }
   }
 };
 
-exports.logout = (ctx) => {
-  ctx.session = null;
-  ctx.status = 202; //No Content - 정상
+/* 로그아웃
+  GET /api/auth/logout
+*/
+exports.logout = async (ctx) => {
+  const {state} = ctx.session;
+
+  try {
+    const loginLnk = await LoginLnk.findOneAndUpdate({state_key: state}, {verify: false}, {
+      new: true
+    }).exec();
+
+    if(!loginLnk) {
+      ctx.session = null;
+      ctx.status = 404;
+      return;
+    }
+
+    ctx.session = null;
+    ctx.status = 202; //No Content - 정상
+  } catch(e) {
+    ctx.throw(e, 500);
+  }
 };
 
 generateKey = () => {

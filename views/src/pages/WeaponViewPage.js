@@ -8,6 +8,7 @@ import UpgradeCostContainer from 'containers/upgrade/UpgradeCostContainer';
 import Adsense970250 from 'components/adsense/Adsense970250';
 import Adsense72890 from 'components/adsense/Adsense72890';
 import Adsense300250 from 'components/adsense/Adsense300250';
+import Adsense320100 from 'components/adsense/Adsense320100';
 import scrollToComponent from 'react-scroll-to-component';
 import styles from './page.scss';
 import classNames from 'classnames/bind';
@@ -39,11 +40,17 @@ class WeaponViewPage extends Component {
           <WeaponViewContainer id={weaponId} ref={(ref) => this.WeaponViewContainer = ref}/>
           <WeaponPoweredSelContanier/>
         </ListWrapper>
-        <Adsense72890/>
+        <div className={cx('page-middle-adsense')}>
+          <Adsense72890/>
+          <Adsense320100/>
+        </div>
         <ListWrapper>
           <UpgradeCostContainer ref={(ref) => this.UpgradeCostContainer = ref}/>
         </ListWrapper>
-        <Adsense72890/>
+        <div className={cx('page-middle-adsense')}>
+          <Adsense72890/>
+          <Adsense320100/>
+        </div>
         <ListWrapper>
           <WeaponViewPoweredByContainer ref={(ref) => this.WeaponViewPoweredByContainer = ref}/>
         </ListWrapper>
