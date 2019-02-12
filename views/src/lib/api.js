@@ -10,3 +10,5 @@ export const naverLogin = () => axios.get('/api/auth/naverlogin');
 export const naverlogincallback = () => axios.get('/api/auth/naverlogincallback');
 export const checkLogin = () => axios.get('/api/auth/check');
 export const logout = () => axios.get('/api/auth/logout');
+
+export const getArmmorList = () => axios.get('/api/item/armmor');

@@ -78,10 +78,6 @@ const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
           </div>
           <div className={cx('cri')}>치명타:{cri}</div>          
         </div>
-        <div className={cx('star_point')}>
-          <div>평점 95.03</div>
-          <img width='100' src='/resource/img/star.jpg' alt='star'/>
-        </div>
         <div className={cx('sub_option')}>
           <div className={cx('tier')}>{tier}등급</div>
           <div>

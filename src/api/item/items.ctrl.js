@@ -45,6 +45,18 @@ exports.plusUpGrid = (ctx) => {
   ctx.body = plusUpGrid();
 };
 
+/* 방어구 목록 조회
+  GET /api/item/armmor
+*/
+exports.armmorList = async (ctx) => {
+  try {
+    const items = await Item.find({"$and":[{ctype: "2"}/*,{"$or":[{tier: "7"},{tier: "10"}]}*/]}).sort({"order": 1}).exec();
+    ctx.body = items;
+  } catch(e) {
+    ctx.throw(e);
+  }
+};
+
 poweredByCalc = (item_dmg) => {
   var up_classes = [1, 1.1, 1.3, 1.5, 2, 3, 4];
   var up_rate = [0,1,2,3,4,5,6,7,8,9,1,1,1,3,3,3,6,6,6,10];

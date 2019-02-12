@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
-import {NotFoundPage, WeaponPage, WeaponViewPage, WeaponCustomPage, MainPage, PlusUpPage, BoxSimulPage} from 'pages';
+import {
+  NotFoundPage, WeaponPage, WeaponViewPage, WeaponCustomPage, MainPage, PlusUpPage, BoxSimulPage,
+  ArmmorPage
+} from 'pages';
 import { Helmet } from "react-helmet";
 import BaseContainer from 'containers/common/BaseContainer';
 
@@ -29,6 +32,7 @@ class App extends Component {
           <Route exact path="/custom/:id" component={WeaponCustomPage} />
           <Route exact path="/plusup" component={PlusUpPage} />
           <Route exact path="/boxsim" component={BoxSimulPage} />
+          <Route exact path="/am" component={ArmmorPage} />
           <Route path="/naverlogincallback" component={MainPage} />
           <Route component={NotFoundPage}/>
         </Switch>

@@ -3,7 +3,7 @@ import WeaponWhereBox from 'components/wherebox/WeaponWhereBox';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as weaponActions from 'store/modules/weapon';
-import ReactGA from 'react-ga';
+// import ReactGA from 'react-ga';
 // import { withDone } from 'react-router-server';
 //withDone 으로 connect 를 감싸면 데이터가 조회되기전까지 렌더링을 미룸 비교해볼것.
 //렌더링 먼저하고 데이터조회 중이라는걸 보여주는게 나아보임..
@@ -17,7 +17,6 @@ class WeaponWhereBoxContainer extends Component {
     } catch(e) {
       console.log(e);
     }
-    
   }
 
   componentDidMount() {
@@ -26,7 +25,7 @@ class WeaponWhereBoxContainer extends Component {
   }
 
   handleWhereSet = (e) => {
-    ReactGA.ga('send', 'event', 'weaponlist', 'weaponwhere', 'label');
+    // ReactGA.ga('send', 'event', 'weaponlist', 'weaponwhere', 'label');
 
     const {name, value, checked} = e.target;
     const {WeaponActions, weapons} = this.props;

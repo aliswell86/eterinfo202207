@@ -9,7 +9,6 @@ import Adsense320100 from 'components/adsense/Adsense320100';
 const cx = classNames.bind(styles);
 
 const WeaponWhereBox = ({handleWhereSet, loading, weaponWhere}) => {
-  
   return (
     <div className={cx('wherebox-adsense')}>
       <Adsense300250/>

@@ -7,4 +7,6 @@ items.get('/weapon', itemCtrl.weaponList);
 items.get('/weapon/:id', itemCtrl.weaponView);
 items.get('/plusup', itemCtrl.plusUpGrid);
 
+items.get('/armmor', itemCtrl.armmorList);
+
 module.exports = items;
