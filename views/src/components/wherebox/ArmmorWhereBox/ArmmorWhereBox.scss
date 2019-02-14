@@ -60,8 +60,42 @@
       display: -ms-flexbox;
       flex-wrap: wrap;
       grid-template-columns: repeat(6, 1fr);
-      -ms-grid-columns: 50px 10px 50px 10px 50px;
-      -ms-grid-rows: 100px;
+      grid-gap: 0.5rem;
+  
+      @include media("<large") {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .stype2-where {
+      display: grid;
+      display: -ms-flexbox;
+      flex-wrap: wrap;
+      grid-template-columns: repeat(6, 1fr);
+      grid-gap: 0.5rem;
+  
+      @include media("<large") {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .armmor-type-where {
+      display: grid;
+      display: -ms-flexbox;
+      flex-wrap: wrap;
+      grid-template-columns: repeat(6, 1fr);
+      grid-gap: 0.5rem;
+  
+      @include media("<large") {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .grade-where {
+      display: grid;
+      display: -ms-flexbox;
+      flex-wrap: wrap;
+      grid-template-columns: repeat(6, 1fr);
       grid-gap: 0.5rem;
   
       @include media("<large") {

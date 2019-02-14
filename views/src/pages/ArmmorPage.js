@@ -7,10 +7,13 @@ import scrollToComponent from 'react-scroll-to-component';
 import Adsense970250 from 'components/adsense/Adsense970250';
 import Adsense300250 from 'components/adsense/Adsense300250';
 import ArmmorWhereBoxContainer from 'containers/wherebox/ArmmorWhereBoxContainer';
+import ListWrapper from 'components/list/ListWrapper';
+import ArmmorListContainer from 'containers/list/ArmmorListContainer';
 
 class ArmmorPage extends Component {
   render() {
     const cx = classNames.bind(styles);
+    const {history} = this.props;
 
     return (
       <PageTemplate>
@@ -31,6 +34,9 @@ class ArmmorPage extends Component {
           <Adsense300250/>
         </div>
         <ArmmorWhereBoxContainer ref={(ref) => this.WeaponWhereBoxContainer = ref}/>
+        <ListWrapper>        
+          <ArmmorListContainer history={history}/>
+        </ListWrapper>
         <Adsense300250/>
       </PageTemplate>
     );

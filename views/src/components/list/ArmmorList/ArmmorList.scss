@@ -1,0 +1,88 @@
+@import 'utils';
+
+.armmor-list {
+  padding: 0.5rem;
+
+  .armmorlist-adsense {
+    .adsense-72890 {
+      display: block;
+  
+      @include media("<small") {
+        display: none;
+      }
+    }
+  
+    .adsense-320100 {
+      display: none;
+  
+      @include media("<small") {
+        display: block;
+      }
+    }
+  }
+
+  .title {
+    padding: 0.5rem;
+    height: 1.5rem;
+    transition: all .15s ease-in;
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  .list {
+    border-top: 1px solid $oc-gray-4;
+    margin-top: 0.4rem;
+    padding-top: 0.4rem;
+
+    .armmor-object {
+      padding: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      display: -ms-flexbox;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: space-between;
+      align-items: center;
+
+      .name {
+        display: flex;
+        display: -ms-flexbox;
+        align-content: center;
+        justify-content: space-between;
+        align-items: center;
+
+        .armmor-img {
+          background-color: white;
+          border-radius: 0.4em;
+          @include material-shadow(1, 0.5);
+          padding: 2px;
+          margin-right: 0.5rem;
+    
+          @include media("<medium") {
+            margin-right: 0.2rem;
+          }
+    
+          img {
+            width: 50px;
+            height: 50px;        
+          }
+        }
+      }
+      
+
+      &:hover {
+        // 호버 시 배경색 변경
+        background: rgba($oc-blue-6, 0.05);
+      }
+    }
+  
+    .armmor-object + .armmor-object { // 아이템 사이 여백
+      border-top: 1px solid $oc-gray-3;
+    }
+  }
+}

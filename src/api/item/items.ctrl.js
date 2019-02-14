@@ -50,7 +50,7 @@ exports.plusUpGrid = (ctx) => {
 */
 exports.armmorList = async (ctx) => {
   try {
-    const items = await Item.find({"$and":[{ctype: "2"}/*,{"$or":[{tier: "7"},{tier: "10"}]}*/]}).sort({"order": 1}).exec();
+    const items = await Item.find({"$and":[{ctype: "2"}/*,{"$or":[{tier: "7"},{tier: "10"}]}*/]}).sort("order").sort("tier").exec();
     ctx.body = items;
   } catch(e) {
     ctx.throw(e);
