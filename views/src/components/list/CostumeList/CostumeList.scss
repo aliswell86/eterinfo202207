@@ -1,9 +1,11 @@
 @import 'utils';
 
-.armmor-list {
+@import 'utils';
+
+.costume-list {
   padding: 0.5rem;
 
-  .armmorlist-adsense {
+  .costumelist-adsense {
     .adsense-72890 {
       display: block;
   
@@ -21,7 +23,7 @@
     }
   }
 
-  .armmor-object {
+  .costume-object {
     padding: 0.4rem;
     cursor: pointer;
     display: flex;
@@ -39,7 +41,7 @@
       align-items: center;
       width: 320px;
 
-      .armmor-img {
+      .costume-img {
         background-color: white;
         border-radius: 0.4em;
         @include material-shadow(1, 0.5);
@@ -58,7 +60,7 @@
         }
       }
 
-      .armmor-name {
+      .costume-name {
         width: 248px;
         color: $oc-blue-5;
         font-weight: bold;
@@ -111,7 +113,7 @@
     }
   }
 
-  .armmor-object + .armmor-object { // 아이템 사이 여백
+  .costume-object + .costume-object { // 아이템 사이 여백
     border-top: 1px solid $oc-gray-3;
   }
 }

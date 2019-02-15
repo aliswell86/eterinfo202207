@@ -7,9 +7,7 @@ import LoginModalContainer from 'containers/modal/LoginModalContainer';
 class BaseContainer extends Component {
 
   initialize = () => {
-    console.log('initialize');
     const { BaseActions } = this.props;
-    console.log("localStorage.logged : " + localStorage.logged);
     if(localStorage.logged === "true") {
       BaseActions.tempLogin();
     }

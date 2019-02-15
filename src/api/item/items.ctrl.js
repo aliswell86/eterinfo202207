@@ -57,6 +57,30 @@ exports.armmorList = async (ctx) => {
   }
 };
 
+/* 코튬날개 목록 조회
+  GET /api/item/custome
+*/
+exports.costumeList = async (ctx) => {
+  try {
+    const items = await Item.find({"$or":[{ctype: "3"},{ctype: "4"}]}).sort("order").sort("tier").exec();
+    ctx.body = items;
+  } catch(e) {
+    ctx.throw(e);
+  }
+};
+
+/* 악세 목록 조회
+  GET /api/item/accessory
+*/
+exports.accessoryList = async (ctx) => {
+  try {
+    const items = await Item.find({"$or":[{ctype: "5"},{ctype: "6"},{ctype: "7"},{ctype: "8"},{ctype: "9"},{ctype: "10"},{ctype: "11"},{ctype: "12"}]}).sort("order").sort("tier").exec();
+    ctx.body = items;
+  } catch(e) {
+    ctx.throw(e);
+  }
+};
+
 poweredByCalc = (item_dmg) => {
   var up_classes = [1, 1.1, 1.3, 1.5, 2, 3, 4];
   var up_rate = [0,1,2,3,4,5,6,7,8,9,1,1,1,3,3,3,6,6,6,10];

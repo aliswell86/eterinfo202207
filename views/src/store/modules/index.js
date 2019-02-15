@@ -7,3 +7,5 @@ export {default as boxsim} from './boxsim';
 export {default as common} from './common';
 export {default as base} from './base';
 export {default as armmor} from './armmor';
+export {default as costume} from './costume';
+export {default as accessory} from './accessory';

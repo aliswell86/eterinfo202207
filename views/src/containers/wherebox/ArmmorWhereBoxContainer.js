@@ -53,7 +53,6 @@ class ArmmorWhereBoxContainer extends Component {
 export default connect(
   (state) => ({
     armmorWhere: state.armmor.toJS().armmorWhere,
-    armmorWheres: state.armmor.toJS().armmorWheres,
     armmors: state.armmor.get('armmors'),
     loading: state.pender.pending['armmor/GET_ARMMOR_LIST']
   }),

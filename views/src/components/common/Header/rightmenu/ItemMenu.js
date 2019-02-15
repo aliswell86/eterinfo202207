@@ -17,8 +17,10 @@ const ItemMenu = (/*{loginEvent, logged, profileId}*/) => (
         <span className={cx('arrow-style')}/>
       </span>
       <div className={cx('item-submenu')}>
-        <div><Link to="/wp">무기정보</Link></div>
-        <div><Link to="/am">방어구정보</Link></div>
+        <div><Link to="/wp">무기</Link></div>
+        <div><Link to="/armmor">방어구</Link></div>
+        <div><Link to="/costume">코튬날개</Link></div>
+        <div><Link to="/accessory">악세서리</Link></div>
       </div>
     </span>
     <Link to="/custom" style={innerStyle}>

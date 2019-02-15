@@ -24,7 +24,6 @@ class LoginModalContainer extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount');
     window.addEventListener('keyup', this.onKeyUp);
   }
  

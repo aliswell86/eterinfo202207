@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from './ArmmorList.scss';
+import styles from './CostumeList.scss';
 import classNames from 'classnames/bind';
 import Adsense72890 from 'components/adsense/Adsense72890';
 import Adsense320100 from 'components/adsense/Adsense320100';
 
 const cx = classNames.bind(styles);
 
-const ArmmorObject = ({history, cnt, img_src, item_nm, tier, item_dtl_dv, dfs, dmg, cri, con, key}) => {
+const CostumeObject = ({history, cnt, img_src, item_nm, tier, item_dtl_dv, dfs, dmg, cri, con, key}) => {
   const adsenseTag = (cnt !== 0 && cnt % 5 === 0) ? 
-  <div className={cx('armmorlist-adsense')}>
+  <div className={cx('costumelist-adsense')}>
     <Adsense72890/>
     <Adsense320100/>
   </div> : '';
@@ -16,10 +16,10 @@ const ArmmorObject = ({history, cnt, img_src, item_nm, tier, item_dtl_dv, dfs, d
  return (
    <>
     {adsenseTag}
-    <div className={cx('armmor-object')} onClick={() => history.push('/plusup')}>
+    <div className={cx('costume-object')}>
       <div className={cx('name')}>
-        <div className={cx('armmor-img')}><img src={img_src} alt={item_nm}/></div>
-        <div className={cx('armmor-name')}>{item_nm}</div>
+        <div className={cx('costume-img')}><img src={img_src} alt={item_nm}/></div>
+        <div className={cx('costume-name')}>{item_nm}</div>
       </div>
       <div className={cx('tier')}>{tier}등급</div>
       <div className={cx('item-dtl-dv')}>{item_dtl_dv}</div>
@@ -42,13 +42,12 @@ const ArmmorObject = ({history, cnt, img_src, item_nm, tier, item_dtl_dv, dfs, d
  ) 
 }
 
-const ArmmorList = ({armmorWheres, history}) => {
-  const armmorList = armmorWheres.map((armmor, cnt) => {
-    const {img_src, item_nm, tier, item_dtl_dv, dfs, dmg, cri, con, _id} = armmor;
+const CostumeList = ({costumeWheres}) => {
+  const costumeList = costumeWheres.map((costume, cnt) => {
+    const {img_src, item_nm, tier, item_dtl_dv, dfs, dmg, cri, con, _id} = costume;
 
     return (
-      <ArmmorObject
-      history={history}
+      <CostumeObject
       cnt={cnt} item_nm={item_nm}
       img_src={img_src}
       tier={tier}
@@ -60,10 +59,10 @@ const ArmmorList = ({armmorWheres, history}) => {
   });
 
   return (
-    <div className={cx('armmor-list')}>
-      {armmorList}
+    <div className={cx('costume-list')}>
+      {costumeList}
     </div>
   );
 };
 
-export default ArmmorList;
+export default CostumeList;

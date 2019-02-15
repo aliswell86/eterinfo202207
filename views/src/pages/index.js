@@ -6,3 +6,5 @@ export {default as PlusUpPage} from './PlusUpPage';
 export {default as BoxSimulPage} from './BoxSimulPage';
 export {default as NotFoundPage} from './NotFoundPage';
 export {default as ArmmorPage} from './ArmmorPage';
+export {default as CostumePage} from './CostumePage';
+export {default as AccessoryPage} from './AccessoryPage';
