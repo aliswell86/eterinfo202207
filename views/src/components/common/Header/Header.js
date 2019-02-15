@@ -14,7 +14,7 @@ const Header = ({loginEvent, logged, profileId}) => {
       <div className={cx('header-content')}>
         <div className={cx('header-content-body')}>
           <div className={cx('brand')}>
-            <Link to="/">이터인포.kr</Link>
+            <Link to="/">이터인포</Link>
           </div>
           <div className={cx('right')}>
             <ItemMenu loginEvent={loginEvent} logged={logged} profileId={profileId}/>

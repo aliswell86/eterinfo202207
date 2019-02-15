@@ -29,11 +29,11 @@ class ArmmorPage extends Component {
             </div>
           </div>
         </div>
+        <ArmmorWhereBoxContainer ref={(ref) => this.ArmmorWhereBoxContainer = ref}/>
         <div className={cx('page-top-adsense')}>
           <Adsense970250/>
-          <Adsense300250/>
+          {/* <Adsense300250/> */}
         </div>
-        <ArmmorWhereBoxContainer ref={(ref) => this.ArmmorWhereBoxContainer = ref}/>
         <ListWrapper>        
           <ArmmorListContainer history={history}/>
         </ListWrapper>

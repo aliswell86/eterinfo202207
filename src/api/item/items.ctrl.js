@@ -4,8 +4,10 @@ const Item = require('../../models/Item');
   GET /api/item/weapon
 */
 exports.weaponList = async (ctx) => {
+  console.log("weaponList");
   try {
     const items = await Item.find({"$and":[{ctype: "1"}/*,{"$or":[{tier: "7"},{tier: "10"}]}*/]}).sort({"order": 1}).exec();
+    console.log("weaponList ENd ");
     ctx.body = items;
   } catch(e) {
     ctx.throw(e);

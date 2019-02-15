@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './CostumeWhereBox.scss';
 import classNames from 'classnames/bind';
-import Radio from 'components/common/Radio';
 import Checkbox from 'components/common/Checkbox';
 import Adsense300250 from 'components/adsense/Adsense300250';
 import Adsense320100 from 'components/adsense/Adsense320100';

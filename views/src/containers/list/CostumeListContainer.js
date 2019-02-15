@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
-import AccessoryList from 'components/list/AccessoryList';
+import CostumeList from 'components/list/CostumeList';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as accessoryActions from 'store/modules/accessory';
+import * as costumeActions from 'store/modules/costume';
 
-class AccessoryListContainer extends Component {
+class CostumeListContainer extends Component {
   render() {
-    const {accessoryWheres, history} = this.props;
+    const {costumeWheres, history} = this.props;
 
     return (
-      <AccessoryList accessoryWheres={accessoryWheres} history={history}/>
+      <CostumeList costumeWheres={costumeWheres} history={history}/>
     );
   }
 }
 
 export default connect(
   (state) => ({
-    accessoryWheres: state.accessory.toJS().accessoryWheres
+    costumeWheres: state.costume.toJS().costumeWheres
   }),
   (dispatch) => ({
-    AccessoryActions: bindActionCreators(accessoryActions, dispatch)
+    CostumeActions: bindActionCreators(costumeActions, dispatch)
   })
-)(AccessoryListContainer);
+)(CostumeListContainer);
