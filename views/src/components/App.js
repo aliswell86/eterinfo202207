@@ -35,7 +35,6 @@ class App extends Component {
           <Route exact path="/armmor" component={ArmmorPage} />
           <Route exact path="/costume" component={CostumePage} />
           <Route exact path="/accessory" component={AccessoryPage} />
-          <Route path="/naverlogincallback" component={MainPage} />
           <Route component={NotFoundPage}/>
         </Switch>
         <BaseContainer/>
