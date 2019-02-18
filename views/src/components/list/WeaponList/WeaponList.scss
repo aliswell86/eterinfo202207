@@ -1,133 +1,149 @@
 @import 'utils';
 
-.weapon-list {
-  .weaponlist-adsense {
-    .adsense-72890 {
-      display: block;
-  
-      @include media("<small") {
-        display: none;
-      }
-    }
-  
-    .adsense-320100 {
-      display: none;
-  
-      @include media("<small") {
-        display: block;
-      }
-    }
+.list {
+  display: flex;
+  display: -ms-flexbox;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .list-adsense {
+    width: 300px;
+    height: 600px;
+    border: 1px solid $oc-gray-9;
   }
-  .weapon-object {
-    a {
-      cursor: pointer;
-      padding-top: 12px;
-      padding-bottom: 12px;
-    }
+  
+  .weapon-list {
+    .weaponlist-adsense {
+      .adsense-72890 {
+        display: block;
     
-    padding: 0.5rem;
-    transition: all .15s ease-in;
-    // 내부 아이템 세로 중앙 정렬
-    display: flex;
-    display: -ms-flexbox;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: space-between;
-    align-items: center;
-
-    .weapon-img {
-      background-color: white;
-      border-radius: 0.4em;
-      @include material-shadow(1, 0.5);
-      padding: 2px;
-      margin-right: 0.5rem;
-
-      @include media("<medium") {
-        margin-right: 0.2rem;
+        @include media("<small") {
+          display: none;
+        }
       }
-
-      img {
-        width: 50px;
-        height: 50px;        
+    
+      .adsense-320100 {
+        display: none;
+    
+        @include media("<small") {
+          display: block;
+        }
       }
     }
-
-    .weapon-name {
-      flex: 1;
-      min-width: 230px;
-      color: $oc-blue-5;
-      font-weight: bold;
-    }
-
-    .weapon-damage {
-      width: 60px;
-      color: $oc-red-9;
-      font-weight: bold;
-    }
-
-    .weapon-custom-link {
-      padding: 0.2rem;
-      border: 1px solid $oc-red-6;
-      background: $oc-red-5;
-      text-align: center;
-      font-weight: bold;
-      color: white;
-      border-radius: 0.2rem;
-    }
-
-    .weapon-custom-link:hover {
-      background: $oc-red-6;
-    }
-    .weapon-custom-link:active {
-      background: $oc-red-7;
-    }
-
-    .item-option {
-      width: 350px;
-      padding-left: 10px;
+    .weapon-object {
+      a {
+        cursor: pointer;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+      
+      padding: 0.5rem;
+      transition: all .15s ease-in;
+      // 내부 아이템 세로 중앙 정렬
       display: flex;
       display: -ms-flexbox;
       flex-wrap: wrap;
       align-content: center;
       justify-content: space-between;
       align-items: center;
-      align-content: center;
-      margin-left: auto;
-
-      .tier {
+  
+      .weapon-img {
+        background-color: white;
+        border-radius: 0.4em;
+        @include material-shadow(1, 0.5);
+        padding: 2px;
+        margin-right: 0.5rem;
+  
+        @include media("<medium") {
+          margin-right: 0.2rem;
+        }
+  
+        img {
+          width: 50px;
+          height: 50px;        
+        }
+      }
+  
+      .weapon-name {
+        flex: 1;
+        min-width: 230px;
+        color: $oc-blue-5;
+        font-weight: bold;
+      }
+  
+      .weapon-damage {
         width: 60px;
-        text-align: center;
+        color: $oc-red-9;
+        font-weight: bold;
       }
-      .item-dtl-dv {
-        width: 70px;
+  
+      .weapon-custom-link {
+        padding: 0.2rem;
+        border: 1px solid $oc-red-6;
+        background: $oc-red-5;
         text-align: center;
+        font-weight: bold;
+        color: white;
+        border-radius: 0.2rem;
       }
-      .size {
-        width: 70px;
-        text-align: center;
+  
+      .weapon-custom-link:hover {
+        background: $oc-red-6;
       }
-      .speed {
-        width: 70px;
-        text-align: center;
+      .weapon-custom-link:active {
+        background: $oc-red-7;
       }
-      .illegal {
-        width: 70px;
-        text-align: center;
+  
+      .item-option {
+        width: 350px;
+        padding-left: 10px;
+        display: flex;
+        display: -ms-flexbox;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        margin-left: auto;
+  
+        .tier {
+          width: 60px;
+          text-align: center;
+        }
+        .item-dtl-dv {
+          width: 70px;
+          text-align: center;
+        }
+        .size {
+          width: 70px;
+          text-align: center;
+        }
+        .speed {
+          width: 70px;
+          text-align: center;
+        }
+        .illegal {
+          width: 70px;
+          text-align: center;
+        }
+  
+        div + div {
+          border-left: 1px solid $oc-gray-3;
+        }
       }
-
-      div + div {
-        border-left: 1px solid $oc-gray-3;
+  
+      &:hover {
+        // 호버 시 배경색 변경
+        background: rgba($oc-blue-6, 0.05);
       }
     }
-
-    &:hover {
-      // 호버 시 배경색 변경
-      background: rgba($oc-blue-6, 0.05);
+  
+    .weapon-object + .weapon-object { // 아이템 사이 여백
+      border-top: 1px solid $oc-gray-3;
     }
-  }
-
-  .weapon-object + .weapon-object { // 아이템 사이 여백
-    border-top: 1px solid $oc-gray-3;
   }
 }
+
  

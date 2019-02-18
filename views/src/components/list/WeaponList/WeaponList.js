@@ -9,15 +9,15 @@ import Adsense320100 from 'components/adsense/Adsense320100';
 const cx = classNames.bind(styles);
 
 const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, history, cnt/*, totalCnt*/}) => {
-  const adsenseTag = (cnt !== 0 && cnt % 5 === 0) ? 
-  <div className={cx('weaponlist-adsense')}>
-    <Adsense72890/>
-    <Adsense320100/>
-  </div> : '';
+  // const adsenseTag = (cnt !== 0 && cnt % 5 === 0) ? 
+  // <div className={cx('weaponlist-adsense')}>
+  //   <Adsense72890/>
+  //   <Adsense320100/>
+  // </div> : '';
     
   return (
     <>
-      {adsenseTag}
+      {/* {adsenseTag} */}
       <div className={cx('weapon-object')}>
         <Link to={`/wp/${id}`} className={cx('weapon-img')}><img src={img_src} alt={item_nm}/></Link>
         <Link to={`/wp/${id}`} className={cx('weapon-name')}>{item_nm}</Link>
@@ -63,8 +63,13 @@ const WeaponList = ({weaponWheres, history}) => {
   });
 
   return (
-    <div className={cx('weapon-list')}>
-      {weaponList}
+    <div className={cx('list')}>
+      <div className={cx('weapon-list')}>
+        {weaponList}
+      </div>
+      <div className={cx('list-adsense')}>
+      dd
+      </div>
     </div>
   )
 };

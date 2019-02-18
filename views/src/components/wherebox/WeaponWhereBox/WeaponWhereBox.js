@@ -11,8 +11,6 @@ const cx = classNames.bind(styles);
 const WeaponWhereBox = ({handleWhereSet, loading, weaponWhere}) => {
   return (
     <div className={cx('wherebox-adsense')}>
-      <Adsense300250/>
-      <Adsense320100/>
       <div className={cx('weapon-where-box')}>
         <div className={cx('cl-where')}>
           <div><Radio name='clyn' value='' onChange={handleWhereSet} disabled={loading} defaultValue={weaponWhere.clyn}>전체</Radio></div>
@@ -59,7 +57,9 @@ const WeaponWhereBox = ({handleWhereSet, loading, weaponWhere}) => {
           <div><Checkbox name="isTier11" onChange={handleWhereSet} disabled={loading} checked={weaponWhere.isTier11}>11등급</Checkbox></div>
           <div><Checkbox name="isTier12" onChange={handleWhereSet} disabled={loading} checked={weaponWhere.isTier12}>12등급</Checkbox></div>
         </div>
-      </div>      
+      </div>
+      <Adsense300250/>
+      <Adsense320100/>
     </div>
   );
 };
