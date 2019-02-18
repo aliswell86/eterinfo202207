@@ -8,14 +8,29 @@
   justify-content: space-between;
   align-items: flex-start;
 
+  @include media("<large") {
+    display: block;
+  }
+
   .list-adsense {
     width: 300px;
     height: 600px;
-    border: 1px solid $oc-gray-9;
+
+    display: block;
+
+    @include media("<large") {
+      display: none;
+    }
   }
   
   .weapon-list {
     .weaponlist-adsense {
+      display: none;
+
+      @include media("<large") {
+        display: block;
+      }
+
       .adsense-72890 {
         display: block;
     
@@ -68,7 +83,10 @@
   
       .weapon-name {
         flex: 1;
-        min-width: 230px;
+        width: 230px;
+        @include media("<large") {
+          min-width: 230px;
+        }
         color: $oc-blue-5;
         font-weight: bold;
       }
@@ -97,7 +115,10 @@
       }
   
       .item-option {
-        width: 350px;
+        width: 306px;
+        @include media("<large") {
+          width: 350px;
+        }
         padding-left: 10px;
         display: flex;
         display: -ms-flexbox;
@@ -109,23 +130,38 @@
         margin-left: auto;
   
         .tier {
-          width: 60px;
+          width: 50px;
+          @include media("<large") {
+            width: 60px;
+          }
           text-align: center;
         }
         .item-dtl-dv {
           width: 70px;
+          @include media("<large") {
+            width: 70px;
+          }
           text-align: center;
         }
         .size {
-          width: 70px;
+          width: 50px;
+          @include media("<large") {
+            width: 70px;
+          }
           text-align: center;
         }
         .speed {
-          width: 70px;
+          width: 60px;
+          @include media("<large") {
+            width: 70px;
+          }
           text-align: center;
         }
         .illegal {
-          width: 70px;
+          width: 60px;
+          @include media("<large") {
+            width: 70px;
+          }
           text-align: center;
         }
   
