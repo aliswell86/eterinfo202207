@@ -71,14 +71,14 @@ const WeaponList = ({weaponWheres, history}) => {
     adsense300600List.push(<Adsense300600 key={i}/>);
   }
   if(num > 1 && num < 6) {
-    adsense300600List.push(<Adsense300250/>);
+    adsense300600List.push(<Adsense300250 key={'Adsense300250_0'}/>);
   }else if(num > 5 && num < 8) {
-    adsense300600List.push(<Adsense300250 key={1}/>);
-    adsense300600List.push(<Adsense300250 key={2}/>);
+    adsense300600List.push(<Adsense300250 key={'Adsense300250_1'}/>);
+    adsense300600List.push(<Adsense300250 key={'Adsense300250_2'}/>);
   }
 
   return (
-    <div className={cx('list')}>
+    <div className={cx('weapon')}>
       <div className={cx('weapon-list')}>
         {weaponList}
       </div>
