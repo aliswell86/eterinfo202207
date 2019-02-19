@@ -30,14 +30,13 @@ class AccessoryPage extends Component {
           </div>
         </div>
         <AccessoryWhereBoxContainer ref={(ref) => this.AccessoryWhereBoxContainer = ref}/>
-        <div className={cx('page-top-adsense')}>
-          <Adsense970250/>
-          {/* <Adsense300250/> */}
-        </div>
         <ListWrapper>        
           <AccessoryListContainer history={history}/>
         </ListWrapper>
-        <Adsense300250/>
+        <div className={cx('page-top-adsense')}>
+          <Adsense970250/>
+          <Adsense300250/>
+        </div>
       </PageTemplate>
     );
   }

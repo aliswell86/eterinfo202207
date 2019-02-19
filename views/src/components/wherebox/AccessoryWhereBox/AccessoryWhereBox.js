@@ -10,8 +10,6 @@ const cx = classNames.bind(styles);
 const AccessoryWhereBox = ({handleWhereSet, loading, accessoryWhere}) => {
   return (
     <div className={cx('wherebox-adsense')}>
-      <Adsense300250/>
-      <Adsense320100/>
       <div className={cx('accessory-where-box')}>
         <div className={cx('accessory-type-where')}>
         <div><Checkbox name="isCtype5" onChange={handleWhereSet} disabled={loading} checked={accessoryWhere.isCtype5}>토이</Checkbox></div>
@@ -24,6 +22,8 @@ const AccessoryWhereBox = ({handleWhereSet, loading, accessoryWhere}) => {
         <div><Checkbox name="isCtype12" onChange={handleWhereSet} disabled={loading} checked={accessoryWhere.isCtype12}>환생악세</Checkbox></div>
         </div>
       </div>
+      <Adsense300250/>
+      <Adsense320100/>
     </div>
   );
 };

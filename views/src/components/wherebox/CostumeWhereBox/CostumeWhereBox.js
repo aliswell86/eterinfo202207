@@ -10,8 +10,6 @@ const cx = classNames.bind(styles);
 const CostumeWhereBox = ({handleWhereSet, loading, costumeWhere}) => {
   return (
     <div className={cx('wherebox-adsense')}>
-      <Adsense300250/>
-      <Adsense320100/>
       <div className={cx('costume-where-box')}>
         <div className={cx('type-where')}>
           <div><Checkbox name="isCtype3" onChange={handleWhereSet} disabled={loading} checked={costumeWhere.isCtype3}>코스튬</Checkbox></div>
@@ -34,6 +32,8 @@ const CostumeWhereBox = ({handleWhereSet, loading, costumeWhere}) => {
           <div><Checkbox name="isTier10" onChange={handleWhereSet} disabled={loading} checked={costumeWhere.isTier10}>9강</Checkbox></div>
         </div>
       </div>
+      <Adsense300250/>
+      <Adsense320100/>
     </div>
   );
 };

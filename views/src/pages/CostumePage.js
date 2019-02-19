@@ -30,14 +30,13 @@ class ArmmorPage extends Component {
           </div>
         </div>
         <CostumeWhereBoxContainer ref={(ref) => this.CostumeWhereBoxContainer = ref}/>
-        <div className={cx('page-top-adsense')}>
-          <Adsense970250/>
-          {/* <Adsense300250/> */}
-        </div>
         <ListWrapper>        
           <CostumeListContainer history={history}/>
         </ListWrapper>
-        <Adsense300250/>
+        <div className={cx('page-top-adsense')}>
+          <Adsense970250/>
+          <Adsense300250/>
+        </div>
       </PageTemplate>
     );
   }

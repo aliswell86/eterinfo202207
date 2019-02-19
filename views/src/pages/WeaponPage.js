@@ -30,10 +30,6 @@ class WeaponPage extends Component {
           </div>
         </div>
         <WeaponWhereBoxContainer ref={(ref) => this.WeaponWhereBoxContainer = ref}/>
-        {/* <div className={cx('page-top-adsense')}>
-          <Adsense970250/>
-          <Adsense300250/>
-        </div> */}
         <ListWrapper>        
           <WeaponListContainer history={history}/>
         </ListWrapper>

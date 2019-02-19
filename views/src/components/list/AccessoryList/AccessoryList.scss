@@ -1,119 +1,136 @@
 @import 'utils';
 
-@import 'utils';
+.accessory {
+  display: flex;
+  display: -ms-flexbox;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
 
-.accessory-list {
-  padding: 0.5rem;
+  @include media("<large") {
+    display: block;
+  }
 
-  .accessorylist-adsense {
-    .adsense-72890 {
-      display: block;
-  
-      @include media("<small") {
-        display: none;
-      }
-    }
-  
-    .adsense-320100 {
+  .list-adsense {
+    display: block;
+
+    @include media("<large") {
       display: none;
-  
-      @include media("<small") {
-        display: block;
-      }
     }
   }
 
-  .accessory-object {
-    padding: 0.4rem;
-    cursor: pointer;
-    display: flex;
-    display: -ms-flexbox;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: space-between;
-    align-items: center;
+  .accessory-list {
+    .accessorylist-adsense {
+      .adsense-72890 {
+        display: block;
+    
+        @include media("<small") {
+          display: none;
+        }
+      }
+    
+      .adsense-320100 {
+        display: none;
+    
+        @include media("<small") {
+          display: block;
+        }
+      }
+    }
 
-    .name {
+    .accessory-object {
+      padding: 0.4rem;
+      cursor: pointer;
       display: flex;
       display: -ms-flexbox;
+      flex-wrap: wrap;
       align-content: center;
       justify-content: space-between;
       align-items: center;
-      width: 320px;
 
-      .accessory-img {
-        background-color: white;
-        border-radius: 0.4em;
-        @include material-shadow(1, 0.5);
-        padding: 2px;
-        margin-right: 0.5rem;
-  
-        @include media("<medium") {
-          margin-right: 0.2rem;
+      .name {
+        display: flex;
+        display: -ms-flexbox;
+        align-content: center;
+        justify-content: space-between;
+        align-items: center;
+        width: 320px;
+
+        .accessory-img {
+          background-color: white;
+          border-radius: 0.4em;
+          @include material-shadow(1, 0.5);
+          padding: 2px;
+          margin-right: 0.5rem;
+    
+          @include media("<medium") {
+            margin-right: 0.2rem;
+          }
+
+          width: 52px;
+    
+          img {
+            width: 50px;
+            height: 50px;        
+          }
         }
 
-        width: 52px;
-  
-        img {
-          width: 50px;
-          height: 50px;        
+        .accessory-name {
+          width: 248px;
+          color: $oc-blue-5;
+          font-weight: bold;
+          text-align: left;
         }
       }
 
-      .accessory-name {
-        width: 248px;
-        color: $oc-blue-5;
-        font-weight: bold;
+      .tier {
         text-align: left;
+        width: 50px;
+      }
+
+      .item-dtl-dv {
+        text-align: left;
+        width: 100px;
+      }
+
+      .stat {
+        width: 200px;
+        font-weight: bold;
+
+        .stat-title {
+          display: flex;
+          display: -ms-flexbox;
+          align-content: center;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid $oc-gray-2;
+          padding-bottom: 0.2rem;
+          margin-bottom: 0.2rem;
+        }
+
+        .stat-content {
+          display: flex;
+          display: -ms-flexbox;
+          align-content: center;
+          justify-content: space-between;
+          align-items: center;
+
+          .dmg {color: $oc-red-9;}
+          .dfs {color: $oc-green-8;}
+          .cri {color: $oc-yellow-6;}
+          .con {color: $oc-orange-9;}
+        }
+      }
+
+      &:hover {
+        // 호버 시 배경색 변경
+        background: rgba($oc-blue-6, 0.05);
       }
     }
 
-    .tier {
-      text-align: left;
-      width: 50px;
+    .accessory-object + .accessory-object { // 아이템 사이 여백
+      border-top: 1px solid $oc-gray-3;
     }
-
-    .item-dtl-dv {
-      text-align: left;
-      width: 100px;
-    }
-
-    .stat {
-      width: 200px;
-      font-weight: bold;
-
-      .stat-title {
-        display: flex;
-        display: -ms-flexbox;
-        align-content: center;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid $oc-gray-2;
-        padding-bottom: 0.2rem;
-        margin-bottom: 0.2rem;
-      }
-
-      .stat-content {
-        display: flex;
-        display: -ms-flexbox;
-        align-content: center;
-        justify-content: space-between;
-        align-items: center;
-
-        .dmg {color: $oc-red-9;}
-        .dfs {color: $oc-green-8;}
-        .cri {color: $oc-yellow-6;}
-        .con {color: $oc-orange-9;}
-      }
-    }
-
-    &:hover {
-      // 호버 시 배경색 변경
-      background: rgba($oc-blue-6, 0.05);
-    }
-  }
-
-  .accessory-object + .accessory-object { // 아이템 사이 여백
-    border-top: 1px solid $oc-gray-3;
   }
 }
