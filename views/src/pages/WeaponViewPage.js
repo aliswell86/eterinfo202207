@@ -6,7 +6,7 @@ import WeaponViewPoweredByContainer from 'containers/weapon/WeaponViewPoweredByC
 import WeaponPoweredSelContanier from 'containers/weapon/WeaponPoweredSelContanier';
 import UpgradeCostContainer from 'containers/upgrade/UpgradeCostContainer';
 import Adsense970250 from 'components/adsense/Adsense970250';
-import Adsense72890 from 'components/adsense/Adsense72890';
+// import Adsense72890 from 'components/adsense/Adsense72890';
 import Adsense300250 from 'components/adsense/Adsense300250';
 import Adsense320100 from 'components/adsense/Adsense320100';
 import scrollToComponent from 'react-scroll-to-component';
@@ -32,29 +32,28 @@ class WeaponViewPage extends Component {
             </div>
           </div>
         </div>
-        <div className={cx('page-top-adsense')}>
-          <Adsense970250/>
-          <Adsense300250/>
-        </div>
         <ListWrapper>
           <WeaponViewContainer id={weaponId} ref={(ref) => this.WeaponViewContainer = ref}/>
           <WeaponPoweredSelContanier/>
         </ListWrapper>
         <div className={cx('page-middle-adsense')}>
-          <Adsense72890/>
+          {/* <Adsense72890/> */}
           <Adsense320100/>
         </div>
         <ListWrapper>
           <UpgradeCostContainer ref={(ref) => this.UpgradeCostContainer = ref}/>
         </ListWrapper>
         <div className={cx('page-middle-adsense')}>
-          <Adsense72890/>
+          {/* <Adsense72890/> */}
           <Adsense320100/>
         </div>
         <ListWrapper>
           <WeaponViewPoweredByContainer ref={(ref) => this.WeaponViewPoweredByContainer = ref}/>
         </ListWrapper>
-        <Adsense300250/>
+        <div className={cx('page-top-adsense')}>
+          <Adsense970250/>
+          <Adsense300250/>
+        </div>
       </PageTemplate>
     );
   }

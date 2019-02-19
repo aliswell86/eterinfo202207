@@ -70,7 +70,7 @@
   .adsense-72890 {
     display: block;
 
-    @include media("<small") {
+    @include media("<medium") {
       display: none;
     }
   }
@@ -78,7 +78,7 @@
   .adsense-320100 {
     display: none;
 
-    @include media("<small") {
+    @include media("<medium") {
       display: block;
     }
   }
