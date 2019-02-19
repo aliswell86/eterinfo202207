@@ -3,22 +3,23 @@ import styles from './WeaponList.scss';
 import classNames from 'classnames/bind';
 import {Link} from 'react-router-dom';
 import NumberFormat from 'react-number-format';
-import Adsense72890 from 'components/adsense/Adsense72890';
-import Adsense320100 from 'components/adsense/Adsense320100';
+// import Adsense72890 from 'components/adsense/Adsense72890';
+// import Adsense320100 from 'components/adsense/Adsense320100';
 import Adsense300600 from 'components/adsense/Adsense300600';
+import Adsense300250 from 'components/adsense/Adsense300250';
 
 const cx = classNames.bind(styles);
 
 const WeaponObject = ({id, item_nm, img_src, dmg, item_dtl_dv, speed, tier, size, illegal, history, cnt}) => {
-  const adsenseTag = (cnt !== 0 && cnt % 5 === 0) ? 
-  <div className={cx('weaponlist-adsense')}>
-    <Adsense72890/>
-    <Adsense320100/>
-  </div> : '';
+  // const adsenseTag = (cnt !== 0 && cnt % 10 === 0) ? 
+  // <div className={cx('weaponlist-adsense')}>
+  //   <Adsense72890/>
+  //   <Adsense320100/>
+  // </div> : '';
     
   return (
     <>
-      {adsenseTag}
+      {/* {adsenseTag} */}
       <div className={cx('weapon-object')}>
         <Link to={`/wp/${id}`} className={cx('weapon-img')}><img src={img_src} alt={item_nm}/></Link>
         <Link to={`/wp/${id}`} className={cx('weapon-name')}>{item_nm}</Link>
@@ -64,8 +65,16 @@ const WeaponList = ({weaponWheres, history}) => {
   });
 
   let adsense300600List = [];
-  for(let i=0; i<Math.ceil(weaponWheres.length/8); i++) {
+  const num = weaponWheres.length % 8;
+  
+  for(let i=0; i<Math.floor(weaponWheres.length/8); i++) {
     adsense300600List.push(<Adsense300600 key={i}/>);
+  }
+  if(num > 1 && num < 6) {
+    adsense300600List.push(<Adsense300250/>);
+  }else if(num > 5 && num < 8) {
+    adsense300600List.push(<Adsense300250 key={1}/>);
+    adsense300600List.push(<Adsense300250 key={2}/>);
   }
 
   return (
