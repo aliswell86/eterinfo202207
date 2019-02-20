@@ -131,6 +131,7 @@
         display: -ms-flexbox;
         justify-content: space-between;
         flex-wrap: wrap;
+        align-items: center;
 
         .kit-use-normal {
           text-align: center;
@@ -194,6 +195,14 @@
           top: 169px;
           left: -30px;
           color: $oc-red-7;
+        }
+      }
+
+      .adsense-300250 {
+        display: block;
+
+        @include media("<large") {
+          display: none;
         }
       }
     }

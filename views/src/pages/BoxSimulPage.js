@@ -33,10 +33,6 @@ class BoxSimulPage extends Component {
             </div>
           </div>
         </div>
-        <div className={cx('page-top-adsense')}>
-          <Adsense970250/>
-          <Adsense300250/>
-        </div>
         <ListWrapper>        
           <BoxListContainer ref={(ref) => this.BoxListContainer = ref}/>
         </ListWrapper>
@@ -54,7 +50,10 @@ class BoxSimulPage extends Component {
         <ListWrapper>        
           <BoxLogContainer ref={(ref) => this.BoxLogContainer = ref}/>
         </ListWrapper>
-        <Adsense300250/>
+        <div className={cx('page-top-adsense')}>
+          <Adsense970250/>
+          <Adsense300250/>
+        </div>
       </PageTemplate>
     );
   }

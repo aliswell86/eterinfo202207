@@ -33,10 +33,6 @@ class PlusUpPage extends Component {
             </div>
           </div>
         </div>
-        <div className={cx('page-top-adsense')}>
-          <Adsense970250/>
-          <Adsense300250/>
-        </div>
         <ListWrapper>        
           <PlusUpGridContainer ref={(ref) => this.PlusUpGridContainer = ref}/>
         </ListWrapper>
@@ -54,7 +50,10 @@ class PlusUpPage extends Component {
         <ListWrapper>        
           <PlusUpLuckNoticeContainer ref={(ref) => this.PlusUpLuckNoticeContainer = ref}/>
         </ListWrapper>
-        <Adsense300250/>
+        <div className={cx('page-top-adsense')}>
+          <Adsense970250/>
+          <Adsense300250/>
+        </div>
       </PageTemplate>
     );
   }
