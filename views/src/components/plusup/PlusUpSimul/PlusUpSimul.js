@@ -40,7 +40,7 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
         {/* <div className={cx('adsense')} style={{paddingTop: '0.4rem'}}>
           <Adsense72890/>
           <Adsense320100/>
-        </div> */}1
+        </div> */}
         <div className={cx('kit-trade-body')}>
           <div className={cx('kit-use')}>
             <div className={cx('kit-use-normal')} onClick={plusUpGo} tabIndex='1' onKeyPress={plusUpGoKey}>
