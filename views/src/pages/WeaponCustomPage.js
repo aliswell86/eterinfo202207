@@ -33,16 +33,12 @@ class WeaponCustomPage extends Component {
             </div>
           </div>
         </div>
-        <div className={cx('page-top-adsense')}>
-          <Adsense970250/>
-          <Adsense300250/>
-        </div>
         <ListWrapper>        
           <WeaponViewContainer id={weaponId} ref={(ref) => this.WeaponViewContainer = ref}/>
           <WeaponPoweredSelContanier/>
         </ListWrapper>
         <div className={cx('page-middle-adsense')}>
-          <Adsense72890/>
+          {/* <Adsense72890/> */}
           <Adsense320100/>
         </div>
         <ListWrapper>
@@ -62,7 +58,10 @@ class WeaponCustomPage extends Component {
         <ListWrapper>
           <DPSSimulContainer ref={(ref) => this.DPSSimulContainer = ref}/>
         </ListWrapper>
-        <Adsense300250/>
+        <div className={cx('page-top-adsense')}>
+          <Adsense970250/>
+          <Adsense300250/>
+        </div>
       </PageTemplate>
     );
   }
