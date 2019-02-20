@@ -19,55 +19,77 @@
     margin-bottom: 0.4rem;
   }
 
-  .boxs {
+  .boxs-adsense {
     display: flex;
     display: -ms-flexbox;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
 
-    .box {
-      cursor: pointer;
-      padding: 0.6rem;
-      text-align: center;
-      margin: 0 auto;
+    .adsense-300250 {
+      flex: 1;      
+      display: block;
 
-      .box_img {
-        margin-top: 1rem;
-
-        img {
-          width: 60px;
-          height: 50px;
-        }
+      @include media("<large") {
+        display: none;
       }
     }
 
-    .box-checked {
-      cursor: pointer;
-      padding: 0.6rem;
-      text-align: center;
-      margin: 0 auto;
+    .boxs {
+      display: flex;
+      display: -ms-flexbox;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: 640px;
 
-      .box_img {
-        margin-top: 1rem;
-
-        img {
-          width: 60px;
-          height: 50px;
+      @include media("<large") {
+        width: 100%;
+      }
+  
+      .box {
+        cursor: pointer;
+        padding: 0.6rem;
+        text-align: center;
+        margin: 0 auto;
+  
+        .box_img {
+          margin-top: 1rem;
+  
+          img {
+            width: 60px;
+            height: 50px;
+          }
         }
       }
-
-      @include material-shadow(1, 1);
-      background: $oc-blue-0;
-    }
-
-    .box:hover {
-      @include material-shadow(1, 1);
-      background: $oc-blue-0;
-    }
-    .box:active {
-      @include material-shadow(1, 1);
-      background: $oc-blue-1;
+  
+      .box-checked {
+        cursor: pointer;
+        padding: 0.6rem;
+        text-align: center;
+        margin: 0 auto;
+  
+        .box_img {
+          margin-top: 1rem;
+  
+          img {
+            width: 60px;
+            height: 50px;
+          }
+        }
+  
+        @include material-shadow(1, 1);
+        background: $oc-blue-0;
+      }
+  
+      .box:hover {
+        @include material-shadow(1, 1);
+        background: $oc-blue-0;
+      }
+      .box:active {
+        @include material-shadow(1, 1);
+        background: $oc-blue-1;
+      }
     }
   }
 
