@@ -66,7 +66,7 @@ const AccessoryList = ({accessoryWheres}) => {
   for(let i=0; i<Math.floor(accessoryWheres.length/8); i++) {
     adsense300600List.push(<Adsense300600 key={i}/>);
   }
-  if(num > 1 && num < 6) {
+  if(num > 0 && num < 6) {
     adsense300600List.push(<Adsense300250 key={'Adsense300250_0'}/>);
   }else if(num > 5 && num < 8) {
     adsense300600List.push(<Adsense300250 key={'Adsense300250_1'}/>);
