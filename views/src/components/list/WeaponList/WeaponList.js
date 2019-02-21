@@ -79,12 +79,12 @@ const WeaponList = ({weaponWheres, history}) => {
 
   return (
     <div className={cx('weapon')}>
-      <div className={cx('weapon-list')}>
-        {weaponList}
-      </div>
       <div className={cx('list-adsense')}>
         {adsense300600List}
       </div>
+      <div className={cx('weapon-list')}>
+        {weaponList}
+      </div>      
     </div>
   )
 };
