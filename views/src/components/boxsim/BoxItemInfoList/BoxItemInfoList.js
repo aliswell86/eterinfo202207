@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import ListWrapper from 'components/list/ListWrapper';
 import NumberFormat from 'react-number-format';
 import Adsense300250 from 'components/adsense/Adsense300250';
+import Adsense300600 from 'components/adsense/Adsense300600';
 import isEmptyObject from 'is-empty-object';
 
 const cx = classNames.bind(styles);
@@ -53,8 +54,11 @@ const BoxItemInfoList = ({currBox, boxGet, boxResultListWhere, boxInfoListDispla
               <button name='boxDisplay' onClick={boxInfoListDisplay}>{display === 'none' ? '펼치기' : '닫기'}</button>
             </div>
           </div>
-          <div className={cx('box-iteminfo-list')} style={innerStyle1}>
-            {itemInfoList}
+          <div className={cx('box-iteminfo-list-adsense')}>
+            <Adsense300600/>
+            <div className={cx('box-iteminfo-list')} style={innerStyle1}>
+              {itemInfoList}
+            </div>
           </div>
         </div>
       </ListWrapper>
