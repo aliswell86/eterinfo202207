@@ -1,0 +1,38 @@
+@import 'utils';
+
+.best-weapon-adsense {
+  display: flex;
+  display: -ms-flexbox;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 0.2rem;
+
+  @include media("<small") {
+    width: 100%;
+    padding: 0.2rem;
+  }
+
+  .adsense-300250 {
+    display: block;
+
+    @include media("<medium") {
+      display: none;
+    }
+  }
+
+  .best-weapon {
+    .title {
+      border-bottom: 1px solid $oc-gray-3;
+      color: $oc-gray-8;
+      font-size: 1rem;
+      padding-bottom: 0.2rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.4rem;
+    }
+  }
+}

@@ -11,6 +11,7 @@ const SET_WEAPON_UP_DV = 'weapon/SET_WEAPON_UP_DV';
 const SET_WEAPON_UP_DMG = 'weapon/SET_WEAPON_UP_DMG';
 const SET_WEAPON_UP_CRI = 'weapon/SET_WEAPON_UP_CRI';
 const GET_WEAPON_SEARCH_LIST = 'weapon/SET_WEAPONE_UP_DMG';
+const GET_BEST_ITEM = 'weapon/GET_BEST_ITEM';
 
 export const setWeaponWhere = createAction(SET_WEAPON_WHERE);
 export const getWeaponList = createAction(GET_WEAPON_LIST, api.getWeaponList);
@@ -20,6 +21,7 @@ export const setWeaponUpDv = createAction(SET_WEAPON_UP_DV);
 export const setWeaponUpDmg = createAction(SET_WEAPON_UP_DMG);
 export const setWeaponUpCri = createAction(SET_WEAPON_UP_CRI);
 export const getWeaponSearchList = createAction(GET_WEAPON_SEARCH_LIST);
+export const getBestItem = createAction(GET_BEST_ITEM, api.getBestItem);
 
 const initialState = Map({
   weaponWhere: Map({ // 선택한 조회조건들
@@ -65,6 +67,10 @@ const initialState = Map({
     isCriUp: true
   }),
   weaponSearchList: List(), // 조회 미리보기 리스트
+  bestItems: Map({ //인기무기 주간,월간
+    week: List(),
+    month: List()
+  })
 });
 
 export default handleActions({
@@ -175,5 +181,8 @@ export default handleActions({
     const value = action.payload;
     const weapons = state.toJS().weapons.filter(weapon => value !== '' && weapon.item_nm.toLowerCase().trim().indexOf(value.toLowerCase()) > -1);
     return state.set('weaponSearchList', weapons).set('weaponWheres', weapons);
+  },
+  [GET_BEST_ITEM]: (state, action) => {
+    return state;
   }
 }, initialState);
