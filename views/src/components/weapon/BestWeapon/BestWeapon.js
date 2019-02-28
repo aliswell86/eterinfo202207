@@ -9,11 +9,12 @@ import NumberFormat from 'react-number-format';
 const cx = classNames.bind(styles);
 
 const BestItemObject = ({item_nm, img_src, id, count, cnt}) => {
-  const adsenseTag = (cnt !== 0 && cnt % 5 === 0) ? <Adsense320100/> : '';
+  const adsenseTag = (cnt === 0) ? <div>1위 ~ 5위</div> : 
+  (cnt % 5 === 0) ? <><Adsense320100/><div>{cnt}위 ~ {cnt+5}위</div></> : '';
 
   return (
     <>
-      {adsenseTag}
+      {adsenseTag}      
       <div className={cx('object')} key={cnt}>
         <Link to={`/wp/${id}`} className={cx('weapon-img')}><img src={img_src} alt={item_nm}/></Link>
         <Link to={`/wp/${id}`} className={cx('weapon-name')}>{item_nm}</Link>
@@ -56,20 +57,20 @@ const BestWeapon = ({getGooglePageView, bestItems}) => {
       <div className={cx('init')}>
         {/* <a href='/api/auth/gapageview'><button name='' onClick={getGooglePageView}>갱신</button></a> */}
         <h2 className={cx('title')}>이터인포에서 많이찾는 무기 BEST20</h2>
-        <div>기간별 이터인포 무기조회 건수합계입니다. 하루마다 갱신됩니다. 이터널시티 유저들에게 인기가 많은 무기가 뭘까요!?</div>
+        <div>기간별 이터인포 무기조회 건수합계입니다. 하루마다 갱신됩니다. 이터널시티 유저들에게 인기가 많은 무기는 뭘까요!?</div>
       </div>
       <Adsense970250/>
       <div className={cx('best-weapon')}>
         <div className={cx('best')}>
-          <h2 className={cx('title')}>일간({day.min_date} ~ {day.max_date})</h2>
+          <h2 className={cx('title')}>일간 ({dateFormat(day.min_date)} ~ {dateFormat(day.max_date)})</h2>
           <div className={cx('list')}>{dayList}</div>
         </div>
         <div className={cx('best')}>
-          <h2 className={cx('title')}>주간({week.min_date} ~ {week.max_date})</h2>
+          <h2 className={cx('title')}>주간 ({dateFormat(week.min_date)} ~ {dateFormat(week.max_date)})</h2>
           <div className={cx('list')}>{weekList}</div>
         </div>
         <div className={cx('best')}>
-          <h2 className={cx('title')}>월간({month.min_date} ~ {month.max_date})</h2>
+          <h2 className={cx('title')}>월간 ({dateFormat(month.min_date)} ~ {dateFormat(month.max_date)})</h2>
           <div className={cx('list')}>{monthList}</div>
         </div>
       </div>
@@ -78,3 +79,13 @@ const BestWeapon = ({getGooglePageView, bestItems}) => {
 };
 
 export default BestWeapon;
+
+const dateFormat = (date) => {
+  if(!date) return '';
+
+  const yy = date.substr(2, 2);
+  const mm = date.substr(4, 2);
+  const dd = date.substr(6, 2);
+
+  return yy+'/'+mm+'/'+dd;
+}

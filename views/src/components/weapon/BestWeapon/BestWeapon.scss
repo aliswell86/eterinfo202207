@@ -3,7 +3,7 @@
 .init {
   padding: 0.4rem;
   text-align: left;
-  
+
   a button {
     border: none;
   }
@@ -30,10 +30,13 @@
       border-bottom: 1px solid $oc-gray-3;
       color: $oc-gray-8;
       font-size: 1rem;
-      padding-bottom: 0.2rem;
       margin-top: 0.2rem;
       margin-bottom: 0.4rem;
       
+      background-color: $oc-violet-8;
+      padding: 0.4rem;
+      font-weight: bold;
+      color: white;
     }
 
     .list {
