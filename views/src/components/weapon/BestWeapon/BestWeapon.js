@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 
 const BestItemObject = ({item_nm, img_src, id, count, cnt}) => {
   const adsenseTag = (cnt === 0) ? <div>1위 ~ 5위</div> : 
-  (cnt % 5 === 0) ? <><Adsense320100/><div>{cnt}위 ~ {cnt+5}위</div></> : '';
+  (cnt % 5 === 0) ? <><Adsense320100/><div>{cnt+1}위 ~ {cnt+5}위</div></> : '';
 
   return (
     <>
