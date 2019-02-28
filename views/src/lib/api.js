@@ -14,3 +14,5 @@ export const logout = () => axios.get('/api/auth/logout');
 export const getArmmorList = () => axios.get('/api/item/armmor');
 export const getCostumeList = () => axios.get('/api/item/costume');
 export const getAccessoryList = () => axios.get('/api/item/accessory');
+
+export const getBestItem = () => axios.get('/api/item/bestitem');

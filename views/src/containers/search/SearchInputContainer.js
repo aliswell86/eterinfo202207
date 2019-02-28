@@ -34,6 +34,10 @@ class SearchInputContainer extends Component {
     WeaponActions.getWeaponSearchList(value);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return false;
+  }
+
   render() {
     const {searchGo, handleChange} = this;
     const {loading, weaponSearchList} = this.props;

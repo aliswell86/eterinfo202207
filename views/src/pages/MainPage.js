@@ -13,14 +13,14 @@ const MainPage = () => {
 
   return (
     <PageTemplate>
+      <SearchInputContainer/>
+      <ListWrapper>
+        <BestWeaponContainer/>
+      </ListWrapper>      
       <div className={cx('page-top-adsense')}>
         <Adsense970250/>
         <Adsense300250/>
       </div>
-      <SearchInputContainer/>
-      <ListWrapper>
-        <BestWeaponContainer/>
-      </ListWrapper>
     </PageTemplate>
   );
 };

@@ -1,10 +1,19 @@
-const client_id = 'TzAMy0C4TJMXLng6Knct';
+ client_id = 'TzAMy0C4TJMXLng6Knct';
 const client_secret = 'k_njwReb2_';
 // const redirectURI = encodeURI("http://localhost:3000/naverlogincallback");
 const redirectURI = encodeURI("http://localhost:8002/api/auth/naverlogincallback");
 // const redirectURI = encodeURI("http://localhost:8002/callback");
 const LoginLnk = require('../../models/LoginLnk');
 const EterinfoMmbr = require('../../models/EterinfoMmbr');
+const GAPageView = require("../../models/GAPageView");
+const requestPromise = require('request-promise');
+const moment = require('moment');
+const {google} = require('googleapis');
+const oauth2Client = new google.auth.OAuth2(
+  '914832969749-8c7g8986hodnstj58eluijnbj1aml16g.apps.googleusercontent.com',
+  'oN6AslW0GvPb0gFODMmvW6mm',
+  'http://localhost:8002/api/auth/googletoken'
+);
 
 /* 네이버아이디로 로그인
   GET /api/auth/naverlogin
@@ -189,8 +198,80 @@ exports.logout = async (ctx) => {
   }
 };
 
+/* 로그아웃
+  GET /api/auth/logout
+*/
+exports.gaPageView = (ctx) => {
+  const scopes = [
+    'https://www.googleapis.com/auth/analytics'
+  ];
+  
+  const url = oauth2Client.generateAuthUrl({
+    scope: scopes
+  });
+
+  ctx.redirect(url);
+}
+
+exports.googleToken = async (ctx) => {
+  const {code} = ctx.query;
+  const {tokens} = await oauth2Client.getToken(code);
+  const {access_token} = tokens;
+  const yesterDay = moment().add(-1, 'days').format('YYYY-MM-DD');
+  const beforeWeekDay = moment().add(-7, 'days').format('YYYY-MM-DD');
+  const beforeMonthDay = moment().add(-30, 'days').format('YYYY-MM-DD');
+  const analytics_url_yesterday = 'https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A179440961&start-date='+yesterDay+'&end-date='+yesterDay+'&metrics=ga%3Apageviews&dimensions=ga%3ApagePath&sort=-ga%3Apageviews&max-results=200&access_token=' + access_token;
+  const analytics_url_week = 'https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A179440961&start-date='+beforeWeekDay+'&end-date='+yesterDay+'&metrics=ga%3Apageviews&dimensions=ga%3ApagePath&sort=-ga%3Apageviews&max-results=200&access_token=' + access_token;
+  const analytics_url_month = 'https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A179440961&start-date='+beforeMonthDay+'&end-date='+yesterDay+'&metrics=ga%3Apageviews&dimensions=ga%3ApagePath&sort=-ga%3Apageviews&max-results=200&access_token=' + access_token;
+  
+  console.log("::START:: - " + moment().format('YYYY-MM-DD HH:mm:ss'));
+  GAPageView.remove().exec();
+  // 일
+  console.log("analytics_url_yesterday : " + analytics_url_yesterday);
+  requestPromise(analytics_url_yesterday).then(async (res) => {
+    gaPageViewInsert(res, yesterDay, yesterDay, 'day');
+  });
+  // 주
+  console.log("analytics_url_week : " + analytics_url_week);
+  requestPromise(analytics_url_week).then(async (res) => {
+    gaPageViewInsert(res, beforeWeekDay, yesterDay, 'week');
+  });
+  // 월
+  console.log("analytics_url_month : " + analytics_url_month);
+  requestPromise(analytics_url_month).then(async (res) => {
+    gaPageViewInsert(res, beforeMonthDay, yesterDay, 'month');
+  });
+
+  ctx.redirect('/');
+}
+
 generateKey = () => {
   const randtoken = require('rand-token');
   const token = randtoken.generate(16);
   return token;
+}
+
+gaPageViewInsert = async (res, strDate, endDate, inPeriod) => {
+  const rows = JSON.parse(res).rows;
+
+  let result = {
+    period: inPeriod,
+    min_date: strDate.replace(/-/gi, ''),
+    max_date: endDate.replace(/-/gi, ''),
+    info: []
+  };
+  rows.map((arr) => {
+    result.info.push({
+      url: arr[0],
+      count: arr[1]
+    });
+  });
+
+  const gaPageView = new GAPageView(result);
+
+  try {
+    await gaPageView.save();
+  } catch (e) {
+    ctx.throw(e, 500);
+  }
 }

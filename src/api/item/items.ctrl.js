@@ -1,4 +1,5 @@
 const Item = require('../../models/Item');
+const GAPageView = require("../../models/GAPageView");
 
 /* 무기 목록 조회
   GET /api/item/weapon
@@ -76,6 +77,18 @@ exports.accessoryList = async (ctx) => {
   try {
     const items = await Item.find({"$or":[{ctype: "5"},{ctype: "6"},{ctype: "7"},{ctype: "8"},{ctype: "9"},{ctype: "10"},{ctype: "11"},{ctype: "12"}]}).sort("order").sort("tier").exec();
     ctx.body = items;
+  } catch(e) {
+    ctx.throw(e);
+  }
+};
+
+/* 구글통계 목록조회
+  GET /api/item/weapon
+*/
+exports.bestItem = async (ctx) => {
+  try {
+    const gaPageView = await GAPageView.find().exec();
+    ctx.body = gaPageView;
   } catch(e) {
     ctx.throw(e);
   }

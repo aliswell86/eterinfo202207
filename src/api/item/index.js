@@ -11,4 +11,6 @@ items.get('/armmor', itemCtrl.armmorList);
 items.get('/costume', itemCtrl.costumeList);
 items.get('/accessory', itemCtrl.accessoryList);
 
+items.get('/bestitem', itemCtrl.bestItem);
+
 module.exports = items;

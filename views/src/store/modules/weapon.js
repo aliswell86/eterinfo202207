@@ -2,6 +2,7 @@ import {createAction, handleActions} from 'redux-actions';
 import {Map, List, fromJS} from 'immutable';
 import {pender} from 'redux-pender';
 import * as api from 'lib/api';
+import isEmptyObject from 'is-empty-object';
 
 const SET_WEAPON_WHERE = 'weapon/SET_WEAPON_WHERE';
 const GET_WEAPON_LIST = 'weapon/GET_WEAPON_LIST';
@@ -67,9 +68,22 @@ const initialState = Map({
     isCriUp: true
   }),
   weaponSearchList: List(), // 조회 미리보기 리스트
-  bestItems: Map({ //인기무기 주간,월간
-    week: List(),
-    month: List()
+  bestItems: Map({
+    day: Map({
+      info: List(Map({
+        item_nm: ''
+      }))
+    }),
+    week: Map({
+      info: List(Map({
+        item_nm: ''
+      }))
+    }),
+    month: Map({
+      info: List(Map({
+        item_nm: ''
+      }))
+    })
   })
 });
 
@@ -78,9 +92,21 @@ export default handleActions({
     type: GET_WEAPON_LIST,
     onSuccess: (state, action) => {
       const {data: items} = action.payload;
+      const {day, week, month} = state.toJS().bestItems;
+      const dayInfo = isEmptyObject(day) ? [] : getWeaponInfoGroupby(day.info, items);
+      const weekInfo = isEmptyObject(week) ? [] : getWeaponInfoGroupby(week.info, items);
+      const monthInfo = isEmptyObject(month) ? [] : getWeaponInfoGroupby(month.info, items);
+
+      day.info = dayInfo;
+      week.info = weekInfo;
+      month.info = monthInfo;
+      
       return state.set('weapons', fromJS(items))
                   .set('weaponWheres', items.filter(item => item.clyn === 'Y' && item.illegal === 'N'))
-                  .setIn(['currWeaponUpDv','bodyUp'], '0').setIn(['currWeaponUpDv','dmgUp'], '0');
+                  .setIn(['currWeaponUpDv','bodyUp'], '0').setIn(['currWeaponUpDv','dmgUp'], '0')
+                  .setIn(['bestItems', 'day'], fromJS(day))
+                  .setIn(['bestItems', 'week'], fromJS(week))
+                  .setIn(['bestItems', 'month'], fromJS(month));
     }
   }),
   ...pender({
@@ -182,7 +208,96 @@ export default handleActions({
     const weapons = state.toJS().weapons.filter(weapon => value !== '' && weapon.item_nm.toLowerCase().trim().indexOf(value.toLowerCase()) > -1);
     return state.set('weaponSearchList', weapons).set('weaponWheres', weapons);
   },
-  [GET_BEST_ITEM]: (state, action) => {
-    return state;
-  }
+  ...pender({
+    type: GET_BEST_ITEM,
+    onSuccess: (state, action) => {
+      const {data: items} = action.payload;
+      const weapons = state.toJS().weapons;
+      let dayResult = {};
+      let weekResult = {};
+      let monthResult = {};
+      items.forEach(obj => {
+        const {period} = obj;
+        if(period === 'day') dayResult = obj;
+        else if(period === 'week') weekResult = obj;
+        else if(period === 'month') monthResult = obj;
+      });
+
+      const dayInfoGruopby = infoGroupby(dayResult.info, weapons);
+      const weekInfoGruopby = infoGroupby(weekResult.info, weapons);
+      const monthInfoGruopby = infoGroupby(monthResult.info, weapons);
+
+      dayResult.info = dayInfoGruopby;
+      weekResult.info = weekInfoGruopby;
+      monthResult.info = monthInfoGruopby;
+      
+      return state.setIn(['bestItems', 'day'], fromJS(dayResult))
+                  .setIn(['bestItems', 'week'], fromJS(weekResult))
+                  .setIn(['bestItems', 'month'], fromJS(monthResult));
+    }
+  })
 }, initialState);
+
+const infoGroupby = (info, weapons) => {
+  let infoGroupby = [];
+
+  info.forEach(obj => {
+    const {url, count} = obj;
+    const weaponId = url.indexOf('/wp/') > -1 ? url.substr('/wp/'.length, url.length) :
+    url.indexOf('/custom/') > -1 ? url.substr('/custom/'.length, url.length) : url;
+
+    if(infoGroupby.length === 0 && !(weaponId.indexOf('/') > -1)) {
+      infoGroupby.push({
+        weaponId: weaponId,
+        count: Number(count)
+      });
+    }else{
+      let sameBoolean = false;
+
+      infoGroupby.forEach((obj1, i) => {
+        if(obj1.weaponId === weaponId) {
+          infoGroupby[i].count = Number(obj1.count) + Number(obj.count);
+          sameBoolean = true;
+          return false;
+        }
+      });
+
+      if(!sameBoolean && !(weaponId.indexOf('/') > -1)) {
+        infoGroupby.push({
+          weaponId: weaponId,
+          count: Number(count)
+        });
+      }
+    }
+  });
+
+  infoGroupby = infoGroupby.slice(0, 20);
+
+  return fromJS(getWeaponInfoGroupby(infoGroupby, weapons));
+};
+
+const getWeaponInfoGroupby = (info, weapons) => {
+  const weaponInfoGroupby = weapons.length === 0 ? info : 
+  info.map(obj => {
+    let item_nm = '';
+    let img_src = '';
+
+    weapons.forEach(weapon => {
+      if(weapon._id === obj.weaponId) {
+        item_nm = weapon.item_nm;
+        img_src = weapon.img_src;
+        return false;
+      }
+    });
+
+    return {
+      ...obj,
+      item_nm: item_nm,
+      img_src: img_src
+    }
+  });
+
+  return weaponInfoGroupby.sort((a, b) => { 
+    return a.count < b.count ? 1 : a.count > b.count ? -1 : 0;  
+  });
+};

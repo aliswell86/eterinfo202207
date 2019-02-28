@@ -5,7 +5,7 @@ import {
   ArmmorPage, CostumePage, AccessoryPage
 } from 'pages';
 import { Helmet } from "react-helmet";
-import BaseContainer from 'containers/common/BaseContainer';
+// import BaseContainer from 'containers/common/BaseContainer';
 
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-123320555-1');
@@ -37,7 +37,7 @@ class App extends Component {
           <Route exact path="/accessory" component={AccessoryPage} />
           <Route component={NotFoundPage}/>
         </Switch>
-        <BaseContainer/>
+        {/* <BaseContainer/> */}
       </div>
     );
   }
