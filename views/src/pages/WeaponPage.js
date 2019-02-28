@@ -5,7 +5,7 @@ import WeaponListContainer from 'containers/list/WeaponListContainer';
 import WeaponWhereBoxContainer from 'containers/wherebox/WeaponWhereBoxContainer';
 import { Helmet } from "react-helmet";
 import Adsense970250 from 'components/adsense/Adsense970250';
-// import Adsense300250 from 'components/adsense/Adsense300250';
+import Adsense300250 from 'components/adsense/Adsense300250';
 import scrollToComponent from 'react-scroll-to-component';
 import styles from './page.scss';
 import classNames from 'classnames/bind';
@@ -30,14 +30,13 @@ class WeaponPage extends Component {
           </div>
         </div>
         <WeaponWhereBoxContainer ref={(ref) => this.WeaponWhereBoxContainer = ref}/>
-        {/* <div className={cx('page-top-adsense')}>
-          <Adsense970250/>
-          <Adsense300250/>
-        </div> */}
         <ListWrapper>        
           <WeaponListContainer history={history}/>
         </ListWrapper>
-        <Adsense970250/>
+        <div className={cx('page-top-adsense')}>
+          <Adsense970250/>
+          <Adsense300250/>
+        </div>
       </PageTemplate>
     )
   }

@@ -11,8 +11,6 @@ const cx = classNames.bind(styles);
 const ArmmorWhereBox = ({handleWhereSet, loading, armmorWhere}) => {
   return (
     <div className={cx('wherebox-adsense')}>
-      <Adsense300250/>
-      <Adsense320100/>
       <div className={cx('armmor-where-box')}>
         <div className={cx('cl-where')}>
           <div><Radio name='clyn' value='' onChange={handleWhereSet} disabled={loading} defaultValue={armmorWhere.clyn}>전체</Radio></div>
@@ -48,6 +46,8 @@ const ArmmorWhereBox = ({handleWhereSet, loading, armmorWhere}) => {
           <div><Checkbox name="isTier12" onChange={handleWhereSet} disabled={loading} checked={armmorWhere.isTier12}>12등급</Checkbox></div>
         </div>
       </div>
+      <Adsense300250/>
+      <Adsense320100/>
     </div>
   );
 };

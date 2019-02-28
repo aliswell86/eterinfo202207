@@ -1,21 +1,23 @@
 import React from 'react';
 import styles from './CostumeList.scss';
 import classNames from 'classnames/bind';
-import Adsense72890 from 'components/adsense/Adsense72890';
-import Adsense320100 from 'components/adsense/Adsense320100';
+// import Adsense72890 from 'components/adsense/Adsense72890';
+// import Adsense320100 from 'components/adsense/Adsense320100';
+import Adsense300600 from 'components/adsense/Adsense300600';
+import Adsense300250 from 'components/adsense/Adsense300250';
 
 const cx = classNames.bind(styles);
 
 const CostumeObject = ({history, cnt, img_src, item_nm, tier, item_dtl_dv, dfs, dmg, cri, con, key}) => {
-  const adsenseTag = (cnt !== 0 && cnt % 5 === 0) ? 
-  <div className={cx('costumelist-adsense')}>
-    <Adsense72890/>
-    <Adsense320100/>
-  </div> : '';
+  // const adsenseTag = (cnt !== 0 && cnt % 5 === 0) ? 
+  // <div className={cx('costumelist-adsense')}>
+  //   <Adsense72890/>
+  //   <Adsense320100/>
+  // </div> : '';
 
  return (
    <>
-    {adsenseTag}
+    {/* {adsenseTag} */}
     <div className={cx('costume-object')}>
       <div className={cx('name')}>
         <div className={cx('costume-img')}><img src={img_src} alt={item_nm}/></div>
@@ -58,9 +60,27 @@ const CostumeList = ({costumeWheres}) => {
     )
   });
 
+  let adsense300600List = [];
+  const num = costumeWheres.length % 8;
+  
+  for(let i=0; i<Math.floor(costumeWheres.length/8); i++) {
+    adsense300600List.push(<Adsense300600 key={i}/>);
+  }
+  if(num > 0 && num < 6) {
+    adsense300600List.push(<Adsense300250 key={'Adsense300250_0'}/>);
+  }else if(num > 5 && num < 8) {
+    adsense300600List.push(<Adsense300250 key={'Adsense300250_1'}/>);
+    adsense300600List.push(<Adsense300250 key={'Adsense300250_2'}/>);
+  }
+
   return (
-    <div className={cx('costume-list')}>
-      {costumeList}
+    <div className={cx('costume')}>
+      <div className={cx('list-adsense')}>
+        {adsense300600List}
+      </div>
+      <div className={cx('costume-list')}>
+        {costumeList}
+      </div>
     </div>
   );
 };

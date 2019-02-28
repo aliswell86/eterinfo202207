@@ -20,7 +20,7 @@ const ItemMenu = (/*{loginEvent, logged, profileId}*/) => (
         <div><Link to="/wp">무기</Link></div>
         <div><Link to="/armmor">방어구</Link></div>
         <div><Link to="/costume">코튬날개</Link></div>
-        <div><Link to="/accessory">악세서리</Link></div>
+        <div><Link to="/accessory">악세사리</Link></div>
       </div>
     </span>
     <Link to="/custom" style={innerStyle}>

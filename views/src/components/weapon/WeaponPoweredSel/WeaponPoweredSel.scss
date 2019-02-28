@@ -1,83 +1,111 @@
 @import 'utils';
 
-.weapon-powered-sel {
-  .powered-body{
-    button {
-      transition: all .15s ease-in;
-      background: white;
-      border: 1px solid $oc-gray-3;
-      height: 30px;
-      border-radius: 0.2rem;
-      cursor: pointer;      
-    }
-    button:hover {
-      color: rgba($oc-blue-6, 0.8);
-    }
-    button:active {
-      color: rgba($oc-blue-6, 1);
-    }
-    button:focus {
-      border: 1px solid $oc-blue-6;
-      color: rgba($oc-blue-6, 1);
-    }
+.weapon-powered-sel-adsense {
+  display: flex;
+  display: -ms-flexbox;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-end;
 
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .adsense-320100 {
+    display: block;
 
-    display: flex;
-    display: -ms-flexbox;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-
-    @include media("<small") {
-      padding: 0.4rem;
+    @include media("<large") {
+      display: none;
     }
+  }
+  .adsense-300250 {
+    display: block;
 
-    .bodyup-btns {
-      display: flex;
-      display: -ms-flexbox;
-      align-items: center;
-      flex-wrap: wrap;
-      padding-bottom: 0.2rem;
-      margin-bottom: 0.2rem;
-      border-bottom: 1px solid $oc-gray-4;
-  
+    @include media("<medium") {
+      display: none;
+    }
+  }
+
+  .weapon-powered-sel {
+    .powered-body{
+      width: 380px;
+      
       button {
-        padding-right: 0.7rem;
-        padding-left: 0.7rem;
-        margin: 0.1rem;
-      }
-    }
-
-    .dmgup-btns {
-      display: flex;
-      display: -ms-flexbox;
-      align-items: center;
-      flex-wrap: wrap;
-
-      button {
-        padding-right: 0.7rem;
-        padding-left: 0.7rem;
-        margin: 0.1rem;
-      }
-    }
-
-    .dmgup-selected {
-      select {
-        width: 100px;
-        border: 1px solid $oc-gray-4;
+        transition: all .15s ease-in;
+        background: white;
+        border: 1px solid $oc-gray-3;
+        height: 30px;
         border-radius: 0.2rem;
-        padding: 0.22rem;
+        cursor: pointer;      
       }
-    }
+      button:hover {
+        color: rgba($oc-blue-6, 0.8);
+      }
+      button:active {
+        color: rgba($oc-blue-6, 1);
+      }
+      button:focus {
+        border: 1px solid $oc-blue-6;
+        color: rgba($oc-blue-6, 1);
+      }
+  
+      padding-top: 0.4rem;
+      padding-bottom: 0.4rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+  
+      display: flex;
+      display: -ms-flexbox;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+  
+      @include media("<small") {
+        padding: 0.4rem;
+      }
+  
+      .bodyup-btns {
+        display: flex;
+        display: -ms-flexbox;
+        align-items: center;
+        flex-wrap: wrap;
+    
+        button {
+          padding-right: 0.7rem;
+          padding-left: 0.7rem;
+          margin: 0.1rem;
+        }
+      }
+  
+      .dmgup-btns {
+        display: flex;
+        display: -ms-flexbox;
+        align-items: center;
+        flex-wrap: wrap;
+  
+        button {
+          padding-right: 0.7rem;
+          padding-left: 0.7rem;
+          margin: 0.1rem;
+        }
+      }
+  
+      .dmgup-selected {
+        select {
+          width: 100px;
+          border: 1px solid $oc-gray-4;
+          border-radius: 0.2rem;
+          padding: 0.22rem;
+        }
+      }
+  
+      .dmgup-selected {
+        margin-top: 0.2rem;
+        margin-left: 0.1rem;
+      }
 
-    .dmgup-selected {
-      margin-top: 0.2rem;
-      margin-left: 0.1rem;
+      .bodyup-btns + .dmgup-btns {
+        padding-top: 0.2rem;
+        margin-top: 0.2rem;
+        border-top: 1px solid $oc-gray-4;
+      }
     }
   }
 }

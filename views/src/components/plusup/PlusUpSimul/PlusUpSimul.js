@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './PlusUpSimul.scss';
 import classNames from 'classnames/bind';
 import NumberFormat from 'react-number-format';
-import Adsense72890 from 'components/adsense/Adsense72890';
-import Adsense320100 from 'components/adsense/Adsense320100';
+import Adsense300250 from 'components/adsense/Adsense300250';
+// import Adsense320100 from 'components/adsense/Adsense320100';
 
 const cx = classNames.bind(styles);
 
@@ -37,10 +37,10 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
             <NumberFormat value={usePlusUpKitEp} displayType={'text'} thousandSeparator={true} prefix={'사용EP: '} suffix ={'EP'}/>
           </div>
         </div>
-        <div className={cx('adsense')} style={{paddingTop: '0.4rem'}}>
+        {/* <div className={cx('adsense')} style={{paddingTop: '0.4rem'}}>
           <Adsense72890/>
           <Adsense320100/>
-        </div>
+        </div> */}
         <div className={cx('kit-trade-body')}>
           <div className={cx('kit-use')}>
             <div className={cx('kit-use-normal')} onClick={plusUpGo} tabIndex='1' onKeyPress={plusUpGoKey}>
@@ -60,6 +60,7 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
             <div className={cx('plusup-grade')}>플러스:{simulCurrPlusUp}</div>
             <div className={cx('plusup-dmg')}>공격력:{currPlusDmg}%</div>
           </div>
+          <Adsense300250/>
         </div>
       </div>
     </div>

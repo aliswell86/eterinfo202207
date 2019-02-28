@@ -29,21 +29,22 @@ const SearchInput = ({loading, searchGo, searchChange, weaponSearchList}) => {
   });
   
   return (
-    <div className={cx('search-input')}>
-      <input        
-        name='searchInput'
-        placeholder='무기이름...'
-        // onSearch={value => searchGo(value)}
-        style={{ width: 360 }}
-        onChange={searchChange}
-        onKeyPress={searchGo}
-        autoComplete="off"
-        autoFocus
-      />
-      <div className={cx('search-sub-list')}>
-        {list}
-      </div>
-    </div>
+    // <div className={cx('search-input')}>
+    //   <input        
+    //     name='searchInput'
+    //     placeholder='무기이름...'
+    //     // onSearch={value => searchGo(value)}
+    //     style={{ width: 360 }}
+    //     onChange={searchChange}
+    //     onKeyPress={searchGo}
+    //     autoComplete="off"
+    //     autoFocus
+    //   />
+    //   <div className={cx('search-sub-list')}>
+    //     {list}
+    //   </div>
+    // </div>
+    <div/>
   );
 };
 

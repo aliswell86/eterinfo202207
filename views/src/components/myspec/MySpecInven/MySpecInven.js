@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './MySpecInven.scss';
 import classNames from 'classnames/bind';
 import Radio from 'components/common/Radio';
-import Adsense320100 from 'components/adsense/Adsense320100';
 
 const cx = classNames.bind(styles);
 
@@ -68,7 +67,6 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick, skillList
             </div>
           </div>
         </div>
-        <Adsense320100/>
       </div>
       <div className={cx('skill-monster')}>
         <h2 className={cx('monster-size-title')}>몬스터정보(크기, 피부속성, 체력, 포상)</h2>

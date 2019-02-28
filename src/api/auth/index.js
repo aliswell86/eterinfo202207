@@ -8,4 +8,7 @@ auth.get('/naverlogincallback', authCtrl.naverlogincallback);
 auth.get('/check', authCtrl.check);
 auth.get('/logout', authCtrl.logout);
 
+auth.get('/gapageview', authCtrl.gaPageView);
+auth.get('/googletoken', authCtrl.googleToken);
+
 module.exports = auth;

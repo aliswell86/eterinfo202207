@@ -3,6 +3,7 @@ import styles from './DPSSimul.scss';
 import classNames from 'classnames/bind';
 import Radio from 'components/common/Radio';
 import NumberFormat from 'react-number-format';
+import Adsense320100 from 'components/adsense/Adsense320100';
 
 const cx = classNames.bind(styles);
 
@@ -136,6 +137,7 @@ const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, curr
               <div><input type='number' name='monsterExp' value={monsterExp} onChange={setDPSOption}/></div>
             </div>
           </div>
+          <div  style={{marginTop: '1rem'}}><Adsense320100/></div>
         </div>
       </div>
       <div className={cx('dpssim-notice')}>
