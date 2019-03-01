@@ -12,7 +12,8 @@ const {google} = require('googleapis');
 const oauth2Client = new google.auth.OAuth2(
   '914832969749-8c7g8986hodnstj58eluijnbj1aml16g.apps.googleusercontent.com',
   'oN6AslW0GvPb0gFODMmvW6mm',
-  'http://localhost:8002/api/auth/googletoken'
+  // 'http://localhost:8002/api/auth/googletoken'
+  'http://eterinfo.kr/api/auth/googletoken'
 );
 
 /* 네이버아이디로 로그인
@@ -232,10 +233,7 @@ exports.googleToken = async (ctx) => {
   } catch(e) {
     ctx.throw(e);
   }
-
   
-  GAPageView.remove({'min_date': '20190228'}).exec();
-  GAPageView.update({}, {'del_yn': 'Y'}).exec();
   // 일
   console.log("analytics_url_yesterday : " + analytics_url_yesterday);
   requestPromise(analytics_url_yesterday).then(async (res) => {
