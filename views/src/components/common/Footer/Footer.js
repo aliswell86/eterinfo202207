@@ -7,9 +7,9 @@ const cx = classNames.bind(styles);
 const Footer = () => {
   return (
     <footer className={cx('footer')}>
-      <div>&copy; 2018-2019 ETERINFO. Data based on</div>
+      <div>&copy; <a href='/api/auth/gapageview' style={{color:'#212529'}}>2018-2019</a>ETERINFO. Data based on</div>
       <div><a rel="noopener noreferrer" target="_blank" href="http://eternalcity.mgame.com/">이터널시티.</a></div>
-      <div>alliswell8610@gmail.com.</div>
+      <div>alliswell8610@gmail.com</div>
     </footer>
   );
 };

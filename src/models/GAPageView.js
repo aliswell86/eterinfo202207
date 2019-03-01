@@ -10,7 +10,8 @@ var GAPageView = mongoose.Schema({
   info: [{
     url: {type:String},
     count: {type:String},
-  }]
+  }],
+  del_yn: {type:String}
 });
 
 var GAPageView = mongoose.model("GAPageView", GAPageView);

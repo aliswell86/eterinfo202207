@@ -26,7 +26,7 @@ const BestItemObject = ({item_nm, img_src, id, count, cnt}) => {
   )
 }
 
-const BestWeapon = ({getGooglePageView, bestItems}) => {
+const BestWeapon = ({bestItems}) => {
   const {day, week, month} = bestItems;
   const dayList = day.info.map((item, cnt) => {
     const {item_nm, img_src, weaponId, count} = item;
@@ -55,7 +55,7 @@ const BestWeapon = ({getGooglePageView, bestItems}) => {
   return (
     <>
       <div className={cx('init')}>
-        {/* <a href='/api/auth/gapageview'><button name='' onClick={getGooglePageView}>갱신</button></a> */}
+        {/* <a href='/api/auth/gapageview'>갱신</a> */}
         <h2 className={cx('title')}>이터인포에서 많이찾는 무기 BEST20</h2>
         <div>기간별 이터인포 무기조회 건수합계입니다. 하루마다 갱신됩니다. 이터널시티 유저들에게 인기가 많은 무기는 뭘까요!?</div>
       </div>

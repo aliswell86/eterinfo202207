@@ -225,7 +225,17 @@ exports.googleToken = async (ctx) => {
   const analytics_url_month = 'https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A179440961&start-date='+beforeMonthDay+'&end-date='+yesterDay+'&metrics=ga%3Apageviews&dimensions=ga%3ApagePath&sort=-ga%3Apageviews&max-results=200&access_token=' + access_token;
   
   console.log("::START:: - " + moment().format('YYYY-MM-DD HH:mm:ss'));
-  GAPageView.remove().exec();
+
+  try {
+    await GAPageView.remove({'max_date': yesterDay.replace(/-/gi, '')}).exec();
+    await GAPageView.update({}, {'del_yn': 'Y'}).exec();
+  } catch(e) {
+    ctx.throw(e);
+  }
+
+  
+  GAPageView.remove({'min_date': '20190228'}).exec();
+  GAPageView.update({}, {'del_yn': 'Y'}).exec();
   // 일
   console.log("analytics_url_yesterday : " + analytics_url_yesterday);
   requestPromise(analytics_url_yesterday).then(async (res) => {
@@ -258,7 +268,8 @@ gaPageViewInsert = async (res, strDate, endDate, inPeriod) => {
     period: inPeriod,
     min_date: strDate.replace(/-/gi, ''),
     max_date: endDate.replace(/-/gi, ''),
-    info: []
+    info: [],
+    del_yn: 'N'
   };
   rows.map((arr) => {
     result.info.push({
