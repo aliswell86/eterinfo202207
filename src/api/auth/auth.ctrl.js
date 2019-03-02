@@ -228,8 +228,8 @@ exports.googleToken = async (ctx) => {
   console.log("::START:: - " + moment().format('YYYY-MM-DD HH:mm:ss'));
 
   try {
-    await GAPageView.remove({'max_date': yesterDay.replace(/-/gi, '')}).exec();
-    await GAPageView.update({}, {'del_yn': 'Y'}).exec();
+    await GAPageView.remove({max_date: yesterDay.replace(/-/gi, '')}).exec();
+    await GAPageView.updateMany({}, {del_yn: 'Y'}).exec();
   } catch(e) {
     ctx.throw(e);
   }
