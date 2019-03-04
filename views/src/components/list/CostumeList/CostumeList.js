@@ -75,11 +75,11 @@ const CostumeList = ({costumeWheres}) => {
 
   return (
     <div className={cx('costume')}>
-      <div className={cx('list-adsense')}>
-        {adsense300600List}
-      </div>
       <div className={cx('costume-list')}>
         {costumeList}
+      </div>
+      <div className={cx('list-adsense')}>
+        {adsense300600List}
       </div>
     </div>
   );
