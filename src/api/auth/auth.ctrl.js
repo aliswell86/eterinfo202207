@@ -12,8 +12,8 @@ const {google} = require('googleapis');
 const oauth2Client = new google.auth.OAuth2(
   '914832969749-8c7g8986hodnstj58eluijnbj1aml16g.apps.googleusercontent.com',
   'oN6AslW0GvPb0gFODMmvW6mm',
-  // 'http://localhost:8002/api/auth/googletoken'
-  'http://eterinfo.kr/api/auth/googletoken'
+  'http://localhost:8002/api/auth/googletoken'
+  // 'http://eterinfo.kr/api/auth/googletoken'
 );
 
 /* 네이버아이디로 로그인
@@ -269,10 +269,12 @@ gaPageViewInsert = async (res, strDate, endDate, inPeriod) => {
     info: [],
     del_yn: 'N'
   };
-  rows.map((arr) => {
+  rows.map((arr, cnt) => {
+    cnt++;
     result.info.push({
       url: arr[0],
-      count: arr[1]
+      count: arr[1],
+      rank: String(cnt)
     });
   });
 

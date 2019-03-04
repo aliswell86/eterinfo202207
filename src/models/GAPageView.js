@@ -10,6 +10,7 @@ var GAPageView = mongoose.Schema({
   info: [{
     url: {type:String},
     count: {type:String},
+    rank: {type:String}
   }],
   del_yn: {type:String}
 });
