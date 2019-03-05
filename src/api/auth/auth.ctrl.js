@@ -12,8 +12,8 @@ const {google} = require('googleapis');
 const oauth2Client = new google.auth.OAuth2(
   '914832969749-8c7g8986hodnstj58eluijnbj1aml16g.apps.googleusercontent.com',
   'oN6AslW0GvPb0gFODMmvW6mm',
-  'http://localhost:8002/api/auth/googletoken'
-  // 'http://eterinfo.kr/api/auth/googletoken'
+  // 'http://localhost:8002/api/auth/googletoken'
+  'http://eterinfo.kr/api/auth/googletoken'
 );
 
 /* 네이버아이디로 로그인
@@ -102,7 +102,6 @@ exports.naverlogincallback = async (ctx) => {
         const eterinfoMmbr = await EterinfoMmbr.findOneAndUpdate(mmbrSeqObj, mmbrUdtObj, {
           new: true, upsert: true
         }).exec();
-        console.log(eterinfoMmbr);
 
         const loginLnk = await LoginLnk.findOneAndUpdate(seqObj, udtObj, {
           new: true

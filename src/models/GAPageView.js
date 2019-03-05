@@ -8,9 +8,9 @@ var GAPageView = mongoose.Schema({
   min_date: {type:String},
   max_date: {type:String},
   info: [{
-    url: {type:String},
-    count: {type:String},
-    rank: {type:String}
+    weaponId: {type:String},
+    count: {type:Number},
+    rank: {type:Number}
   }],
   del_yn: {type:String}
 });

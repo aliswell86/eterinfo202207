@@ -93,9 +93,9 @@ export default handleActions({
     onSuccess: (state, action) => {
       const {data: items} = action.payload;
       const {day, week, month} = state.toJS().bestItems;
-      const dayInfo = isEmptyObject(day) ? [] : getWeaponInfoGroupby(day.info, items);
-      const weekInfo = isEmptyObject(week) ? [] : getWeaponInfoGroupby(week.info, items);
-      const monthInfo = isEmptyObject(month) ? [] : getWeaponInfoGroupby(month.info, items);
+      const dayInfo = isEmptyObject(day) ? [] : weaponInfoAdd(day.info, items);
+      const weekInfo = isEmptyObject(week) ? [] : weaponInfoAdd(week.info, items);
+      const monthInfo = isEmptyObject(month) ? [] : weaponInfoAdd(month.info, items);
 
       day.info = dayInfo;
       week.info = weekInfo;
@@ -223,9 +223,9 @@ export default handleActions({
         else if(period === 'month') monthResult = obj;
       });
 
-      const dayInfoGruopby = infoGroupby(dayResult.info, weapons);
-      const weekInfoGruopby = infoGroupby(weekResult.info, weapons);
-      const monthInfoGruopby = infoGroupby(monthResult.info, weapons);
+      const dayInfoGruopby = weaponInfoAdd(dayResult.info, weapons);
+      const weekInfoGruopby = weaponInfoAdd(weekResult.info, weapons);
+      const monthInfoGruopby = weaponInfoAdd(monthResult.info, weapons);
 
       dayResult.info = dayInfoGruopby;
       weekResult.info = weekInfoGruopby;
@@ -238,46 +238,8 @@ export default handleActions({
   })
 }, initialState);
 
-const infoGroupby = (info, weapons) => {
-  let infoGroupby = [];
-
-  info.forEach(obj => {
-    const {url, count} = obj;
-    const weaponId = url.indexOf('/wp/') > -1 ? url.substr('/wp/'.length, url.length) :
-    url.indexOf('/custom/') > -1 ? url.substr('/custom/'.length, url.length) : url;
-
-    if(infoGroupby.length === 0 && !(weaponId.indexOf('/') > -1)) {
-      infoGroupby.push({
-        weaponId: weaponId,
-        count: Number(count)
-      });
-    }else{
-      let sameBoolean = false;
-
-      infoGroupby.forEach((obj1, i) => {
-        if(obj1.weaponId === weaponId) {
-          infoGroupby[i].count = Number(obj1.count) + Number(obj.count);
-          sameBoolean = true;
-          return false;
-        }
-      });
-
-      if(!sameBoolean && !(weaponId.indexOf('/') > -1)) {
-        infoGroupby.push({
-          weaponId: weaponId,
-          count: Number(count)
-        });
-      }
-    }
-  });
-
-  infoGroupby = infoGroupby.slice(0, 20);
-
-  return fromJS(getWeaponInfoGroupby(infoGroupby, weapons));
-};
-
-const getWeaponInfoGroupby = (info, weapons) => {
-  const weaponInfoGroupby = weapons.length === 0 ? info : 
+const weaponInfoAdd = (info, weapons) => {
+  const weaponInfoAdd = weapons.length === 0 ? info : 
   info.map(obj => {
     let item_nm = '';
     let img_src = '';
@@ -297,7 +259,5 @@ const getWeaponInfoGroupby = (info, weapons) => {
     }
   });
 
-  return weaponInfoGroupby.sort((a, b) => { 
-    return a.count < b.count ? 1 : a.count > b.count ? -1 : 0;  
-  });
+  return weaponInfoAdd;
 };
