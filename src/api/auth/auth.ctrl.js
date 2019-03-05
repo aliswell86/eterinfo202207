@@ -228,7 +228,7 @@ exports.googleToken = async (ctx) => {
   console.log("::START:: - " + moment().format('YYYY-MM-DD HH:mm:ss'));
 
   try {
-    await GAPageView.remove({max_date: yesterDay.replace(/-/gi, '')}).exec();
+    await GAPageView.deleteMany({max_date: yesterDay.replace(/-/gi, '')}).exec();
     await GAPageView.updateMany({}, {del_yn: 'Y'}).exec();
   } catch(e) {
     ctx.throw(e);
@@ -262,21 +262,13 @@ generateKey = () => {
 gaPageViewInsert = async (res, strDate, endDate, inPeriod) => {
   const rows = JSON.parse(res).rows;
 
-  let result = {
+  const result = {
     period: inPeriod,
     min_date: strDate.replace(/-/gi, ''),
     max_date: endDate.replace(/-/gi, ''),
-    info: [],
+    info: infoGroupby(rows),
     del_yn: 'N'
   };
-  rows.map((arr, cnt) => {
-    cnt++;
-    result.info.push({
-      url: arr[0],
-      count: arr[1],
-      rank: String(cnt)
-    });
-  });
 
   const gaPageView = new GAPageView(result);
 
@@ -286,3 +278,47 @@ gaPageViewInsert = async (res, strDate, endDate, inPeriod) => {
     ctx.throw(e, 500);
   }
 }
+
+const infoGroupby = (info) => {
+  let infoGroupby = [];
+
+  info.forEach(obj => {
+    const url = obj[0];
+    const count = Number(obj[1]);
+    const weaponId = url.indexOf('/wp/') > -1 ? url.substr('/wp/'.length, url.length) :
+    url.indexOf('/custom/') > -1 ? url.substr('/custom/'.length, url.length) : url;
+
+    if(infoGroupby.length === 0 && !(weaponId.indexOf('/') > -1)) {
+      infoGroupby.push({
+        weaponId: weaponId,
+        count: count
+      });
+    }else{
+      let sameBoolean = false;
+
+      infoGroupby.forEach((obj1, i) => {
+        if(obj1.weaponId === weaponId) {
+          infoGroupby[i].count = Number(obj1.count) + count;
+          sameBoolean = true;
+          return false;
+        }
+      });
+
+      if(!sameBoolean && !(weaponId.indexOf('/') > -1)) {
+        infoGroupby.push({
+          weaponId: weaponId,
+          count: count
+        });
+      }
+    }
+  });
+
+  return infoGroupby.sort((a, b) => { 
+    return a.count < b.count ? 1 : a.count > b.count ? -1 : 0;  
+  }).slice(0, 20).map((obj, count) => {
+    return {
+      ...obj,
+      rank: count + 1
+    }
+  });
+};``
