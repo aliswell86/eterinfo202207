@@ -21,7 +21,6 @@ class BestWeaponContainer extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextProps.bestItems);
     return nextProps.bestItems.day.info.length === 20 && (nextProps.bestItems.day.info[0].item_nm !== this.props.bestItems.day.info[0].item_nm);
   }
 
