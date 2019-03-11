@@ -13,6 +13,7 @@ const SET_WEAPON_UP_DMG = 'weapon/SET_WEAPON_UP_DMG';
 const SET_WEAPON_UP_CRI = 'weapon/SET_WEAPON_UP_CRI';
 const GET_WEAPON_SEARCH_LIST = 'weapon/SET_WEAPONE_UP_DMG';
 const GET_BEST_ITEM = 'weapon/GET_BEST_ITEM';
+const BEST_WEAPON_HIST = 'weapon/BEST_WEAPON_HIST';
 
 export const setWeaponWhere = createAction(SET_WEAPON_WHERE);
 export const getWeaponList = createAction(GET_WEAPON_LIST, api.getWeaponList);
@@ -23,6 +24,7 @@ export const setWeaponUpDmg = createAction(SET_WEAPON_UP_DMG);
 export const setWeaponUpCri = createAction(SET_WEAPON_UP_CRI);
 export const getWeaponSearchList = createAction(GET_WEAPON_SEARCH_LIST);
 export const getBestItem = createAction(GET_BEST_ITEM, api.getBestItem);
+export const bestWeaponHist = createAction(BEST_WEAPON_HIST);
 
 const initialState = Map({
   weaponWhere: Map({ // 선택한 조회조건들
@@ -83,7 +85,21 @@ const initialState = Map({
       info: List(Map({
         item_nm: ''
       }))
-    })
+    }),
+    dayHist: Map({}),
+    weekHist: Map({}),
+    monthHist: Map({})
+  }),
+  bestWeaponPop: Map({
+    weaponId: '',
+    top: '0px',
+    left: '0px',
+    display: 'none',
+    currPopHist: List(Map({
+      date: '',
+      rank: 0,
+      count: ''
+    }))
   })
 });
 
@@ -213,16 +229,28 @@ export default handleActions({
     onSuccess: (state, action) => {
       const {data: items} = action.payload;
       const weapons = state.toJS().weapons;
-      let dayResult = {};
+      let dayResult = {};      
       let weekResult = {};
       let monthResult = {};
+      let dayResultHist = [];
+      let weekResultHist = [];
+      let monthResultHist = [];
       items.forEach(obj => {
-        const {period} = obj;
-        if(period === 'day') dayResult = obj;
-        else if(period === 'week') weekResult = obj;
-        else if(period === 'month') monthResult = obj;
+        const {period, del_yn} = obj;
+        if(period === 'day') {
+          if(del_yn === 'N') dayResult = obj; 
+          else dayResultHist.push(obj);
+        }
+        else if(period === 'week') {
+          if(del_yn === 'N') weekResult = obj; 
+          else weekResultHist.push(obj);
+        }
+        else if(period === 'month') {
+          if(del_yn === 'N') monthResult = obj; 
+          else monthResultHist.push(obj);
+        }
       });
-
+      
       const dayInfoGruopby = weaponInfoAdd(dayResult.info, weapons);
       const weekInfoGruopby = weaponInfoAdd(weekResult.info, weapons);
       const monthInfoGruopby = weaponInfoAdd(monthResult.info, weapons);
@@ -233,10 +261,41 @@ export default handleActions({
       
       return state.setIn(['bestItems', 'day'], fromJS(dayResult))
                   .setIn(['bestItems', 'week'], fromJS(weekResult))
-                  .setIn(['bestItems', 'month'], fromJS(monthResult));
+                  .setIn(['bestItems', 'month'], fromJS(monthResult))
+                  .setIn(['bestItems', 'dayHist'], fromJS(dayResultHist))
+                  .setIn(['bestItems', 'weekHist'], fromJS(dayResultHist))
+                  .setIn(['bestItems', 'monthHist'], fromJS(dayResultHist)); //이력기준은 일별기준
     }
-  })
+  }),
+  [BEST_WEAPON_HIST]: (state, action) => {
+    const {top, left, weaponId, period} = action.payload;
+    const {dayHist, weekHist, monthHist} = state.toJS().bestItems;
+    let currWeaponHist = [];
+
+    if(period === 'day') currWeaponHist = weaponHistConfig(dayHist, weaponId);
+    else if(period === 'week') currWeaponHist = weaponHistConfig(weekHist, weaponId);
+    else if(period === 'month') currWeaponHist = weaponHistConfig(monthHist, weaponId);
+    
+    return state.setIn(['bestWeaponPop', 'top'], String(top))
+                .setIn(['bestWeaponPop', 'left'], String(left))
+                .setIn(['bestWeaponPop', 'weaponId'], weaponId)
+                .setIn(['bestWeaponPop', 'currPopHist'], currWeaponHist)
+                .setIn(['bestWeaponPop', 'display'], 'block')
+                ;
+  }
 }, initialState);
+
+const weaponHistConfig = (hist, weaponId) => {
+  let filterList = [];
+  hist.forEach(hist => {
+    const filter = hist.info.filter(obj => obj.weaponId === weaponId)[0];
+    if(filter !== undefined) {
+      filterList.push({date: hist.max_date, rank: filter.rank, count: filter.count});
+    }
+  });
+  
+  return filterList.slice(0, 10);
+}
 
 const weaponInfoAdd = (info, weapons) => {
   const weaponInfoAdd = weapons.length === 0 ? info : 

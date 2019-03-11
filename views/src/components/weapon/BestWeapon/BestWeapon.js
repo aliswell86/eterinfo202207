@@ -8,17 +8,30 @@ import NumberFormat from 'react-number-format';
 
 const cx = classNames.bind(styles);
 
-const BestItemObject = ({item_nm, img_src, id, count, cnt}) => {
+const HistListObject = ({date, rank, count}) => {
+
+  return (
+    <div className={cx('hist-object')}>
+      <div className={cx('date')}>{dateFormat(date, '/')}</div>
+      <div className={cx('rank')}>{rank}</div>
+      <div className={cx('count')}>
+        <NumberFormat value={count} displayType={'text'} thousandSeparator={true} suffix={'건'}/>
+      </div>
+    </div>
+  )
+}
+
+const BestItemObject = ({period, item_nm, img_src, id, count, cnt, bestWeaponHistView}) => {
   const adsenseTag = (cnt === 0) ? <div>1위 ~ 5위</div> : 
   (cnt % 5 === 0) ? <><Adsense320100/><div>{cnt+1}위 ~ {cnt+5}위</div></> : '';
 
   return (
     <>
       {adsenseTag}      
-      <div className={cx('object')} key={cnt}>
-        <Link to={`/wp/${id}`} className={cx('weapon-img')}><img src={img_src} alt={item_nm}/></Link>
-        <Link to={`/wp/${id}`} className={cx('weapon-name')}>{item_nm}</Link>
-        <Link to={`/wp/${id}`} className={cx('weapon-count')}>
+      <div className={cx('object')} key={cnt} onMouseOver={bestWeaponHistView} weapon_id={id} period={period}>
+        <Link to={`/wp/${id}`} className={cx('weapon-img')}><img src={img_src} alt={item_nm} weapon_id={id} period={period}/></Link>
+        <Link to={`/wp/${id}`} className={cx('weapon-name')} weapon_id={id} period={period}>{item_nm}</Link>
+        <Link to={`/wp/${id}`} className={cx('weapon-count')} weapon_id={id} period={period}>
           <NumberFormat value={count} displayType={'text'} thousandSeparator={true} suffix={'건'}/>
         </Link>
       </div>
@@ -26,13 +39,29 @@ const BestItemObject = ({item_nm, img_src, id, count, cnt}) => {
   )
 }
 
-const BestWeapon = ({bestItems}) => {
+const BestWeapon = ({bestItems, bestWeaponHistView, bestWeaponPop}) => {
+  const histPopStyle = {
+    top: bestWeaponPop.top + 'px',
+    left: bestWeaponPop.left + 'px',
+    display: bestWeaponPop.display
+  };
   const {day, week, month} = bestItems;
+
+  const histList = bestWeaponPop.currPopHist.length === 0 ? <div style={{textAlign: 'center'}}>첫진입</div> : 
+  bestWeaponPop.currPopHist.map((item, cnt) => {
+    const {date, rank, count} = item;
+
+    return (
+      <HistListObject date={date} rank={rank} count={count} key={cnt}/>
+    )
+  })
+
+
   const dayList = day.info.map((item, cnt) => {
     const {item_nm, img_src, weaponId, count} = item;
     
     return (
-      <BestItemObject item_nm={item_nm} img_src={img_src} id={weaponId} count={count} cnt={cnt} key={cnt}/>
+      <BestItemObject period={'day'} item_nm={item_nm} img_src={img_src} id={weaponId} count={count} cnt={cnt} key={cnt} bestWeaponHistView={bestWeaponHistView}/>
     )
   });
 
@@ -40,7 +69,7 @@ const BestWeapon = ({bestItems}) => {
     const {item_nm, img_src, weaponId, count} = item;
     
     return (
-      <BestItemObject item_nm={item_nm} img_src={img_src} id={weaponId} count={count} cnt={cnt} key={cnt}/>
+      <BestItemObject period={'week'} item_nm={item_nm} img_src={img_src} id={weaponId} count={count} cnt={cnt} key={cnt} bestWeaponHistView={bestWeaponHistView}/>
     )
   });
 
@@ -48,7 +77,7 @@ const BestWeapon = ({bestItems}) => {
     const {item_nm, img_src, weaponId, count} = item;
     
     return (
-      <BestItemObject item_nm={item_nm} img_src={img_src} id={weaponId} count={count} cnt={cnt} key={cnt}/>
+      <BestItemObject period={'month'} item_nm={item_nm} img_src={img_src} id={weaponId} count={count} cnt={cnt} key={cnt} bestWeaponHistView={bestWeaponHistView}/>
     )
   });
 
@@ -61,16 +90,24 @@ const BestWeapon = ({bestItems}) => {
       </div>
       <Adsense970250/>
       <div className={cx('best-weapon')}>
+        <div className={cx('best-weapon-hist')} style={histPopStyle}>
+          <div className={cx('hist-object-title')}>
+            <div className={cx('date')}>날짜</div>
+            <div className={cx('rank')}>순위</div>
+            <div className={cx('count')}>조회수</div>
+          </div>
+          {histList}
+        </div>
         <div className={cx('best')}>
-          <h2 className={cx('title')}>일간 ({dateFormat(day.min_date)} ~ {dateFormat(day.max_date)})</h2>
+          <h2 className={cx('title')}>일간 ({dateFormat(day.min_date, '-')} ~ {dateFormat(day.max_date, '-')})</h2>
           <div className={cx('list')}>{dayList}</div>
         </div>
         <div className={cx('best')}>
-          <h2 className={cx('title')}>주간 ({dateFormat(week.min_date)} ~ {dateFormat(week.max_date)})</h2>
+          <h2 className={cx('title')}>주간 ({dateFormat(week.min_date, '-')} ~ {dateFormat(week.max_date, '-')})</h2>
           <div className={cx('list')}>{weekList}</div>
         </div>
         <div className={cx('best')}>
-          <h2 className={cx('title')}>월간 ({dateFormat(month.min_date)} ~ {dateFormat(month.max_date)})</h2>
+          <h2 className={cx('title')}>월간 ({dateFormat(month.min_date, '-')} ~ {dateFormat(month.max_date, '-')})</h2>
           <div className={cx('list')}>{monthList}</div>
         </div>
       </div>
@@ -80,12 +117,12 @@ const BestWeapon = ({bestItems}) => {
 
 export default BestWeapon;
 
-const dateFormat = (date) => {
+const dateFormat = (date, dot) => {
   if(!date) return '';
 
   const yy = date.substr(2, 2);
   const mm = date.substr(4, 2);
   const dd = date.substr(6, 2);
 
-  return yy+'/'+mm+'/'+dd;
+  return yy+dot+mm+dot+dd;
 }

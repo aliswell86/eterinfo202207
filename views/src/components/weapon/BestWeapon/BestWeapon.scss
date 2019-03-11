@@ -103,4 +103,58 @@
       }
     }
   }
+
+  .best-weapon-hist {
+    background-color: white;
+    z-index: 1001;
+    position: absolute;
+    @include material-shadow(2, 2);
+    line-height: 1.6rem;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+
+    padding: 0.2rem;
+    width: 200px;
+
+    .hist-object-title {
+      display: flex;
+      display: -ms-flexbox;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .date {
+        width: 70px;
+        text-align: left;
+      }
+
+      .count {
+        width: 40px;
+        text-align: right;
+      }
+    }
+
+    .hist-object {
+      display: flex;
+      display: -ms-flexbox;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .date {
+        width: 70px;
+        text-align: left;
+      }
+
+      .count {
+        width: 40px;
+        text-align: right;
+      }
+    }
+  }
 }

@@ -87,7 +87,7 @@ exports.accessoryList = async (ctx) => {
 */
 exports.bestItem = async (ctx) => {
   try {
-    const gaPageView = await GAPageView.find({'del_yn': 'N'}).sort({'rank': 1}).exec();
+    const gaPageView = await GAPageView.find({/*'del_yn': 'N'*/}).sort({'max_date': -1}).exec();
     ctx.body = gaPageView;
   } catch(e) {
     ctx.throw(e);
