@@ -6,7 +6,7 @@ import Radio from 'components/common/Radio';
 const cx = classNames.bind(styles);
 
 const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick, skillList, stype1}) => {
-  const {conStat, skillStat, itemDmgUp, limitDmg, itemCriUp, isParasite, whereDoping, monsterSize, monsterType, myDmgType, currSkillSeq, dmgEvent} = myStat;
+  const {conStat, skillStat, itemDmgUp, limitDmg, itemCriUp, isParasite, whereDoping, monsterSize, monsterType, myDmgType, currSkillSeq, dmgEvent, acvmDmg} = myStat;
   const stypeDisabled = stype1 === '2' ? true : false;
   const mySkillList = skillList.map((skill) => {
     const {seq, name, increaseTarget, increaseRt} = skill;
@@ -48,8 +48,12 @@ const MySpecInven = ({myStatInsert, myStat, setParaDoping, inputClick, skillList
               <div><input type='number' name='itemCriUp' value={itemCriUp} onChange={myStatInsert} onClick={inputClick}/></div>
             </div>
             <div>
-              <div>해방공+업적공</div>
+              <div>해방공</div>
               <div><input type='number' name='limitDmg' value={limitDmg} onChange={myStatInsert} onClick={inputClick}/></div>
+            </div>
+            <div>
+              <div>업적공</div>
+              <div><input type='number' name='acvmDmg' value={acvmDmg} onChange={myStatInsert} onClick={inputClick}/></div>
             </div>
           </div>
           <div className={cx('parasite-doping')}>

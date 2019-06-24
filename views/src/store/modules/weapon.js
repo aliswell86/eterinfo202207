@@ -14,6 +14,7 @@ const SET_WEAPON_UP_CRI = 'weapon/SET_WEAPON_UP_CRI';
 const GET_WEAPON_SEARCH_LIST = 'weapon/SET_WEAPONE_UP_DMG';
 const GET_BEST_ITEM = 'weapon/GET_BEST_ITEM';
 const BEST_WEAPON_HIST = 'weapon/BEST_WEAPON_HIST';
+const SETTING_LOAD_WEAPON = 'weapon/SETTING_LOAD_WEAPON';
 
 export const setWeaponWhere = createAction(SET_WEAPON_WHERE);
 export const getWeaponList = createAction(GET_WEAPON_LIST, api.getWeaponList);
@@ -25,6 +26,7 @@ export const setWeaponUpCri = createAction(SET_WEAPON_UP_CRI);
 export const getWeaponSearchList = createAction(GET_WEAPON_SEARCH_LIST);
 export const getBestItem = createAction(GET_BEST_ITEM, api.getBestItem);
 export const bestWeaponHist = createAction(BEST_WEAPON_HIST);
+export const settingLoadWeapon = createAction(SETTING_LOAD_WEAPON);
 
 const initialState = Map({
   weaponWhere: Map({ // 선택한 조회조건들
@@ -282,6 +284,11 @@ export default handleActions({
                 .setIn(['bestWeaponPop', 'currPopHist'], currWeaponHist)
                 .setIn(['bestWeaponPop', 'display'], 'block')
                 ;
+  },
+  [SETTING_LOAD_WEAPON]: (state, action) => {
+    const {weaponView, currWeaponUpDv} = action.payload;
+    return state.set('weaponView', fromJS(weaponView))
+                .set('currWeaponUpDv', fromJS(currWeaponUpDv))
   }
 }, initialState);
 

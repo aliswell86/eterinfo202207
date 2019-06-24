@@ -17,7 +17,7 @@ class MySpecInvenContainer extends Component {
       return false;
     }
     
-    if(Number(value) > -1 && Number(value) < 501) {
+    if(Number(value) > -1 && Number(value) < 1001) {
       MySpecActions.setMyStat({name, value});
     }
     

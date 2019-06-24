@@ -6,7 +6,7 @@ import NumberFormat from 'react-number-format';
 
 const cx = classNames.bind(styles);
 
-const PlusUpGrid = ({loading, wherePlusUpGrid, currPlusUp}) => {
+const PlusUpGrid = ({loading, wherePlusUpGrid, currPlusUp, costUpdate, plusUpCost}) => {
   const {armmorDv, gradeDv, tierDv, plusUpGridWhere} = currPlusUp;
   let needKitCntAppend = 0;
   const plusUpList = plusUpGridWhere.map((plusup, cnt) => {
@@ -17,11 +17,14 @@ const PlusUpGrid = ({loading, wherePlusUpGrid, currPlusUp}) => {
       <div className={cx('plus-up-grid-object')} key={`plusUpObject${cnt}`}>
         <div className={cx('plus-up-text')}>
           <div className={cx('plus-up-grade')}>{`${cnt+1}강`}</div>
-          <div className={cx('plus-up-value')}>{plusup}%</div>
+          <div className={cx('plus-up-value')}>{plusup}/{(plusup*1.1).toFixed(2)}%</div>
           <div className={cx('plus-up-gitcount')}>
             (<NumberFormat value={needKitCnt} displayType={'text'} thousandSeparator={true}/>/
             <NumberFormat value={needKitCntAppend} displayType={'text'} thousandSeparator={true}/>)
           </div>
+        </div>
+        <div className={cx('plus-up-cost')}>
+          <NumberFormat value={Math.ceil(plusUpCost*needKitCntAppend)} displayType={'text'} thousandSeparator={true} suffix={' 원'}/>
         </div>
       </div>
     );
@@ -29,8 +32,8 @@ const PlusUpGrid = ({loading, wherePlusUpGrid, currPlusUp}) => {
 
   return (
     <div className={cx('plusup-grid')}>      
-      <h2 className={cx('plusup-title')}>
-        플러스업 종류별 공격력증가율 (필요완플갯수/누적)
+      <h2 class="plusup-title">
+        플러스업 종류별 공격력증가율 (<span class="red">NonCL/CL%</span>, 필요완플갯수/누적) 그리고 완플가격계산기
       </h2>
       <div className={cx('plusup-body')}>
         <div className={cx('plusup-grid-head')}>
@@ -56,6 +59,10 @@ const PlusUpGrid = ({loading, wherePlusUpGrid, currPlusUp}) => {
               <div><Radio name='tierDv' value='7' onChange={wherePlusUpGrid} defaultValue={tierDv}>10급</Radio></div>
               <div><Radio name='tierDv' value='8' onChange={wherePlusUpGrid} defaultValue={tierDv}>11급</Radio></div>
             </div>
+            <div className={cx('cost')}>
+              <div>완플가격(원)</div>
+              <div><input type='number' name='plusUpCost' value={plusUpCost} onClick={inputClick} onChange={costUpdate}/></div>
+            </div>
           </div>
         </div>      
         <div className={cx('plus-up-grid-list')}>
@@ -67,3 +74,7 @@ const PlusUpGrid = ({loading, wherePlusUpGrid, currPlusUp}) => {
 };
 
 export default PlusUpGrid;
+
+const inputClick = (e) => {
+  e.target.select();
+}

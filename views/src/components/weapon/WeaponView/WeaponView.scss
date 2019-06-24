@@ -19,6 +19,14 @@
     margin-top: 0px;
     margin-bottom: 0.4rem;
 
+    .h2-title {
+      display: flex;
+      display: -ms-flexbox;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
     .weapon-change-txt {
       float: right;
       border: 1px solid $oc-green-6;
@@ -30,6 +38,7 @@
       background: $oc-green-5;
       border-radius: 0.2em;
       font-size: 1.0rem;
+      margin-right: .2rem;
 
       @include media("<small") {
         font-size: 0.8rem;
@@ -69,6 +78,32 @@
 
     .weapon-change-txt + .weapon-dmgsim-txt {
       margin-right: 0.2rem;
+    }
+
+    .weapon-dmgsim-save {
+      float: right;
+      border: 1px solid $oc-blue-6;
+      padding: .2em .4em;
+      color: #fff;
+      background: $oc-blue-5;
+      border-radius: .2em;
+      font-size: 1rem;
+      margin-right: .2rem;
+      width: auto;
+      height: auto;
+      font-weight: 700;
+      font-family: Noto Sans KR,sans-serif!important;
+
+      @include media("<small") {
+        font-size: 0.8rem;
+      }
+    }
+
+    .weapon-dmgsim-save:hover {
+      background: $oc-blue-6;
+    }
+    .weapon-dmgsim-save:active {
+      background: $oc-blue-7;
     }
   }
 

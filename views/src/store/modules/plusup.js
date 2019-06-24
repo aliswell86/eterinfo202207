@@ -10,6 +10,7 @@ const SET_PLUSUP_KIT = 'plusup/SET_PLUSUP_KIT';
 const INITIAL_PLUSUP_SIMUL = 'plusup/INITIAL_PLUSUP_SIMUL';
 const SET_PLUSUP_RESULT = 'plusup/SET_PLUSUP_RESULT';
 const SET_PLUSUP_COMMENT = 'plusup/SET_PLUSUP_COMMENT';
+const SET_PLUSUP_COST = 'plusup/SET_PLUSUP_COST';
 
 export const getPlusUpGrid = createAction(GET_PLUSUP_GRID, api.getPlusUpGrid);
 export const setPlusUpGridWhere = createAction(SET_PLUSUP_GRID_WHERE);
@@ -18,11 +19,13 @@ export const initialSimul = createAction(INITIAL_PLUSUP_SIMUL);
 export const setPlusUpKit = createAction(SET_PLUSUP_KIT);
 export const setPlusUpResult = createAction(SET_PLUSUP_RESULT);
 export const setPlusUpComment = createAction(SET_PLUSUP_COMMENT); //미사용
+export const setPlusUpCost = createAction(SET_PLUSUP_COST);
 
 const initialState = Map({
   plusUpGrid: List(),
+  plusUpCost: 3500,
   currPlusUp: Map({
-    plusUpGridWhere: List(),
+    plusUpGridWhere: List(),    
     armmorDv: '0',
     gradeDv: '0',
     tierDv: '0'
@@ -136,5 +139,9 @@ export default handleActions({
   },
   [SET_PLUSUP_COMMENT]: (state, action) => {
     return state.setIn(['plusUpSimul', 'resultComment'], '');
+  },
+  [SET_PLUSUP_COST]: (state, action) => {
+    const {value} = action.payload;
+    return state.set('plusUpCost', value);
   }
 }, initialState); 

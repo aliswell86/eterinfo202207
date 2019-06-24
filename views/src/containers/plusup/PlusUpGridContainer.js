@@ -30,16 +30,25 @@ class PlusUpGridContainer extends Component {
     }
   }
 
+  costUpdate = (e) => {
+    const {name, value} = e.target;
+    const {PlusupActions} = this.props;
+
+    PlusupActions.setPlusUpCost({name, value});
+  }
+
   render() {
-    const {plusupGrid, loading, currPlusUp} = this.props;
-    const {handleChange} = this;
+    const {plusupGrid, loading, currPlusUp, plusUpCost} = this.props;
+    const {handleChange, costUpdate} = this;
     
     return (
       <PlusUpGrid
       plusupGrid={plusupGrid}
       loading={loading}
       wherePlusUpGrid={handleChange}
-      currPlusUp={currPlusUp}/>
+      currPlusUp={currPlusUp}
+      plusUpCost={plusUpCost}
+      costUpdate={costUpdate}/>
     );
   }
 }
@@ -48,7 +57,8 @@ export default connect(
   (state) => ({
     plusUpGrid: state.plusup.toJS().plusUpGrid,
     loading: state.pender.pending['plusup/GET_PLUSUP_GRID'],
-    currPlusUp: state.plusup.toJS().currPlusUp
+    currPlusUp: state.plusup.toJS().currPlusUp,
+    plusUpCost: state.plusup.toJS().plusUpCost
   }),
   (dispatch) => ({
     PlusupActions: bindActionCreators(plusupActions, dispatch)

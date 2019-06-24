@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
+const WeaponView = ({itemInfo, currWeaponUpDv, pathname, settingSave, settingLoad}) => {
   const {
     item_nm, img_src, item_dtl_dv, dmg, cri, speed, tier, size, illegal, _id
   } = itemInfo;
@@ -20,13 +20,17 @@ const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
   if(item_nm === undefined || item_nm === null || item_nm === '') {
     if(pathname.indexOf('custom') > -1) {
       titleText = '공격력계산 - ' + titleDefaultText;
+      costomLinkMsg = <button onClick={settingLoad} className={cx('weapon-dmgsim-save')}>세팅로드</button>;
     }else{
       titleText = titleDefaultText;
     }
   }else{
     if(pathname.indexOf('custom') > -1) {
       titleText = item_nm + ' - 공격력계산 - ' + titleDefaultText;
-      costomLinkMsg = <Link to={`/wp/${_id}`} className={cx('weapon-dmgsim-txt')}>상세정보</Link>;
+      costomLinkMsg = 
+      <><button onClick={settingLoad} className={cx('weapon-dmgsim-save')}>세팅로드</button>
+      <button onClick={settingSave} className={cx('weapon-dmgsim-save')}>세팅저장</button>
+      <Link to={`/wp/${_id}`} className={cx('weapon-dmgsim-txt')}>상세정보</Link></>;
     }else if(pathname.indexOf('wp') > -1) {
       titleText = item_nm + ' - 강화별공격력 - ' + titleDefaultText;
       costomLinkMsg = <Link to={`/custom/${_id}`} className={cx('weapon-dmgsim-txt')}>공격력계산</Link>;
@@ -41,8 +45,11 @@ const WeaponView = ({itemInfo, currWeaponUpDv, pathname}) => {
       </Helmet>
       <h2 className={cx('name')}>
         {item_nm === undefined ?
-          <Link to='/wp'>무기선택</Link> : 
-          <>{item_nm} <Link to='/wp' className={cx('weapon-change-txt')}>무기변경</Link> {costomLinkMsg}</> 
+          <><Link to='/wp'>무기선택</Link> {costomLinkMsg}</> : 
+          <div className={cx('h2-title')}>
+            <div>{item_nm}</div>
+            <div>{costomLinkMsg}<Link to='/wp' className={cx('weapon-change-txt')}>무기변경</Link></div>
+          </div>
         }
       </h2>
       <div className={cx('item-info')}>

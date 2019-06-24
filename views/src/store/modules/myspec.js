@@ -13,6 +13,7 @@ const SET_DMG_RANDOM = 'myspec/SET_DMG_RANDOM';
 const SECOND_INITIAL = 'myspec/SECOND_INITIAL';
 const START_HUNT = 'myspec/START_HUNT';
 const SECOND_REST = 'myspec/SECOND_REST';
+const SETTING_LOAD_MYSPEC = 'myspec/SETTING_LOAD_MYSPEC';
 
 export const setMyStat = createAction(SET_MYSPEC_STAT);
 export const getInvenDmage = createAction(GET_INVEN_DMAGE);
@@ -24,6 +25,7 @@ export const setDmgRandom = createAction(SET_DMG_RANDOM);
 export const secondInitial = createAction(SECOND_INITIAL);
 export const startHunt = createAction(START_HUNT);
 export const secondRest = createAction(SECOND_REST);
+export const settingLoadMySpec = createAction(SETTING_LOAD_MYSPEC);
 
 const initialState = Map({
   myStat: Map({
@@ -33,6 +35,7 @@ const initialState = Map({
     itemDmgUp: '0',
     itemCriUp: '0',
     limitDmg: '0',
+    acvmDmg: '0',
     isParasite: '0',
     whereDoping: '0',
     invenDmg: 5,
@@ -256,7 +259,7 @@ export default handleActions({
   },
   [GET_INVEN_DMAGE]: (state, action) => {
     const {dmg, cri, stype1, size} = action.payload;
-    const {conStat, skillStat, itemDmgUp, itemCriUp, limitDmg, isParasite, whereDoping, monsterSize, monsterType, myDmgType, currSkillSeq, dmgEvent} = state.toJS().myStat;
+    const {conStat, skillStat, itemDmgUp, itemCriUp, limitDmg, acvmDmg, isParasite, whereDoping, monsterSize, monsterType, myDmgType, currSkillSeq, dmgEvent} = state.toJS().myStat;
     const {mySkill} = state.toJS();
 
     const mainStat = stype1 === '1' ? skillStat : conStat;
@@ -264,7 +267,7 @@ export default handleActions({
     const parasiteUp = isParasite === '3' ? 3 : 0;
     const default_inven_dmg = Math.floor(Number(currWeaponDmgCalc)+Number(currWeaponDmgCalc)*(Number(mainStat)/100)+Number(mainStat));
     const item_inven_dmg = (default_inven_dmg/100)*Number(itemDmgUp);
-    const inven_dmg = Math.floor((default_inven_dmg + item_inven_dmg)*(1+(Number(limitDmg)/100))*(1+parasiteUp/10)*(1+Number(whereDoping)/10));
+    const inven_dmg = Math.floor((default_inven_dmg + item_inven_dmg)*(1+(Number(limitDmg)/100))*(1+(Number(acvmDmg)/100))*(1+parasiteUp/10)*(1+Number(whereDoping)/10));
 
     let inven_cri = Math.floor(((Number(cri)/5) * ((Number(skillStat)/100)+1)) + Number(itemCriUp) + 1);
     if(inven_cri > 50) inven_cri = 50;
@@ -274,7 +277,14 @@ export default handleActions({
     const {increaseTarget, increaseRt, seq} = currSkill;
     const sizeDmg = sizeByDmg(size, monsterSize);
     const typeDmg = typeByDmg(myDmgType, monsterType);
-    let defaultDmg = (typeDmg.text === '오류' || sizeDmg.text === '오류') ? '0' : inven_dmg + (inven_dmg * Number(sizeDmg.value)) + (inven_dmg * Number(typeDmg.value));
+    // console.log(typeDmg.value, sizeDmg.value);
+    // let defaultDmg = (typeDmg.text === '오류' || sizeDmg.text === '오류') ? '0' : 
+    // inven_dmg + (inven_dmg * Number(sizeDmg.value)) + (inven_dmg * Number(typeDmg.value)); //asis 곱더하기
+    let defaultDmg1 = (typeDmg.text === '오류' || sizeDmg.text === '오류') ? '0' : 
+    inven_dmg + (inven_dmg * Number(sizeDmg.value));
+    let defaultDmg = (typeDmg.text === '오류' || sizeDmg.text === '오류') ? '0' : 
+    defaultDmg1 + (defaultDmg1 * Number(typeDmg.value));
+
     defaultDmg = defaultDmg * 1.1 * (Number(dmgEvent)/100 + 1) * ( isParasite === '2.5' ? Number(isParasite)/10 + 1 : 1); //사공+이벤공증+정규
     defaultDmg = defaultDmg * (increaseTarget === 'all' ? Number(increaseRt) : 1);
     defaultDmg = defaultDmg * (seq === '14' ? 1.5 : 1); // 기관총 치명연사+벽부딪힘
@@ -441,5 +451,10 @@ export default handleActions({
   },
   [SECOND_REST]: (state, action) => {
     return state.setIn(['dpsSim', 'huntStartBool'], false);
+  },
+  [SETTING_LOAD_MYSPEC]: (state, action) => {
+    const {myStat, dpsSim} = action.payload;
+    return state.set('myStat', fromJS(myStat))
+                .set('dpsSim', fromJS(dpsSim))
   }
 }, initialState);
