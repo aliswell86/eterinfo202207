@@ -19,7 +19,7 @@ const ssr = require('./ssr');
 // const indexHtml = fs.readFileSync(path.resolve(__dirname, './views/build/index.html'), { encoding: 'utf8' });
 
 mongoose.Promise = global.Promise; // Node의 Promise를 사용하도록 설정
-mongoose.connect('mongodb://my_mean:dlskdud1@ds121321.mlab.com:21321/my_mean').then(() => {
+mongoose.connect('mongodb+srv://my_mean:dlskdud1@my-mean.yp0u2.mongodb.net/my_mean?retryWrites=true&w=majority', {useNewUrlParser: true}).then(() => {
   console.log('connected to mongodb');
 }).catch((e) => {
   console.error(e);
