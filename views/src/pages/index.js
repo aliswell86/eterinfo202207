@@ -8,3 +8,4 @@ export {default as NotFoundPage} from './NotFoundPage';
 export {default as ArmmorPage} from './ArmmorPage';
 export {default as CostumePage} from './CostumePage';
 export {default as AccessoryPage} from './AccessoryPage';
+export {default as WowItemPage} from './WowItemPage';

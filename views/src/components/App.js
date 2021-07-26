@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
 import {
   NotFoundPage, WeaponPage, WeaponViewPage, WeaponCustomPage, MainPage, PlusUpPage, BoxSimulPage,
-  ArmmorPage, CostumePage, AccessoryPage
+  ArmmorPage, CostumePage, AccessoryPage, WowItemPage
 } from 'pages';
 import { Helmet } from "react-helmet";
 // import BaseContainer from 'containers/common/BaseContainer';
@@ -35,6 +35,7 @@ class App extends Component {
           <Route exact path="/armmor" component={ArmmorPage} />
           <Route exact path="/costume" component={CostumePage} />
           <Route exact path="/accessory" component={AccessoryPage} />
+          <Route exact path="/wow" component={WowItemPage} />
           <Route component={NotFoundPage}/>
         </Switch>
         {/* <BaseContainer/> */}

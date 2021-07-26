@@ -9,3 +9,4 @@ export {default as base} from './base';
 export {default as armmor} from './armmor';
 export {default as costume} from './costume';
 export {default as accessory} from './accessory';
+export {default as wowitem} from './wowitem';

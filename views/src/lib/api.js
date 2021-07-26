@@ -16,3 +16,5 @@ export const getCostumeList = () => axios.get('/api/item/costume');
 export const getAccessoryList = () => axios.get('/api/item/accessory');
 
 export const getBestItem = () => axios.get('/api/item/bestitem');
+
+export const getWowItemList = () => axios.get('/api/wowitem/list');
