@@ -5,7 +5,7 @@ const WowItem = require('../../models/WowItem');
 */
 exports.wowitemList = async (ctx) => {
   try {
-    const list = await WowItem.find().exec();
+    const list = await WowItem.find().sort({"zone": 1}).exec();
     ctx.body = list;
   } catch(e) {
     ctx.throw(e);
