@@ -10,34 +10,36 @@ import { renderToString } from 'react-router-server';
 import { Helmet } from 'react-helmet';
 
 const render = async (ctx) => {
-  const {url} = ctx;
-  // 서버사이드에선, 매 요청마다 새 store 를 생성해주어야 합니다.
-  const store = configure();
-  // context 값을 빈 객체로 설정합니다.
-  const context = {};
+  // if(typeof window !== "undefined") {
+    const {url} = ctx;
+    // 서버사이드에선, 매 요청마다 새 store 를 생성해주어야 합니다.
+    const store = configure();
+    // context 값을 빈 객체로 설정합니다.
+    const context = {};
 
-  const {html} = await renderToString(    
-    <StaticRouter location={url} context={context}>
-      <Provider store={store}>
-        <App/>
-      </Provider>
-    </StaticRouter>
-  );
+    const {html} = await renderToString(    
+      <StaticRouter location={url} context={context}>
+        <Provider store={store}>
+          <App/>
+        </Provider>
+      </StaticRouter>
+    );
 
-  // isNotFound 값이 true 라면
-  if(context.isNotFound) {
-    ctx.status = 404; // HTTP 상태를 404로 설정해줍니다
-  }
+    // isNotFound 값이 true 라면
+    if(context.isNotFound) {
+      ctx.status = 404; // HTTP 상태를 404로 설정해줍니다
+    }
 
-  // helmet 정보를 가져옵니다
-  const helmet = Helmet.renderStatic();
+    // helmet 정보를 가져옵니다
+    const helmet = Helmet.renderStatic();
 
-  // 스토어와, 렌더링된 문자열 결과물을 반환합니다
-  return {
-    html,
-    state: store.getState(),
-    helmet
-  };
+    // 스토어와, 렌더링된 문자열 결과물을 반환합니다
+    return {
+      html,
+      state: store.getState(),
+      helmet
+    };
+  // }
 };
 
 export default render;
