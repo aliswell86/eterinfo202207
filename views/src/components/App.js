@@ -25,7 +25,7 @@ class App extends Component {
         </Helmet>
         <Route path="/" component={logPageView} />
         <Switch>
-          <Route exact path="/" component={MainPage} />
+          <Route exact path="/" component={WeaponPage} />
           <Route exact path="/wp" component={WeaponPage} />
           <Route exact path="/wp/:id" component={WeaponViewPage} />
           <Route exact path="/custom" component={WeaponCustomPage} />

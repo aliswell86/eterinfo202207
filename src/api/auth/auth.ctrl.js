@@ -12,8 +12,8 @@ const {google} = require('googleapis');
 const oauth2Client = new google.auth.OAuth2(
   '914832969749-8c7g8986hodnstj58eluijnbj1aml16g.apps.googleusercontent.com',
   'oN6AslW0GvPb0gFODMmvW6mm',
-  // 'http://localhost:8002/api/auth/googletoken'
-  'http://eterinfo.kr/api/auth/googletoken'
+  'http://localhost:8002/api/auth/googletoken'
+  // 'http://eterinfo.kr/api/auth/googletoken'
 );
 
 /* 네이버아이디로 로그인
@@ -203,19 +203,28 @@ exports.logout = async (ctx) => {
 */
 exports.gaPageView = (ctx) => {
   const scopes = [
-    'https://www.googleapis.com/auth/analytics'
+    // 'https://www.googleapis.com/auth/analytics'
+    'https://www.googleapis.com/auth/drive.metadata.readonly'
   ];
-  
-  const url = oauth2Client.generateAuthUrl({
-    scope: scopes
-  });
 
+  const url = oauth2Client.generateAuthUrl({
+    // 'online' (default) or 'offline' (gets refresh_token)
+    access_type: 'offline',
+    /** Pass in the scopes array defined above.
+      * Alternatively, if only one scope is needed, you can pass a scope URL as a string */
+    scope: scopes,
+    // Enable incremental authorization. Recommended as a best practice.
+    include_granted_scopes: true
+  });
   ctx.redirect(url);
 }
 
 exports.googleToken = async (ctx) => {
-  const {code} = ctx.query;
-  const {tokens} = await oauth2Client.getToken(code);
+  // const {code} = ctx.query;
+  const {url} = ctx.req;
+  const q = require('url').parse(url, true).query;
+  console.log(url);
+  const {tokens} = await oauth2Client.getToken(q.code);
   const {access_token} = tokens;
   const yesterDay = moment().add(-1, 'days').format('YYYY-MM-DD');
   const beforeWeekDay = moment().add(-7, 'days').format('YYYY-MM-DD');
@@ -224,6 +233,23 @@ exports.googleToken = async (ctx) => {
   const analytics_url_week = 'https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A179440961&start-date='+beforeWeekDay+'&end-date='+yesterDay+'&metrics=ga%3Apageviews&dimensions=ga%3ApagePath&sort=-ga%3Apageviews&max-results=200&access_token=' + access_token;
   const analytics_url_month = 'https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A179440961&start-date='+beforeMonthDay+'&end-date='+yesterDay+'&metrics=ga%3Apageviews&dimensions=ga%3ApagePath&sort=-ga%3Apageviews&max-results=200&access_token=' + access_token;
   
+  const analytics_url_yesterday_options = {
+    method: 'POST',
+    uri: 'https://analyticsreporting.googleapis.com/v4/reports:batchGet',
+    body: {
+      "reportRequests": [{
+        "dateRanges": [
+              { "endDate": yesterDay, "startDate": yesterDay }
+        ],
+        "metrics": [
+            {"expression": "ga:pageviews"}
+        ],
+        "viewId": "179440961",
+        "dimensions":[{"name":"ga:pageviews"}, {"name":"ga:country"}],
+      }]
+    }
+  }
+
   console.log("::START:: - " + moment().format('YYYY-MM-DD HH:mm:ss'));
 
   try {
@@ -234,20 +260,20 @@ exports.googleToken = async (ctx) => {
   }
   
   // 일
-  console.log("analytics_url_yesterday : " + analytics_url_yesterday);
-  requestPromise(analytics_url_yesterday).then(async (res) => {
+  // console.log("analytics_url_yesterday : " + analytics_url_yesterday_v4);
+  requestPromise(analytics_url_yesterday_options).then(async (res) => {
     gaPageViewInsert(res, yesterDay, yesterDay, 'day');
   });
   // 주
-  console.log("analytics_url_week : " + analytics_url_week);
-  requestPromise(analytics_url_week).then(async (res) => {
-    gaPageViewInsert(res, beforeWeekDay, yesterDay, 'week');
-  });
+  // console.log("analytics_url_week : " + analytics_url_week);
+  // requestPromise(analytics_url_week).then(async (res) => {
+  //   gaPageViewInsert(res, beforeWeekDay, yesterDay, 'week');
+  // });
   // 월
-  console.log("analytics_url_month : " + analytics_url_month);
-  requestPromise(analytics_url_month).then(async (res) => {
-    gaPageViewInsert(res, beforeMonthDay, yesterDay, 'month');
-  });
+  // console.log("analytics_url_month : " + analytics_url_month);
+  // requestPromise(analytics_url_month).then(async (res) => {
+  //   gaPageViewInsert(res, beforeMonthDay, yesterDay, 'month');
+  // });
 
   ctx.redirect('/');
 }
