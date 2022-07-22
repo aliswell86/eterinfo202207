@@ -80,7 +80,7 @@ const ArmmorList = ({armmorWheres, history}) => {
         {armmorList}
       </div>
       <div className={cx('list-adsense')}>
-        {adsense300600List}
+        {/* {adsense300600List} */}
       </div>
     </div>
   );

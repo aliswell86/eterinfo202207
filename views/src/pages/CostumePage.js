@@ -34,8 +34,8 @@ class ArmmorPage extends Component {
           <CostumeListContainer history={history}/>
         </ListWrapper>
         <div className={cx('page-top-adsense')}>
-          <Adsense970250/>
-          <Adsense300250/>
+          {/* <Adsense970250/>
+          <Adsense300250/> */}
         </div>
       </PageTemplate>
     );

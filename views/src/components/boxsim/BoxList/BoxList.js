@@ -27,7 +27,7 @@ const BoxList = ({boxs, boxInfoList, currCode}) => {
         <div className={cx('boxs')}>
           {boxList}
         </div>
-        <Adsense300250/>
+        {/* <Adsense300250/> */}
       </div>
       <div className={cx('notice')}>
         * 불법무기 랜덤상자 결과물에 대한 확률은 공지되어있지 않습니다. 개발자가 임의로 정한 확률입니다.<br/>(8등급: 60%, 9등급: 30%, 10등급:10%)

@@ -38,21 +38,21 @@ class BoxSimulPage extends Component {
         </ListWrapper>
         <div className={cx('page-middle-adsense')}>
           {/* <Adsense72890/> */}
-          <Adsense320100/>
+          {/* <Adsense320100/> */}
         </div>
         <ListWrapper>        
           <BoxResultContainer ref={(ref) => this.BoxResultContainer = ref}/>
         </ListWrapper>
         <div className={cx('page-middle-adsense')}>
           {/* <Adsense72890/> */}
-          <Adsense320100/>
+          {/* <Adsense320100/> */}
         </div>
         <ListWrapper>        
           <BoxLogContainer ref={(ref) => this.BoxLogContainer = ref}/>
         </ListWrapper>
         <div className={cx('page-top-adsense')}>
-          <Adsense970250/>
-          <Adsense300250/>
+          {/* <Adsense970250/>
+          <Adsense300250/> */}
         </div>
       </PageTemplate>
     );

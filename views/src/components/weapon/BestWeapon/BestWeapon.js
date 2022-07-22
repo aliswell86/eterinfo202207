@@ -23,7 +23,7 @@ const HistListObject = ({date, rank, count}) => {
 
 const BestItemObject = ({period, item_nm, img_src, id, count, cnt, bestWeaponHistView}) => {
   const adsenseTag = (cnt === 0) ? <div>1위 ~ 5위</div> : 
-  (cnt % 5 === 0) ? <><Adsense320100/><div>{cnt+1}위 ~ {cnt+5}위</div></> : '';
+  (cnt % 5 === 0) ? <><div>{cnt+1}위 ~ {cnt+5}위</div></> : '';
 
   return (
     <>
@@ -88,7 +88,7 @@ const BestWeapon = ({bestItems, bestWeaponHistView, bestWeaponPop}) => {
         <h2 className={cx('title')}>이터인포에서 많이찾는 무기 BEST20</h2>
         <div>기간별 이터인포 무기조회 건수합계입니다. 하루마다 갱신됩니다. 이터널시티 유저들에게 인기가 많은 무기는 뭘까요!?</div>
       </div>
-      <Adsense970250/>
+      {/* <Adsense970250/> */}
       <div className={cx('best-weapon')}>
         <div className={cx('best-weapon-hist')} style={histPopStyle}>
           <div className={cx('hist-object-title')}>

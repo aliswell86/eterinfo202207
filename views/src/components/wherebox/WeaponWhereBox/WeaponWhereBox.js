@@ -58,8 +58,8 @@ const WeaponWhereBox = ({handleWhereSet, loading, weaponWhere}) => {
           <div><Checkbox name="isTier12" onChange={handleWhereSet} disabled={loading} checked={weaponWhere.isTier12}>12등급</Checkbox></div>
         </div>
       </div>
-      <Adsense300250/>
-      <Adsense320100/>
+      {/* <Adsense300250/>
+      <Adsense320100/> */}
     </div>
   );
 };

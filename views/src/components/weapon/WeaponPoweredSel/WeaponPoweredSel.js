@@ -57,8 +57,8 @@ const WeaponPoweredSel = ({setWeaponUpDv, currWeaponUpDv}) => {
           </div>
         </div>
       </div>
-      <Adsense320100/>
-      <Adsense300250/>
+      {/* <Adsense320100/>
+      <Adsense300250/> */}
     </div>
   );
 };

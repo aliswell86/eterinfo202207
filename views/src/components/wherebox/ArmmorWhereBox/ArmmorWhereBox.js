@@ -46,8 +46,8 @@ const ArmmorWhereBox = ({handleWhereSet, loading, armmorWhere}) => {
           <div><Checkbox name="isTier12" onChange={handleWhereSet} disabled={loading} checked={armmorWhere.isTier12}>12등급</Checkbox></div>
         </div>
       </div>
-      <Adsense300250/>
-      <Adsense320100/>
+      {/* <Adsense300250/>
+      <Adsense320100/> */}
     </div>
   );
 };

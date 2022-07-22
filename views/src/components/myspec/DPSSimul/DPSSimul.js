@@ -137,7 +137,7 @@ const DPSSimul = ({setDPSOption, currHeadCounterValue, currHeadCounterList, curr
               <div><input type='number' name='monsterExp' value={monsterExp} onChange={setDPSOption}/></div>
             </div>
           </div>
-          <div  style={{marginTop: '1rem'}}><Adsense320100/></div>
+          {/* <div  style={{marginTop: '1rem'}}><Adsense320100/></div> */}
         </div>
       </div>
       <div className={cx('dpssim-notice')}>

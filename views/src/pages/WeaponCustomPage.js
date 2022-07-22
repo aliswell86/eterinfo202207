@@ -39,28 +39,28 @@ class WeaponCustomPage extends Component {
         </ListWrapper>
         <div className={cx('page-middle-adsense')}>
           {/* <Adsense72890/> */}
-          <Adsense320100/>
+          {/* <Adsense320100/> */}
         </div>
         <ListWrapper>
           <MyInfoViewContainer ref={(ref) => this.MyInfoViewContainer = ref}/>
         </ListWrapper>      
         <div className={cx('page-middle-adsense')}>
-          <Adsense72890/>
-          <Adsense320100/>
+          {/* <Adsense72890/>
+          <Adsense320100/> */}
         </div>
         <ListWrapper>
           <MySpecInvenContainer ref={(ref) => this.MySpecInvenContainer = ref}/>
         </ListWrapper>
         <div className={cx('page-middle-adsense')}>
-          <Adsense72890/>
-          <Adsense320100/>
+          {/* <Adsense72890/>
+          <Adsense320100/> */}
         </div>
         <ListWrapper>
           <DPSSimulContainer ref={(ref) => this.DPSSimulContainer = ref}/>
         </ListWrapper>
         <div className={cx('page-top-adsense')}>
-          <Adsense970250/>
-          <Adsense300250/>
+          {/* <Adsense970250/>
+          <Adsense300250/> */}
         </div>
       </PageTemplate>
     );

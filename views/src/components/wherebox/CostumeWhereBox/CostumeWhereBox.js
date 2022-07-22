@@ -32,8 +32,8 @@ const CostumeWhereBox = ({handleWhereSet, loading, costumeWhere}) => {
           <div><Checkbox name="isTier10" onChange={handleWhereSet} disabled={loading} checked={costumeWhere.isTier10}>9강</Checkbox></div>
         </div>
       </div>
-      <Adsense300250/>
-      <Adsense320100/>
+      {/* <Adsense300250/>
+      <Adsense320100/> */}
     </div>
   );
 };

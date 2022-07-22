@@ -22,8 +22,8 @@ const AccessoryWhereBox = ({handleWhereSet, loading, accessoryWhere}) => {
         <div><Checkbox name="isCtype12" onChange={handleWhereSet} disabled={loading} checked={accessoryWhere.isCtype12}>환생악세</Checkbox></div>
         </div>
       </div>
-      <Adsense300250/>
-      <Adsense320100/>
+      {/* <Adsense300250/>
+      <Adsense320100/> */}
     </div>
   );
 };

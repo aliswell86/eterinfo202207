@@ -60,7 +60,7 @@ const PlusUpSimul = ({setPlusUpKit, plusUpSimul, plusUpGo, plusUpGoF, plusUpGoKe
             <div className={cx('plusup-grade')}>플러스:{simulCurrPlusUp}</div>
             <div className={cx('plusup-dmg')}>공격력:{currPlusDmg}%</div>
           </div>
-          <Adsense300250/>
+          {/* <Adsense300250/> */}
         </div>
       </div>
     </div>
